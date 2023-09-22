@@ -1,4 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
+import HeroPage from "@/views/HeroPage.vue";
+import HeroCreator from "@/views/HeroCreator.vue"
 /*import HomeView from '../views/HomePage.vue'
 
 const router = createRouter({
@@ -24,7 +26,16 @@ export default router
 */
 
 export const router = createRouter({
-  history: createWebHistory(),
-  routes: [{ path: '/users/:username/posts/:postId', component: UserPost }],
+    history: createWebHistory(),
+    routes: [
+        {
+            path: '/:user',
+            component: HeroPage
+        },
+        {
+            path: '/creator',
+            component: HeroCreator
+        }
+    ]
 })
 
