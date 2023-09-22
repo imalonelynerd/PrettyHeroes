@@ -1,0 +1,5 @@
+{
+  "errName" : "Wooops...",
+  "imgSource": "/images/error.png",
+  "description": "An error occured while fetching the user's GitHub... Check if the <b>hero.toml</b> file is accessible from your git !"
+}
