@@ -4,23 +4,10 @@ import {ref} from "vue";
 import {useRoute} from "vue-router";
 import HeroDesc from "@/components/HeroDesc.vue";
 import ErrorPage from "@/components/ErrorPage.vue";
-import {loadAsToml, loadAsYaml} from "@/assets/js/fetchResult";
+import {fetchWebsite, loadAsToml, loadAsYaml} from "@/assets/js/fetchResult";
 
 
 const isFetched = ref(1);
-
-async function fetchWebsite(url) {
-  let res = null;
-  try {
-    res = await fetch(url);
-  } catch {
-    return false;
-  }
-  if (!res.ok) {
-    return false;
-  }
-  return res.text();
-}
 
 const unusualRoute = useRoute();
 const userTag = unusualRoute.params.user;
@@ -38,22 +25,18 @@ let links = [
 
 let res = null;
 for (let k in links) {
-  console.log(links[k].url)
   res = await fetchWebsite(links[k].url);
   if (res !== false) {
-    console.log(res);
     switch (links[k].type) {
       case "toml":
-        try {
-          res = loadAsToml(res);
-        } catch {
+        res = loadAsToml(res);
+        if (res === false) {
           isFetched.value = 3;
         }
         break;
       case "yaml":
-        try {
-          res = loadAsYaml(res);
-        } catch {
+        res = loadAsYaml(res);
+        if (res === false) {
           isFetched.value = 3;
         }
         break;

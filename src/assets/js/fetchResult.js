@@ -1,8 +1,26 @@
 import {load} from "js-yaml";
 import {decode} from "toml-nodejs";
 
+export async function fetchWebsite(url) {
+    let res = null;
+    try {
+        res = await fetch(url);
+    } catch {
+        return false;
+    }
+    if (!res.ok) {
+        return false;
+    }
+    return res.text();
+}
+
 export function loadAsToml(fetchedContent) {
-    let loadedContent = decode(fetchedContent);
+    let loadedContent = null;
+    try {
+        loadedContent = decode(fetchedContent);
+    } catch {
+        return false;
+    }
     document.querySelector('head title').textContent = `${loadedContent.title.title} - PrettyHeroes`;
     document.querySelector("link[rel~='icon']").href = loadedContent.title.img;
     document.documentElement.style.setProperty('--cbg', loadedContent.colors.background);
@@ -18,7 +36,13 @@ export function loadAsToml(fetchedContent) {
 }
 
 export function loadAsYaml(fetchedContent) {
-    let loadedContent = load(fetchedContent);
+
+    let loadedContent = null;
+    try {
+        loadedContent = load(fetchedContent);
+    } catch {
+        return false;
+    }
     let result = {
         title: {
             title: loadedContent.title,
