@@ -2,16 +2,20 @@
 import HeroTitle from "@/components/HeroTitle.vue";
 import {ref} from "vue";
 import {useRoute} from "vue-router";
-import {decode} from "toml-nodejs";
 import HeroDesc from "@/components/HeroDesc.vue";
 import ErrorPage from "@/components/ErrorPage.vue";
-import HeroLinks from "@/components/HeroLinks.vue";
+import {loadAsToml, loadAsYaml} from "@/assets/js/fetchResult";
 
 
-const isFetched = ref(true);
+const isFetched = ref(1);
 
 async function fetchWebsite(url) {
-  let res = await fetch(url);
+  let res = null;
+  try {
+    res = await fetch(url);
+  } catch {
+    return false;
+  }
   if (!res.ok) {
     return false;
   }
@@ -21,28 +25,53 @@ async function fetchWebsite(url) {
 const unusualRoute = useRoute();
 const userTag = unusualRoute.params.user;
 
-let res = await fetchWebsite(`https://raw.githubusercontent.com/${userTag}/${userTag}/main/hero.toml`);
-if (res === false) {
-  isFetched.value = false;
-} else {
-  res = decode(res);
-  console.log(res);
-  const headerTitle = document.querySelector('head title');
-  const favIcon = document.querySelector("link[rel~='icon']");
-  headerTitle.textContent = res.title.title + " - PrettyHeroes";
-  favIcon.href = res.title.img;
+let links = [
+  {
+    type: "toml",
+    url: `https://raw.githubusercontent.com/${userTag}/${userTag}/main/hero.toml`
+  },
+  {
+    type: "yaml",
+    url: `https://raw.githubusercontent.com/${userTag}/${userTag}/main/pronounce.yml`
+  }
+]
 
-  document.documentElement.style.setProperty('--bg1', res.colors.bg1);
-  document.documentElement.style.setProperty('--bg2', res.colors.bg2);
-  document.documentElement.style.setProperty('--bg3', res.colors.bg3);
-  document.documentElement.style.setProperty('--text', res.colors.text);
+let res = null;
+for (let k in links) {
+  console.log(links[k].url)
+  res = await fetchWebsite(links[k].url);
+  if (res !== false) {
+    console.log(res);
+    switch (links[k].type) {
+      case "toml":
+        try {
+          res = loadAsToml(res);
+        } catch {
+          isFetched.value = 3;
+        }
+        break;
+      case "yaml":
+        try {
+          res = loadAsYaml(res);
+        } catch {
+          isFetched.value = 3;
+        }
+        break;
+    }
+    isFetched.value = 0;
+    break;
+  }
 }
 
 </script>
 
 <template>
-  <ErrorPage v-if="!isFetched" :account-name="userTag"/>
-  <div v-if="isFetched" class="hero">
+  <ErrorPage
+      v-if="isFetched !== 0"
+      :account-name="userTag"
+      :error-code="isFetched"
+  />
+  <div v-if="isFetched === 0" class="hero">
     <HeroTitle
         :title="res.title.title"
         :catchphrase="res.title.catchphrase"
@@ -55,25 +84,21 @@ if (res === false) {
           :age="res.personal.age"
           :pronouns="res.personal.pronouns"
           :desc="res.personal.desc"
-      />
-      <HeroLinks
           :links="res.urls"/>
     </div>
   </div>
 </template>
 
 <style scoped>
+
 .hero {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
 }
 
-.hero > div:not(.herotitle) {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.hero > *:not(:last-child) {
+  margin-right: 16px;
 }
 </style>

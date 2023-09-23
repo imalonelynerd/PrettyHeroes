@@ -6,9 +6,9 @@ defineProps(["errorCode", "accountName"])
 
 function getErrorMessage(errcode) {
   switch (errcode) {
-    case '1':
+    case 1:
       return ErrInfo.descriptions.fetchError;
-    case '2':
+    case 2:
       return ErrInfo.descriptions.missingData;
     default:
       return ErrInfo.descriptions.unknownError;

@@ -6,26 +6,28 @@ defineProps(["links"])
   <div class="links">
     <a v-for="elem in links" :href="elem.url">
       <img src="/icons/create.png">
-      <p>{{ elem.title}}</p>
+      <p>{{ elem.title }}</p>
     </a>
   </div>
 </template>
 
 <style scoped>
 .links {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
   justify-content: center;
   align-items: center;
+  width: fit-content;
 }
 
 .links > a {
-  margin: 0 4px;
   padding: 16px 24px;
   border-radius: 999px;
   font-size: 1em;
   font-weight: bold;
-  background: var(--bg2);
+  background: var(--clk);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -35,7 +37,7 @@ defineProps(["links"])
 }
 
 .links > a:hover {
-  background: var(--bg3);
+  background: var(--cho);
 }
 
 .links > a > img {
