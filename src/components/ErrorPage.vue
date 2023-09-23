@@ -1,16 +1,28 @@
 <script setup>
-import ErrInfo from "@/assets/json/ErrInfo.json"
-import {ref} from "vue";
 
-const refErrInfo = ref(ErrInfo);
+import ErrInfo from "@/assets/json/ErrInfo.json";
+
+defineProps(["errorCode", "accountName"])
+
+function getErrorMessage(errcode) {
+  switch (errcode) {
+    case '1':
+      return ErrInfo.descriptions.fetchError;
+    case '2':
+      return ErrInfo.descriptions.missingData;
+    default:
+      return ErrInfo.descriptions.unknownError;
+  }
+}
 
 </script>
 
 <template>
   <div class="err">
-    <img :src="refErrInfo.imgSource"/>
-    <h1>{{ refErrInfo.errName }}</h1>
-    <p v-html="refErrInfo.description"></p>
+    <img :src="ErrInfo.imgSource"/>
+    <h1>{{ ErrInfo.errName }}</h1>
+    <p>An error occured while getting <b>{{ accountName }}</b>'s hero...</p>
+    <p v-html="getErrorMessage(errorCode)"></p>
   </div>
 </template>
 
@@ -39,7 +51,7 @@ const refErrInfo = ref(ErrInfo);
   width: 33%;
 }
 
-.err > *:not(:last-child):not(h1) {
-  margin-bottom: 32px;
+.err > *:not(:last-child) {
+  margin-bottom: 16px;
 }
 </style>

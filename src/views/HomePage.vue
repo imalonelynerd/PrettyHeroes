@@ -6,6 +6,11 @@ import MainButtons from "@/components/MainButtons.vue";
 
 const refHomeInfo = ref(homeInfo);
 
+document.documentElement.style.setProperty('--bg1', "");
+document.documentElement.style.setProperty('--bg2', "");
+document.documentElement.style.setProperty('--bg3', "");
+document.documentElement.style.setProperty('--text', "");
+
 </script>
 
 <template>

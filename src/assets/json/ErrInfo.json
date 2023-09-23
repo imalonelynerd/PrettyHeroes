@@ -1,5 +1,9 @@
 {
-  "errName" : "Wooops...",
+  "errName": "Wooops...",
   "imgSource": "/images/error.png",
-  "description": "An error occured while fetching the user's GitHub... Check if the <b>hero.toml</b> file is accessible from your git !"
+  "descriptions": {
+    "fetchError": "Check if either <b>hero.toml</b> or <b>pronounce.yml</b> is accessible from your Git !",
+    "missingData": "Some variables are unreferenced, please fill them in !",
+    "unknownError": "I've... never seen this one coming... Please create an issue on GitHub..."
+  }
 }

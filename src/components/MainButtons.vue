@@ -115,6 +115,7 @@ const searchResult = ref("")
   font-weight: bold;
   border: none;
   background: var(--bg2);
+  color: var(--text);
 }
 
 .hiddenQuery > div > button > img,

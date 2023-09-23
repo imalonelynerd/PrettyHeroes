@@ -41,7 +41,7 @@ if (res === false) {
 </script>
 
 <template>
-  <ErrorPage v-if="!isFetched"/>
+  <ErrorPage v-if="!isFetched" :account-name="userTag"/>
   <div v-if="isFetched" class="hero">
     <HeroTitle
         :title="res.title.title"
