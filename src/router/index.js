@@ -40,7 +40,7 @@ export const router = createRouter({
             component: HeroCreator
         },
         {
-            path: '/:user',
+            path: '/:user/',
             name: 'Hero Page',
             component: HeroPage
         }

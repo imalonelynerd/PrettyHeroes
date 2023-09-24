@@ -28,17 +28,13 @@ h1 {
 code {
     padding: 8px 16px !important;
     border-radius: 999px !important;
-    background: var(--bg2);
+    background: var(--bg1);
     transition: all 0.25s;
-
+    filter: var(--shadow);
 }
 
 code:hover {
     background: var(--bg3);
-}
-
-a:hover {
-    filter: var(--effect);
 }
 
 @media only screen and (orientation: portrait) {

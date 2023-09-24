@@ -4,7 +4,7 @@ defineProps(["links"])
 
 <template>
   <div class="links">
-    <a v-for="elem in links" :href="elem.url">
+    <a v-if="links !== undefined" v-for="elem in links" :href="elem.url">
       <img src="/icons/create.png">
       <p>{{ elem.title }}</p>
     </a>
@@ -21,9 +21,10 @@ defineProps(["links"])
   background: var(--cwi);
   padding: 32px 32px 24px;
   border-radius: 32px;
+  filter: var(--shadow);
 }
 
-.links > *{
+.links > * {
   margin: 0 8px 8px 0;
 }
 
@@ -39,6 +40,7 @@ defineProps(["links"])
   justify-content: center;
   cursor: pointer;
   transition: all 0.25s;
+  filter: var(--shadow);
 }
 
 .links > a:hover {

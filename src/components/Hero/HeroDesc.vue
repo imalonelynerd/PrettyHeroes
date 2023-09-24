@@ -21,10 +21,11 @@ defineProps(["name1", "name2", "age", "pronouns", "desc"])
   justify-content: center;
   align-items: start;
   background: var(--cwi);
+  filter: var(--shadow);
 }
 
 .desc > h1 > span {
-  opacity: 0.75;
+  opacity: 0.66;
 }
 
 .desc > h2 {

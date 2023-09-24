@@ -2,7 +2,7 @@
 import HomePage from "@/views/HomePage.vue";
 import HeroCreator from "@/views/HeroCreator.vue";
 import HeroPage from "@/views/HeroPage.vue";
-import LoadingPage from "@/components/LoadingPage.vue";
+import LoadingPage from "@/components/Transition/LoadingPage.vue";
 
 function currentPage(route) {
   switch (route.path) {

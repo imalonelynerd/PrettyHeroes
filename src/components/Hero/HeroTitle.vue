@@ -25,6 +25,7 @@ const props = defineProps(
   align-items: center;
   justify-content: center;
   background-size: cover !important;
+  filter: var(--shadow);
 }
 
 .herotitle > div {

@@ -2,7 +2,7 @@
 
 import homeInfo from "@/assets/json/HomeInfo.json";
 import {ref} from "vue";
-import MainButtons from "@/components/MainButtons.vue";
+import MainButtons from "@/components/Home/MainButtons.vue";
 
 const refHomeInfo = ref(homeInfo);
 
@@ -30,7 +30,7 @@ const refHomeInfo = ref(homeInfo);
   right: 0;
   bottom: 0;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
 }
 
@@ -39,6 +39,10 @@ const refHomeInfo = ref(homeInfo);
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: var(--bg2);
+  padding: 32px;
+  border-radius: 32px;
+  filter: var(--shadow);
 }
 
 .home > div > * {

@@ -1,13 +1,14 @@
 <script setup>
-import HeroTitle from "@/components/HeroTitle.vue";
+import HeroTitle from "@/components/Hero/HeroTitle.vue";
 import {ref} from "vue";
 import {useRoute} from "vue-router";
-import HeroDesc from "@/components/HeroDesc.vue";
-import ErrorPage from "@/components/ErrorPage.vue";
+import HeroDesc from "@/components/Hero/HeroDesc.vue";
+import ErrorPage from "@/components/Transition/ErrorPage.vue";
 import {fetchWebsite, loadAsToml, loadAsYaml} from "@/assets/js/fetchResult";
-import PronounceCompat from "@/components/PronounceCompat.vue";
-import HeroLinks from "@/components/HeroLinks.vue";
-import Background from "@/components/Background.vue";
+import PronounceCompat from "@/components/Hero/PronounceCompat.vue";
+import HeroLinks from "@/components/Hero/HeroLinks.vue";
+import Background from "@/components/Hero/Background.vue";
+import CustomFooter from "@/components/Hero/CustomFooter.vue";
 
 
 const isFetched = ref(1);
@@ -83,6 +84,7 @@ for (let k in links) {
       <HeroLinks :links="res.urls"/>
     </div>
   </div>
+  <CustomFooter v-if="isFetched === 0" />
 </template>
 
 <style scoped>

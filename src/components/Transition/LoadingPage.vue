@@ -25,16 +25,19 @@ const userTag = unusualRoute.params.user;
   right: 0;
   bottom: 0;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
 }
 
 .loading > div {
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: var(--bg2);
+  padding: 32px;
+  border-radius: 32px;
+  filter: var(--shadow);
 }
 
 .loading > div > * {

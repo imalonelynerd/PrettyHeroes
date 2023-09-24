@@ -24,6 +24,7 @@ function showMessage(show) {
   </a>
   <div id="promess">
     <div>
+      <img :src="PronounceCompat.imgsource">
       <h1 v-html="PronounceCompat.title"></h1>
       <p v-html="PronounceCompat.message"></p>
       <div>
@@ -61,6 +62,7 @@ a {
   justify-content: center;
   cursor: pointer;
   transition: all 0.25s;
+  filter: var(--shadow);
 }
 
 a:hover {
@@ -104,6 +106,7 @@ a > p {
   padding: 32px;
   float: right;
   animation: slidein ease-out 0.25s;
+  filter: var(--shadow);
 }
 
 #promess > div > * {
@@ -122,7 +125,11 @@ a > p {
   align-items: center;
 }
 
-#promess > div > div > *:not(:last-child){
+#promess > div > img {
+  height: 128px;
+}
+
+#promess > div > div > *:not(:last-child) {
   margin-right: 8px;
 }
 </style>

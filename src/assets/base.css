@@ -1,11 +1,11 @@
 :root {
     --bg1: #161321;
     --bg2: #27233f;
-    --bg3: #E7A382;
+    --bg3: #BA2C3A;
     --text: white;
     --text2: #202020;
     --code: #FFFFFF20;
-    --effect: brightness(125%);
+    --shadow: drop-shadow(0px 12px 6px rgba(0, 0, 0, 0.25));
     --bg-effect: brightness(50%);
 
     --cbg: var(--bg1);
@@ -23,25 +23,5 @@
 
     to {
         filter: blur(0);
-    }
-}
-
-@keyframes mslidein {
-    from {
-        transform: translateY(100%);
-    }
-
-    to {
-        transform: translateY(0%);
-    }
-}
-
-@keyframes Hewwo {
-    from {
-        transform: translateY(100%);
-    }
-
-    to {
-        transform: translateY(0%);
     }
 }

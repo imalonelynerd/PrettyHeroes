@@ -2,29 +2,18 @@
 
 import {ref} from "vue";
 
-function displayQuery(id) {
-  let elem = document.getElementById(id);
-  if (elem === undefined) {
-    return -1;
-  }
-  elem.style.display = "flex";
-}
-
-function hideQuery(id) {
-  let elem = document.getElementById(id);
-  if (elem === undefined) {
-    return -1;
-  }
-  elem.style.display = "none";
+function switchQuery() {
+  isShown.value = !isShown.value
 }
 
 const searchResult = ref("")
+const isShown = ref(false);
 
 </script>
 
 <template>
-  <div class="buttons">
-    <a @click="displayQuery('hq1')">
+  <div class="buttons" v-if="!isShown">
+    <a @click="switchQuery">
       <img src="/icons/search.png"/>
       <p>Search</p>
     </a>
@@ -37,16 +26,17 @@ const searchResult = ref("")
       <p>Fork me on GitHub</p>
     </a>
   </div>
-  <div class="hiddenQuery" id="hq1">
-    <div>
-      <input v-model="searchResult" type="text" @keyup.enter="$route.path = '/' + searchResult" placeholder="Search...">
-      <router-link :to="'/' + searchResult">
-        <img src="/icons/search.png">
-      </router-link>
-      <button @click="hideQuery('hq1')">
-        <img src="/icons/back.png"/>
-      </button>
-    </div>
+  <div class="query" v-if="isShown">
+    <input v-model="searchResult" type="text" @keyup.enter="$route.path = '/' + searchResult" placeholder="Search...">
+    <router-link :to="'/' + searchResult">
+      <img src="/icons/search.png">
+    </router-link>
+    <a :href="`https://github.com/${searchResult}`">
+      <img src="/icons/fork.png">
+    </a>
+    <button @click="switchQuery">
+      <img src="/icons/back.png"/>
+    </button>
   </div>
 </template>
 
@@ -57,15 +47,15 @@ const searchResult = ref("")
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  filter: var(--shadow);
 }
 
 .buttons > a, .buttons > router-link {
-  margin: 0 4px;
   padding: 16px 24px;
   border-radius: 999px;
   font-size: 1em;
   font-weight: bold;
-  background: var(--bg2);
+  background: var(--bg1);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -88,51 +78,47 @@ const searchResult = ref("")
   transition: all 0.25s;
 }
 
-.hiddenQuery {
-  display: none; /*flex*/
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: #00000080;
-  animation: Blur 0.25s;
+.buttons > *:not(:last-child){
+  margin-right: 8px;
 }
 
-.hiddenQuery > div {
+.query {
   display: flex;
   flex-direction: row;
   align-items: stretch;
   justify-content: center;
+  filter: var(--shadow);
+  width: 557px;
 }
 
-.hiddenQuery > div > * {
+.query > * {
   padding: 16px 20px;
   font-size: 1em;
   font-weight: bold;
   border: none;
-  background: var(--bg2);
+  background: var(--bg1);
   color: var(--text);
 }
 
-.hiddenQuery > div > button > img,
-.hiddenQuery > div > a > img {
-  height: 1.25em;
+.query > button > img,
+.query > a > img {
+  height: 1em;
 }
 
-.hiddenQuery > div > *:hover {
+.query > input{
+  flex-grow: 1;
+}
+
+.query > *:hover {
   background: var(--bg3);
   z-index: 6;
 }
 
-.hiddenQuery > div > *:first-child {
+.query > *:first-child {
   border-radius: 999px 0 0 999px;
 }
 
-.hiddenQuery > div > *:last-child {
+.query > *:last-child {
   border-radius: 0 999px 999px 0;
 }
 </style>
