@@ -5,11 +5,12 @@ html {
 }
 
 body {
-    background: var(--bg1);;
+    background: var(--bg1);
     font-family: Inter, sans-serif;
     color: var(--text);
     animation: Blur ease-out 0.75s;
     transition: all 0.25s;
+    background-attachment: fixed !important;
 }
 
 a {
@@ -38,12 +39,6 @@ code:hover {
 
 a:hover {
     filter: var(--effect);
-}
-
-@media only screen and (orientation: landscape) {
-    body > div > div:not(.navbar-container, .mobile-navbar-container) {
-        margin: 64px 0;
-    }
 }
 
 @media only screen and (orientation: portrait) {

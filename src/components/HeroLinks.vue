@@ -13,13 +13,18 @@ defineProps(["links"])
 
 <style scoped>
 .links {
-  display: grid;
-  grid-auto-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
-  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
   align-items: center;
-  width: fit-content;
+  background: var(--cwi);
+  padding: 32px 32px 24px;
+  border-radius: 32px;
+}
+
+.links > *{
+  margin: 0 8px 8px 0;
 }
 
 .links > a {

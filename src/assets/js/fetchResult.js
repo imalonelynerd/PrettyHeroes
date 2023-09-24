@@ -23,20 +23,23 @@ export function loadAsToml(fetchedContent) {
     }
     document.querySelector('head title').textContent = `${loadedContent.title.title} - PrettyHeroes`;
     document.querySelector("link[rel~='icon']").href = loadedContent.title.img;
-    document.documentElement.style.setProperty('--cbg', loadedContent.colors.background);
-    document.documentElement.style.setProperty('--cwi', loadedContent.colors.widget);
-    document.documentElement.style.setProperty('--clk', loadedContent.colors.link);
-    document.documentElement.style.setProperty('--cho', loadedContent.colors.hover);
-    document.documentElement.style.setProperty('--ctt', loadedContent.colors.title);
-    document.documentElement.style.setProperty('--ctxt', loadedContent.colors.text);
-    document.getElementsByTagName("body")[0]
-        .style.setProperty(
-        'background', `url('${loadedContent.colors.bgimg}') no-repeat center, var(--cbg)`);
+    let params = {
+        '--cbg': loadedContent.colors.background,
+        '--cwi': loadedContent.colors.widget,
+        '--clk': loadedContent.colors.link,
+        '--cho': loadedContent.colors.hover,
+        '--ctt': loadedContent.colors.title,
+        '--ctxt': loadedContent.colors.text
+    }
+    for (let elem in params) {
+        if (params[elem] !== undefined) {
+            document.documentElement.style.setProperty(elem, params[elem]);
+        }
+    }
     return loadedContent;
 }
 
 export function loadAsYaml(fetchedContent) {
-
     let loadedContent = null;
     try {
         loadedContent = load(fetchedContent);
@@ -47,6 +50,7 @@ export function loadAsYaml(fetchedContent) {
         title: {
             title: loadedContent.title,
             img: loadedContent.icon,
+            catchphrase: "From Pronounce",
             name1: loadedContent.name,
             name2: ''
         },
@@ -55,28 +59,46 @@ export function loadAsYaml(fetchedContent) {
             pronouns: loadedContent.pronouns,
             desc: "Contacts :<br/>",
         },
+        colors: {
+            bgimg: "",
+        },
         urls: []
     };
     for (let elem in loadedContent.contacts) {
-        result.personal.desc += `- ${loadedContent.contacts[elem]}<br/>`;
+        result.personal.desc += `&#8287;&#8287;&#8287;&#8287;- ${loadedContent.contacts[elem]}<br/>`;
     }
     for (let elem in loadedContent.urls) {
+        let reg = new RegExp('^https?:\/\/([A-Za-z09\.]{3,})\/?.*$', 'gm');
+        let found = reg.exec(loadedContent.urls[elem]);
+        if (found === null) {
+            found = `Link ${elem}`
+        } else {
+            found = found[1];
+        }
         result.urls.push({
-            title: `Link ${elem}`,
+            title: found,
             url: loadedContent.urls[elem]
         })
     }
     document.querySelector('head title').textContent = `${loadedContent.title} - PrettyHeroes`;
     document.querySelector("link[rel~='icon']").href = loadedContent.icon;
-    document.documentElement.style.setProperty('--cbg', loadedContent.colors.background);
-    document.documentElement.style.setProperty('--cwi', loadedContent.colors.foreground);
-    document.documentElement.style.setProperty('--clk', loadedContent.colors.url.normal);
-    document.documentElement.style.setProperty('--cho', loadedContent.colors.url.hover);
-    document.documentElement.style.setProperty('--ctt', loadedContent.colors.name);
-    document.documentElement.style.setProperty('--ctxt', loadedContent.colors.info);
-    document.getElementsByTagName("body")[0]
-        .style.setProperty(
-        'background', `var(--cbg)`);
+    if (loadedContent.colors === undefined) {
+        return result;
+    }
+    let params = {
+        '--cbg': loadedContent.colors.background,
+        '--cwi': loadedContent.colors.foreground,
+        '--clk': loadedContent.colors.url.normal,
+        '--cho': loadedContent.colors.url.hover,
+        '--ctt': loadedContent.colors.name,
+        '--ctxt': loadedContent.colors.info
+    }
+    for (let elem in params) {
+        if (params[elem] !== undefined) {
+            document.documentElement.style.setProperty(elem, params[elem]);
+        }
+    }
+
 
     return result;
 }

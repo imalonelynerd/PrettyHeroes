@@ -6,55 +6,64 @@ import MainButtons from "@/components/MainButtons.vue";
 
 const refHomeInfo = ref(homeInfo);
 
-document.documentElement.style.setProperty('--bg1', "");
-document.documentElement.style.setProperty('--bg2', "");
-document.documentElement.style.setProperty('--bg3', "");
-document.documentElement.style.setProperty('--text', "");
-
 </script>
 
 <template>
   <div class="home">
-    <img :src="refHomeInfo.imgSource"/>
-    <h1>{{ refHomeInfo.appName }}</h1>
-    <code>{{ refHomeInfo.version }}</code>
-    <h2>{{ refHomeInfo.tagLine }}</h2>
-    <p v-html="refHomeInfo.description"></p>
-    <MainButtons/>
+    <div>
+      <img :src="refHomeInfo.imgSource"/>
+      <h1>{{ refHomeInfo.appName }}</h1>
+      <code>{{ refHomeInfo.version }}</code>
+      <h2>{{ refHomeInfo.tagLine }}</h2>
+      <p v-html="refHomeInfo.description"></p>
+      <MainButtons/>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .home {
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.home > div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.home > * {
+.home > div > * {
   margin: 0;
 }
 
-.home > img {
+.home > div > img {
   height: 128px;
 }
 
-.home > h1 {
+.home > div > h1 {
   margin-bottom: 8px;
 }
 
-.home > h2 {
+.home > div > h2 {
   opacity: 0.5;
   font-style: italic;
 }
 
-.home > p {
+.home > div > p {
   text-align: center;
-  width: 33%;
+  width: 400px;
 }
 
-.home > *:not(:last-child):not(h1) {
+.home > div > *:not(:last-child):not(h1) {
   margin-bottom: 32px;
 }
 </style>

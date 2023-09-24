@@ -1,15 +1,4 @@
-:root[data-theme="theme-light"] {
-    --bg1: #ffffff;
-    --bg2: #f1eeff;
-    --bg3: #ffaa2c;
-    --text: #202020;
-    --text2: white;
-    --code: #00000020;
-    --effect: brightness(90%);
-    --bg-effect: brightness(100%);
-}
-
-:root[data-theme="theme-dark"] {
+:root {
     --bg1: #161321;
     --bg2: #27233f;
     --bg3: #E7A382;
@@ -18,6 +7,13 @@
     --code: #FFFFFF20;
     --effect: brightness(125%);
     --bg-effect: brightness(50%);
+
+    --cbg: var(--bg1);
+    --cwi: var(--bg2);
+    --clk: var(--bg1);
+    --cho: var(--bg3);
+    --ctxt: var(--text);
+    --ctt: var(--text);
 }
 
 @keyframes Blur {

@@ -19,39 +19,55 @@ function getErrorMessage(errcode) {
 
 <template>
   <div class="err">
-    <img :src="ErrInfo.imgSource"/>
-    <h1>{{ ErrInfo.errName }}</h1>
-    <p>An error occured while getting <b>{{ accountName }}</b>'s hero...</p>
-    <p v-html="getErrorMessage(errorCode)"></p>
+    <div>
+      <img :src="ErrInfo.imgSource"/>
+      <h1>{{ ErrInfo.errName }}</h1>
+      <p>An error occured while getting <b>{{ accountName }}</b>'s hero...</p>
+      <p v-html="getErrorMessage(errorCode)"></p>
+
+    </div>
   </div>
 </template>
 
 <style scoped>
 .err {
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.err > div {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.err > * {
+.err > div > * {
   margin: 0;
 }
 
-.err > img {
+.err > div > img {
   height: 128px;
 }
 
-.err > h1 {
+.err > div > h1 {
   margin-bottom: 8px;
 }
 
-.err > p {
+.err > div > p {
   text-align: center;
-  width: 33%;
+  width: 400px;
 }
 
-.err > *:not(:last-child) {
+.err > div > *:not(:last-child) {
   margin-bottom: 16px;
 }
 </style>
