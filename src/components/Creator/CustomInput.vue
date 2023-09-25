@@ -21,5 +21,6 @@ defineEmits(['update:modelValue']);
   transition: all 0.25s;
   color: var(--text);
   flex: 1 1;
+  filter: var(--shadow);
 }
 </style>

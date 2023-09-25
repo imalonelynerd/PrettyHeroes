@@ -22,7 +22,7 @@ function getErrorMessage(errcode) {
     <div>
       <img :src="ErrInfo.imgSource"/>
       <h1>{{ ErrInfo.errName }}</h1>
-      <p>An error occured while getting <b>{{ accountName }}</b>'s hero...</p>
+      <p>An error occured while getting <b>{{ accountName }}</b>'s Hero...</p>
       <p v-html="getErrorMessage(errorCode)"></p>
 
     </div>
@@ -40,6 +40,7 @@ function getErrorMessage(errcode) {
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: Blur ease-out 0.5s;
 }
 
 .err > div {

@@ -43,24 +43,29 @@ function updateItem(value, index, tag) {
 <style scoped>
 .listinput {
   display: flex;
-  padding: 16px 24px;
+  padding: 16px;
   border-radius: 24px;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
   background: var(--bg1);
+  filter: var(--shadow);
 }
 
-.listinput > .inputbuttons {
+.listinput > div {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   align-items: center;
   justify-content: stretch;
   border-radius: 24px;
   background: var(--bg1);
 }
 
-.listinput > .inputbuttons > button {
+.listinput > .inputbuttons {
+  flex-direction: row-reverse;
+}
+
+.listinput > div > button {
   padding: 16px;
   border-radius: 999px;
   font-size: 1em;
@@ -73,23 +78,24 @@ function updateItem(value, index, tag) {
   transition: all 0.25s;
 }
 
-.listinput > .inputbuttons > *:not(:last-child) {
+.listinput > div > *:not(:last-child) {
   margin-left: 8px;
 }
 
-.listinput > .inputbuttons > button > img {
+.listinput > div > button > img {
   height: 1em;
 }
 
-.listinput > input {
-  padding: 16px 24px;
+.listinput > div > input {
+  padding: 8px 4px;
   border: none;
   font-size: 1em;
   transition: all 0.25s;
   color: var(--text);
   background: none;
-  border-radius: 999px;
+  border-radius: 16px;
   flex: 1 1;
+  min-width: 0;
   margin-bottom: 4px;
 }
 

@@ -1,5 +1,5 @@
 import {load} from "js-yaml";
-import {decode} from "toml-nodejs";
+import {parse} from "smol-toml";
 
 export async function fetchWebsite(url) {
     let res = null;
@@ -17,7 +17,7 @@ export async function fetchWebsite(url) {
 export function loadAsToml(fetchedContent) {
     let loadedContent = null;
     try {
-        loadedContent = decode(fetchedContent);
+        loadedContent = parse(fetchedContent);
     } catch {
         return false;
     }

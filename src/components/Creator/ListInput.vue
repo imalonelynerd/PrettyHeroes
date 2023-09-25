@@ -18,6 +18,7 @@ function updateItem(value, index) {
   <div class="listinput">
     <input v-for="(value, index)  in listItems"
            :placeholder="placeHolder"
+           :value="listItems[index]"
            @input="updateItem($event.target.value,index)">
     <div>
       <button @click="addItem">
@@ -33,12 +34,13 @@ function updateItem(value, index) {
 <style scoped>
 .listinput {
   display: flex;
-  padding: 16px 24px;
+  padding: 16px;
   border-radius: 24px;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
   background: var(--bg1);
+  filter: var(--shadow);
 }
 
 .listinput > div {
@@ -72,13 +74,13 @@ function updateItem(value, index) {
 }
 
 .listinput > input {
-  padding: 16px 24px;
+  padding: 8px 4px;
   border: none;
   font-size: 1em;
   transition: all 0.25s;
   color: var(--text);
   background: none;
-  border-radius: 999px;
+  border-radius: 16px;
   flex: 1 1;
   margin-bottom: 4px;
 }

@@ -18,7 +18,7 @@
 
 @keyframes Blur {
     from {
-        filter: blur(25px);
+        filter: blur(10px);
     }
 
     to {

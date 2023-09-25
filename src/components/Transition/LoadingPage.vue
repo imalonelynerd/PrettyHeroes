@@ -11,7 +11,7 @@ const userTag = unusualRoute.params.user;
     <div>
       <img :src="LoadInfo.imgSource"/>
       <h1>{{ LoadInfo.loadTitle }}</h1>
-      <p>Fetching <b>{{ userTag }}</b>'s hero...</p>
+      <p>Fetching <b>{{ userTag }}</b>'s Hero...</p>
     </div>
   </div>
 </template>
@@ -27,6 +27,7 @@ const userTag = unusualRoute.params.user;
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: Blur ease-out 0.5s;
 }
 
 .loading > div {

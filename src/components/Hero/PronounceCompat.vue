@@ -49,7 +49,7 @@ function showMessage(show) {
   left: 32px;
 }
 
-a {
+.messbtn, #promess > div > div > a {
   width: fit-content;
   padding: 16px 24px;
   border-radius: 999px;
@@ -65,15 +65,15 @@ a {
   filter: var(--shadow);
 }
 
-a:hover {
+.messbtn:hover, #promess > div > div > a:hover {
   background: var(--bg3);
 }
 
-a > img {
+.messbtn > img, #promess > div > div > a > img {
   height: 1.25em;
 }
 
-a > p {
+.messbtn > p, #promess > div > div > a > p {
   margin: 0 0 0 8px;
   padding: 0;
   transition: all 0.25s;
@@ -92,6 +92,7 @@ a > p {
   z-index: 10;
   align-items: center;
   justify-content: center;
+  animation: Blur ease-out 0.5s;
 }
 
 #promess > div {

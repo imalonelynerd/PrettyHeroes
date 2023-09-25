@@ -24,6 +24,10 @@ defineProps(["name1", "name2", "age", "pronouns", "desc"])
   filter: var(--shadow);
 }
 
+.desc > * {
+  margin: 0;
+}
+
 .desc > h1 > span {
   opacity: 0.66;
 }
