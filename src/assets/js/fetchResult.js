@@ -23,6 +23,10 @@ export function loadAsToml(fetchedContent) {
     }
     document.querySelector('head title').textContent = `${loadedContent.title.title} - PrettyHeroes`;
     document.querySelector("link[rel~='icon']").href = loadedContent.title.img;
+    document.querySelector("meta[name='description']").content = loadedContent.title.catchphrase;
+    document.querySelector("meta[name='og:title']").content = loadedContent.title.title;
+    document.querySelector("meta[name='og:description']").content = loadedContent.title.catchphrase;
+
     let params = {
         '--cbg': loadedContent.colors.background,
         '--cwi': loadedContent.colors.widget,
@@ -81,7 +85,10 @@ export function loadAsYaml(fetchedContent) {
         })
     }
     document.querySelector('head title').textContent = `${loadedContent.title} - PrettyHeroes`;
-    document.querySelector("link[rel~='icon']").href = loadedContent.icon;
+    document.querySelector("head link[rel~='icon']").href = loadedContent.icon;
+    document.querySelector("head meta[name='description']").content = "From Pronounce";
+    document.querySelector("head meta[name='og:title']").content = loadedContent.title;
+    document.querySelector("head meta[name='og:description']").content = "From Pronounce";
     if (loadedContent.colors === undefined) {
         return result;
     }

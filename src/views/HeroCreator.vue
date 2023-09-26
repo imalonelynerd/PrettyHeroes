@@ -8,6 +8,7 @@ import ColorInput from "@/components/Creator/ColorInput.vue";
 import DoubleListInput from "@/components/Creator/DoubleListInput.vue";
 import DummyHero from "@/components/Creator/Dummy/DummyHero.vue";
 import {copyHero, loadHero, saveHero} from "@/assets/js/saveMgmt";
+import homeInfo from "@/assets/json/HomeInfo.json";
 
 const values = ref(
     {
@@ -43,6 +44,12 @@ const isShown = ref(false);
 function showDummy(val) {
   isShown.value = val;
 }
+
+document.querySelector('head title').textContent = `Creator - PrettyHeroes`;
+document.querySelector("link[rel~='icon']").href = `/icons/create.png`;
+document.querySelector("meta[name='description']").content = `${homeInfo.tagLine}`
+document.querySelector("meta[name='og:title']").content = `Creator - ${homeInfo.appName}`
+document.querySelector("meta[name='og:description']").content = `${homeInfo.tagLine}`
 
 </script>
 
