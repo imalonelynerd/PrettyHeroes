@@ -1,6 +1,6 @@
 <script setup>
 
-import PronounceCompat from "@/assets/json/PronounceCompat.json";
+import PronounceCompat from "@/assets/json/pronounceCompat.json";
 
 function showMessage(show) {
   let e = document.getElementById("promess");
@@ -55,7 +55,7 @@ function showMessage(show) {
   border-radius: 999px;
   font-size: 1em;
   font-weight: bold;
-  background: var(--bg2);
+  background: var(--wi);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -66,7 +66,7 @@ function showMessage(show) {
 }
 
 .messbtn:hover, #promess > div > div > a:hover {
-  background: var(--bg3);
+  background: var(--ho);
 }
 
 .messbtn > img, #promess > div > div > a > img {
@@ -96,12 +96,12 @@ function showMessage(show) {
 }
 
 #promess > div {
-  width: 50%;
+  width: 700px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--bg1);
+  background: var(--bg);
   border-radius: 32px;
   height: fit-content;
   padding: 32px;

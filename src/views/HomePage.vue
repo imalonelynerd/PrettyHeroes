@@ -1,6 +1,6 @@
 <script setup>
 
-import homeInfo from "@/assets/json/HomeInfo.json";
+import homeInfo from "@/assets/json/homeInfo.json";
 import {ref} from "vue";
 
 const refHomeInfo = ref(homeInfo);
@@ -76,7 +76,7 @@ document.querySelector("meta[name~='og:description']").setAttribute("content",`$
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: var(--bg2);
+  background: var(--wi);
   padding: 32px;
   border-radius: 32px;
   filter: var(--shadow);
@@ -122,7 +122,7 @@ document.querySelector("meta[name~='og:description']").setAttribute("content",`$
   border-radius: 999px;
   font-size: 1em;
   font-weight: bold;
-  background: var(--bg1);
+  background: var(--bg);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -132,7 +132,7 @@ document.querySelector("meta[name~='og:description']").setAttribute("content",`$
 }
 
 .buttons > a:hover, .buttons > router-link:hover {
-  background: var(--bg3);
+  background: var(--ho);
 }
 
 .buttons > a > img, .buttons > router-link > img {
@@ -164,7 +164,7 @@ document.querySelector("meta[name~='og:description']").setAttribute("content",`$
   font-size: 1em;
   font-weight: bold;
   border: none;
-  background: var(--bg1);
+  background: var(--bg);
   color: var(--text);
 }
 
@@ -178,7 +178,7 @@ document.querySelector("meta[name~='og:description']").setAttribute("content",`$
 }
 
 .query > *:hover {
-  background: var(--bg3);
+  background: var(--ho);
   z-index: 6;
 }
 

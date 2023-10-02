@@ -6,7 +6,7 @@ defineEmits(['update:imgSrc']);
 <template>
   <input
       class="iminput"
-      :style="`background : linear-gradient(#00000040, #00000040), url('${imgSrc}'), var(--bg1)`"
+      :style="`background : linear-gradient(#00000040, #00000040), url('${imgSrc}'), var(--bg)`"
       type="text"
       :value="imgSrc"
       :placeholder="placeHolder"
@@ -20,7 +20,7 @@ defineEmits(['update:imgSrc']);
   border-radius: 999px;
   border: none;
   font-size: 1em;
-  background: var(--bg1);
+  background: var(--bg);
   transition: all 0.25s;
   color: var(--text);
   filter: var(--shadow);

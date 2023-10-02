@@ -1,7 +1,4 @@
 import {createRouter, createWebHashHistory} from 'vue-router'
-import HeroPage from "@/views/HeroPage.vue";
-import HeroCreator from "@/views/HeroCreator.vue"
-import HomePage from "@/views/HomePage.vue";
 /*import HomeView from '../views/HomePage.vue'
 
 const router = createRouter({
@@ -32,17 +29,14 @@ export const router = createRouter({
         {
             path: '/',
             name: 'Home',
-            component: HomePage
         },
         {
             path: '/creator',
             name: 'Hero Creator',
-            component: HeroCreator
         },
         {
             path: '/:user/',
             name: 'Hero Page',
-            component: HeroPage
         }
     ]
 })

@@ -24,7 +24,7 @@ defineEmits([
   border-radius: 999px;
   font-size: 1em;
   font-weight: bold;
-  background: var(--bg2);
+  background: var(--wi);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -35,7 +35,7 @@ defineEmits([
 }
 
 .dummybtn:hover {
-  background: var(--bg3);
+  background: var(--ho);
 }
 
 .dummybtn > img {

@@ -78,6 +78,7 @@ for (let k in links) {
           :name1="res.title.name1"
           :name2="res.title.name2"
           :age="res.personal.age"
+          :flags="res.personal.flags"
           :pronouns="res.personal.pronouns"
           :desc="res.personal.desc"
       />

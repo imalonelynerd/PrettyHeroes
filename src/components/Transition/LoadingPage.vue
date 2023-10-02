@@ -1,5 +1,5 @@
 <script setup>
-import LoadInfo from "@/assets/json/LoadInfo.json";
+import LoadInfo from "@/assets/json/loadInfo.json";
 import {useRoute} from "vue-router";
 
 const unusualRoute = useRoute();
@@ -35,7 +35,7 @@ const userTag = unusualRoute.params.user;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: var(--bg2);
+  background: var(--wi);
   padding: 32px;
   border-radius: 32px;
   filter: var(--shadow);

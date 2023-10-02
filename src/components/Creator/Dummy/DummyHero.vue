@@ -48,6 +48,7 @@ for (let elem in params) {
             :age="res.personal.age"
             :pronouns="res.personal.pronouns"
             :desc="res.personal.desc"
+            :flags="res.personal.flags"
         />
         <HeroLinks :links="res.urls"/>
       </div>

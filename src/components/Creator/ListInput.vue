@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(['listItems', 'placeHolder']);
+const props = defineProps(['listItems', 'placeHolder', 'emptyPlaceHolder']);
 
 function addItem() {
   props.listItems.push("");
@@ -16,7 +16,7 @@ function updateItem(value, index) {
 
 <template>
   <div class="listinput">
-    <input v-for="(value, index)  in listItems"
+    <input v-for="(value, index) in listItems"
            :placeholder="placeHolder"
            :value="listItems[index]"
            @input="updateItem($event.target.value,index)">
@@ -27,6 +27,7 @@ function updateItem(value, index) {
       <button @click="removeItem">
         <img src="/icons/remove.png"/>
       </button>
+      <p v-if="listItems.length === 0">{{ emptyPlaceHolder }} - empty</p>
     </div>
   </div>
 </template>
@@ -39,7 +40,7 @@ function updateItem(value, index) {
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  background: var(--bg1);
+  background: var(--bg);
   filter: var(--shadow);
 }
 
@@ -49,15 +50,22 @@ function updateItem(value, index) {
   align-items: center;
   justify-content: stretch;
   border-radius: 24px;
-  background: var(--bg1);
+  background: var(--bg);
+}
+
+.listinput > div > p {
+  margin: 0;
+  flex-grow: 1;
+  opacity: 0.25;
+  font-size: 0.9em;
 }
 
 .listinput > div > button {
-  padding: 16px;
+  padding: 4px 8px;
   border-radius: 999px;
   font-size: 1em;
   border: none;
-  background: var(--bg2);
+  background: none;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,17 +1,15 @@
 :root {
-    --bg1: #161321;
-    --bg2: #27233f;
-    --bg3: #BA2C3A;
+    --bg: #161321;
+    --wi: #27233f;
+    --ho: #BA2C3A;
     --text: white;
-    --text2: #202020;
-    --code: #FFFFFF20;
-    --shadow: drop-shadow(0px 12px 6px rgba(0, 0, 0, 0.25));
+    --shadow: drop-shadow(0px 12px 6px rgba(0, 0, 0, 0));
     --bg-effect: brightness(50%);
 
-    --cbg: var(--bg1);
-    --cwi: var(--bg2);
-    --clk: var(--bg1);
-    --cho: var(--bg3);
+    --cbg: var(--bg);
+    --cwi: var(--wi);
+    --clk: var(--bg);
+    --cho: var(--ho);
     --ctxt: var(--text);
     --ctt: var(--text);
 }

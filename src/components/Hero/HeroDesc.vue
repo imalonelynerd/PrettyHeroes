@@ -1,13 +1,27 @@
 <script setup>
 
-defineProps(["name1", "name2", "age", "pronouns", "desc"])
+import FlagsDisplayer from "@/components/Hero/FlagsDisplayer.vue";
+import {marked} from "marked";
+
+function markDownize(content) {
+  let markedContent = "";
+  try {
+    markedContent = marked.parse(content);
+  } catch {
+    return "I'm bad at Markdown !";
+  }
+  return markedContent;
+}
+
+defineProps(["name1", "name2", "age", "pronouns", "desc", 'flags'])
 </script>
 
 <template>
   <div class="desc">
     <h1 v-if="name1 !== '' || name2 !== ''">{{ name1 }} <span>{{ name2 }}</span></h1>
     <h2 v-if="age !== '' || pronouns !== []">{{ age + ", " + pronouns.join(' - ') }}</h2>
-    <p v-if="desc !== ''" v-html="desc"></p>
+    <FlagsDisplayer :flags-list="flags"/>
+    <p v-if="desc !== ''" v-html="markDownize(desc)"></p>
   </div>
 </template>
 

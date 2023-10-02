@@ -1,12 +1,19 @@
 <script setup>
-defineProps(["links"])
+const props = defineProps(["links"])
+
+function defineTitle(title, index) {
+  if (title === "") {
+    return `Link ${index}`;
+  }
+  return title;
+}
 </script>
 
 <template>
-  <div class="links">
-    <a v-if="links !== undefined" v-for="elem in links" :href="elem.url">
-      <img src="/icons/create.png">
-      <p>{{ elem.title }}</p>
+  <div class="links" v-if="links !== undefined">
+    <a v-for="(elem, index) in links" :href="elem.url">
+      <img src="/icons/create.png"/>
+      <p>{{ defineTitle(elem.title, index) }}</p>
     </a>
   </div>
 </template>

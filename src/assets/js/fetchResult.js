@@ -1,5 +1,6 @@
 import {load} from "js-yaml";
 import {parse} from "smol-toml";
+import {refactorToml, refactorYaml} from "@/assets/js/checkFile";
 
 export async function fetchWebsite(url) {
     let res = null;
@@ -21,6 +22,9 @@ export function loadAsToml(fetchedContent) {
     } catch {
         return false;
     }
+
+    refactorToml(loadedContent);
+
     document.querySelector('head title').textContent = `${loadedContent.title.title} - PrettyHeroes`;
     document.querySelector("link[rel~='icon']").href = loadedContent.title.img;
     document.querySelector("meta[name='description']").content = loadedContent.title.catchphrase;
@@ -50,6 +54,9 @@ export function loadAsYaml(fetchedContent) {
     } catch {
         return false;
     }
+
+    refactorYaml(loadedContent);
+
     let result = {
         title: {
             title: loadedContent.title,
@@ -61,7 +68,7 @@ export function loadAsYaml(fetchedContent) {
         personal: {
             age: loadedContent.age,
             pronouns: loadedContent.pronouns,
-            desc: "Contacts :<br/>",
+            desc: "**Contacts :**<br/>",
         },
         colors: {
             bgimg: "",
@@ -69,13 +76,13 @@ export function loadAsYaml(fetchedContent) {
         urls: []
     };
     for (let elem in loadedContent.contacts) {
-        result.personal.desc += `&#8287;&#8287;&#8287;&#8287;- ${loadedContent.contacts[elem]}<br/>`;
+        result.personal.desc += ` - ${loadedContent.contacts[elem]}<br/>`;
     }
     for (let elem in loadedContent.urls) {
         let reg = new RegExp('^https?:\/\/([A-Za-z09\.]{3,})\/?.*$', 'gm');
         let found = reg.exec(loadedContent.urls[elem]);
         if (found === null) {
-            found = `Link ${elem}`
+            found = ""
         } else {
             found = found[1];
         }
@@ -105,7 +112,5 @@ export function loadAsYaml(fetchedContent) {
             document.documentElement.style.setProperty(elem, params[elem]);
         }
     }
-
-
     return result;
 }

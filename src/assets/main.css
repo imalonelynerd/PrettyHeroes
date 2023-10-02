@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    background: var(--bg1);
+    background: var(--bg);
     font-family: Inter, sans-serif;
     color: var(--text);
     animation: Blur ease-out 0.5s;
@@ -28,13 +28,13 @@ h1 {
 code {
     padding: 8px 16px !important;
     border-radius: 999px !important;
-    background: var(--bg1);
+    background: var(--bg);
     transition: all 0.25s;
     filter: var(--shadow);
 }
 
 code:hover {
-    background: var(--bg3);
+    background: var(--ho);
 }
 
 @media only screen and (orientation: portrait) {

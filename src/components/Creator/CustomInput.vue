@@ -17,7 +17,7 @@ defineEmits(['update:modelValue']);
   border-radius: 999px;
   border: none;
   font-size: 1em;
-  background: var(--bg1);
+  background: var(--bg);
   transition: all 0.25s;
   color: var(--text);
   flex: 1 1;

@@ -1,4 +1,5 @@
 import {parse, stringify} from "smol-toml";
+import {refactorToml} from "@/assets/js/checkFile";
 
 export function copyHero(res) {
     navigator.clipboard.writeText(stringify(res));
@@ -7,7 +8,7 @@ export function copyHero(res) {
 }
 
 export function saveHero(res) {
-    console.log(typeof res);
+    //console.log(typeof res);
     let element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(stringify(res)));
     element.setAttribute('download', "hero.toml");
@@ -34,7 +35,7 @@ export function loadHero(res) {
                 alert("Invalid file type and/or content. Please try again");
                 return false;
             }
-            //console.log(obj);
+            refactorToml(obj);
             res.urls = obj.urls;
             res.personal = obj.personal;
             res.colors = obj.colors;

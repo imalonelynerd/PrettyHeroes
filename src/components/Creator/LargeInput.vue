@@ -5,7 +5,7 @@ defineEmits(['update:modelValue']);
 
 <template>
   <textarea class="linput"
-            rows="3"
+            rows="5"
             :value="modelValue"
             :placeholder="placeHolder"
             @input="$emit('update:modelValue', $event.target.value)"/>
@@ -19,7 +19,7 @@ defineEmits(['update:modelValue']);
   border: none;
   font-size: 1em;
   font-family: inherit;
-  background: var(--bg1);
+  background: var(--bg);
   transition: all 0.25s;
   color: var(--text);
   flex: 1 1;

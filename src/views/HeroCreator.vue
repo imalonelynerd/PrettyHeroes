@@ -8,7 +8,8 @@ import ColorInput from "@/components/Creator/ColorInput.vue";
 import DoubleListInput from "@/components/Creator/DoubleListInput.vue";
 import DummyHero from "@/components/Creator/Dummy/DummyHero.vue";
 import {copyHero, loadHero, saveHero} from "@/assets/js/saveMgmt";
-import homeInfo from "@/assets/json/HomeInfo.json";
+import homeInfo from "@/assets/json/homeInfo.json";
+import HelpPage from "@/components/Creator/Dummy/HelpPage.vue";
 
 const values = ref(
     {
@@ -23,6 +24,7 @@ const values = ref(
         age: "",
         pronouns: [""],
         desc: "",
+        flags: [""],
       },
       colors: {
         background: "",
@@ -39,10 +41,18 @@ const values = ref(
       }]
     })
 
-const isShown = ref(false);
+const dummyShown = ref(false);
+const helpShown = ref(false);
 
-function showDummy(val) {
-  isShown.value = val;
+function showElem(val, showbool) {
+  switch (showbool) {
+    case "help":
+      helpShown.value = val;
+      break;
+    case "dummy":
+      dummyShown.value = val;
+      break;
+  }
 }
 
 document.querySelector('head title').textContent = `Creator - PrettyHeroes`;
@@ -56,9 +66,12 @@ document.querySelector("meta[name='og:description']").content = `${homeInfo.tagL
 <template>
   <DummyHero
       :res="values"
-      v-if="isShown"
-      @update:hide-btn="showDummy(false)"/>
-  <div class="creator" v-if="!isShown">
+      v-if="dummyShown"
+      @update:hide-btn="showElem(false,'dummy')"/>
+  <HelpPage
+      v-if="helpShown"
+      @update:hide-btn="showElem(false,'help')"/>
+  <div class="creator" v-if="!dummyShown">
     <div>
       <div>
         <div>
@@ -90,7 +103,12 @@ document.querySelector("meta[name='og:description']").content = `${homeInfo.tagL
               place-holder="Description"/>
           <ListInput
               :list-items="values.personal.pronouns"
-              place-holder="Pronouns"/>
+              place-holder="Pronoun"
+              empty-place-holder="Pronouns"/>
+          <ListInput
+              :list-items="values.personal.flags"
+              place-holder="Flag keyword"
+              empty-place-holder="Flags"/>
         </div>
         <div>
           <h2>Colors</h2>
@@ -129,13 +147,18 @@ document.querySelector("meta[name='og:description']").content = `${homeInfo.tagL
               :list-dbl-items="values.urls"
               :place-holders="['Link Title','URL']"
               :sections="['title','url']"
+              empty-place-holder="Links"
           />
         </div>
       </div>
       <div class="test">
-        <a @click="showDummy(true)">
+        <a @click="showElem(true,'dummy')">
           <img src="/icons/create.png"/>
           <p>Test on a dummy Hero</p>
+        </a>
+        <a @click="showElem(true,'help')">
+          <img src="/icons/help.png"/>
+          <p>Help</p>
         </a>
         <a @click="copyHero(values)">
           <img src="/icons/copy.png"/>
@@ -156,12 +179,11 @@ document.querySelector("meta[name='og:description']").content = `${homeInfo.tagL
 
 <style scoped>
 .creator {
+  overflow-y: scroll;
   margin: 0;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -176,7 +198,7 @@ document.querySelector("meta[name='og:description']").content = `${homeInfo.tagL
   padding: 32px;
   border-radius: 32px;
   filter: var(--shadow);
-  background: var(--bg2);
+  background: var(--wi);
 }
 
 .creator > div > *:not(:last-child) {
@@ -222,7 +244,7 @@ document.querySelector("meta[name='og:description']").content = `${homeInfo.tagL
   border-radius: 999px;
   font-size: 1em;
   font-weight: bold;
-  background: var(--bg1);
+  background: var(--bg);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -232,7 +254,7 @@ document.querySelector("meta[name='og:description']").content = `${homeInfo.tagL
 }
 
 .test > a:hover, .test > router-link:hover {
-  background: var(--bg3);
+  background: var(--ho);
 }
 
 .test > a > img, .test > router-link > img {

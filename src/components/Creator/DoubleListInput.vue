@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(['listDblItems', 'placeHolders', 'sections']);
+const props = defineProps(['listDblItems', 'placeHolders', 'sections','emptyPlaceHolder']);
 
 function addItem() {
   let item = {};
@@ -36,6 +36,7 @@ function updateItem(value, index, tag) {
       <button @click="removeItem">
         <img src="/icons/remove.png"/>
       </button>
+      <p v-if="listDblItems.length === 0">{{ emptyPlaceHolder }} - empty</p>
     </div>
   </div>
 </template>
@@ -48,7 +49,7 @@ function updateItem(value, index, tag) {
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  background: var(--bg1);
+  background: var(--bg);
   filter: var(--shadow);
 }
 
@@ -58,19 +59,26 @@ function updateItem(value, index, tag) {
   align-items: center;
   justify-content: stretch;
   border-radius: 24px;
-  background: var(--bg1);
+  background: var(--bg);
 }
 
 .listinput > .inputbuttons {
   flex-direction: row-reverse;
 }
 
+.listinput > div > p {
+  margin: 0;
+  flex-grow: 1;
+  opacity: 0.25;
+  font-size: 0.9em;
+}
+
 .listinput > div > button {
-  padding: 16px;
+  padding: 4px 8px;
   border-radius: 999px;
   font-size: 1em;
   border: none;
-  background: var(--bg2);
+  background: none;
   display: flex;
   align-items: center;
   justify-content: center;

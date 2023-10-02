@@ -1,6 +1,6 @@
 <script setup>
 
-import ErrInfo from "@/assets/json/ErrInfo.json";
+import ErrInfo from "@/assets/json/errInfo.json";
 
 defineProps(["errorCode", "accountName"])
 
@@ -48,7 +48,7 @@ function getErrorMessage(errcode) {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: var(--bg2);
+  background: var(--wi);
   padding: 32px;
   border-radius: 32px;
   filter: var(--shadow);
