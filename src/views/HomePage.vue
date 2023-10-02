@@ -2,6 +2,7 @@
 
 import homeInfo from "@/assets/json/homeInfo.json";
 import {ref} from "vue";
+import {useRouter} from "vue-router";
 
 const refHomeInfo = ref(homeInfo);
 const searchResult = ref("");
@@ -11,11 +12,17 @@ function switchQuery() {
   isShown.value = !isShown.value
 }
 
+const router = useRouter();
+
+function goTo(place) {
+  router.push(place);
+}
+
 document.querySelector('head title').textContent = `PrettyHeroes`;
 document.querySelector("link[rel~='icon']").href = `/favicon.png`;
 document.querySelector("meta[name~='description']").setAttribute("content", `${homeInfo.tagLine}`);
 document.querySelector("meta[name~='og:title']").setAttribute("content", `${homeInfo.appName}`);
-document.querySelector("meta[name~='og:description']").setAttribute("content",`${homeInfo.tagLine}`);
+document.querySelector("meta[name~='og:description']").setAttribute("content", `${homeInfo.tagLine}`);
 </script>
 
 <template>
@@ -41,8 +48,10 @@ document.querySelector("meta[name~='og:description']").setAttribute("content",`$
         </a>
       </div>
       <div class="query" v-if="isShown">
-        <input v-model="searchResult" type="text" @keyup.enter="$route.path = '/' + searchResult"
-               placeholder="Search...">
+        <input v-model="searchResult"
+               type="text"
+               @keyup.enter="goTo(searchResult)"
+               placeholder="Search..."/>
         <router-link :to="'/' + searchResult">
           <img src="/icons/search.png">
         </router-link>
@@ -59,12 +68,7 @@ document.querySelector("meta[name~='og:description']").setAttribute("content",`$
 
 <style scoped>
 .home {
-  margin: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  margin: 64px 0;
   display: flex;
   align-items: center;
   justify-content: center;

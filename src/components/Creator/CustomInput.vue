@@ -23,4 +23,8 @@ defineEmits(['update:modelValue']);
   flex: 1 1;
   filter: var(--shadow);
 }
+
+.phinput:hover {
+  background: var(--ho) !important;
+}
 </style>

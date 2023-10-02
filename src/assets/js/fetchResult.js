@@ -68,7 +68,7 @@ export function loadAsYaml(fetchedContent) {
         personal: {
             age: loadedContent.age,
             pronouns: loadedContent.pronouns,
-            desc: "**Contacts :**<br/>",
+            desc: "#### Contacts :<br/>\n",
         },
         colors: {
             bgimg: "",
@@ -76,7 +76,7 @@ export function loadAsYaml(fetchedContent) {
         urls: []
     };
     for (let elem in loadedContent.contacts) {
-        result.personal.desc += ` - ${loadedContent.contacts[elem]}<br/>`;
+        result.personal.desc += `- ${loadedContent.contacts[elem]}\n`;
     }
     for (let elem in loadedContent.urls) {
         let reg = new RegExp('^https?:\/\/([A-Za-z09\.]{3,})\/?.*$', 'gm');

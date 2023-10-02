@@ -179,11 +179,7 @@ document.querySelector("meta[name='og:description']").content = `${homeInfo.tagL
 
 <style scoped>
 .creator {
-  overflow-y: scroll;
-  margin: 0;
-  position: fixed;
-  height: 100%;
-  width: 100%;
+  margin: 64px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -202,7 +198,7 @@ document.querySelector("meta[name='og:description']").content = `${homeInfo.tagL
 }
 
 .creator > div > *:not(:last-child) {
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .creator > div > div:not(.test) {

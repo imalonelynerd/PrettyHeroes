@@ -30,4 +30,9 @@ defineEmits(['update:imgSrc']);
   background-position: center center !important;
   background-size: cover !important;
 }
+
+.iminput:hover {
+  filter: brightness(125%) !important;
+}
+
 </style>

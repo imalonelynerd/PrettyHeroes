@@ -61,7 +61,7 @@ function updateItem(value, index) {
 }
 
 .listinput > div > button {
-  padding: 4px 8px;
+  padding: 4px;
   border-radius: 999px;
   font-size: 1em;
   border: none;
@@ -73,8 +73,12 @@ function updateItem(value, index) {
   transition: all 0.25s;
 }
 
+.listinput > div > button:hover {
+  background: var(--wi) !important;
+}
+
 .listinput > div > *:not(:last-child) {
-  margin-left: 8px;
+  margin-left: 12px;
 }
 
 .listinput > div > button > img {
@@ -91,6 +95,10 @@ function updateItem(value, index) {
   border-radius: 16px;
   flex: 1 1;
   margin-bottom: 4px;
+}
+
+.listinput > input:hover {
+  background: var(--ho) !important;
 }
 
 </style>

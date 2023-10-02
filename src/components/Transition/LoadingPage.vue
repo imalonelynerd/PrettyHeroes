@@ -2,8 +2,8 @@
 import LoadInfo from "@/assets/json/loadInfo.json";
 import {useRoute} from "vue-router";
 
-const unusualRoute = useRoute();
-const userTag = unusualRoute.params.user;
+const routeObj = useRoute();
+const userTag = routeObj.params.user;
 </script>
 
 <template>
@@ -18,12 +18,7 @@ const userTag = unusualRoute.params.user;
 
 <style scoped>
 .loading {
-  margin: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  margin: 64px 0;
   display: flex;
   align-items: center;
   justify-content: center;

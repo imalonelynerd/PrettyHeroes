@@ -18,7 +18,7 @@ function updateItem(value, index, tag) {
 </script>
 
 <template>
-  <div class="listinput">
+  <div class="dlistinput">
     <div v-for="(value, index) in listDblItems">
       <input :value="listDblItems[index][sections[0]]"
              :placeholder="placeHolders[0]"
@@ -42,7 +42,7 @@ function updateItem(value, index, tag) {
 </template>
 
 <style scoped>
-.listinput {
+.dlistinput {
   display: flex;
   padding: 16px;
   border-radius: 24px;
@@ -53,7 +53,7 @@ function updateItem(value, index, tag) {
   filter: var(--shadow);
 }
 
-.listinput > div {
+.dlistinput > div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -62,19 +62,19 @@ function updateItem(value, index, tag) {
   background: var(--bg);
 }
 
-.listinput > .inputbuttons {
+.dlistinput > .inputbuttons {
   flex-direction: row-reverse;
 }
 
-.listinput > div > p {
+.dlistinput > div > p {
   margin: 0;
   flex-grow: 1;
   opacity: 0.25;
   font-size: 0.9em;
 }
 
-.listinput > div > button {
-  padding: 4px 8px;
+.dlistinput > div > button {
+  padding: 4px;
   border-radius: 999px;
   font-size: 1em;
   border: none;
@@ -86,25 +86,33 @@ function updateItem(value, index, tag) {
   transition: all 0.25s;
 }
 
-.listinput > div > *:not(:last-child) {
-  margin-left: 8px;
+.dlistinput > div > button:hover {
+  background: var(--wi) !important;
 }
 
-.listinput > div > button > img {
+.dlistinput > div > *:not(:last-child) {
+  margin-left: 12px;
+}
+
+.dlistinput > div > button > img {
   height: 1em;
 }
 
-.listinput > div > input {
+.dlistinput > div > input {
   padding: 8px 4px;
   border: none;
   font-size: 1em;
   transition: all 0.25s;
   color: var(--text);
   background: none;
-  border-radius: 16px;
+  border-radius: 999px;
   flex: 1 1;
   min-width: 0;
   margin-bottom: 4px;
+}
+
+.dlistinput > div > input:hover {
+  background: var(--ho) !important;
 }
 
 </style>

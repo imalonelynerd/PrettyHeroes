@@ -35,4 +35,8 @@ function getContrastYIQ(hexcolor) {
   color: var(--text);
   flex: 1 1;
 }
+
+.cinput:hover {
+  background: var(--ho) !important;
+}
 </style>

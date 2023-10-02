@@ -14,8 +14,8 @@ import CustomFooter from "@/components/Hero/CustomFooter.vue";
 const isFetched = ref(1);
 const isYaml = ref(false);
 
-const unusualRoute = useRoute();
-const userTag = unusualRoute.params.user;
+const routeObj = useRoute();
+const userTag = routeObj.params.user;
 
 let links = [
   {
@@ -43,7 +43,6 @@ for (let k in links) {
         break;
       case "yaml":
         res = loadAsYaml(res);
-        console.log(res);
         if (res === false) {
           isFetched.value = 2;
           break;
@@ -91,10 +90,11 @@ for (let k in links) {
 <style scoped>
 
 .hero {
-  padding: 64px 0;
+  margin: 64px 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: Blur ease-out 0.5s;
 }
 
 .hero > div {

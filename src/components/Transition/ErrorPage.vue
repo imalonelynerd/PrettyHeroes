@@ -31,12 +31,7 @@ function getErrorMessage(errcode) {
 
 <style scoped>
 .err {
-  margin: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  margin: 64px 0;
   display: flex;
   align-items: center;
   justify-content: center;

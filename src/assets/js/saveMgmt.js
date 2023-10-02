@@ -8,7 +8,6 @@ export function copyHero(res) {
 }
 
 export function saveHero(res) {
-    //console.log(typeof res);
     let element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(stringify(res)));
     element.setAttribute('download', "hero.toml");

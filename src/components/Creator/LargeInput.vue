@@ -25,4 +25,8 @@ defineEmits(['update:modelValue']);
   flex: 1 1;
   filter: var(--shadow);
 }
+
+.linput:hover {
+  background: var(--ho) !important;
+}
 </style>

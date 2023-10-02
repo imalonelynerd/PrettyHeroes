@@ -21,7 +21,7 @@ defineProps(["name1", "name2", "age", "pronouns", "desc", 'flags'])
     <h1 v-if="name1 !== '' || name2 !== ''">{{ name1 }} <span>{{ name2 }}</span></h1>
     <h2 v-if="age !== '' || pronouns !== []">{{ age + ", " + pronouns.join(' - ') }}</h2>
     <FlagsDisplayer :flags-list="flags"/>
-    <p v-if="desc !== ''" v-html="markDownize(desc)"></p>
+    <div v-if="desc !== ''" v-html="markDownize(desc)"></div>
   </div>
 </template>
 
