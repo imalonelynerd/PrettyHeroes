@@ -29,44 +29,104 @@ function getErrorMessage(errcode) {
   </div>
 </template>
 
+<!--TODO-->
+
 <style scoped>
-.err {
-  margin: 64px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: Blur ease-out 0.5s;
+@media screen and (orientation: landscape) {
+  .err {
+    margin: 0;
+    padding: 64px 0;
+    overflow: scroll;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: Blur ease-out 0.5s;
+  }
+
+  .err > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--wi);
+    padding: 32px;
+    border-radius: 32px;
+
+  }
+
+  .err > div > * {
+    margin: 0;
+  }
+
+  .err > div > img {
+    height: 128px;
+  }
+
+  .err > div > h1 {
+    margin-bottom: 8px;
+  }
+
+  .err > div > p {
+    text-align: center;
+    width: 400px;
+  }
+
+  .err > div > *:not(:last-child) {
+    margin-bottom: 16px;
+  }
 }
 
-.err > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: var(--wi);
-  padding: 32px;
-  border-radius: 32px;
-  filter: var(--shadow);
-}
+@media screen and (orientation: portrait) {
+  .err {
+    margin: 0;
+    padding: 3vh 0;
+    overflow: scroll;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: Blur ease-out 0.5s;
+  }
 
-.err > div > * {
-  margin: 0;
-}
+  .err > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg);
+    padding: 3vh;
+    border-radius: 3vh;
 
-.err > div > img {
-  height: 128px;
-}
+  }
 
-.err > div > h1 {
-  margin-bottom: 8px;
-}
+  .err > div > * {
+    margin: 0;
+  }
 
-.err > div > p {
-  text-align: center;
-  width: 400px;
-}
+  .err > div > img {
+    height: 20vh;
+  }
 
-.err > div > *:not(:last-child) {
-  margin-bottom: 16px;
+  .err > div > h1 {
+    margin-bottom: 1vh;
+  }
+
+  .err > div > p {
+    text-align: center;
+    width: 80vw;
+  }
+
+  .err > div > *:not(:last-child) {
+    margin-bottom: 2vh;
+  }
 }
 </style>

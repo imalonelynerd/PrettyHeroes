@@ -71,7 +71,7 @@ document.querySelector("meta[name='og:description']").content = `${homeInfo.tagL
   <HelpPage
       v-if="helpShown"
       @update:hide-btn="showElem(false,'help')"/>
-  <div class="creator" v-if="!dummyShown">
+  <div class="creator" v-if="!(dummyShown || helpShown)">
     <div>
       <div>
         <div>
@@ -178,92 +178,188 @@ document.querySelector("meta[name='og:description']").content = `${homeInfo.tagL
 </template>
 
 <style scoped>
-.creator {
-  margin: 64px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: Blur ease-out 0.5s;
+@media screen and (orientation: landscape) {
+  .creator {
+    margin: 64px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: Blur ease-out 0.5s;
+  }
+
+  .creator > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    border-radius: 32px;
+
+    background: var(--wi);
+  }
+
+  .creator > div > *:not(:last-child) {
+    margin-bottom: 48px;
+  }
+
+  .creator > div > div:not(.test) {
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: start;
+    gap: 32px;
+  }
+
+  .creator > div > div > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    width: 250px;
+  }
+
+  .creator > div > div > div > *:not(:last-child) {
+    margin-bottom: 8px;
+  }
+
+  .creator h2 {
+    text-align: center;
+    margin: 0 0 16px !important;
+  }
+
+  .test {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .test > a, .test > router-link {
+    padding: 16px 24px;
+    border-radius: 999px;
+    font-size: 1em;
+    font-weight: bold;
+    background: var(--bg);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .test > a:hover, .test > router-link:hover {
+    background: var(--ho);
+  }
+
+  .test > a > img, .test > router-link > img {
+    height: 1.25em;
+  }
+
+  .test > a > p, .test > router-link > p {
+    margin: 0 0 0 8px;
+    padding: 0;
+    transition: all 0.25s;
+  }
+
+  .test > *:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+@media screen and (orientation: portrait) {
+  .creator {
+    margin: 5vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: Blur ease-out 0.5s;
+  }
+
+  .creator > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .creator > div > *:not(:last-child) {
+    margin-bottom: 3vh;
+  }
+
+  .creator > div > div:not(.test) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .creator > div > div:not(.test):not(:last-child) {
+    margin-bottom: 8vh;
+  }
+
+  .creator > div > div > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    width: 80vw;
+  }
+
+  .creator > div > div > div:not(:last-child) {
+    margin-bottom: 4vh;
+  }
+
+  .creator > div > div > div > *:not(:last-child) {
+    margin-bottom: 2vh;
+  }
+
+  .creator h2 {
+    text-align: center;
+    font-size: 1.75em;
+    margin: 0 0 2vh !important;
+  }
+
+  .test {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    width: 80vw;
+  }
+
+  .test > a, .test > router-link {
+    padding: 2vh 3vh;
+    border-radius: 999px;
+    font-size: 1em;
+    font-weight: bold;
+    background: var(--wi);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .test > a:hover, .test > router-link:hover {
+    background: var(--ho);
+  }
+
+  .test > a > img, .test > router-link > img {
+    height: 1.25em;
+  }
+
+  .test > a > p, .test > router-link > p {
+    margin: 0 0 0 1vh;
+    padding: 0;
+    transition: all 0.25s;
+  }
+
+  .test > *:not(:last-child) {
+    margin-bottom: 2vh;
+  }
 }
 
-.creator > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 32px;
-  border-radius: 32px;
-  filter: var(--shadow);
-  background: var(--wi);
-}
-
-.creator > div > *:not(:last-child) {
-  margin-bottom: 32px;
-}
-
-.creator > div > div:not(.test) {
-  display: grid;
-  grid-auto-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  justify-content: center;
-  align-items: start;
-  gap: 32px;
-}
-
-.creator > div > div > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-  width: 250px;
-}
-
-.creator > div > div > div > *:not(:last-child) {
-  margin-bottom: 8px;
-}
-
-.creator h2 {
-  text-align: center;
-  margin: 0 0 16px !important;
-}
-
-.test {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  filter: var(--shadow);
-}
-
-.test > a, .test > router-link {
-  padding: 16px 24px;
-  border-radius: 999px;
-  font-size: 1em;
-  font-weight: bold;
-  background: var(--bg);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.25s;
-}
-
-.test > a:hover, .test > router-link:hover {
-  background: var(--ho);
-}
-
-.test > a > img, .test > router-link > img {
-  height: 1.25em;
-}
-
-.test > a > p, .test > router-link > p {
-  margin: 0 0 0 8px;
-  padding: 0;
-  transition: all 0.25s;
-}
-
-.test > *:not(:last-child) {
-  margin-right: 8px;
-}
 </style>

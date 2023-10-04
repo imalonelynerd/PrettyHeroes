@@ -17,43 +17,101 @@ const userTag = routeObj.params.user;
 </template>
 
 <style scoped>
-.loading {
-  margin: 64px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: Blur ease-out 0.5s;
+@media screen and (orientation: landscape) {
+  .loading {
+    margin: 0;
+    padding: 64px 0;
+    overflow: scroll;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: Blur ease-out 0.5s;
+  }
+
+  .loading > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--wi);
+    padding: 32px;
+    border-radius: 32px;
+
+  }
+
+  .loading > div > * {
+    margin: 0;
+  }
+
+  .loading > div > img {
+    height: 128px;
+  }
+
+  .loading > div > h1 {
+    margin-bottom: 8px;
+  }
+
+  .loading > div > p {
+    text-align: center;
+    width: 400px;
+  }
+
+  .loading > div > *:not(:last-child) {
+    margin-bottom: 16px;
+  }
 }
 
-.loading > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: var(--wi);
-  padding: 32px;
-  border-radius: 32px;
-  filter: var(--shadow);
-}
+@media screen and (orientation: portrait) {
+  .loading {
+    margin: 0;
+    padding: 3vh 0;
+    overflow: scroll;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: Blur ease-out 0.5s;
+  }
 
-.loading > div > * {
-  margin: 0;
-}
+  .loading > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg);
+    padding: 3vh;
+    border-radius: 3vh;
 
-.loading > div > img {
-  height: 128px;
-}
+  }
 
-.loading > div > h1 {
-  margin-bottom: 8px;
-}
+  .loading > div > * {
+    margin: 0;
+  }
 
-.loading > div > p {
-  text-align: center;
-  width: 400px;
-}
+  .loading > div > img {
+    height: 20vh;
+  }
 
-.loading > div > *:not(:last-child) {
-  margin-bottom: 16px;
+  .loading > div > h1 {
+    margin-bottom: 1vh;
+  }
+
+  .loading > div > p {
+    text-align: center;
+    width: 80vw;
+  }
+
+  .loading > div > *:not(:last-child) {
+    margin-bottom: 2vh;
+  }
 }
 </style>

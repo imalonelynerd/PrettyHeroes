@@ -11,6 +11,7 @@ body {
     animation: Blur ease-out 0.5s;
     transition: all 0.25s;
     background-attachment: fixed !important;
+    margin: 0;
 }
 
 a {
@@ -25,16 +26,18 @@ h1 {
     margin: 0;
 }
 
-code {
-    padding: 8px 16px !important;
-    border-radius: 999px !important;
-    background: var(--bg);
-    transition: all 0.25s;
-    filter: var(--shadow);
-}
+@media screen and (orientation: landscape) {
+    code {
+        padding: 8px 16px !important;
+        border-radius: 999px !important;
+        background: var(--bg);
+        transition: all 0.25s;
 
-code:hover {
-    background: var(--ho);
+    }
+
+    code:hover {
+        background: var(--ho);
+    }
 }
 
 @media only screen and (orientation: portrait) {
@@ -42,7 +45,17 @@ code:hover {
         font-size: 3vw;
     }
 
-    body > div > div:not(.navbar-container, .mobile-navbar-container) {
-        margin: 3vh 0;
+
+    code {
+        padding: 2vh 3vh !important;
+        border-radius: 999px !important;
+        background: var(--wi);
+        transition: all 0.25s;
+
     }
+
+    code:active {
+        background: var(--ho);
+    }
+
 }

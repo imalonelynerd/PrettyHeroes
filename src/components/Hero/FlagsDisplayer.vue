@@ -50,24 +50,32 @@ function getFlag(req) {
 </template>
 
 <style scoped>
-.flags {
-  display: grid;
-  grid-auto-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 16px;
-  justify-content: center;
-  align-items: center;
+@media screen and (orientation: landscape) {
+  .flags {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-auto-rows: 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .flags > img {
+    height: 1.5em;
+  }
 }
 
-/*.flags > * {
-  margin: 0;
-}
+@media screen and (orientation: portrait) {
+  .flags {
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2vh;
+  }
 
-.flags > *:not(:last-child) {
-  margin-right: 16px;
-}*/
-
-.flags > img {
-  height: 1.5em;
+  .flags > img {
+    height: 3vh;
+    margin: 0;
+  }
 }
 </style>

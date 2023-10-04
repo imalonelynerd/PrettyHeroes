@@ -67,130 +67,256 @@ document.querySelector("meta[name~='og:description']").setAttribute("content", `
 </template>
 
 <style scoped>
-.home {
-  margin: 64px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: Blur ease-out 0.5s;
+@media screen and (orientation: landscape) {
+  .home {
+    margin: 64px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: Blur ease-out 0.5s;
+  }
+
+  .home > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--wi);
+    padding: 32px;
+    border-radius: 32px;
+
+  }
+
+  .home > div > * {
+    margin: 0;
+  }
+
+  .home > div > img {
+    height: 128px;
+  }
+
+  .home > div > h1 {
+    margin-bottom: 8px;
+  }
+
+  .home > div > h2 {
+    opacity: 0.5;
+    font-style: italic;
+  }
+
+  .home > div > p {
+    text-align: center;
+    width: 400px;
+  }
+
+  .home > div > *:not(:last-child):not(h1) {
+    margin-bottom: 32px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    animation: Blur ease-out 0.5s;
+  }
+
+  .buttons > a, .buttons > router-link {
+    padding: 16px 24px;
+    border-radius: 999px;
+    font-size: 1em;
+    font-weight: bold;
+    background: var(--bg);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .buttons > a:hover, .buttons > router-link:hover {
+    background: var(--ho);
+  }
+
+  .buttons > a > img, .buttons > router-link > img {
+    height: 1.25em;
+  }
+
+  .buttons > a > p, .buttons > router-link > p {
+    margin: 0 0 0 8px;
+    padding: 0;
+    transition: all 0.25s;
+  }
+
+  .buttons > *:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  .query {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+
+    width: 557px;
+    animation: Blur ease-out 0.5s;
+  }
+
+  .query > * {
+    padding: 16px 20px;
+    border-radius: 999px;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  .query > * > img {
+    height: 1em;
+  }
+
+  .query > input {
+    flex-grow: 1;
+  }
+
+  .query > *:hover {
+    background: var(--ho);
+    z-index: 6;
+  }
+
+  .query > *:not(:last-child){
+    margin-right: 8px;
+  }
 }
 
-.home > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: var(--wi);
-  padding: 32px;
-  border-radius: 32px;
-  filter: var(--shadow);
+@media screen and (orientation: portrait) {
+  .home {
+    width: 100%;
+    margin: 5vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: Blur ease-out 0.5s;
+  }
+
+  .home > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .home > div > * {
+    margin: 0;
+  }
+
+  .home > div > img {
+    height: 20vh;
+  }
+
+  .home > div > h1 {
+    width: 80vw;
+    text-align: center;
+    margin-bottom: 2vh;
+  }
+
+  .home > div > h2 {
+    text-align: center;
+    width: 80vw;
+    opacity: 0.5;
+    font-style: italic;
+  }
+
+  .home > div > p {
+    text-align: center;
+    width: 80vw;
+  }
+
+  .home > div > *:not(:last-child):not(h1) {
+    margin-bottom: 3vh;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    justify-content: center;
+    align-items: stretch;
+
+    animation: Blur ease-out 0.5s;
+  }
+
+  .buttons > a, .buttons > router-link {
+    padding: 2vh 3vh;
+    border-radius: 999px;
+    font-size: 1em;
+    font-weight: bold;
+    background: var(--wi);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .buttons > a:active, .buttons > router-link:active {
+    background: var(--ho);
+  }
+
+  .buttons > a > img, .buttons > router-link > img {
+    height: 1.25em;
+  }
+
+  .buttons > a > p, .buttons > router-link > p {
+    margin: 0 0 0 2vh;
+    padding: 0;
+    transition: all 0.25s;
+  }
+
+  .buttons > *:not(:last-child) {
+    margin-bottom: 2vh;
+  }
+
+  .query {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+
+    width: 80vw;
+    animation: Blur ease-out 0.5s;
+  }
+
+  .query > * {
+    padding: 2vh 3vh;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 999px;
+    background: var(--wi);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .query > *:not(:last-child) {
+    margin-bottom: 2vh;
+  }
+
+  .query > button > img,
+  .query > a > img {
+    height: 1em;
+  }
+
+  .query > *:active {
+    background: var(--ho);
+    z-index: 6;
+  }
 }
 
-.home > div > * {
-  margin: 0;
-}
-
-.home > div > img {
-  height: 128px;
-}
-
-.home > div > h1 {
-  margin-bottom: 8px;
-}
-
-.home > div > h2 {
-  opacity: 0.5;
-  font-style: italic;
-}
-
-.home > div > p {
-  text-align: center;
-  width: 400px;
-}
-
-.home > div > *:not(:last-child):not(h1) {
-  margin-bottom: 32px;
-}
-
-.buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  filter: var(--shadow);
-  animation: Blur ease-out 0.5s;
-}
-
-.buttons > a, .buttons > router-link {
-  padding: 16px 24px;
-  border-radius: 999px;
-  font-size: 1em;
-  font-weight: bold;
-  background: var(--bg);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.25s;
-}
-
-.buttons > a:hover, .buttons > router-link:hover {
-  background: var(--ho);
-}
-
-.buttons > a > img, .buttons > router-link > img {
-  height: 1.25em;
-}
-
-.buttons > a > p, .buttons > router-link > p {
-  margin: 0 0 0 8px;
-  padding: 0;
-  transition: all 0.25s;
-}
-
-.buttons > *:not(:last-child) {
-  margin-right: 8px;
-}
-
-.query {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: center;
-  filter: var(--shadow);
-  width: 557px;
-  animation: Blur ease-out 0.5s;
-}
-
-.query > * {
-  padding: 16px 20px;
-  font-size: 1em;
-  font-weight: bold;
-  border: none;
-  background: var(--bg);
-  color: var(--text);
-}
-
-.query > button > img,
-.query > a > img {
-  height: 1em;
-}
-
-.query > input {
-  flex-grow: 1;
-}
-
-.query > *:hover {
-  background: var(--ho);
-  z-index: 6;
-}
-
-.query > *:first-child {
-  border-radius: 999px 0 0 999px;
-}
-
-.query > *:last-child {
-  border-radius: 0 999px 999px 0;
-}
 </style>

@@ -39,102 +39,194 @@ defineEmits([
 
 <style scoped>
 
-/*.helpbtn {
-  position: fixed;
-  top: 32px;
-  left: 32px;
-}*/
+@media screen and (orientation: landscape) {
+  #helpmess > div > div:not(.flags) > a {
+    width: fit-content;
+    padding: 16px 24px;
+    border-radius: 999px;
+    font-size: 1em;
+    font-weight: bold;
+    background: var(--bg);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s;
 
-#helpmess > div > div:not(.flags) > a {
-  width: fit-content;
-  padding: 16px 24px;
-  border-radius: 999px;
-  font-size: 1em;
-  font-weight: bold;
-  background: var(--wi);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.25s;
-  filter: var(--shadow);
+  }
+
+  #helpmess > div > div:not(.flags) > a:hover {
+    background: var(--ho);
+  }
+
+  #helpmess > div > div:not(.flags) > a > img {
+    height: 1.25em;
+  }
+
+  #helpmess > div > div:not(.flags) > a > p {
+    margin: 0 0 0 8px;
+    padding: 0;
+    transition: all 0.25s;
+  }
+
+  #helpmess {
+    margin: 0;
+    height: fit-content;
+    width: 100%;
+    padding: 64px 0;
+    overflow: scroll;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--bg);
+    display: flex;
+    z-index: 15;
+    align-items: center;
+    justify-content: center;
+    animation: Blur ease-out 0.5s;
+  }
+
+  #helpmess > div {
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    background: var(--wi);
+    border-radius: 32px;
+    padding: 32px;
+    float: right;
+    animation: slidein ease-out 0.25s;
+
+  }
+
+  #helpmess > div > * {
+    margin: 0;
+  }
+
+  #helpmess > div > *:not(:last-child) {
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  #helpmess > div > div:not(.flags) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #helpmess > div > p {
+    font-size: 0.8em;
+  }
+
+  #helpmess > div > p > a {
+    color: var(--ho);
+  }
+
+  #helpmess > div > img {
+    height: 128px;
+  }
+
+  #helpmess > div > div:not(.flags) > *:not(:last-child) {
+    margin-right: 8px;
+  }
 }
 
-#helpmess > div > div:not(.flags) > a:hover {
-  background: var(--ho);
+@media screen and (orientation: portrait) {
+  #helpmess > div > div:not(.flags) > a {
+    padding: 2vh 3vh;
+    border-radius: 999px;
+    font-size: 1em;
+    font-weight: bold;
+    background: var(--wi);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s;
+
+  }
+
+  #helpmess > div > div:not(.flags) > a:hover {
+    background: var(--ho);
+  }
+
+  #helpmess > div > div:not(.flags) > a > img {
+    height: 1.25em;
+  }
+
+  #helpmess > div > div:not(.flags) > a > p {
+    margin: 0 0 0 1vh;
+    padding: 0;
+    transition: all 0.25s;
+  }
+
+  #helpmess {
+    margin: 0;
+    height: fit-content;
+    width: 100%;
+    padding: 3vh 0;
+    overflow: scroll;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    z-index: 15;
+    align-items: center;
+    justify-content: center;
+    animation: Blur ease-out 0.5s;
+  }
+
+  #helpmess > div {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    height: fit-content;
+    padding: 5vh 0;
+    float: right;
+    animation: slidein ease-out 0.25s;
+
+  }
+
+  #helpmess > div > * {
+    margin: 0;
+  }
+
+  #helpmess > div > *:not(:last-child) {
+    margin-bottom: 3vh;
+    text-align: center;
+  }
+
+  #helpmess > div > div:not(.flags) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #helpmess > div > p {
+    font-size: 1em;
+  }
+
+  #helpmess > div > p > a {
+    color: var(--ho);
+  }
+
+  #helpmess > div > img {
+    height: 20vh;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  #helpmess > div > div > a {
+    width: 80vw;
+  }
 }
 
-#helpmess > div > div:not(.flags) > a > img {
-  height: 1.25em;
-}
-
-#helpmess > div > div:not(.flags) > a > p {
-  margin: 0 0 0 8px;
-  padding: 0;
-  transition: all 0.25s;
-}
-
-#helpmess {
-  overflow-y: scroll;
-  margin: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #00000080;
-  display: flex;
-  z-index: 15;
-  align-items: center;
-  justify-content: center;
-  animation: Blur ease-out 0.5s;
-}
-
-#helpmess > div {
-  width: 700px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: fit-content;
-  background: var(--bg);
-  border-radius: 32px;
-  padding: 32px;
-  float: right;
-  animation: slidein ease-out 0.25s;
-  filter: var(--shadow);
-}
-
-#helpmess > div > * {
-  margin: 0;
-}
-
-#helpmess > div > *:not(:last-child) {
-  margin-bottom: 24px;
-  text-align: center;
-}
-
-#helpmess > div > div:not(.flags) {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-#helpmess > div > p {
-  font-size: 0.8em;
-}
-
-#helpmess > div > p > a {
-  color: var(--ho);
-}
-
-#helpmess > div > img {
-  height: 128px;
-}
-
-#helpmess > div > div:not(.flags) > *:not(:last-child) {
-  margin-right: 8px;
-}
 </style>

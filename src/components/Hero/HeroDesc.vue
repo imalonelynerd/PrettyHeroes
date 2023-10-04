@@ -26,36 +26,66 @@ defineProps(["name1", "name2", "age", "pronouns", "desc", 'flags'])
 </template>
 
 <style scoped>
-.desc {
-  color: var(--ctxt);
-  padding: 32px;
-  border-radius: 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  background: var(--cwi);
-  filter: var(--shadow);
+@media screen and (orientation: landscape) {
+  .desc {
+    color: var(--ctxt);
+    padding: 32px;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    background: var(--cwi);
+
+  }
+
+  .desc > * {
+    margin: 0;
+  }
+
+  .desc > h1 > span {
+    opacity: 0.66;
+  }
+
+  .desc > h2 {
+    opacity: 0.5;
+    font-size: 1.25em;
+  }
+
+  .desc > *:not(:last-child) {
+    margin-bottom: 16px;
+  }
 }
 
-.desc > * {
-  margin: 0;
+@media screen and (orientation: portrait) {
+  .desc {
+    color: var(--ctxt);
+    padding: 4vh;
+    border-radius: 3vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    background: var(--cwi);
+
+  }
+
+  .desc > * {
+    margin: 0;
+  }
+
+  .desc > h1 > span {
+    opacity: 0.66;
+  }
+
+  .desc > h2 {
+    opacity: 0.5;
+    font-size: 1.25em;
+  }
+
+  .desc > *:not(:last-child) {
+    margin-bottom: 3vh;
+  }
 }
 
-.desc > h1 > span {
-  opacity: 0.66;
-}
-
-.desc > h2 {
-  opacity: 0.5;
-  font-size: 1.25em;
-}
-
-.desc > *:not(:last-child) {
-  margin-bottom: 16px;
-}
-
-tab {
-  width: 5em;
-}
 </style>

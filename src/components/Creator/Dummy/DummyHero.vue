@@ -59,33 +59,65 @@ for (let elem in params) {
 
 <style scoped>
 
-.dummy {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  animation: Blur ease-out 0.5s;
+
+
+@media screen and (orientation: landscape) {
+  .dummy {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    animation: Blur ease-out 0.5s;
+  }
+
+  .hero {
+    margin: 64px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: Blur ease-out 0.5s;
+  }
+
+  .hero > div {
+    min-width: 500px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  .hero > div > *:not(:last-child) {
+    margin-bottom: 16px;
+  }
 }
 
-.hero {
-  padding: 64px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+@media screen and (orientation: portrait) {
+  .dummy {
+    z-index: 2;
+    animation: Blur ease-out 0.5s;
+  }
 
-.hero > div {
-  min-width: 500px;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
-}
+  .hero {
+    margin: 5vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: Blur ease-out 0.5s;
+  }
 
-.hero > div > *:not(:last-child) {
-  margin-bottom: 16px;
+  .hero > div {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  .hero > div > *:not(:last-child) {
+    margin-bottom: 2vh;
+  }
 }
 </style>

@@ -1,5 +1,4 @@
 <script setup>
-
 defineEmits([
   "update:hideBtn"
 ])
@@ -7,16 +6,16 @@ defineEmits([
 </script>
 
 <template>
-  <a class="dummybtn" @click="$emit('update:hideBtn')">
-    <img src="/icons/create.png">
-    <p>Dummy Mode</p>
+  <a class="messbtn" @click="$emit('update:hideBtn')">
+    <img src="/icons/pronounce.png">
+    <p>Pronounce</p>
   </a>
 </template>
 
 <style scoped>
 
 @media screen and (orientation: landscape) {
-  .dummybtn {
+  .messbtn {
     position: fixed;
     top: 32px;
     left: 32px;
@@ -35,15 +34,15 @@ defineEmits([
 
   }
 
-  .dummybtn:hover {
+  .messbtn:hover {
     background: var(--ho);
   }
 
-  .dummybtn > img {
+  .messbtn > img {
     height: 1.25em;
   }
 
-  .dummybtn > p {
+  .messbtn > p {
     margin: 0 0 0 8px;
     padding: 0;
     transition: all 0.25s;
@@ -51,7 +50,7 @@ defineEmits([
 }
 
 @media screen and (orientation: portrait) {
-  .dummybtn {
+  .messbtn {
     position: fixed;
     bottom: 5vh;
     left: 10vh;
@@ -68,17 +67,18 @@ defineEmits([
     cursor: pointer;
     transition: all 0.25s;
 
+    z-index: 2;
   }
 
-  .dummybtn:hover {
+  .messbtn:hover {
     background: var(--ho);
   }
 
-  .dummybtn > img {
+  .messbtn > img {
     height: 1.25em;
   }
 
-  .dummybtn > p {
+  .messbtn > p {
     margin: 0 0 0 1vh;
     padding: 0;
     transition: all 0.25s;

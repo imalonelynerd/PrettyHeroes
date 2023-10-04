@@ -9,12 +9,20 @@ function getContrastYIQ(hexcolor) {
   var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
   return (yiq >= 128) ? '#202020' : '#FFFFFF';
 }
+
+function checkColor(color) {
+  if (/^#[0-9A-Fa-f]{6,8}$/.test(color)) {
+    return color;
+  }
+  return 'var(--col)';
+}
+
 </script>
 
 <template>
   <input
       class="cinput"
-      :style="`background : ${/^#[0-9A-Fa-f]{6,8}$/.test(color)?color:'var(--bg)'} ; color: ${getContrastYIQ(color)}`"
+      :style="`background: ${checkColor(color)}; color: ${getContrastYIQ(color)}`"
       pattern="^#[0-9A-Fa-f]{6,8}$"
       type="text"
       :value="color"
@@ -23,20 +31,42 @@ function getContrastYIQ(hexcolor) {
 </template>
 
 <style scoped>
-.cinput {
-  padding: 16px 24px;
-  border-radius: 999px;
-  filter: var(--shadow);
-  border: none;
-  font-size: 1em;
-  background: var(--bg);
-  transition: all 0.25s;
-  min-width: 0;
-  color: var(--text);
-  flex: 1 1;
+
+@media screen and (orientation: landscape) {
+  .cinput {
+    padding: 16px 24px;
+    border-radius: 999px;
+
+    border: none;
+    font-size: 1em;
+    background: var(--col);
+    transition: all 0.25s;
+    min-width: 0;
+    color: var(--text);
+    flex: 1 1;
+  }
+
+  .cinput:hover {
+    background: var(--ho) !important;
+  }
 }
 
-.cinput:hover {
-  background: var(--ho) !important;
+@media screen and (orientation: portrait) {
+  .cinput {
+    padding: 2vh 3vh;
+    border-radius: 999px;
+    border: none;
+    font-size: 1em;
+    background: var(--col);
+    transition: all 0.25s;
+    min-width: 0;
+    color: var(--text);
+    flex: 1 1;
+  }
+
+  .cinput:hover {
+    background: var(--ho) !important;
+  }
 }
+
 </style>

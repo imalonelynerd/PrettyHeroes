@@ -9,10 +9,12 @@ import PronounceCompat from "@/components/Hero/PronounceCompat.vue";
 import HeroLinks from "@/components/Hero/HeroLinks.vue";
 import Background from "@/components/Hero/Background.vue";
 import CustomFooter from "@/components/Hero/CustomFooter.vue";
+import PronounceMode from "@/components/Hero/PronounceMode.vue";
 
 
 const isFetched = ref(1);
 const isYaml = ref(false);
+const proShown = ref(false);
 
 const routeObj = useRoute();
 const userTag = routeObj.params.user;
@@ -55,6 +57,10 @@ for (let k in links) {
   }
 }
 
+function showElem(val) {
+  proShown.value = val;
+}
+
 </script>
 
 <template>
@@ -64,8 +70,9 @@ for (let k in links) {
       :error-code="isFetched"
   />
   <Background v-if="isFetched === 0" :bg-img="res.colors.bgimg"/>
-  <PronounceCompat v-if="isYaml"/>
-  <div v-if="isFetched === 0" class="hero">
+  <PronounceMode v-if="isYaml" @update:hideBtn="showElem(true)"/>
+  <PronounceCompat v-if="proShown" @update:hideBtn="showElem(false)"/>
+  <div v-if="!proShown && isFetched === 0" class="hero">
     <div>
       <HeroTitle
           :title="res.title.title"
@@ -84,29 +91,52 @@ for (let k in links) {
       <HeroLinks :links="res.urls"/>
     </div>
   </div>
-  <CustomFooter v-if="isFetched === 0" />
+  <CustomFooter v-if="!proShown && isFetched === 0"/>
 </template>
 
 <style scoped>
+@media screen and (orientation: landscape) {
+  .hero {
+    margin: 64px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: Blur ease-out 0.5s;
+  }
 
-.hero {
-  margin: 64px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: Blur ease-out 0.5s;
+  .hero > div {
+    min-width: 500px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  .hero > div > *:not(:last-child) {
+    margin-bottom: 16px;
+  }
 }
 
-.hero > div {
-  min-width: 500px;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
-}
+@media screen and (orientation: portrait) {
+  .hero {
+    margin: 5vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: Blur ease-out 0.5s;
+  }
 
-.hero > div > *:not(:last-child) {
-  margin-bottom: 16px;
+  .hero > div {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  .hero > div > *:not(:last-child) {
+    margin-bottom: 2vh;
+  }
 }
 </style>

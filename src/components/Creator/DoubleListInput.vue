@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(['listDblItems', 'placeHolders', 'sections','emptyPlaceHolder']);
+const props = defineProps(['listDblItems', 'placeHolders', 'sections', 'emptyPlaceHolder']);
 
 function addItem() {
   let item = {};
@@ -42,77 +42,154 @@ function updateItem(value, index, tag) {
 </template>
 
 <style scoped>
-.dlistinput {
-  display: flex;
-  padding: 16px;
-  border-radius: 24px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-  background: var(--bg);
-  filter: var(--shadow);
+@media screen and (orientation: landscape) {
+  .dlistinput {
+    display: flex;
+    padding: 16px;
+    border-radius: 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    background: var(--bg);
+
+  }
+
+  .dlistinput > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+    border-radius: 24px;
+    background: var(--bg);
+  }
+
+  .dlistinput > .inputbuttons {
+    flex-direction: row-reverse;
+  }
+
+  .dlistinput > div > p {
+    margin: 0;
+    flex-grow: 1;
+    opacity: 0.25;
+    font-size: 0.9em;
+  }
+
+  .dlistinput > div > button {
+    padding: 4px;
+    border-radius: 999px;
+    font-size: 1em;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .dlistinput > div > button:hover {
+    background: var(--wi) !important;
+  }
+
+  .inputbuttons > *:not(:last-child) {
+    margin-left: 12px;
+  }
+
+  .dlistinput > div > button > img {
+    height: 1em;
+  }
+
+  .dlistinput > div > input {
+    padding: 8px 4px;
+    border: none;
+    font-size: 1em;
+    transition: all 0.25s;
+    color: var(--text);
+    background: none;
+    border-radius: 999px;
+    flex: 1 1;
+    min-width: 0;
+    margin-bottom: 4px;
+  }
+
+  .dlistinput > div > input:hover {
+    background: var(--ho) !important;
+  }
 }
 
-.dlistinput > div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: stretch;
-  border-radius: 24px;
-  background: var(--bg);
+@media screen and (orientation: portrait) {
+  .dlistinput {
+    display: flex;
+    padding: 2vh;
+    border-radius: 3vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    background: var(--wi);
+
+  }
+
+  .dlistinput > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+    border-radius: 3vh;
+  }
+
+  .dlistinput > .inputbuttons {
+    flex-direction: row-reverse;
+  }
+
+  .dlistinput > div > p {
+    margin: 0;
+    flex-grow: 1;
+    opacity: 0.25;
+    font-size: 0.9em;
+  }
+
+  .dlistinput > div > button {
+    padding: 1vh;
+    border-radius: 999px;
+    font-size: 1em;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .dlistinput > div > button:hover {
+    background: var(--wi) !important;
+  }
+
+  .inputbuttons > *:not(:last-child) {
+    margin-left: 2vh;
+  }
+
+  .dlistinput > div > button > img {
+    height: 1em;
+  }
+
+  .dlistinput > div > input {
+    padding: 2vh 3vh;
+    border: none;
+    font-size: 1em;
+    transition: all 0.25s;
+    color: var(--text);
+    background: none;
+    border-radius: 999px;
+    flex: 1 1;
+    min-width: 0;
+    margin-bottom: 0.5vh;
+  }
+
+  .dlistinput > div > input:hover {
+    background: var(--ho) !important;
+  }
 }
 
-.dlistinput > .inputbuttons {
-  flex-direction: row-reverse;
-}
-
-.dlistinput > div > p {
-  margin: 0;
-  flex-grow: 1;
-  opacity: 0.25;
-  font-size: 0.9em;
-}
-
-.dlistinput > div > button {
-  padding: 4px;
-  border-radius: 999px;
-  font-size: 1em;
-  border: none;
-  background: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.25s;
-}
-
-.dlistinput > div > button:hover {
-  background: var(--wi) !important;
-}
-
-.dlistinput > div > *:not(:last-child) {
-  margin-left: 12px;
-}
-
-.dlistinput > div > button > img {
-  height: 1em;
-}
-
-.dlistinput > div > input {
-  padding: 8px 4px;
-  border: none;
-  font-size: 1em;
-  transition: all 0.25s;
-  color: var(--text);
-  background: none;
-  border-radius: 999px;
-  flex: 1 1;
-  min-width: 0;
-  margin-bottom: 4px;
-}
-
-.dlistinput > div > input:hover {
-  background: var(--ho) !important;
-}
 
 </style>

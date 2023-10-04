@@ -33,72 +33,141 @@ function updateItem(value, index) {
 </template>
 
 <style scoped>
-.listinput {
-  display: flex;
-  padding: 16px;
-  border-radius: 24px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-  background: var(--bg);
-  filter: var(--shadow);
-}
+@media screen and (orientation: landscape) {
+  .listinput {
+    display: flex;
+    padding: 16px;
+    border-radius: 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    background: var(--bg);
 
-.listinput > div {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: stretch;
-  border-radius: 24px;
-  background: var(--bg);
-}
+  }
 
-.listinput > div > p {
-  margin: 0;
-  flex-grow: 1;
-  opacity: 0.25;
-  font-size: 0.9em;
-}
+  .listinput > div {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: stretch;
+    border-radius: 24px;
+    background: var(--bg);
+  }
 
-.listinput > div > button {
-  padding: 4px;
-  border-radius: 999px;
-  font-size: 1em;
-  border: none;
-  background: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.25s;
-}
+  .listinput > div > p {
+    margin: 0;
+    flex-grow: 1;
+    opacity: 0.25;
+    font-size: 0.9em;
+  }
 
-.listinput > div > button:hover {
-  background: var(--wi) !important;
-}
+  .listinput > div > button {
+    padding: 4px;
+    border-radius: 999px;
+    font-size: 1em;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
 
-.listinput > div > *:not(:last-child) {
-  margin-left: 12px;
-}
+  .listinput > div > button:hover {
+    background: var(--wi) !important;
+  }
 
-.listinput > div > button > img {
-  height: 1em;
-}
+  .listinput > div > *:not(:last-child) {
+    margin-left: 12px;
+  }
 
-.listinput > input {
-  padding: 8px 4px;
-  border: none;
-  font-size: 1em;
-  transition: all 0.25s;
-  color: var(--text);
-  background: none;
-  border-radius: 16px;
-  flex: 1 1;
-  margin-bottom: 4px;
-}
+  .listinput > div > button > img {
+    height: 1em;
+  }
 
-.listinput > input:hover {
-  background: var(--ho) !important;
+  .listinput > input {
+    padding: 8px 4px;
+    border: none;
+    font-size: 1em;
+    transition: all 0.25s;
+    color: var(--text);
+    background: none;
+    border-radius: 16px;
+    flex: 1 1;
+    margin-bottom: 4px;
+  }
+
+  .listinput > input:hover {
+    background: var(--ho) !important;
+  }
+}
+@media screen and (orientation: portrait) {
+  .listinput {
+    display: flex;
+    padding: 2vh;
+    border-radius: 3vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    background: var(--wi);
+  }
+
+  .listinput > div {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: stretch;
+    border-radius: 3vh;
+  }
+
+  .listinput > div > p {
+    margin: 0;
+    flex-grow: 1;
+    opacity: 0.25;
+    font-size: 1em;
+  }
+
+  .listinput > div > button {
+    padding: 1vh;
+    border-radius: 999px;
+    font-size: 1em;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .listinput > div > button:hover {
+    background: var(--wi) !important;
+  }
+
+  .listinput > div > *:not(:last-child) {
+    margin-left: 2vh;
+  }
+
+  .listinput > div > button > img {
+    height: 1em;
+  }
+
+  .listinput > input {
+    padding: 2vh 3vh;
+    border: none;
+    font-size: 1em;
+    transition: all 0.25s;
+    color: var(--text);
+    background: none;
+    border-radius: 999px;
+    flex: 1 1;
+    margin-bottom: 0.5vh;
+  }
+
+  .listinput > input:hover {
+    background: var(--ho) !important;
+  }
 }
 
 </style>

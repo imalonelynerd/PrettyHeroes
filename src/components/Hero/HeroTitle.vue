@@ -16,43 +16,86 @@ const props = defineProps(
 </template>
 
 <style scoped>
-.herotitle {
-  color: var(--ctxt);
-  padding: 32px;
-  border-radius: 32px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  background-size: cover !important;
-  filter: var(--shadow);
+@media screen and (orientation: landscape) {
+  .herotitle {
+    color: var(--ctxt);
+    padding: 32px;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-size: cover !important;
+
+  }
+
+  .herotitle > div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+  }
+
+  .herotitle > div > * {
+    margin: 0;
+  }
+
+  .herotitle > div > *:not(:last-child) {
+    margin-bottom: 8px;
+  }
+
+  .herotitle > div > h1 {
+    color: var(--ctt);
+  }
+
+  .herotitle > img {
+    border-radius: 999px;
+    height: 108px;
+  }
+
+  .herotitle > *:not(:last-child) {
+    margin-right: 24px;
+  }
 }
 
-.herotitle > div {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: start;
-}
+@media screen and (orientation: portrait) {
+  .herotitle {
+    color: var(--ctxt);
+    padding: 3vh;
+    border-radius: 3vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-size: cover !important;
+  }
 
-.herotitle > div > * {
-  margin: 0;
-}
+  .herotitle > div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+  }
 
-.herotitle > div > *:not(:last-child) {
-  margin-bottom: 8px;
-}
+  .herotitle > div > * {
+    margin: 0;
+  }
 
-.herotitle > div > h1 {
-  color: var(--ctt);
-}
+  .herotitle > div > *:not(:last-child) {
+    margin-bottom: 1vh;
+  }
 
-.herotitle > img {
-  border-radius: 999px;
-  height: 108px;
-}
+  .herotitle > div > h1 {
+    color: var(--ctt);
+  }
 
-.herotitle > *:not(:last-child) {
-  margin-right: 24px;
+  .herotitle > img {
+    border-radius: 999px;
+    height: 10vh;
+  }
+
+  .herotitle > *:not(:last-child) {
+    margin-right: 2vh;
+  }
 }
 </style>
