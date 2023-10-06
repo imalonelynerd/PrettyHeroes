@@ -105,8 +105,7 @@ function showElem(val) {
   }
 
   .hero > div {
-    min-width: 500px;
-    max-width: 600px;
+    width: 600px;
     display: flex;
     flex-direction: column;
     align-items: stretch;

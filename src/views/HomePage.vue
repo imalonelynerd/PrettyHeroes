@@ -165,17 +165,20 @@ document.querySelector("meta[name~='og:description']").setAttribute("content", `
   }
 
   .query > * {
-    padding: 16px 20px;
+    padding: 16px 24px;
     border-radius: 999px;
     font-size: 1em;
     font-weight: bold;
     border: none;
     background: var(--bg);
     color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .query > * > img {
-    height: 1em;
+    height: 1.25em;
   }
 
   .query > input {

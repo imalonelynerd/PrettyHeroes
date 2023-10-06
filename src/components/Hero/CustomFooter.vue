@@ -4,7 +4,7 @@
 
 <template>
   <div class="footer">
-    <p>Made with ❤️ using <a href="https://github.com/lonelynerd/PrettyHeroes">PrettyHeroes</a></p>
+    <p>Made with ❤️, ☄️ and 🦕 using <a href="https://github.com/lonelynerd/PrettyHeroes">PrettyHeroes</a></p>
   </div>
 </template>
 
