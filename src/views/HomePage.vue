@@ -23,6 +23,7 @@ document.querySelector("link[rel~='icon']").href = `/favicon.png`;
 document.querySelector("meta[name~='description']").setAttribute("content", `${homeInfo.tagLine}`);
 document.querySelector("meta[name~='og:title']").setAttribute("content", `${homeInfo.appName}`);
 document.querySelector("meta[name~='og:description']").setAttribute("content", `${homeInfo.tagLine}`);
+document.documentElement.style = null;
 </script>
 
 <template>

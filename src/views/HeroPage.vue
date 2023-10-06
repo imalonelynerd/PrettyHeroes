@@ -62,13 +62,6 @@ function showElem(val) {
   proShown.value = val;
 }
 
-if (noColor) {
-  let delparams = ['--cbg', '--cwi', '--clk', '--cho', '--ctt', '--ctxt'];
-  for (let elem in delparams) {
-    document.documentElement.style.removeProperty(delparams[elem]);
-  }
-}
-
 </script>
 
 <template>
