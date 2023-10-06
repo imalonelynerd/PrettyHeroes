@@ -9,7 +9,7 @@
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .footer {
     padding: 0 0 16px;
     width: 100%;
@@ -26,7 +26,7 @@
     font-weight: bold;
   }
 }
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .footer {
     padding: 0 0 2vh;
     width: 100%;

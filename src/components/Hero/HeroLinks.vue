@@ -19,7 +19,7 @@ function defineTitle(title, index) {
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .links {
     display: flex;
     flex-direction: row;
@@ -66,7 +66,7 @@ function defineTitle(title, index) {
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .links {
     display: flex;
     flex-direction: column;

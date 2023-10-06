@@ -15,7 +15,7 @@ defineEmits(['update:imgSrc']);
 
 <style scoped>
 
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .iminput {
     padding: 16px 24px;
     border-radius: 999px;
@@ -37,7 +37,7 @@ defineEmits(['update:imgSrc']);
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .iminput {
     padding: 2vh 3vh;
     border-radius: 999px;

@@ -13,7 +13,7 @@
     --ctt: var(--text);
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
     :root {
         --col: var(--wi);
         --al: #353056;

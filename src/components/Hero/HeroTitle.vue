@@ -16,7 +16,7 @@ const props = defineProps(
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .herotitle {
     color: var(--ctxt);
     padding: 32px;
@@ -58,7 +58,7 @@ const props = defineProps(
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .herotitle {
     color: var(--ctxt);
     padding: 3vh;

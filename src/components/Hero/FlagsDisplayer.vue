@@ -50,7 +50,7 @@ function getFlag(req) {
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .flags {
     display: grid;
     grid-template-columns: repeat(15, 1fr);
@@ -65,7 +65,7 @@ function getFlag(req) {
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .flags {
     display: grid;
     grid-auto-rows: 1fr;

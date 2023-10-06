@@ -26,7 +26,7 @@ defineProps(["name1", "name2", "age", "pronouns", "desc", 'flags'])
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .desc {
     color: var(--ctxt);
     padding: 32px;
@@ -57,7 +57,7 @@ defineProps(["name1", "name2", "age", "pronouns", "desc", 'flags'])
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .desc {
     color: var(--ctxt);
     padding: 4vh;

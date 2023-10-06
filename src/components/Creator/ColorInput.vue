@@ -32,7 +32,7 @@ function checkColor(color) {
 
 <style scoped>
 
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .cinput {
     padding: 16px 24px;
     border-radius: 999px;
@@ -51,7 +51,7 @@ function checkColor(color) {
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .cinput {
     padding: 2vh 3vh;
     border-radius: 999px;

@@ -96,7 +96,7 @@ function showElem(val) {
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .hero {
     margin: 64px 0;
     display: flex;
@@ -118,7 +118,7 @@ function showElem(val) {
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .hero {
     margin: 5vh 0;
     display: flex;

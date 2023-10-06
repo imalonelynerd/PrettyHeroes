@@ -17,7 +17,7 @@ const userTag = routeObj.params.user;
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .loading {
     margin: 0;
     padding: 64px 0;
@@ -65,7 +65,7 @@ const userTag = routeObj.params.user;
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .loading {
     margin: 0;
     padding: 3vh 0;

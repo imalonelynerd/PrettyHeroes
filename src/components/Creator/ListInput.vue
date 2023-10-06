@@ -33,7 +33,7 @@ function updateItem(value, index) {
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .listinput {
     display: flex;
     padding: 16px;
@@ -102,7 +102,7 @@ function updateItem(value, index) {
     background: var(--ho) !important;
   }
 }
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .listinput {
     display: flex;
     padding: 2vh;

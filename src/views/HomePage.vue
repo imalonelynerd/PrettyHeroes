@@ -68,7 +68,7 @@ document.documentElement.style = null;
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .home {
     margin: 64px 0;
     display: flex;
@@ -196,7 +196,7 @@ document.documentElement.style = null;
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .home {
     width: 100%;
     margin: 5vh 0;

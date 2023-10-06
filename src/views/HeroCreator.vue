@@ -178,7 +178,7 @@ document.querySelector("meta[name='og:description']").content = `${homeInfo.tagL
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .creator {
     margin: 64px 0;
     display: flex;
@@ -269,7 +269,7 @@ document.querySelector("meta[name='og:description']").content = `${homeInfo.tagL
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .creator {
     margin: 5vh 0;
     display: flex;

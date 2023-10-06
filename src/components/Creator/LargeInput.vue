@@ -12,7 +12,7 @@ defineEmits(['update:modelValue']);
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape){
+@media screen and (hover: hover){
   .linput {
     padding: 16px 24px;
     border-radius: 24px;
@@ -31,7 +31,7 @@ defineEmits(['update:modelValue']);
     background: var(--ho) !important;
   }
 }
-@media screen and (orientation: portrait){
+@media screen and (hover: none){
   .linput {
     padding: 2vh 3vh;
     border-radius: 24px;

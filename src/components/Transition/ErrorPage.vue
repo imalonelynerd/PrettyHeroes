@@ -32,7 +32,7 @@ function getErrorMessage(errcode) {
 <!--TODO-->
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .err {
     margin: 0;
     padding: 64px 0;
@@ -80,7 +80,7 @@ function getErrorMessage(errcode) {
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .err {
     margin: 0;
     padding: 3vh 0;

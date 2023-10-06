@@ -29,7 +29,7 @@ defineEmits([
 
 <style scoped>
 
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .promess > div > div > a {
     width: fit-content;
     padding: 16px 24px;
@@ -115,7 +115,7 @@ defineEmits([
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .promess > div > div > a {
     padding: 2vh 3vh;
     border-radius: 999px;
