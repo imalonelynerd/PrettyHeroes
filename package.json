@@ -1,6 +1,6 @@
 {
   "name": "prettyheroes",
-  "version": "0.0.1",
+  "version": "fang",
   "private": true,
   "scripts": {
     "dev": "vite",

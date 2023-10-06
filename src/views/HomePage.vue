@@ -18,7 +18,7 @@ function goTo(place) {
   router.push(place);
 }
 
-document.querySelector('head title').textContent = `PrettyHeroes`;
+document.querySelector('head title').textContent = homeInfo.appName;
 document.querySelector("link[rel~='icon']").href = `/favicon.png`;
 document.querySelector("meta[name~='description']").setAttribute("content", `${homeInfo.tagLine}`);
 document.querySelector("meta[name~='og:title']").setAttribute("content", `${homeInfo.appName}`);
@@ -190,7 +190,7 @@ document.querySelector("meta[name~='og:description']").setAttribute("content", `
     z-index: 6;
   }
 
-  .query > *:not(:last-child){
+  .query > *:not(:last-child) {
     margin-right: 8px;
   }
 }

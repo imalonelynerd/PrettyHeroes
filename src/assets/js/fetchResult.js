@@ -1,6 +1,7 @@
 import {load} from "js-yaml";
 import {parse} from "smol-toml";
 import {refactorToml, refactorYaml} from "@/assets/js/checkFile";
+import homeInfo from "@/assets/json/homeInfo.json"
 
 export async function fetchWebsite(url) {
     let res = null;
@@ -15,7 +16,7 @@ export async function fetchWebsite(url) {
     return res.text();
 }
 
-export function loadAsToml(fetchedContent) {
+export function loadAsToml(fetchedContent, noColor) {
     let loadedContent = null;
     try {
         loadedContent = parse(fetchedContent);
@@ -25,29 +26,31 @@ export function loadAsToml(fetchedContent) {
 
     refactorToml(loadedContent);
 
-    document.querySelector('head title').textContent = `${loadedContent.title.title} - PrettyHeroes`;
+    document.querySelector('head title').textContent = `${loadedContent.title.title} - ${homeInfo.appName}`;
     document.querySelector("link[rel~='icon']").href = loadedContent.title.img;
     document.querySelector("meta[name='description']").content = loadedContent.title.catchphrase;
     document.querySelector("meta[name='og:title']").content = loadedContent.title.title;
     document.querySelector("meta[name='og:description']").content = loadedContent.title.catchphrase;
 
-    let params = {
-        '--cbg': loadedContent.colors.background,
-        '--cwi': loadedContent.colors.widget,
-        '--clk': loadedContent.colors.link,
-        '--cho': loadedContent.colors.hover,
-        '--ctt': loadedContent.colors.title,
-        '--ctxt': loadedContent.colors.text
-    }
-    for (let elem in params) {
-        if (params[elem] !== undefined) {
-            document.documentElement.style.setProperty(elem, params[elem]);
+    if (!noColor) {
+        let params = {
+            '--cbg': loadedContent.colors.background,
+            '--cwi': loadedContent.colors.widget,
+            '--clk': loadedContent.colors.link,
+            '--cho': loadedContent.colors.hover,
+            '--ctt': loadedContent.colors.title,
+            '--ctxt': loadedContent.colors.text
+        }
+        for (let elem in params) {
+            if (params[elem] !== undefined) {
+                document.documentElement.style.setProperty(elem, params[elem]);
+            }
         }
     }
     return loadedContent;
 }
 
-export function loadAsYaml(fetchedContent) {
+export function loadAsYaml(fetchedContent, noColor) {
     let loadedContent = null;
     try {
         loadedContent = load(fetchedContent);
@@ -91,12 +94,12 @@ export function loadAsYaml(fetchedContent) {
             url: loadedContent.urls[elem]
         })
     }
-    document.querySelector('head title').textContent = `${loadedContent.title} - PrettyHeroes`;
+    document.querySelector('head title').textContent = `${loadedContent.title} - ${homeInfo.appName}`;
     document.querySelector("head link[rel~='icon']").href = loadedContent.icon;
     document.querySelector("head meta[name='description']").content = "From Pronounce";
     document.querySelector("head meta[name='og:title']").content = loadedContent.title;
     document.querySelector("head meta[name='og:description']").content = "From Pronounce";
-    if (loadedContent.colors === undefined) {
+    if (loadedContent.colors === undefined || noColor) {
         return result;
     }
     let params = {

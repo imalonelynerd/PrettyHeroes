@@ -30,7 +30,6 @@ const userTag = routeObj.params.user;
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: Blur ease-out 0.5s;
   }
 
   .loading > div {
@@ -41,7 +40,7 @@ const userTag = routeObj.params.user;
     background: var(--wi);
     padding: 32px;
     border-radius: 32px;
-
+    animation: Blur ease-out 0.5s;
   }
 
   .loading > div > * {
@@ -79,7 +78,6 @@ const userTag = routeObj.params.user;
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: Blur ease-out 0.5s;
   }
 
   .loading > div {
@@ -90,7 +88,7 @@ const userTag = routeObj.params.user;
     background: var(--bg);
     padding: 3vh;
     border-radius: 3vh;
-
+    animation: Blur ease-out 0.5s;
   }
 
   .loading > div > * {

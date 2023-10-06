@@ -18,6 +18,7 @@ const proShown = ref(false);
 
 const routeObj = useRoute();
 const userTag = routeObj.params.user;
+const noColor = routeObj.query.nocolor;
 
 let links = [
   {
@@ -36,7 +37,7 @@ for (let k in links) {
   if (res !== false) {
     switch (links[k].type) {
       case "toml":
-        res = loadAsToml(res);
+        res = loadAsToml(res, noColor);
         if (res === false) {
           isFetched.value = 2;
           break;
@@ -44,7 +45,7 @@ for (let k in links) {
         isFetched.value = 0;
         break;
       case "yaml":
-        res = loadAsYaml(res);
+        res = loadAsYaml(res, noColor);
         if (res === false) {
           isFetched.value = 2;
           break;
@@ -59,6 +60,13 @@ for (let k in links) {
 
 function showElem(val) {
   proShown.value = val;
+}
+
+if (noColor) {
+  let delparams = ['--cbg', '--cwi', '--clk', '--cho', '--ctt', '--ctxt'];
+  for (let elem in delparams) {
+    document.documentElement.style.removeProperty(delparams[elem]);
+  }
 }
 
 </script>

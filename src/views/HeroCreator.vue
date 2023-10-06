@@ -55,7 +55,7 @@ function showElem(val, showbool) {
   }
 }
 
-document.querySelector('head title').textContent = `Creator - PrettyHeroes`;
+document.querySelector('head title').textContent = `Creator - ${homeInfo.appName}`;
 document.querySelector("link[rel~='icon']").href = `/icons/create.png`;
 document.querySelector("meta[name='description']").content = `${homeInfo.tagLine}`
 document.querySelector("meta[name='og:title']").content = `Creator - ${homeInfo.appName}`
@@ -268,6 +268,7 @@ document.querySelector("meta[name='og:description']").content = `${homeInfo.tagL
     margin-right: 8px;
   }
 }
+
 @media screen and (orientation: portrait) {
   .creator {
     margin: 5vh 0;

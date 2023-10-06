@@ -14,7 +14,7 @@
 }
 
 @media screen and (orientation: portrait) {
-    :root{
+    :root {
         --col: var(--wi);
         --al: #353056;
     }

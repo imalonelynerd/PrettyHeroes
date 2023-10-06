@@ -87,6 +87,10 @@ const props = defineProps(
 
   .herotitle > div > h1 {
     color: var(--ctt);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 50vw;
   }
 
   .herotitle > img {

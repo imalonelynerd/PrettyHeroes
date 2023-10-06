@@ -74,7 +74,6 @@ defineEmits([
     z-index: 10;
     align-items: center;
     justify-content: center;
-    animation: Blur ease-out 0.5s;
   }
 
   .promess > div {
@@ -88,8 +87,7 @@ defineEmits([
     height: fit-content;
     padding: 32px;
     float: right;
-    animation: slidein ease-out 0.25s;
-
+    animation: Blur ease-out 0.5s;
   }
 
   .promess > div > * {
@@ -130,7 +128,6 @@ defineEmits([
     justify-content: center;
     cursor: pointer;
     transition: all 0.25s;
-
   }
 
   .promess > div > div > a:hover {
@@ -160,7 +157,6 @@ defineEmits([
     z-index: 15;
     align-items: center;
     justify-content: center;
-    animation: Blur ease-out 0.5s;
     background: var(--bg);
   }
 
@@ -173,8 +169,7 @@ defineEmits([
     height: fit-content;
     padding: 5vh 0;
     float: right;
-    animation: slidein ease-out 0.25s;
-
+    animation: Blur ease-out 0.5s;
   }
 
   .promess > div > * {

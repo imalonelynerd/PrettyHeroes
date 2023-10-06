@@ -45,7 +45,6 @@ function getErrorMessage(errcode) {
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: Blur ease-out 0.5s;
   }
 
   .err > div {
@@ -56,7 +55,7 @@ function getErrorMessage(errcode) {
     background: var(--wi);
     padding: 32px;
     border-radius: 32px;
-
+    animation: Blur ease-out 0.5s;
   }
 
   .err > div > * {
@@ -94,7 +93,6 @@ function getErrorMessage(errcode) {
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: Blur ease-out 0.5s;
   }
 
   .err > div {
@@ -105,7 +103,7 @@ function getErrorMessage(errcode) {
     background: var(--bg);
     padding: 3vh;
     border-radius: 3vh;
-
+    animation: Blur ease-out 0.5s;
   }
 
   .err > div > * {
