@@ -28,10 +28,10 @@ document.documentElement.style = null;
 
 <template>
   <div class="home">
+    <img :src="refHomeInfo.imgSource"/>
+    <h1>{{ refHomeInfo.appName }}</h1>
+    <code>{{ refHomeInfo.version }}</code>
     <div>
-      <img :src="refHomeInfo.imgSource"/>
-      <h1>{{ refHomeInfo.appName }}</h1>
-      <code>{{ refHomeInfo.version }}</code>
       <h2>{{ refHomeInfo.tagLine }}</h2>
       <p v-html="refHomeInfo.description"></p>
       <div class="buttons" v-if="!isShown">
@@ -70,11 +70,14 @@ document.documentElement.style = null;
 <style scoped>
 @media screen and (hover: hover) {
   .home {
-    margin: 64px 0;
+    height: 100vh;
+    width: 100vw;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     animation: Blur ease-out 0.5s;
+    gap: 16px;
   }
 
   .home > div {
@@ -82,22 +85,18 @@ document.documentElement.style = null;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 16px;
     background: var(--wi);
-    padding: 32px;
-    border-radius: 32px;
-
+    padding: 24px 32px;
+    border-radius: 16px;
   }
 
   .home > div > * {
     margin: 0;
   }
 
-  .home > div > img {
-    height: 128px;
-  }
-
-  .home > div > h1 {
-    margin-bottom: 8px;
+  .home > img {
+    height: 192px;
   }
 
   .home > div > h2 {
