@@ -38,6 +38,10 @@ h1 {
     code:hover {
         background: var(--ho);
     }
+
+    html {
+        font-size: 0.9em;
+    }
 }
 
 @media only screen and (hover: none) {
