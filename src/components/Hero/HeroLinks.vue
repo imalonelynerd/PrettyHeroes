@@ -68,10 +68,9 @@ function defineTitle(title, index) {
 @media screen and (hover: none) {
   .links {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: start;
-    align-items: center;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
     background: color-mix(in srgb, var(--cwi), var(--alpha));
     backdrop-filter: var(--blur);
     padding: 6vw;

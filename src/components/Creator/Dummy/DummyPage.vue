@@ -9,10 +9,10 @@ const props = defineProps(
 <template>
   <div class="dpage">
     <div :style="`background: color-mix(in srgb,${cols.widget === '' ? 'var(--wi)' : cols.widget}, var(--alpha))`">
-      <h1 :style="'color:' + cols.title === '' ? 'var(--text)' : cols.title"> Title </h1>
+      <h1 :style="`color: ${cols.title === '' ? 'var(--text)' : cols.title}`"> Title </h1>
     </div>
     <div :style="`background: color-mix(in srgb,${cols.widget === '' ? 'var(--wi)' : cols.widget}, var(--alpha))`">
-      <p :style="'color:' + cols.text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      <p :style="`color: ${cols.text === '' ? 'var(--text)' : cols.text}`">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem.
       </p>
     </div>

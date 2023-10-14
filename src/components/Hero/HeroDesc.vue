@@ -114,7 +114,7 @@ defineProps(["name1", "name2", "age", "desc", 'flags', 'work', 'timezone', 'loca
     align-items: stretch;
     background: color-mix(in srgb, var(--cwi), var(--alpha));
     backdrop-filter: var(--blur);
-    gap: 6vw;
+    gap: 8vw;
     box-shadow: var(--shadow);
   }
 
