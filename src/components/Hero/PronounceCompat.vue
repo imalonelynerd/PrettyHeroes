@@ -86,7 +86,7 @@ defineEmits([
     border-radius: 999px;
     font-size: 1em;
     font-weight: bold;
-    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    background: color-mix(in srgb, var(--wi), var(--alpha));
     backdrop-filter: var(--blur);
     display: flex;
     flex-direction: row;

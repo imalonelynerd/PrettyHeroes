@@ -115,6 +115,19 @@ document.documentElement.style = null;
     box-shadow: var(--shadow);
   }
 
+  .home > code {
+    padding: 12px 16px !important;
+    border-radius: 999px !important;
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
+    transition: all 0.25s;
+    box-shadow: var(--shadow);
+  }
+
+  .home > code:hover {
+    background: var(--ho);
+  }
+
   .home > div > * {
     margin: 0;
   }
@@ -219,6 +232,19 @@ document.documentElement.style = null;
 
   .home > img {
     height: 40vw;
+  }
+
+  .home > code {
+    padding: 3vw 6vw !important;
+    border-radius: 999px !important;
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
+    transition: all 0.25s;
+    box-shadow: var(--shadow);
+  }
+
+  .home > code:active {
+    background: var(--ho);
   }
 
   .home > div {

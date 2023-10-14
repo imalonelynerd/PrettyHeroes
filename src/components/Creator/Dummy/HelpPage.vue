@@ -19,13 +19,13 @@ defineEmits([
         below is a list of all the flags available alongside their associated keyword.</p>
       <FlagsDisplayer :flags-list="[]" has-all="all"/>
       <h3>About the colors</h3>
-      <p>To enter a color, it must correspond to a <b>valid hexadecimal code</b>. They usually look either like <b>#FF5263</b>
-        or <b>#27233F40</b>. The input's color will change accordingly if your input is valid.</p>
+      <p>Colors are represented as <b>hexadecimal code</b>. They usually look either like <b>#FF5263</b>
+        or <b>#27233F40</b>. You can check previews to know if the imputed code is vaild.</p>
       <h3>About the description</h3>
-      <p>The <b>description</b> entry can contain <b>Markdown</b> tags. Some of them includes <b>** bold **</b>, <i>*italic
+      <p>The <b>description</b> supports <b>Markdown</b>. You can, for example, write <b>** bold **</b>, <i>*italic
         *</i> or
         <del>~~ struck ~~</del>
-        . More of these can be found <a href="https://www.markdownguide.org/basic-syntax/"><b>[here]</b></a>.
+        text. More info can be found <a href="https://www.markdownguide.org/basic-syntax/"><b>[here]</b></a>.
       </p>
       <div>
         <a @click="$emit('update:hideBtn')">

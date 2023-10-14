@@ -167,7 +167,7 @@ function updateItem(value, index, tag) {
   }
 
   .dlistinput > div > input {
-    padding: 4vw 6vw;
+    padding: 2vw 0;
     border: none;
     font-size: 1em;
     transition: all 0.25s;
