@@ -33,16 +33,16 @@ function updateItem(value, index) {
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .listinput {
     display: flex;
     padding: 16px;
-    border-radius: 16px;
+    border-radius: 25px;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    background: var(--wi);
-
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
   }
 
   .listinput > div {
@@ -50,8 +50,8 @@ function updateItem(value, index) {
     flex-direction: row-reverse;
     align-items: center;
     justify-content: stretch;
-    border-radius: 24px;
-    background: var(--wi);
+    border-radius: 25px;
+    gap: 8px;
   }
 
   .listinput > div > p {
@@ -78,10 +78,6 @@ function updateItem(value, index) {
     background: var(--bg) !important;
   }
 
-  .listinput > div > *:not(:last-child) {
-    margin-left: 12px;
-  }
-
   .listinput > div > button > img {
     height: 1em;
   }
@@ -103,15 +99,16 @@ function updateItem(value, index) {
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .listinput {
     display: flex;
-    padding: 2vh;
-    border-radius: 2vh;
+    padding: 4vw;
+    border-radius: 5vw;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    background: var(--wi);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
   }
 
   .listinput > div {
@@ -119,7 +116,8 @@ function updateItem(value, index) {
     flex-direction: row-reverse;
     align-items: center;
     justify-content: stretch;
-    border-radius: 3vh;
+    border-radius: 5vw;
+    gap: 4vw;
   }
 
   .listinput > div > p {
@@ -130,7 +128,7 @@ function updateItem(value, index) {
   }
 
   .listinput > div > button {
-    padding: 1vh;
+    padding: 2vw;
     border-radius: 999px;
     font-size: 1em;
     border: none;
@@ -146,16 +144,12 @@ function updateItem(value, index) {
     background: var(--bg) !important;
   }
 
-  .listinput > div > *:not(:last-child) {
-    margin-left: 2vh;
-  }
-
   .listinput > div > button > img {
     height: 1em;
   }
 
   .listinput > input {
-    padding: 2vh 3vh;
+    padding: 4vw 6vw;
     border: none;
     font-size: 1em;
     transition: all 0.25s;
@@ -163,7 +157,7 @@ function updateItem(value, index) {
     background: none;
     border-radius: 999px;
     flex: 1 1;
-    margin-bottom: 0.5vh;
+    margin-bottom: 1vw;
   }
 
   .listinput > input:active {

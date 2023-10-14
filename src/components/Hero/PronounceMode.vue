@@ -14,7 +14,7 @@ defineEmits([
 
 <style scoped>
 
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .messbtn {
     position: fixed;
     top: 32px;
@@ -24,7 +24,7 @@ defineEmits([
     border-radius: 999px;
     font-size: 1em;
     font-weight: bold;
-    background: var(--wi);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -49,17 +49,19 @@ defineEmits([
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .messbtn {
     position: fixed;
-    bottom: 5vh;
-    left: 10vh;
-    right: 10vh;
-    padding: 2vh 3vh;
+    bottom: 10vw;
+    right: 5vw;
+    height: 4vw;
+    width: 4vw;
+    padding: 6vw;
     border-radius: 999px;
     font-size: 1em;
     font-weight: bold;
-    background: var(--al);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -79,9 +81,10 @@ defineEmits([
   }
 
   .messbtn > p {
-    margin: 0 0 0 1vh;
+    display: none;
+    /*margin: 0 0 0 2vw;
     padding: 0;
-    transition: all 0.25s;
+    transition: all 0.25s;*/
   }
 }
 </style>

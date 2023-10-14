@@ -61,7 +61,7 @@ for (let elem in params) {
 
 <style scoped>
 
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .dummy {
     position: absolute;
     top: 0;
@@ -69,7 +69,7 @@ for (let elem in params) {
     left: 0;
     right: 0;
     z-index: 2;
-    animation: Blur ease-out 0.5s;
+    /*animation: Blur ease-out 0.5s;*/
   }
 
   .hero {
@@ -77,7 +77,7 @@ for (let elem in params) {
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: Blur ease-out 0.5s;
+    /*animation: Blur ease-out 0.5s;*/
   }
 
   .hero > div {
@@ -90,18 +90,18 @@ for (let elem in params) {
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .dummy {
     z-index: 2;
-    animation: Blur ease-out 0.5s;
+    /*animation: Blur ease-out 0.5s;*/
   }
 
   .hero {
-    margin: 5vh 0;
+    margin: 10vw 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: Blur ease-out 0.5s;
+    /*animation: Blur ease-out 0.5s;*/
   }
 
   .hero > div {
@@ -110,7 +110,7 @@ for (let elem in params) {
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    gap: 2vh;
+    gap: 4vw;
   }
 }
 

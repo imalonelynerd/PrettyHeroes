@@ -170,7 +170,7 @@ document.documentElement.style = null;
               place-holder="Description"/>
         </div>
         <div>
-          <DummyDesc :desc="values.personal.desc === '' ? '**Hello** *world* !' : values.personal.desc"/>
+          <DummyDesc :desc="values.personal.desc === '' ? '\\*\\*Hello\\*\\* \\*world\\* ! ---> **Hello** *world* !' : values.personal.desc"/>
         </div>
       </div>
     </div>
@@ -254,14 +254,14 @@ document.documentElement.style = null;
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .creator {
-    margin: 64px 0;
+    margin: 64px 0 144px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    animation: Blur ease-out 0.5s;
+    /*animation: Blur ease-out 0.5s;*/
     gap: 32px;
   }
 
@@ -274,9 +274,9 @@ document.documentElement.style = null;
     padding: 32px;
     border-radius: 16px;
     gap: 32px;
-    background: color-mix(in srgb, var(--wi), transparent 33%);
+    background: color-mix(in srgb, var(--bg), var(--alpha));
     box-shadow: var(--shadow);
-    backdrop-filter: blur(10px);
+    backdrop-filter: var(--blur);
   }
 
   .creator > div:not([class]) > div {
@@ -307,12 +307,12 @@ document.documentElement.style = null;
     justify-content: center;
     padding: 32px;
     border-radius: 16px;
-    background: url("/bg/bg.png");
+    background: url("/bg/creatbg.png");
     background-size: cover;
     box-shadow: var(--shadow);
   }
 
-  .creator > div > h1 {
+  .creator > div > * {
     margin: 0;
   }
 
@@ -321,8 +321,8 @@ document.documentElement.style = null;
     position: fixed;
     padding: 16px;
     border-radius: 128px;
-    background: color-mix(in srgb, var(--wi), transparent 33%);
-    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--bg), var(--alpha));
+    backdrop-filter: var(--blur);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -336,7 +336,8 @@ document.documentElement.style = null;
     border-radius: 999px;
     font-size: 1em;
     font-weight: bold;
-    background: var(--wi);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -374,19 +375,19 @@ document.documentElement.style = null;
   }
 
   .creattitle > img {
-    height: 192px;
+    height: 160px;
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .creator {
-    margin: 5vh 0;
+    margin: 12vw 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    animation: Blur ease-out 0.5s;
-    gap: 3vh;
+    /*animation: Blur ease-out 0.5s;*/
+    gap: 6vw;
   }
 
   .creator > div:not([class]) {
@@ -395,15 +396,15 @@ document.documentElement.style = null;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 3vh;
-    border-radius: 2vh;
-    gap: 3vh;
-    background: color-mix(in srgb, var(--wi), transparent 33%);
-    backdrop-filter: blur(10px);
+    padding: 6vw;
+    border-radius: 4vw;
+    gap: 6vw;
+    background: color-mix(in srgb, var(--bg), var(--alpha));
+    backdrop-filter: var(--blur);
     box-shadow: var(--shadow);
   }
 
-  .creator > div > h1 {
+  .creator > div > * {
     margin: 0;
   }
 
@@ -413,7 +414,7 @@ document.documentElement.style = null;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    gap: 5vh;
+    gap: 10vw;
   }
 
   .creator > div:not([class]) > div > div:first-of-type {
@@ -423,42 +424,44 @@ document.documentElement.style = null;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    gap: 1vh;
+    gap: 2vw;
     flex-grow: 0;
   }
 
   .creator > div:not([class]) > div > div:last-of-type {
-    flex: 1 1;
+    display: none;
+    /*flex: 1 1;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    padding: 3vh;
-    border-radius: 2vh;
+    padding: 6vw;
+    border-radius: 4vw;
     background: url("/bg/bg.png");
-    background-size: cover;
+    background-size: cover;*/
   }
 
   .tbuttons {
     width: 75vw;
-    padding: 3vh;
-    border-radius: 2vh;
-    background: color-mix(in srgb, var(--wi), transparent 33%);
-    backdrop-filter: blur(10px);
+    padding: 6vw;
+    border-radius: 4vw;
+    background: color-mix(in srgb, var(--bg), var(--alpha));
+    backdrop-filter: var(--blur);
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    gap: 1vh;
+    gap: 2vw;
     box-shadow: var(--shadow);
   }
 
   .tbuttons > a {
-    padding: 2vh 3vh;
+    padding: 4vw 6vw;
     border-radius: 999px;
     font-size: 1em;
     font-weight: bold;
-    background: var(--wi);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -476,7 +479,7 @@ document.documentElement.style = null;
   }
 
   .tbuttons > a > p, .tbuttons > router-link > p {
-    margin: 0 0 0 1vh;
+    margin: 0 0 0 2vw;
     padding: 0;
     transition: all 0.25s;
   }
@@ -487,8 +490,8 @@ document.documentElement.style = null;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2vh;
-    padding: 0 0 3vh;
+    gap: 4vw;
+    padding: 0 0 6vw;
   }
 
   .creattitle > * {
@@ -496,7 +499,7 @@ document.documentElement.style = null;
   }
 
   .creattitle > img {
-    height: 20vh;
+    height: 40vw;
   }
 }
 

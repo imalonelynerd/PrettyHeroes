@@ -5,7 +5,7 @@ defineProps([
 </script>
 
 <template>
-  <div v-if="bgImg !== undefined" class="background" :style="`background : url('${bgImg}') no-repeat center, var(--cbg)`"/>
+  <div v-if="bgImg !== undefined" class="background" :style="`background : url('${bgImg}') no-repeat center center, var(--cbg)`"/>
 </template>
 
 <style scoped>
@@ -17,6 +17,7 @@ defineProps([
   right: 0;
   margin: 0;
   z-index: -1;
-  filter: brightness(80%);
+  background-size: cover !important;
+  filter: brightness(90%);
 }
 </style>

@@ -2,7 +2,6 @@
     --bg: #161321;
     --wi: #27233f;
     --ho: #BA2C3A;
-    --col: var(--wi);
     --text: white;
 
     --cbg: var(--bg);
@@ -11,37 +10,33 @@
     --cho: var(--ho);
     --ctxt: var(--text);
     --ctt: var(--text);
+
+    --blur: blur(10px);
+    --alpha: transparent 50%;
 }
 
-@media screen and (orientation: portrait) {
-    :root {
-        --col: var(--wi);
-        --al: #353056;
-    }
-}
-
-@media only screen and (orientation: landscape) {
+@media only screen and (hover: hover) {
     :root {
         --shadow: 0px 8px 8px #00000020;
     }
 }
 
-@media only screen and (orientation: portrait) {
+@media only screen and (hover: none) {
     :root {
-        --shadow: 0px 0.5vh 0.5vh #00000020;
+        --shadow: 0px 1vw 1vw #00000020;
     }
 }
 
 @keyframes Blur {
     from {
         opacity: 0;
-        transform: translateY(64px);
-        filter: blur(10px);
+        /*transform: translateY(64px);*/
+        filter: blur(20px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        /*transform: translateY(0);*/
         filter: blur(0);
     }
 }

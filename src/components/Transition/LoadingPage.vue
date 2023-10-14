@@ -19,7 +19,7 @@ const userTag = routeObj.params.user;
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .loading {
     margin: 0;
     padding: 64px 0;
@@ -40,10 +40,13 @@ const userTag = routeObj.params.user;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: var(--wi);
+    background: color-mix(in srgb, var(--bg), var(--alpha));
+    backdrop-filter: var(--blur);
     padding: 32px;
     border-radius: 16px;
-    animation: Blur ease-out 0.5s;
+    /*animation: Blur ease-out 0.5s;*/
+    box-shadow: var(--shadow);
+    gap: 16px;
   }
 
   .loading > div > * {
@@ -62,13 +65,9 @@ const userTag = routeObj.params.user;
     text-align: center;
     width: 400px;
   }
-
-  .loading > div > *:not(:last-child) {
-    margin-bottom: 16px;
-  }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .loading {
     margin: 0;
     overflow: scroll;
@@ -88,10 +87,11 @@ const userTag = routeObj.params.user;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 3vh;
-    border-radius: 3vh;
-    animation: Blur ease-out 0.5s;
+    padding: 6vw;
+    border-radius: 6vw;
+    /*animation: Blur ease-out 0.5s;*/
     box-shadow: var(--shadow);
+    gap: 4vw;
   }
 
   .loading > div > * {
@@ -99,20 +99,16 @@ const userTag = routeObj.params.user;
   }
 
   .loading > div > img {
-    height: 20vh;
+    height: 40vw;
   }
 
   .loading > div > h1 {
-    margin-bottom: 1vh;
+    margin-bottom: 2vw;
   }
 
   .loading > div > p {
     text-align: center;
     width: 80vw;
-  }
-
-  .loading > div > *:not(:last-child) {
-    margin-bottom: 2vh;
   }
 }
 </style>

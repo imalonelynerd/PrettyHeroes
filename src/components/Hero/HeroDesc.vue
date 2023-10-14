@@ -41,7 +41,7 @@ defineProps(["name1", "name2", "age", "desc", 'flags', 'work', 'timezone', 'loca
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .desc {
     color: var(--ctxt);
     padding: 36px;
@@ -50,8 +50,8 @@ defineProps(["name1", "name2", "age", "desc", 'flags', 'work', 'timezone', 'loca
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    background: color-mix(in srgb, var(--cwi), transparent 50%);
-    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    backdrop-filter: var(--blur);
     gap: 24px;
     box-shadow: var(--shadow);
   }
@@ -103,18 +103,18 @@ defineProps(["name1", "name2", "age", "desc", 'flags', 'work', 'timezone', 'loca
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .desc {
     color: var(--ctxt);
-    padding: 3vh;
-    border-radius: 2vh;
+    padding: 6vw;
+    border-radius: 4vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    background: color-mix(in srgb, var(--cwi), transparent 50%);
-    backdrop-filter: blur(10px);
-    gap: 3vh;
+    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    backdrop-filter: var(--blur);
+    gap: 6vw;
     box-shadow: var(--shadow);
   }
 
@@ -138,7 +138,7 @@ defineProps(["name1", "name2", "age", "desc", 'flags', 'work', 'timezone', 'loca
     flex-direction: row;
     align-items: center;
     justify-content: start;
-    gap: 1vh;
+    gap: 2vw;
   }
 
   #desc {
@@ -147,10 +147,9 @@ defineProps(["name1", "name2", "age", "desc", 'flags', 'work', 'timezone', 'loca
 
   #lwt {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
-    gap: 2vh;
   }
 
   #lwt > div {
@@ -158,7 +157,7 @@ defineProps(["name1", "name2", "age", "desc", 'flags', 'work', 'timezone', 'loca
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 1vh;
+    gap: 2vw;
   }
 
   #lwt > div > * {

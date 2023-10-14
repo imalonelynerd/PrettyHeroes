@@ -9,20 +9,22 @@ import {marked} from "marked";
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .ddesc {
-    background: color-mix(in srgb, var(--wi), transparent 33%);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
     border-radius: 16px;
     padding: 16px 32px;
     box-shadow: var(--shadow);
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .ddesc {
-    background: color-mix(in srgb, var(--wi), transparent 33%);
-    border-radius: 2vh;
-    padding: 2vh 3vh;
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
+    border-radius: 4vw;
+    padding: 4vw 6vw;
     box-shadow: var(--shadow);
   }
 }

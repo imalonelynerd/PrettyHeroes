@@ -32,7 +32,7 @@ function getErrorMessage(errcode) {
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .err {
     margin: 0;
     padding: 64px 0;
@@ -52,12 +52,13 @@ function getErrorMessage(errcode) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: color-mix(in srgb, var(--wi), transparent 25%);
-    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--bg), var(--alpha));
+    backdrop-filter: var(--blur);
     padding: 32px;
     border-radius: 16px;
-    animation: Blur ease-out 0.5s;
+    /*animation: Blur ease-out 0.5s;*/
     box-shadow: var(--shadow);
+    gap: 16px;
   }
 
   .err > div > * {
@@ -76,13 +77,9 @@ function getErrorMessage(errcode) {
     text-align: center;
     width: 400px;
   }
-
-  .err > div > *:not(:last-child) {
-    margin-bottom: 16px;
-  }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .err {
     margin: 0;
     overflow: scroll;
@@ -102,9 +99,10 @@ function getErrorMessage(errcode) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 3vh;
-    border-radius: 3vh;
-    animation: Blur ease-out 0.5s;
+    padding: 6vw;
+    border-radius: 6vw;
+    /*animation: Blur ease-out 0.5s;*/
+    gap: 4vw;
   }
 
   .err > div > * {
@@ -112,20 +110,16 @@ function getErrorMessage(errcode) {
   }
 
   .err > div > img {
-    height: 20vh;
+    height: 40vw;
   }
 
   .err > div > h1 {
-    margin-bottom: 1vh;
+    margin-bottom: 2vw;
   }
 
   .err > div > p {
     text-align: center;
     width: 80vw;
-  }
-
-  .err > div > *:not(:last-child) {
-    margin-bottom: 2vh;
   }
 }
 </style>

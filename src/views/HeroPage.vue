@@ -98,13 +98,13 @@ function showElem(val) {
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .hero {
     margin: 64px 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: Blur ease-out 0.5s;
+    /*animation: Blur ease-out 0.5s;*/
   }
 
   .hero > div {
@@ -117,13 +117,13 @@ function showElem(val) {
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .hero {
-    margin: 5vh 0;
+    margin: 10vw 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: Blur ease-out 0.5s;
+    /*animation: Blur ease-out 0.5s;*/
   }
 
   .hero > div {
@@ -132,7 +132,7 @@ function showElem(val) {
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    gap: 2vh;
+    gap: 4vw;
   }
 }
 </style>

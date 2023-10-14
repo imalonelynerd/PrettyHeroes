@@ -31,7 +31,7 @@ defineEmits([
 
 <style scoped>
 
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .promess {
     margin: 0;
     padding: 64px 0;
@@ -54,23 +54,18 @@ defineEmits([
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: color-mix(in srgb, var(--wi), transparent 33%);
-    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--bg), var(--alpha));
+    backdrop-filter: var(--blur);
     border-radius: 16px;
     height: fit-content;
     padding: 32px;
     float: right;
-    animation: Blur ease-out 0.5s;
     box-shadow: var(--shadow);
+    gap: 32px;
   }
 
   .promess > div > * {
     margin: 0;
-  }
-
-  .promess > div > *:not(:last-child) {
-    margin-bottom: 32px;
-    text-align: center;
   }
 
   .promess > div > div {
@@ -78,14 +73,11 @@ defineEmits([
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    gap: 8px;
   }
 
   .promess > div > img {
     height: 128px;
-  }
-
-  .promess > div > div > *:not(:last-child) {
-    margin-right: 8px;
   }
 
   .promess > div > div > a {
@@ -94,7 +86,8 @@ defineEmits([
     border-radius: 999px;
     font-size: 1em;
     font-weight: bold;
-    background: var(--wi);
+    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    backdrop-filter: var(--blur);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -119,10 +112,10 @@ defineEmits([
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .promess {
     margin: 0;
-    padding: 3vh 0;
+    padding: 6vw 0;
     overflow: scroll;
     position: absolute;
     top: 0;
@@ -143,18 +136,14 @@ defineEmits([
     align-items: stretch;
     justify-content: center;
     height: fit-content;
-    padding: 5vh 0;
+    padding: 10vw 0;
     float: right;
-    animation: Blur ease-out 0.5s;
+    /*animation: Blur ease-out 0.5s;*/
+    gap: 6vw;
   }
 
   .promess > div > * {
     margin: 0;
-  }
-
-  .promess > div > *:not(:last-child) {
-    margin-bottom: 3vh;
-    text-align: center;
   }
 
   .promess > div > div {
@@ -169,11 +158,12 @@ defineEmits([
   }
 
   .promess > div > div > a {
-    padding: 2vh 3vh;
+    padding: 4vw 6vw;
     border-radius: 999px;
     font-size: 1em;
     font-weight: bold;
-    background: var(--wi);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -192,13 +182,13 @@ defineEmits([
   }
 
   .promess > div > div > a > p {
-    margin: 0 0 0 1vh;
+    margin: 0 0 0 2vw;
     padding: 0;
     transition: all 0.25s;
   }
 
   .promess > div > img {
-    height: 20vh;
+    height: 40vw;
     width: 100%;
     object-fit: contain;
   }
@@ -208,10 +198,7 @@ defineEmits([
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-  }
-
-  .promess > div > div > *:not(:last-child) {
-    margin-bottom: 2vh;
+    gap: 4vw;
   }
 }
 </style>

@@ -6,7 +6,7 @@ defineEmits(['update:imgSrc']);
 <template>
   <input
       class="iminput"
-      :style="`background : linear-gradient(#00000040, #00000040), url('${imgSrc}'), var(--col)`"
+      :style="imgSrc === '' ? `color-mix(in srgb, var(--wi), var(--alpha))` : `background : linear-gradient(#00000040, #00000040), url('${imgSrc}') no-repeat center center`"
       type="text"
       :value="imgSrc"
       :placeholder="placeHolder"
@@ -15,47 +15,43 @@ defineEmits(['update:imgSrc']);
 
 <style scoped>
 
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .iminput {
     padding: 16px 24px;
     border-radius: 999px;
     border: none;
     font-size: 1em;
-    background: var(--wi);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
     transition: all 0.25s;
     color: var(--text);
-
     min-width: 0;
     flex: 1 1;
-    background-repeat: no-repeat !important;
-    background-position: center center !important;
     background-size: cover !important;
   }
 
   .iminput:hover {
-    filter: brightness(125%) !important;
+    background: var(--ho) !important;
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .iminput {
-    padding: 2vh 3vh;
+    padding: 4vw 6vw;
     border-radius: 999px;
     border: none;
     font-size: 1em;
-    background: var(--wi);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
     transition: all 0.25s;
     color: var(--text);
-
     min-width: 0;
     flex: 1 1;
-    background-repeat: no-repeat !important;
-    background-position: center center !important;
     background-size: cover !important;
   }
 
   .iminput:active {
-    filter: brightness(125%) !important;
+    background: var(--ho) !important;
   }
 }
 

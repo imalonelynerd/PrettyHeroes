@@ -9,15 +9,15 @@
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .footer {
     padding: 16px 0;
     width: 100%;
     height: fit-content;
     opacity: 1;
     text-align: center;
-    background: color-mix(in srgb, var(--cbg), transparent 50%);
-    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--cbg), var(--alpha));
+    backdrop-filter: var(--blur);
   }
 
   .footer > p {
@@ -29,9 +29,9 @@
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .footer {
-    padding: 2vh 0;
+    padding: 4vw 0;
     width: 100%;
     height: fit-content;
     opacity: 1;

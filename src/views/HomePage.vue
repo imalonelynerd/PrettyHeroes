@@ -80,7 +80,7 @@ document.documentElement.style = null;
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .home {
     height: 100vh;
     width: 100vw;
@@ -88,7 +88,7 @@ document.documentElement.style = null;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    animation: Blur ease-out 0.5s;
+    /*animation: Blur ease-out 0.5s;*/
     gap: 16px;
   }
 
@@ -97,7 +97,7 @@ document.documentElement.style = null;
   }
 
   .home > img {
-    height: 192px;
+    height: 160px;
   }
 
   .home > div {
@@ -108,7 +108,8 @@ document.documentElement.style = null;
     justify-content: center;
     align-items: center;
     gap: 32px;
-    background: color-mix(in srgb, var(--wi), transparent 33%);
+    background: color-mix(in srgb, var(--bg), var(--alpha));
+    backdrop-filter: var(--blur);
     padding: 24px 32px;
     border-radius: 16px;
     box-shadow: var(--shadow);
@@ -132,7 +133,7 @@ document.documentElement.style = null;
     justify-content: center;
     align-items: center;
     gap: 8px;
-    animation: Blur ease-out 0.5s;
+    /*animation: Blur ease-out 0.5s;*/
   }
 
   .buttons > *,
@@ -142,7 +143,8 @@ document.documentElement.style = null;
     font-size: 1em;
     font-weight: bold;
     border: none;
-    background: var(--wi);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
     color: var(--text);
     display: flex;
     flex-direction: row;
@@ -190,7 +192,7 @@ document.documentElement.style = null;
     flex-direction: row;
     align-items: stretch;
     justify-content: center;
-    animation: Blur ease-out 0.5s;
+    /*animation: Blur ease-out 0.5s;*/
     gap: 8px;
   }
 
@@ -199,16 +201,16 @@ document.documentElement.style = null;
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .home {
     width: 100vw;
-    padding: 5vh 0;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    animation: Blur ease-out 0.5s;
-    gap: 2vh;
+    /*animation: Blur ease-out 0.5s;*/
+    gap: 4vw;
   }
 
   .home > * {
@@ -216,16 +218,16 @@ document.documentElement.style = null;
   }
 
   .home > img {
-    height: 20vh;
+    height: 40vw;
   }
 
   .home > div {
-    margin-top: 2vh;
+    margin-top: 4vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3vh;
+    gap: 6vw;
   }
 
   .home > div > * {
@@ -246,19 +248,20 @@ document.documentElement.style = null;
     flex-direction: column;
     justify-content: stretch;
     align-items: stretch;
-    gap: 1vh;
+    gap: 2vw;
     width: 80vw;
-    animation: Blur ease-out 0.5s;
+    /*animation: Blur ease-out 0.5s;*/
   }
 
   .buttons > *,
   .query > * {
-    padding: 2vh 3vh;
-    border-radius: 6vh;
+    padding: 4vw 6vw;
+    border-radius: 12vw;
     font-size: 1em;
     font-weight: bold;
     border: none;
-    background: var(--wi);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
     color: var(--text);
     display: flex;
     flex-direction: row;
@@ -281,7 +284,7 @@ document.documentElement.style = null;
 
   .buttons > * > p,
   .query > * > p {
-    margin: 0 0 0 1vh;
+    margin: 0 0 0 2vw;
     padding: 0;
     transition: all 0.25s;
     max-width: 60vw;
@@ -295,8 +298,8 @@ document.documentElement.style = null;
     flex-direction: column;
     align-items: stretch;
     justify-content: stretch;
-    animation: Blur ease-out 0.5s;
-    gap: 1vh;
+    /*animation: Blur ease-out 0.5s;*/
+    gap: 2vw;
     width: 80vw;
   }
 

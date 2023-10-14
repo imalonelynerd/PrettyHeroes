@@ -14,7 +14,7 @@ const props = defineProps(
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .herotitle {
     color: var(--ctxt);
     padding: 32px 0;
@@ -25,8 +25,8 @@ const props = defineProps(
     justify-content: center;
     background-size: cover !important;
     gap: 8px;
-    background: color-mix(in srgb, var(--cwi), transparent 50%);
-    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    backdrop-filter: var(--blur);
     box-shadow: var(--shadow);
   }
 
@@ -45,19 +45,19 @@ const props = defineProps(
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .herotitle {
     color: var(--ctxt);
-    padding: 3vh 0;
+    padding: 6vw 0;
     border-radius: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-size: cover !important;
-    gap: 1vh;
-    background: color-mix(in srgb, var(--cwi), transparent 50%);
-    backdrop-filter: blur(10px);
+    gap: 2vw;
+    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    backdrop-filter: var(--blur);
     box-shadow: var(--shadow);
   }
 
@@ -71,7 +71,7 @@ const props = defineProps(
 
   .herotitle > img {
     border-radius: 999px;
-    height: 15vh;
+    height: 20vw;
     box-shadow: var(--shadow);
   }
 }

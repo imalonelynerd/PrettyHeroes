@@ -15,15 +15,15 @@ defineEmits([
       <img :src="helpInfo.imgsource">
       <h1 v-html="helpInfo.title"></h1>
       <h3>About the flags</h3>
-      <p>In order to display the flags correctly, you must enter in the <b>flags</b> entries a <b>specific keyword</b>.
-        Hover your mouse over one of the <b>flags</b> below to get the corresponding keyword.</p>
+      <p>Each flag is associated to a <b>specific keyword</b>, that you can enter in the <b>flags</b> entries. Right
+        below is a list of all the flags available alongside their associated keyword.</p>
       <FlagsDisplayer :flags-list="[]" has-all="all"/>
       <h3>About the colors</h3>
       <p>To enter a color, it must correspond to a <b>valid hexadecimal code</b>. They usually look either like <b>#FF5263</b>
-        or <b>#27233F40</b> (for transparency). The input's color will change accordingly if your input is valid.</p>
+        or <b>#27233F40</b>. The input's color will change accordingly if your input is valid.</p>
       <h3>About the description</h3>
-      <p>The <b>description</b> entry can contain <b>Markdown</b> tags. Some of them includes <b>** bold **</b>, <i>*
-        italic *</i> or
+      <p>The <b>description</b> entry can contain <b>Markdown</b> tags. Some of them includes <b>** bold **</b>, <i>*italic
+        *</i> or
         <del>~~ struck ~~</del>
         . More of these can be found <a href="https://www.markdownguide.org/basic-syntax/"><b>[here]</b></a>.
       </p>
@@ -39,7 +39,7 @@ defineEmits([
 
 <style scoped>
 
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   #helpmess {
     margin: 0;
     height: fit-content;
@@ -53,7 +53,7 @@ defineEmits([
     z-index: 15;
     align-items: center;
     justify-content: center;
-    animation: Blur ease-out 0.5s;
+    /*animation: Blur ease-out 0.5s;*/
   }
 
   #helpmess > div {
@@ -63,22 +63,18 @@ defineEmits([
     align-items: center;
     justify-content: center;
     height: fit-content;
-    background: color-mix(in srgb, var(--wi), transparent 33%);
-    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--bg), var(--alpha));
+    backdrop-filter: var(--blur);
     border-radius: 16px;
     padding: 32px;
     float: right;
-    animation: Blur ease-out 0.5s;
+    /*animation: Blur ease-out 0.5s;*/
     box-shadow: var(--shadow);
+    gap: 24px;
   }
 
   #helpmess > div > * {
     margin: 0;
-  }
-
-  #helpmess > div > *:not(:last-child) {
-    margin-bottom: 24px;
-    text-align: center;
   }
 
   #helpmess > div > div:not(.flags) {
@@ -86,6 +82,7 @@ defineEmits([
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    gap: 8px;
   }
 
 
@@ -95,7 +92,8 @@ defineEmits([
     border-radius: 999px;
     font-size: 1em;
     font-weight: bold;
-    background: var(--wi);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -121,18 +119,14 @@ defineEmits([
   #helpmess > div > img {
     height: 128px;
   }
-
-  #helpmess > div > div:not(.flags) > *:not(:last-child) {
-    margin-right: 8px;
-  }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   #helpmess {
     margin: 0;
     height: fit-content;
     width: 100%;
-    padding: 3vh 0;
+    padding: 6vw 0;
     overflow: scroll;
     position: absolute;
     top: 0;
@@ -150,18 +144,14 @@ defineEmits([
     align-items: stretch;
     justify-content: center;
     height: fit-content;
-    padding: 5vh 0;
+    padding: 10vw 0;
     float: right;
-    animation: Blur ease-out 0.5s;
+    /*animation: Blur ease-out 0.5s;*/
+    gap: 6vw;
   }
 
   #helpmess > div > * {
     margin: 0;
-  }
-
-  #helpmess > div > *:not(:last-child) {
-    margin-bottom: 3vh;
-    text-align: center;
   }
 
   #helpmess > div > div:not(.flags) {
@@ -180,17 +170,18 @@ defineEmits([
   }
 
   #helpmess > div > img {
-    height: 20vh;
+    height: 40vw;
     width: 100%;
     object-fit: contain;
   }
 
   #helpmess > div > div:not(.flags) > a {
-    padding: 2vh 3vh;
+    padding: 4vw 6vw;
     border-radius: 999px;
     font-size: 1em;
     font-weight: bold;
-    background: var(--wi);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -209,7 +200,7 @@ defineEmits([
   }
 
   #helpmess > div > div:not(.flags) > a > p {
-    margin: 0 0 0 1vh;
+    margin: 0 0 0 2vw;
     padding: 0;
     transition: all 0.25s;
   }

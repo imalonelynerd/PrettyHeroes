@@ -52,7 +52,7 @@ function getFlag(req) {
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .flags {
     display: flex;
     flex-wrap: wrap;
@@ -68,7 +68,8 @@ function getFlag(req) {
     gap: 12px;
     border-radius: 64px;
     font-size: 1em;
-    background: color-mix(in srgb, var(--cwi), transparent 50%);
+    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    backdrop-filter: var(--blur);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -89,23 +90,24 @@ function getFlag(req) {
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .flags {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: start;
     align-items: center;
-    gap: 1vh;
+    gap: 2vw;
   }
 
   .flags > div {
     margin: 0;
-    padding: 1vh;
-    gap: 2vh;
-    border-radius: 6vh;
+    padding: 2vw;
+    gap: 4vw;
+    border-radius: 12vw;
     font-size: 1em;
-    background: color-mix(in srgb, var(--cwi), transparent 50%);
+    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    backdrop-filter: var(--blur);
     display: flex;
     flex-direction: row;
     align-items: center;

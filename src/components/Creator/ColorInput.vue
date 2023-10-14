@@ -14,7 +14,7 @@ function checkColor(color) {
   if (/^#[0-9A-Fa-f]{6,8}$/.test(color)) {
     return color;
   }
-  return 'var(--col)';
+  return "color-mix(in srgb, var(--wi), var(--alpha))";
 }
 
 </script>
@@ -32,13 +32,14 @@ function checkColor(color) {
 
 <style scoped>
 
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .cinput {
     padding: 16px 24px;
     border-radius: 999px;
     border: none;
     font-size: 1em;
-    background: var(--col);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
     transition: all 0.25s;
     min-width: 0;
     color: var(--text);
@@ -50,13 +51,14 @@ function checkColor(color) {
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .cinput {
-    padding: 2vh 3vh;
+    padding: 4vw 6vw;
     border-radius: 999px;
     border: none;
     font-size: 1em;
-    background: var(--col);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
     transition: all 0.25s;
     min-width: 0;
     color: var(--text);

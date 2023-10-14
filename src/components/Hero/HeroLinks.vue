@@ -19,15 +19,15 @@ function defineTitle(title, index) {
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .links {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: start;
     align-items: center;
-    background: color-mix(in srgb, var(--cwi), transparent 50%);
-    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    backdrop-filter: var(--blur);
     padding: 32px;
     border-radius: 16px;
     gap: 8px;
@@ -39,7 +39,8 @@ function defineTitle(title, index) {
     border-radius: 999px;
     font-size: 1em;
     font-weight: bold;
-    background: var(--cwi);
+    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    backdrop-filter: var(--blur);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -64,27 +65,28 @@ function defineTitle(title, index) {
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .links {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: start;
     align-items: center;
-    background: color-mix(in srgb, var(--cwi), transparent 50%);
-    backdrop-filter: blur(10px);
-    padding: 3vh;
-    border-radius: 2vh;
-    gap: 1vh;
+    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    backdrop-filter: var(--blur);
+    padding: 6vw;
+    border-radius: 4vw;
+    gap: 2vw;
     box-shadow: var(--shadow);
   }
 
   .links > a {
-    padding: 2vh 3vh;
-    border-radius: 6vh;
+    padding: 4vw 6vw;
+    border-radius: 12vw;
     font-size: 1em;
     font-weight: bold;
-    background: var(--cwi);
+    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    backdrop-filter: var(--blur);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -103,7 +105,7 @@ function defineTitle(title, index) {
   }
 
   .links > a > p {
-    margin: 0 0 0 1vh;
+    margin: 0 0 0 2vw;
     padding: 0;
     transition: all 0.25s;
   }

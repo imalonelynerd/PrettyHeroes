@@ -8,20 +8,20 @@ const props = defineProps(
 
 <template>
   <div class="dpage">
-    <div :style="`background: color-mix(in srgb,${cols.widget}, transparent 33%)`">
-      <h1 :style="'color:' + cols.title"> Title </h1>
+    <div :style="`background: color-mix(in srgb,${cols.widget === '' ? 'var(--wi)' : cols.widget}, var(--alpha))`">
+      <h1 :style="'color:' + cols.title === '' ? 'var(--text)' : cols.title"> Title </h1>
     </div>
-    <div :style="`background: color-mix(in srgb,${cols.widget}, transparent 33%)`">
+    <div :style="`background: color-mix(in srgb,${cols.widget === '' ? 'var(--wi)' : cols.widget}, var(--alpha))`">
       <p :style="'color:' + cols.text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem.
       </p>
     </div>
-    <div :style="`background: color-mix(in srgb,${cols.widget}, transparent 33%)`">
-      <a :style="`background: ${cols.link}`">
+    <div :style="`background: color-mix(in srgb,${cols.widget === '' ? 'var(--wi)' : cols.widget}, var(--alpha))`">
+      <a :style="`background: color-mix(in srgb,${cols.link === '' ? 'var(--wi)' : cols.link}, var(--alpha))`">
         <img src="/icons/create.png">
         <p>Link</p>
       </a>
-      <a :style="`background: ${cols.hover}`">
+      <a :style="`background: ${cols.hover === '' ? 'var(--ho)' : cols.hover}`">
         <img src="/icons/create.png">
         <p>Hovered</p>
       </a>
@@ -30,7 +30,7 @@ const props = defineProps(
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .dpage {
     width: 100%;
     height: 100%;
@@ -51,8 +51,7 @@ const props = defineProps(
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
-    background: color-mix(in srgb, var(--wi), transparent 33%);
-    backdrop-filter: blur(10px);
+    backdrop-filter: var(--blur);
     box-shadow: var(--shadow);
   }
 
@@ -80,7 +79,7 @@ const props = defineProps(
     align-items: center;
     justify-content: center;
     cursor: default;
-    background: var(--wi);
+    backdrop-filter: var(--blur);
   }
 
   .dpage > div > a > img {
@@ -93,7 +92,7 @@ const props = defineProps(
     transition: all 0.25s;
   }
 }
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .dpage {
     width: 100%;
     height: 100%;
@@ -101,26 +100,25 @@ const props = defineProps(
     flex-direction: column;
     align-items: center;
     justify-content: stretch;
-    gap: 2vh;
+    gap: 4vw;
   }
 
   .dpage > div {
     width: 80%;
-    border-radius: 2vh;
-    padding: 2vh 3vh;
+    border-radius: 4vw;
+    padding: 4vw 6vw;
     display: flex;
     flex-direction: row;
     justify-content: start;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1vh;
-    background: color-mix(in srgb, var(--wi), transparent 33%);
-    backdrop-filter: blur(10px);
+    gap: 2vw;
+    backdrop-filter: var(--blur);
     box-shadow: var(--shadow);
   }
 
   .dpage > div:nth-of-type(2) {
-    height: 15vh;
+    height: 20vw;
   }
 
   .dpage > div > * {
@@ -134,7 +132,7 @@ const props = defineProps(
   }
 
   .dpage > div > a {
-    padding: 2vh 3vh;
+    padding: 4vw 6vw;
     border-radius: 999px;
     font-size: 1em;
     font-weight: bold;
@@ -143,7 +141,7 @@ const props = defineProps(
     align-items: center;
     justify-content: center;
     cursor: default;
-    background: var(--wi);
+    backdrop-filter: var(--blur);
   }
 
   .dpage > div > a > img {
@@ -151,7 +149,7 @@ const props = defineProps(
   }
 
   .dpage > div > a > p {
-    margin: 0 0 0 1vh;
+    margin: 0 0 0 2vw;
     padding: 0;
     transition: all 0.25s;
   }
