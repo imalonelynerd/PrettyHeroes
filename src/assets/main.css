@@ -21,18 +21,13 @@ a {
     cursor: pointer;
 }
 
-
-h1 {
-    margin: 0;
-}
-
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
     code {
-        padding: 8px 16px !important;
+        padding: 12px 16px !important;
         border-radius: 999px !important;
-        background: var(--bg);
+        background: var(--wi);
         transition: all 0.25s;
-
+        box-shadow: var(--shadow);
     }
 
     code:hover {
@@ -44,7 +39,7 @@ h1 {
     }
 }
 
-@media only screen and (hover: none) {
+@media only screen and (orientation: portrait) {
     html {
         font-size: 3vw;
     }
@@ -55,7 +50,7 @@ h1 {
         border-radius: 999px !important;
         background: var(--wi);
         transition: all 0.25s;
-
+        box-shadow: var(--shadow);
     }
 
     code:active {

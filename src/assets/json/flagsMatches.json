@@ -79,10 +79,6 @@
     "img": "grey.png",
     "name": "Greysexual"
   },
-  "pride": {
-    "img": "pride.png",
-    "name": "LGBTQIA+"
-  },
   "inter": {
     "img": "inter.png",
     "name": "Intergender"
@@ -115,6 +111,10 @@
     "img": "poly.png",
     "name": "Polyamorous"
   },
+  "pride": {
+    "img": "pride.png",
+    "name": "LGBTQIA+"
+  },
   "queer": {
     "img": "queer.png",
     "name": "Queer"
@@ -130,5 +130,9 @@
   "trans": {
     "img": "trans.png",
     "name": "Transgender"
+  },
+  "foo": {
+    "img": "unknown.png",
+    "name": "Bar"
   }
 }

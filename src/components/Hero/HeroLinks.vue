@@ -19,21 +19,19 @@ function defineTitle(title, index) {
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .links {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: start;
     align-items: center;
-    background: var(--cwi);
-    padding: 32px 32px 24px;
-    border-radius: 32px;
-
-  }
-
-  .links > * {
-    margin: 0 8px 8px 0;
+    background: color-mix(in srgb, var(--cwi), transparent 50%);
+    backdrop-filter: blur(10px);
+    padding: 32px;
+    border-radius: 16px;
+    gap: 8px;
+    box-shadow: var(--shadow);
   }
 
   .links > a {
@@ -41,7 +39,7 @@ function defineTitle(title, index) {
     border-radius: 999px;
     font-size: 1em;
     font-weight: bold;
-    background: var(--clk);
+    background: var(--cwi);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -66,28 +64,27 @@ function defineTitle(title, index) {
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .links {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
-    background: var(--cwi);
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    background: color-mix(in srgb, var(--cwi), transparent 50%);
+    backdrop-filter: blur(10px);
     padding: 3vh;
-    border-radius: 3vh;
-
-  }
-
-  .links > *:not(:last-child) {
-    margin-bottom: 2vh;
+    border-radius: 2vh;
+    gap: 1vh;
+    box-shadow: var(--shadow);
   }
 
   .links > a {
     padding: 2vh 3vh;
-    border-radius: 999px;
+    border-radius: 6vh;
     font-size: 1em;
     font-weight: bold;
-    background: var(--clk);
+    background: var(--cwi);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -97,7 +94,7 @@ function defineTitle(title, index) {
 
   }
 
-  .links > a:hover {
+  .links > a:active {
     background: var(--cho);
   }
 

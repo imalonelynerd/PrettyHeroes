@@ -33,15 +33,15 @@ function updateItem(value, index) {
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .listinput {
     display: flex;
     padding: 16px;
-    border-radius: 24px;
+    border-radius: 16px;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    background: var(--bg);
+    background: var(--wi);
 
   }
 
@@ -51,7 +51,7 @@ function updateItem(value, index) {
     align-items: center;
     justify-content: stretch;
     border-radius: 24px;
-    background: var(--bg);
+    background: var(--wi);
   }
 
   .listinput > div > p {
@@ -75,7 +75,7 @@ function updateItem(value, index) {
   }
 
   .listinput > div > button:hover {
-    background: var(--wi) !important;
+    background: var(--bg) !important;
   }
 
   .listinput > div > *:not(:last-child) {
@@ -102,11 +102,12 @@ function updateItem(value, index) {
     background: var(--ho) !important;
   }
 }
-@media screen and (hover: none) {
+
+@media screen and (orientation: portrait) {
   .listinput {
     display: flex;
     padding: 2vh;
-    border-radius: 3vh;
+    border-radius: 2vh;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
@@ -141,8 +142,8 @@ function updateItem(value, index) {
     transition: all 0.25s;
   }
 
-  .listinput > div > button:hover {
-    background: var(--wi) !important;
+  .listinput > div > button:active {
+    background: var(--bg) !important;
   }
 
   .listinput > div > *:not(:last-child) {
@@ -165,7 +166,7 @@ function updateItem(value, index) {
     margin-bottom: 0.5vh;
   }
 
-  .listinput > input:hover {
+  .listinput > input:active {
     background: var(--ho) !important;
   }
 }

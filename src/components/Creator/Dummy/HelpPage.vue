@@ -17,7 +17,7 @@ defineEmits([
       <h3>About the flags</h3>
       <p>In order to display the flags correctly, you must enter in the <b>flags</b> entries a <b>specific keyword</b>.
         Hover your mouse over one of the <b>flags</b> below to get the corresponding keyword.</p>
-      <FlagsDisplayer flags-list="all"/>
+      <FlagsDisplayer :flags-list="[]" has-all="all"/>
       <h3>About the colors</h3>
       <p>To enter a color, it must correspond to a <b>valid hexadecimal code</b>. They usually look either like <b>#FF5263</b>
         or <b>#27233F40</b> (for transparency). The input's color will change accordingly if your input is valid.</p>
@@ -39,37 +39,7 @@ defineEmits([
 
 <style scoped>
 
-@media screen and (hover: hover) {
-  #helpmess > div > div:not(.flags) > a {
-    width: fit-content;
-    padding: 16px 24px;
-    border-radius: 999px;
-    font-size: 1em;
-    font-weight: bold;
-    background: var(--bg);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.25s;
-
-  }
-
-  #helpmess > div > div:not(.flags) > a:hover {
-    background: var(--ho);
-  }
-
-  #helpmess > div > div:not(.flags) > a > img {
-    height: 1.25em;
-  }
-
-  #helpmess > div > div:not(.flags) > a > p {
-    margin: 0 0 0 8px;
-    padding: 0;
-    transition: all 0.25s;
-  }
-
+@media screen and (orientation: landscape) {
   #helpmess {
     margin: 0;
     height: fit-content;
@@ -79,7 +49,6 @@ defineEmits([
     position: absolute;
     top: 0;
     left: 0;
-    background: var(--bg);
     display: flex;
     z-index: 15;
     align-items: center;
@@ -94,11 +63,13 @@ defineEmits([
     align-items: center;
     justify-content: center;
     height: fit-content;
-    background: var(--wi);
-    border-radius: 32px;
+    background: color-mix(in srgb, var(--wi), transparent 33%);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
     padding: 32px;
     float: right;
     animation: Blur ease-out 0.5s;
+    box-shadow: var(--shadow);
   }
 
   #helpmess > div > * {
@@ -117,26 +88,10 @@ defineEmits([
     align-items: center;
   }
 
-  #helpmess > div > p {
-    font-size: 0.8em;
-  }
 
-  #helpmess > div > p > a {
-    color: var(--ho);
-  }
-
-  #helpmess > div > img {
-    height: 128px;
-  }
-
-  #helpmess > div > div:not(.flags) > *:not(:last-child) {
-    margin-right: 8px;
-  }
-}
-
-@media screen and (hover: none) {
   #helpmess > div > div:not(.flags) > a {
-    padding: 2vh 3vh;
+    width: fit-content;
+    padding: 16px 24px;
     border-radius: 999px;
     font-size: 1em;
     font-weight: bold;
@@ -158,11 +113,21 @@ defineEmits([
   }
 
   #helpmess > div > div:not(.flags) > a > p {
-    margin: 0 0 0 1vh;
+    margin: 0 0 0 8px;
     padding: 0;
     transition: all 0.25s;
   }
 
+  #helpmess > div > img {
+    height: 128px;
+  }
+
+  #helpmess > div > div:not(.flags) > *:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+
+@media screen and (orientation: portrait) {
   #helpmess {
     margin: 0;
     height: fit-content;
@@ -176,7 +141,7 @@ defineEmits([
     z-index: 15;
     align-items: center;
     justify-content: center;
-}
+  }
 
   #helpmess > div {
     width: 80vw;
@@ -188,7 +153,7 @@ defineEmits([
     padding: 5vh 0;
     float: right;
     animation: Blur ease-out 0.5s;
-}
+  }
 
   #helpmess > div > * {
     margin: 0;
@@ -218,6 +183,35 @@ defineEmits([
     height: 20vh;
     width: 100%;
     object-fit: contain;
+  }
+
+  #helpmess > div > div:not(.flags) > a {
+    padding: 2vh 3vh;
+    border-radius: 999px;
+    font-size: 1em;
+    font-weight: bold;
+    background: var(--wi);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s;
+    box-shadow: var(--shadow);
+  }
+
+  #helpmess > div > div:not(.flags) > a:hover {
+    background: var(--ho);
+  }
+
+  #helpmess > div > div:not(.flags) > a > img {
+    height: 1.25em;
+  }
+
+  #helpmess > div > div:not(.flags) > a > p {
+    margin: 0 0 0 1vh;
+    padding: 0;
+    transition: all 0.25s;
   }
 
   #helpmess > div > div > a {

@@ -71,7 +71,7 @@ function showElem(val) {
       :error-code="isFetched"
   />
   <Background v-if="isFetched === 0" :bg-img="res.colors.bgimg"/>
-  <PronounceMode v-if="isYaml" @update:hideBtn="showElem(true)"/>
+  <PronounceMode v-if="isYaml && !proShown" @update:hideBtn="showElem(true)"/>
   <PronounceCompat v-if="proShown" @update:hideBtn="showElem(false)"/>
   <div v-if="!proShown && isFetched === 0" class="hero">
     <div>
@@ -79,14 +79,16 @@ function showElem(val) {
           :title="res.title.title"
           :catchphrase="res.title.catchphrase"
           :img-src="res.title.img"
-          :bg-img="res.colors.bgimg"
+          :pronouns="res.title.pronouns"
       />
       <HeroDesc
-          :name1="res.title.name1"
-          :name2="res.title.name2"
+          :name1="res.personal.name1"
+          :name2="res.personal.name2"
           :age="res.personal.age"
           :flags="res.personal.flags"
-          :pronouns="res.personal.pronouns"
+          :work="res.personal.work"
+          :location="res.personal.location"
+          :timezone="res.personal.timezone"
           :desc="res.personal.desc"
       />
       <HeroLinks :links="res.urls"/>
@@ -96,7 +98,7 @@ function showElem(val) {
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .hero {
     margin: 64px 0;
     display: flex;
@@ -106,19 +108,16 @@ function showElem(val) {
   }
 
   .hero > div {
-    width: 600px;
+    width: 650px;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-  }
-
-  .hero > div > *:not(:last-child) {
-    margin-bottom: 16px;
+    gap: 16px;
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .hero {
     margin: 5vh 0;
     display: flex;
@@ -128,15 +127,12 @@ function showElem(val) {
   }
 
   .hero > div {
-    width: 80vw;
+    width: 90vw;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-  }
-
-  .hero > div > *:not(:last-child) {
-    margin-bottom: 2vh;
+    gap: 2vh;
   }
 }
 </style>

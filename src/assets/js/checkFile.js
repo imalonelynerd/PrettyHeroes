@@ -3,11 +3,11 @@ export function refactorToml(content) {
     let checkedKeys = [
         {
             "categ": "title",
-            "check": ["title", "name1", "name2", "catchphrase", "img"]
+            "check": ["title", "catchphrase", "img", "pronouns"]
         },
         {
             "categ": "personal",
-            "check": ["age", "pronouns", "flags", "desc"]
+            "check": ["name1", "name2", "age", "flags", "desc", "timezone", "work", "location"]
         }, {
             "categ": "colors",
             "check": ["bgimg", "background", "widget", "link", "hover", "title", "text"]

@@ -40,15 +40,17 @@ for (let elem in params) {
             :title="res.title.title"
             :catchphrase="res.title.catchphrase"
             :img-src="res.title.img"
-            :bg-img="res.colors.bgimg"
+            :pronouns="res.title.pronouns"
         />
         <HeroDesc
-            :name1="res.title.name1"
-            :name2="res.title.name2"
+            :name1="res.personal.name1"
+            :name2="res.personal.name2"
             :age="res.personal.age"
-            :pronouns="res.personal.pronouns"
-            :desc="res.personal.desc"
             :flags="res.personal.flags"
+            :work="res.personal.work"
+            :location="res.personal.location"
+            :timezone="res.personal.timezone"
+            :desc="res.personal.desc"
         />
         <HeroLinks :links="res.urls"/>
       </div>
@@ -59,9 +61,7 @@ for (let elem in params) {
 
 <style scoped>
 
-
-
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .dummy {
     position: absolute;
     top: 0;
@@ -81,19 +81,16 @@ for (let elem in params) {
   }
 
   .hero > div {
-    width: 600px;
+    width: 650px;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-  }
-
-  .hero > div > *:not(:last-child) {
-    margin-bottom: 16px;
+    gap: 16px;
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .dummy {
     z-index: 2;
     animation: Blur ease-out 0.5s;
@@ -108,15 +105,14 @@ for (let elem in params) {
   }
 
   .hero > div {
-    width: 80vw;
+    width: 90vw;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-  }
-
-  .hero > div > *:not(:last-child) {
-    margin-bottom: 2vh;
+    gap: 2vh;
   }
 }
+
+
 </style>

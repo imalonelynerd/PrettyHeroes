@@ -42,15 +42,15 @@ function updateItem(value, index, tag) {
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .dlistinput {
     display: flex;
     padding: 16px;
-    border-radius: 24px;
+    border-radius: 16px;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    background: var(--bg);
+    background: var(--wi);
 
   }
 
@@ -59,8 +59,8 @@ function updateItem(value, index, tag) {
     flex-direction: row;
     align-items: center;
     justify-content: stretch;
-    border-radius: 24px;
-    background: var(--bg);
+    border-radius: 16px;
+    background: var(--wi);
   }
 
   .dlistinput > .inputbuttons {
@@ -88,7 +88,7 @@ function updateItem(value, index, tag) {
   }
 
   .dlistinput > div > button:hover {
-    background: var(--wi) !important;
+    background: var(--bg) !important;
   }
 
   .inputbuttons > *:not(:last-child) {
@@ -117,16 +117,15 @@ function updateItem(value, index, tag) {
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .dlistinput {
     display: flex;
     padding: 2vh;
-    border-radius: 3vh;
+    border-radius: 2vh;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
     background: var(--wi);
-
   }
 
   .dlistinput > div {
@@ -134,7 +133,7 @@ function updateItem(value, index, tag) {
     flex-direction: row;
     align-items: center;
     justify-content: stretch;
-    border-radius: 3vh;
+    border-radius: 2vh;
   }
 
   .dlistinput > .inputbuttons {
@@ -161,8 +160,8 @@ function updateItem(value, index, tag) {
     transition: all 0.25s;
   }
 
-  .dlistinput > div > button:hover {
-    background: var(--wi) !important;
+  .dlistinput > div > button:active {
+    background: var(--bg) !important;
   }
 
   .inputbuttons > *:not(:last-child) {
@@ -186,7 +185,7 @@ function updateItem(value, index, tag) {
     margin-bottom: 0.5vh;
   }
 
-  .dlistinput > div > input:hover {
+  .dlistinput > div > input:active {
     background: var(--ho) !important;
   }
 }

@@ -15,7 +15,7 @@ defineEmits([
 
 <style scoped>
 
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .dummybtn {
     position: fixed;
     top: 32px;
@@ -32,7 +32,8 @@ defineEmits([
     justify-content: center;
     cursor: pointer;
     transition: all 0.25s;
-
+    z-index: 10;
+    box-shadow: var(--shadow);
   }
 
   .dummybtn:hover {
@@ -50,7 +51,7 @@ defineEmits([
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .dummybtn {
     position: fixed;
     bottom: 5vh;
@@ -67,10 +68,11 @@ defineEmits([
     justify-content: center;
     cursor: pointer;
     transition: all 0.25s;
-
+    z-index: 10;
+    box-shadow: var(--shadow);
   }
 
-  .dummybtn:hover {
+  .dummybtn:active {
     background: var(--ho);
   }
 

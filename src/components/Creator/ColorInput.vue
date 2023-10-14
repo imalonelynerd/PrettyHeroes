@@ -32,11 +32,10 @@ function checkColor(color) {
 
 <style scoped>
 
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .cinput {
     padding: 16px 24px;
     border-radius: 999px;
-
     border: none;
     font-size: 1em;
     background: var(--col);
@@ -51,7 +50,7 @@ function checkColor(color) {
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .cinput {
     padding: 2vh 3vh;
     border-radius: 999px;
@@ -64,7 +63,7 @@ function checkColor(color) {
     flex: 1 1;
   }
 
-  .cinput:hover {
+  .cinput:active {
     background: var(--ho) !important;
   }
 }

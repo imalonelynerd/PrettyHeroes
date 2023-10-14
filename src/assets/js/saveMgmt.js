@@ -37,6 +37,7 @@ export function loadHero(res) {
             refactorToml(obj);
             res.urls = obj.urls;
             res.personal = obj.personal;
+            res.personal.flags = obj.personal.flags;
             res.colors = obj.colors;
             res.title = obj.title;
         }

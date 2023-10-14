@@ -3,28 +3,27 @@ import {ref} from "vue";
 import flagsMatches from "/src/assets/json/flagsMatches.json"
 
 const props = defineProps([
-  "flagsList"
+  "flagsList", "hasAll"
 ])
 
-const tooMuch = ref(false);
+/*const tooMuch = ref(false);*/
 const flags = ref([])
 
-if (props.flagsList === "all") {
+if (props.hasAll) {
   for (let flag in flagsMatches) {
-    flags.value.push(flag);
-  }
-} else {
-  if (props.flagsList !== undefined) {
-    flags.value = props.flagsList;
-    if (props.flagsList.length >= 14) {
-      props.flagsList.length = 13;
-      tooMuch.value = true;
+    if(flag !== "foo"){
+      props.flagsList.push(flag);
     }
   }
 }
+/*} else {
+  if (props.flagsList !== undefined) {
+    flags.value = props.flagsList;
+  }
+}*/
 
 function getFlag(req) {
-  if (props.flagsList === "all") {
+  if (props.hasAll) {
     return {
       "img": flagsMatches[req]["img"],
       "name": req
@@ -43,39 +42,87 @@ function getFlag(req) {
 </script>
 
 <template>
-  <div class="flags" v-if="flagsList !== undefined && flags.length > 0">
-    <img v-for="k in flags" :src="'/flags/' + getFlag(k)['img']" :title="getFlag(k)['name']"/>
-    <img v-if="tooMuch" src="/flags/toomuch.png"/>
+  <div class="flags" v-if="flagsList !== undefined && flagsList.length > 0">
+    <div v-for="k in flagsList" :title="getFlag(k)['name']">
+      <img :src="'/flags/' + getFlag(k)['img']"/>
+      <p>{{ getFlag(k)['name'] }}</p>
+    </div>
+    <!--img v-if="tooMuch" src="/flags/toomuch.png"/-->
   </div>
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .flags {
-    display: grid;
-    grid-template-columns: repeat(15, 1fr);
-    grid-auto-rows: 1fr;
-    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: start;
     align-items: center;
-    gap: 16px;
+    gap: 8px;
   }
 
-  .flags > img {
+  .flags > div {
+    margin: 0;
+    padding: 8px 10px 8px 8px;
+    gap: 12px;
+    border-radius: 64px;
+    font-size: 1em;
+    background: color-mix(in srgb, var(--cwi), transparent 50%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+    transition: all 0.25s;
+  }
+
+  .flags > div > img {
     height: 1.5em;
+  }
+
+  .flags > div > p {
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    transition: all 0.25s;
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .flags {
-    display: grid;
-    grid-auto-rows: 1fr;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 2vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 1vh;
   }
 
-  .flags > img {
-    height: 3vh;
+  .flags > div {
     margin: 0;
+    padding: 1vh;
+    gap: 2vh;
+    border-radius: 6vh;
+    font-size: 1em;
+    background: color-mix(in srgb, var(--cwi), transparent 50%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+    transition: all 0.25s;
+  }
+
+  .flags > div > img {
+    height: 1.5em;
+  }
+
+  .flags > div > p {
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    transition: all 0.25s;
   }
 }
 </style>

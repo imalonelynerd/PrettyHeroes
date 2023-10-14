@@ -14,7 +14,7 @@ defineEmits([
 
 <style scoped>
 
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .messbtn {
     position: fixed;
     top: 32px;
@@ -31,7 +31,7 @@ defineEmits([
     justify-content: center;
     cursor: pointer;
     transition: all 0.25s;
-
+    box-shadow: var(--shadow);
   }
 
   .messbtn:hover {
@@ -49,7 +49,7 @@ defineEmits([
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .messbtn {
     position: fixed;
     bottom: 5vh;
@@ -66,11 +66,11 @@ defineEmits([
     justify-content: center;
     cursor: pointer;
     transition: all 0.25s;
-
+    box-shadow: var(--shadow);
     z-index: 2;
   }
 
-  .messbtn:hover {
+  .messbtn:active {
     background: var(--ho);
   }
 

@@ -1,6 +1,7 @@
 <script setup>
 
 import PronounceCompat from "@/assets/json/pronounceCompat.json";
+import Background from "@/components/Hero/Background.vue";
 
 defineEmits([
   "update:hideBtn"
@@ -8,6 +9,7 @@ defineEmits([
 </script>
 
 <template>
+  <Background bg-img="/bg/pro.png" />
   <div class="promess">
     <div>
       <img :src="PronounceCompat.imgsource">
@@ -29,37 +31,7 @@ defineEmits([
 
 <style scoped>
 
-@media screen and (hover: hover) {
-  .promess > div > div > a {
-    width: fit-content;
-    padding: 16px 24px;
-    border-radius: 999px;
-    font-size: 1em;
-    font-weight: bold;
-    background: var(--bg);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.25s;
-
-  }
-
-  .promess > div > div > a:hover {
-    background: var(--ho);
-  }
-
-  .messbtn > img, .promess > div > div > a > img {
-    height: 1.25em;
-  }
-
-  .messbtn > p, .promess > div > div > a > p {
-    margin: 0 0 0 8px;
-    padding: 0;
-    transition: all 0.25s;
-  }
-
+@media screen and (orientation: landscape) {
   .promess {
     margin: 0;
     padding: 64px 0;
@@ -69,11 +41,11 @@ defineEmits([
     left: 0;
     bottom: 0;
     right: 0;
-    background: var(--bg);
     display: flex;
     z-index: 10;
     align-items: center;
     justify-content: center;
+
   }
 
   .promess > div {
@@ -82,12 +54,14 @@ defineEmits([
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: var(--wi);
-    border-radius: 32px;
+    background: color-mix(in srgb, var(--wi), transparent 33%);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
     height: fit-content;
     padding: 32px;
     float: right;
     animation: Blur ease-out 0.5s;
+    box-shadow: var(--shadow);
   }
 
   .promess > div > * {
@@ -113,11 +87,10 @@ defineEmits([
   .promess > div > div > *:not(:last-child) {
     margin-right: 8px;
   }
-}
 
-@media screen and (hover: none) {
   .promess > div > div > a {
-    padding: 2vh 3vh;
+    width: fit-content;
+    padding: 16px 24px;
     border-radius: 999px;
     font-size: 1em;
     font-weight: bold;
@@ -128,22 +101,25 @@ defineEmits([
     justify-content: center;
     cursor: pointer;
     transition: all 0.25s;
+
   }
 
   .promess > div > div > a:hover {
     background: var(--ho);
   }
 
-  .promess > div > div > a > img {
+  .messbtn > img, .promess > div > div > a > img {
     height: 1.25em;
   }
 
-  .promess > div > div > a > p {
-    margin: 0 0 0 1vh;
+  .messbtn > p, .promess > div > div > a > p {
+    margin: 0 0 0 8px;
     padding: 0;
     transition: all 0.25s;
   }
+}
 
+@media screen and (orientation: portrait) {
   .promess {
     margin: 0;
     padding: 3vh 0;
@@ -157,7 +133,7 @@ defineEmits([
     z-index: 15;
     align-items: center;
     justify-content: center;
-    background: var(--bg);
+
   }
 
   .promess > div {
@@ -192,8 +168,33 @@ defineEmits([
     font-size: 1em;
   }
 
-  .promess > div > p > a {
-    color: var(--ho);
+  .promess > div > div > a {
+    padding: 2vh 3vh;
+    border-radius: 999px;
+    font-size: 1em;
+    font-weight: bold;
+    background: var(--wi);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s;
+    box-shadow: var(--shadow);
+  }
+
+  .promess > div > div > a:active {
+    background: var(--ho);
+  }
+
+  .promess > div > div > a > img {
+    height: 1.25em;
+  }
+
+  .promess > div > div > a > p {
+    margin: 0 0 0 1vh;
+    padding: 0;
+    transition: all 0.25s;
   }
 
   .promess > div > img {

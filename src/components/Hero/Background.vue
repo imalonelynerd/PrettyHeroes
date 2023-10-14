@@ -17,6 +17,6 @@ defineProps([
   right: 0;
   margin: 0;
   z-index: -1;
-  filter: blur(10px) brightness(75%);
+  filter: brightness(80%);
 }
 </style>

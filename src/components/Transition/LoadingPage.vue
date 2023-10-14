@@ -1,12 +1,14 @@
 <script setup>
 import LoadInfo from "@/assets/json/loadInfo.json";
 import {useRoute} from "vue-router";
+import Background from "@/components/Hero/Background.vue";
 
 const routeObj = useRoute();
 const userTag = routeObj.params.user;
 </script>
 
 <template>
+  <Background bg-img="/bg/bg.png" />
   <div class="loading">
     <div>
       <img :src="LoadInfo.imgSource"/>
@@ -17,7 +19,7 @@ const userTag = routeObj.params.user;
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .loading {
     margin: 0;
     padding: 64px 0;
@@ -30,6 +32,7 @@ const userTag = routeObj.params.user;
     display: flex;
     align-items: center;
     justify-content: center;
+
   }
 
   .loading > div {
@@ -39,7 +42,7 @@ const userTag = routeObj.params.user;
     align-items: center;
     background: var(--wi);
     padding: 32px;
-    border-radius: 32px;
+    border-radius: 16px;
     animation: Blur ease-out 0.5s;
   }
 
@@ -65,10 +68,9 @@ const userTag = routeObj.params.user;
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .loading {
     margin: 0;
-    padding: 3vh 0;
     overflow: scroll;
     position: absolute;
     top: 0;
@@ -78,6 +80,7 @@ const userTag = routeObj.params.user;
     display: flex;
     align-items: center;
     justify-content: center;
+
   }
 
   .loading > div {
@@ -85,10 +88,10 @@ const userTag = routeObj.params.user;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: var(--bg);
     padding: 3vh;
     border-radius: 3vh;
     animation: Blur ease-out 0.5s;
+    box-shadow: var(--shadow);
   }
 
   .loading > div > * {

@@ -2,7 +2,7 @@
     --bg: #161321;
     --wi: #27233f;
     --ho: #BA2C3A;
-    --col: var(--bg);
+    --col: var(--wi);
     --text: white;
 
     --cbg: var(--bg);
@@ -13,10 +13,22 @@
     --ctt: var(--text);
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
     :root {
         --col: var(--wi);
         --al: #353056;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    :root {
+        --shadow: 0px 8px 8px #00000020;
+    }
+}
+
+@media only screen and (orientation: portrait) {
+    :root {
+        --shadow: 0px 0.5vh 0.5vh #00000020;
     }
 }
 

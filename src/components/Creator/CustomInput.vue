@@ -12,13 +12,13 @@ defineEmits(['update:modelValue']);
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .phinput {
     padding: 16px 24px;
     border-radius: 999px;
     border: none;
     font-size: 1em;
-    background: var(--bg);
+    background: var(--wi);
     transition: all 0.25s;
     color: var(--text);
     flex: 1 1;
@@ -30,7 +30,7 @@ defineEmits(['update:modelValue']);
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .phinput {
     padding: 2vh 3vh;
     border-radius: 999px;
@@ -43,7 +43,7 @@ defineEmits(['update:modelValue']);
 
   }
 
-  .phinput:hover {
+  .phinput:active {
     background: var(--ho) !important;
   }
 }

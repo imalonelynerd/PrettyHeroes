@@ -1,105 +1,78 @@
 <script setup>
 const props = defineProps(
-    ["title", "catchphrase", "imgSrc", "bgImg"]
+    ["title", "catchphrase", "imgSrc", "pronouns"]
 );
 </script>
 
 <template>
-  <div class="herotitle"
-       :style="`background: linear-gradient(180deg, #FFFFFF00, var(--cwi)), url('${props.bgImg}') no-repeat center, var(--cwi)`">
-    <img :src="imgSrc" v-if="imgSrc !== undefined ">
-    <div>
-      <h1 v-if="title !== undefined">{{ title }}</h1>
-      <p v-if=" catchphrase !== undefined">{{ catchphrase }}</p>
-    </div>
+  <div class="herotitle">
+    <img :src="imgSrc">
+    <h1>{{ title }}</h1>
+    <h4>{{ catchphrase }}</h4>
+    <p>{{ pronouns.join(' - ')}}</p>
   </div>
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .herotitle {
     color: var(--ctxt);
-    padding: 32px;
-    border-radius: 32px;
+    padding: 32px 0;
+    border-radius: 16px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-size: cover !important;
-
+    gap: 8px;
+    background: color-mix(in srgb, var(--cwi), transparent 50%);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
   }
 
-  .herotitle > div {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
-  }
-
-  .herotitle > div > * {
+  .herotitle > * {
     margin: 0;
   }
 
-  .herotitle > div > *:not(:last-child) {
-    margin-bottom: 8px;
-  }
-
-  .herotitle > div > h1 {
+  .herotitle > h1 {
     color: var(--ctt);
   }
 
   .herotitle > img {
     border-radius: 999px;
     height: 108px;
-  }
-
-  .herotitle > *:not(:last-child) {
-    margin-right: 24px;
+    box-shadow: var(--shadow);
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .herotitle {
     color: var(--ctxt);
-    padding: 3vh;
-    border-radius: 3vh;
+    padding: 3vh 0;
+    border-radius: 16px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-size: cover !important;
+    gap: 1vh;
+    background: color-mix(in srgb, var(--cwi), transparent 50%);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
   }
 
-  .herotitle > div {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
-  }
-
-  .herotitle > div > * {
+  .herotitle > * {
     margin: 0;
   }
 
-  .herotitle > div > *:not(:last-child) {
-    margin-bottom: 1vh;
-  }
-
-  .herotitle > div > h1 {
+  .herotitle > h1 {
     color: var(--ctt);
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    max-width: 50vw;
   }
 
   .herotitle > img {
     border-radius: 999px;
-    height: 10vh;
-  }
-
-  .herotitle > *:not(:last-child) {
-    margin-right: 2vh;
+    height: 15vh;
+    box-shadow: var(--shadow);
   }
 }
 </style>

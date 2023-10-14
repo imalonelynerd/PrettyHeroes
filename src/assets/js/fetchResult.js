@@ -65,16 +65,19 @@ export function loadAsYaml(fetchedContent, noColor) {
             title: loadedContent.title,
             img: loadedContent.icon,
             catchphrase: "From Pronounce",
-            name1: loadedContent.name,
-            name2: ''
+            pronouns: loadedContent.pronouns,
         },
         personal: {
+            name1: loadedContent.name,
+            name2: '',
             age: loadedContent.age,
-            pronouns: loadedContent.pronouns,
             desc: "#### Contacts :<br/>\n",
+            timezone: "",
+            work: "",
+            location: ""
         },
         colors: {
-            bgimg: "",
+            bgimg: "/bg/pro.png",
         },
         urls: []
     };

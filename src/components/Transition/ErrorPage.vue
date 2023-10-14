@@ -1,6 +1,7 @@
 <script setup>
 
 import ErrInfo from "@/assets/json/errInfo.json";
+import Background from "@/components/Hero/Background.vue";
 
 defineProps(["errorCode", "accountName"])
 
@@ -18,6 +19,7 @@ function getErrorMessage(errcode) {
 </script>
 
 <template>
+  <Background bg-img="/bg/errbg.png"/>
   <div class="err">
     <div>
       <img :src="ErrInfo.imgSource"/>
@@ -29,10 +31,8 @@ function getErrorMessage(errcode) {
   </div>
 </template>
 
-<!--TODO-->
-
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .err {
     margin: 0;
     padding: 64px 0;
@@ -52,10 +52,12 @@ function getErrorMessage(errcode) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: var(--wi);
+    background: color-mix(in srgb, var(--wi), transparent 25%);
+    backdrop-filter: blur(10px);
     padding: 32px;
-    border-radius: 32px;
+    border-radius: 16px;
     animation: Blur ease-out 0.5s;
+    box-shadow: var(--shadow);
   }
 
   .err > div > * {
@@ -80,10 +82,9 @@ function getErrorMessage(errcode) {
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .err {
     margin: 0;
-    padding: 3vh 0;
     overflow: scroll;
     position: absolute;
     top: 0;
@@ -93,6 +94,7 @@ function getErrorMessage(errcode) {
     display: flex;
     align-items: center;
     justify-content: center;
+
   }
 
   .err > div {
@@ -100,7 +102,6 @@ function getErrorMessage(errcode) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: var(--bg);
     padding: 3vh;
     border-radius: 3vh;
     animation: Blur ease-out 0.5s;

@@ -3,6 +3,7 @@
 import homeInfo from "@/assets/json/homeInfo.json";
 import {ref} from "vue";
 import {useRouter} from "vue-router";
+import Background from "@/components/Hero/Background.vue";
 
 const refHomeInfo = ref(homeInfo);
 const searchResult = ref("");
@@ -27,6 +28,7 @@ document.documentElement.style = null;
 </script>
 
 <template>
+  <Background bg-img="/bg/bg.png"/>
   <div class="home">
     <img :src="refHomeInfo.imgSource"/>
     <h1>{{ refHomeInfo.appName }}</h1>
@@ -53,22 +55,32 @@ document.documentElement.style = null;
                type="text"
                @keyup.enter="goTo(searchResult)"
                placeholder="Search..."/>
-        <router-link :to="'/' + searchResult">
+        <router-link :to="'/' + searchResult"
+                     title="Search">
           <img src="/icons/search.png">
+          <p>Search</p>
         </router-link>
-        <a :href="`https://github.com/${searchResult}`">
+        <!--a @click="searchResult += '?nocolor=true'">
+          <img src="/icons/nocolor.png">
+          <p>Ignore colors</p>
+        </a-->
+        <a :href="`https://github.com/${searchResult}`"
+           :title="`Check ${searchResult === '' ? 'user' : searchResult}'s GitHub`">
           <img src="/icons/fork.png">
+          <p>Check {{ searchResult === "" ? "user" : searchResult }}'s GitHub</p>
         </a>
-        <button @click="switchQuery">
+        <a @click="switchQuery"
+           title="Back">
           <img src="/icons/back.png"/>
-        </button>
+          <p>Back</p>
+        </a>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .home {
     height: 100vh;
     width: 100vw;
@@ -80,18 +92,7 @@ document.documentElement.style = null;
     gap: 16px;
   }
 
-  .home > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    background: var(--wi);
-    padding: 24px 32px;
-    border-radius: 16px;
-  }
-
-  .home > div > * {
+  .home > * {
     margin: 0;
   }
 
@@ -99,165 +100,50 @@ document.documentElement.style = null;
     height: 192px;
   }
 
-  .home > div > h2 {
-    opacity: 0.5;
-    font-style: italic;
-  }
-
-  .home > div > p {
-    text-align: center;
-    width: 400px;
-  }
-
-  .home > div > *:not(:last-child):not(h1) {
-    margin-bottom: 32px;
-  }
-
-  .buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    animation: Blur ease-out 0.5s;
-  }
-
-  .buttons > a, .buttons > router-link {
-    padding: 16px 24px;
-    border-radius: 999px;
-    font-size: 1em;
-    font-weight: bold;
-    background: var(--bg);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.25s;
-  }
-
-  .buttons > a:hover, .buttons > router-link:hover {
-    background: var(--ho);
-  }
-
-  .buttons > a > img, .buttons > router-link > img {
-    height: 1.25em;
-  }
-
-  .buttons > a > p, .buttons > router-link > p {
-    margin: 0 0 0 8px;
-    padding: 0;
-    transition: all 0.25s;
-  }
-
-  .buttons > *:not(:last-child) {
-    margin-right: 8px;
-  }
-
-  .query {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: center;
-
-    width: 557px;
-    animation: Blur ease-out 0.5s;
-  }
-
-  .query > * {
-    padding: 16px 24px;
-    border-radius: 999px;
-    font-size: 1em;
-    font-weight: bold;
-    border: none;
-    background: var(--bg);
-    color: var(--text);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .query > * > img {
-    height: 1.25em;
-  }
-
-  .query > input {
-    flex-grow: 1;
-  }
-
-  .query > *:hover {
-    background: var(--ho);
-    z-index: 6;
-  }
-
-  .query > *:not(:last-child) {
-    margin-right: 8px;
-  }
-}
-
-@media screen and (hover: none) {
-  .home {
-    width: 100%;
-    margin: 5vh 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: Blur ease-out 0.5s;
-  }
-
   .home > div {
+    width: 650px;
+    margin-top: 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 32px;
+    background: color-mix(in srgb, var(--wi), transparent 33%);
+    padding: 24px 32px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
   }
 
   .home > div > * {
     margin: 0;
   }
 
-  .home > div > img {
-    height: 20vh;
-  }
-
-  .home > div > h1 {
-    width: 80vw;
-    text-align: center;
-    margin-bottom: 2vh;
-  }
-
   .home > div > h2 {
-    text-align: center;
-    width: 80vw;
-    opacity: 0.5;
     font-style: italic;
   }
 
   .home > div > p {
     text-align: center;
-    width: 80vw;
-  }
-
-  .home > div > *:not(:last-child):not(h1) {
-    margin-bottom: 3vh;
   }
 
   .buttons {
     display: flex;
-    flex-direction: column;
-    width: 80vw;
+    flex-direction: row;
     justify-content: center;
-    align-items: stretch;
-
+    align-items: center;
+    gap: 8px;
     animation: Blur ease-out 0.5s;
   }
 
-  .buttons > a, .buttons > router-link {
-    padding: 2vh 3vh;
+  .buttons > *,
+  .query > * {
+    padding: 16px 24px;
     border-radius: 999px;
     font-size: 1em;
     font-weight: bold;
+    border: none;
     background: var(--wi);
+    color: var(--text);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -266,59 +152,156 @@ document.documentElement.style = null;
     transition: all 0.25s;
   }
 
-  .buttons > a:active, .buttons > router-link:active {
+  .buttons > *:hover,
+  .query > *:hover {
     background: var(--ho);
   }
 
-  .buttons > a > img, .buttons > router-link > img {
+  .buttons > * > img,
+  .query > * > img {
     height: 1.25em;
   }
 
-  .buttons > a > p, .buttons > router-link > p {
-    margin: 0 0 0 2vh;
+  .buttons > * > p {
+    margin: 0 0 0 8px;
     padding: 0;
     transition: all 0.25s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .buttons > *:not(:last-child) {
-    margin-bottom: 2vh;
+  .query > * > p {
+    margin: 0 0 0 8px;
+    padding: 0;
+    transition: all 0.25s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 50px;
+  }
+
+  .query > a:nth-of-type(2) > p {
+    display: none;
+  }
+
+  .query {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    animation: Blur ease-out 0.5s;
+    gap: 8px;
+  }
+
+  .query > input {
+    flex-grow: 1;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .home {
+    width: 100vw;
+    padding: 5vh 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: Blur ease-out 0.5s;
+    gap: 2vh;
+  }
+
+  .home > * {
+    margin: 0;
+  }
+
+  .home > img {
+    height: 20vh;
+  }
+
+  .home > div {
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3vh;
+  }
+
+  .home > div > * {
+    margin: 0;
+  }
+
+  .home > div > *:not(div) {
+    text-align: center;
+    width: 80vw;
+  }
+
+  .home > div > h2 {
+    font-style: italic;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    gap: 1vh;
+    width: 80vw;
+    animation: Blur ease-out 0.5s;
+  }
+
+  .buttons > *,
+  .query > * {
+    padding: 2vh 3vh;
+    border-radius: 6vh;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    background: var(--wi);
+    color: var(--text);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s;
+    box-shadow: var(--shadow);
+  }
+
+  .buttons > *:active,
+  .query > *:active {
+    background: var(--ho);
+  }
+
+  .buttons > * > img,
+  .query > * > img {
+    height: 1.25em;
+  }
+
+  .buttons > * > p,
+  .query > * > p {
+    margin: 0 0 0 1vh;
+    padding: 0;
+    transition: all 0.25s;
+    max-width: 60vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .query {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    justify-content: center;
-
-    width: 80vw;
+    justify-content: stretch;
     animation: Blur ease-out 0.5s;
+    gap: 1vh;
+    width: 80vw;
   }
 
-  .query > * {
-    padding: 2vh 3vh;
-    font-size: 1em;
-    font-weight: bold;
-    border: none;
-    border-radius: 999px;
-    background: var(--wi);
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .query > *:not(:last-child) {
-    margin-bottom: 2vh;
-  }
-
-  .query > button > img,
-  .query > a > img {
-    height: 1em;
-  }
-
-  .query > *:active {
-    background: var(--ho);
-    z-index: 6;
+  .query > input {
+    flex-grow: 1;
   }
 }
 

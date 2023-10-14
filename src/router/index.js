@@ -1,7 +1,7 @@
 import {createRouter, createWebHashHistory} from 'vue-router'
 import HomePage from "@/views/HomePage.vue";
 import HeroCreator from "@/views/HeroCreator.vue";
-import HeroPageWrapper from "@/views/HeroPageWrapper.vue";
+import HeroPage from "@/views/HeroPage.vue";
 
 export const router = createRouter({
     history: createWebHashHistory(),
@@ -19,7 +19,7 @@ export const router = createRouter({
         {
             path: '/:user/',
             name: 'Hero Page',
-            component: HeroPageWrapper
+            component: HeroPage
         }
     ]
 })
