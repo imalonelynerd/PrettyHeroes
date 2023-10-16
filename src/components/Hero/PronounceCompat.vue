@@ -145,7 +145,7 @@ defineEmits([
     height: fit-content;
     padding: 10vw 0;
     float: right;
-    /*animation: Blur ease-out 0.5s;*/
+
     gap: 6vw;
   }
 

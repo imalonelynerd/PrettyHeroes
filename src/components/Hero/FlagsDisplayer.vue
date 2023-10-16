@@ -6,7 +6,7 @@ const props = defineProps([
   "flagsList", "hasAll"
 ])
 
-/*const tooMuch = ref(false);*/
+
 const flags = ref([])
 
 if (props.hasAll) {
@@ -16,11 +16,6 @@ if (props.hasAll) {
     }
   }
 }
-/*} else {
-  if (props.flagsList !== undefined) {
-    flags.value = props.flagsList;
-  }
-}*/
 
 function getFlag(req) {
   if (props.hasAll) {
@@ -47,7 +42,6 @@ function getFlag(req) {
       <img :src="'/flags/' + getFlag(k)['img']"/>
       <p>{{ getFlag(k)['name'] }}</p>
     </div>
-    <!--img v-if="tooMuch" src="/flags/toomuch.png"/-->
   </div>
 </template>
 

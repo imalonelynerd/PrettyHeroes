@@ -60,10 +60,6 @@ document.documentElement.style = null;
           <img src="/icons/search.png">
           <p>Search</p>
         </router-link>
-        <!--a @click="searchResult += '?nocolor=true'">
-          <img src="/icons/nocolor.png">
-          <p>Ignore colors</p>
-        </a-->
         <a :href="`https://github.com/${searchResult}`"
            :title="`Check ${searchResult === '' ? 'user' : searchResult}'s GitHub`">
           <img src="/icons/fork.png">
@@ -88,7 +84,6 @@ document.documentElement.style = null;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /*animation: Blur ease-out 0.5s;*/
     gap: 16px;
   }
 
@@ -146,7 +141,7 @@ document.documentElement.style = null;
     justify-content: center;
     align-items: center;
     gap: 8px;
-    /*animation: Blur ease-out 0.5s;*/
+
   }
 
   .buttons > *,
@@ -205,7 +200,7 @@ document.documentElement.style = null;
     flex-direction: row;
     align-items: stretch;
     justify-content: center;
-    /*animation: Blur ease-out 0.5s;*/
+
     gap: 8px;
   }
 
@@ -222,7 +217,7 @@ document.documentElement.style = null;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /*animation: Blur ease-out 0.5s;*/
+
     gap: 4vw;
   }
 
@@ -276,7 +271,7 @@ document.documentElement.style = null;
     align-items: stretch;
     gap: 2vw;
     width: 80vw;
-    /*animation: Blur ease-out 0.5s;*/
+
   }
 
   .buttons > *,
@@ -324,7 +319,7 @@ document.documentElement.style = null;
     flex-direction: column;
     align-items: stretch;
     justify-content: stretch;
-    /*animation: Blur ease-out 0.5s;*/
+
     gap: 2vw;
     width: 80vw;
   }

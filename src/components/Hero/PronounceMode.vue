@@ -84,9 +84,6 @@ defineEmits([
 
   .messbtn > p {
     display: none;
-    /*margin: 0 0 0 2vw;
-    padding: 0;
-    transition: all 0.25s;*/
   }
 }
 </style>

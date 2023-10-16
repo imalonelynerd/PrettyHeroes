@@ -66,7 +66,7 @@ defineEmits([
     z-index: 15;
     align-items: center;
     justify-content: center;
-    /*animation: Blur ease-out 0.5s;*/
+
   }
 
   #helpmess > div {
@@ -81,7 +81,7 @@ defineEmits([
     border-radius: var(--radius);
     padding: 32px;
     float: right;
-    /*animation: Blur ease-out 0.5s;*/
+
     box-shadow: var(--shadow);
     gap: 24px;
   }
@@ -159,7 +159,7 @@ defineEmits([
     height: fit-content;
     padding: 10vw 0;
     float: right;
-    /*animation: Blur ease-out 0.5s;*/
+
     gap: 6vw;
   }
 

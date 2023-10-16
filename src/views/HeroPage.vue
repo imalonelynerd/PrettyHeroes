@@ -104,8 +104,7 @@ function showElem(val) {
     display: flex;
     align-items: center;
     justify-content: center;
-    /*animation: Blur ease-out 0.5s;*/
-  }
+}
 
   .hero > div {
     width: 650px;
@@ -123,7 +122,6 @@ function showElem(val) {
     display: flex;
     align-items: center;
     justify-content: center;
-    /*animation: Blur ease-out 0.5s;*/
   }
 
   .hero > div {

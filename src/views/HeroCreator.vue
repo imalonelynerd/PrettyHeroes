@@ -263,7 +263,7 @@ document.documentElement.style = null;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /*animation: Blur ease-out 0.5s;*/
+
     gap: 32px;
   }
 
@@ -404,7 +404,7 @@ document.documentElement.style = null;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /*animation: Blur ease-out 0.5s;*/
+
     gap: 6vw;
   }
 
@@ -448,15 +448,6 @@ document.documentElement.style = null;
 
   .creator > div:not(.creattitle, .tbuttons) > div > div:last-of-type {
     display: none;
-    /*flex: 1 1;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    padding: 6vw;
-    border-radius: var(--radius);
-    background: url("/bg/bg.png");
-    background-size: cover;*/
   }
 
   .tbuttons {

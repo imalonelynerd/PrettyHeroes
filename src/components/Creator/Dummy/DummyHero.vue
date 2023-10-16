@@ -69,7 +69,7 @@ for (let elem in params) {
     left: 0;
     right: 0;
     z-index: 2;
-    /*animation: Blur ease-out 0.5s;*/
+
   }
 
   .hero {
@@ -77,7 +77,7 @@ for (let elem in params) {
     display: flex;
     align-items: center;
     justify-content: center;
-    /*animation: Blur ease-out 0.5s;*/
+
   }
 
   .hero > div {
@@ -93,7 +93,7 @@ for (let elem in params) {
 @media screen and (hover: none) {
   .dummy {
     z-index: 2;
-    /*animation: Blur ease-out 0.5s;*/
+
   }
 
   .hero {
@@ -101,7 +101,7 @@ for (let elem in params) {
     display: flex;
     align-items: center;
     justify-content: center;
-    /*animation: Blur ease-out 0.5s;*/
+
   }
 
   .hero > div {

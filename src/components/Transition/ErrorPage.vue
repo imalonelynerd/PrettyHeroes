@@ -56,7 +56,7 @@ function getErrorMessage(errcode) {
     backdrop-filter: var(--blur);
     padding: 32px;
     border-radius: var(--radius);
-    /*animation: Blur ease-out 0.5s;*/
+
     box-shadow: var(--shadow);
     gap: 16px;
   }
@@ -101,7 +101,7 @@ function getErrorMessage(errcode) {
     align-items: center;
     padding: 6vw;
     border-radius: var(--radius);
-    /*animation: Blur ease-out 0.5s;*/
+
     gap: 4vw;
   }
 
