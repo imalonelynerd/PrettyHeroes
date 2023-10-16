@@ -408,7 +408,7 @@ document.documentElement.style = null;
     gap: 6vw;
   }
 
-  .creator > div:not([class]) {
+  .creator > div:not(.creattitle, .tbuttons) {
     width: 75vw;
     display: flex;
     flex-direction: column;
@@ -426,7 +426,7 @@ document.documentElement.style = null;
     margin: 0;
   }
 
-  .creator > div:not([class]) > div {
+  .creator > div:not(.creattitle, .tbuttons) > div {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -435,7 +435,7 @@ document.documentElement.style = null;
     gap: 10vw;
   }
 
-  .creator > div:not([class]) > div > div:first-of-type {
+  .creator > div:not(.creattitle, .tbuttons) > div > div:first-of-type {
     align-self: flex-start;
     display: flex;
     width: 100%;
@@ -446,7 +446,7 @@ document.documentElement.style = null;
     flex-grow: 0;
   }
 
-  .creator > div:not([class]) > div > div:last-of-type {
+  .creator > div:not(.creattitle, .tbuttons) > div > div:last-of-type {
     display: none;
     /*flex: 1 1;
     display: flex;

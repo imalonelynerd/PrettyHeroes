@@ -23,14 +23,14 @@ defineEmits([
       <p>Then, all you have to do is to create your <b>hero</b> using the <b>Hero
         Creator</b> and save it. You'll obtain a <b>hero.toml</b> file. Finally, push the file to the aforementioned
         repo.
-        Et voilà ! To access your hero from any isntance, head out to <b>pretty.heroes.instance/#/foobar</b>.</p>
+        Et voilà ! To access your hero from any instance, head out to <b>pretty.heroes.instance/#/foobar</b>.</p>
       <h3>About the flags</h3>
       <p>Each flag is associated to a <b>specific keyword</b>, that you can enter in the <b>flags</b> entries. Right
         below is a list of all the flags available alongside their associated keyword.</p>
       <FlagsDisplayer :flags-list="[]" has-all="all"/>
       <h3>About the colors</h3>
       <p>Colors are represented as <b>hexadecimal code</b>. They usually look either like <b>#FF5263</b>
-        or <b>#27233F40</b>. You can check previews to know if the imputed code is vaild. Make sure the colors you
+        or <b>#27233F40</b>. You can check previews to know if the imputed code is valid. Make sure the colors you
         picked creates a good contrast between the text and the background. You can use this <a
             href="https://coolors.co/contrast-checker"><b>[tool]</b></a> to check
         contrasts between colors.</p>
