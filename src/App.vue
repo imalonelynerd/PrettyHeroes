@@ -5,7 +5,7 @@ import LoadingPage from "@/components/Transition/LoadingPage.vue";
 <template>
   <Suspense>
     <template #fallback>
-      <LoadingPage />
+      <LoadingPage/>
     </template>
     <router-view>
     </router-view>

@@ -21,7 +21,8 @@ defineEmits([
     left: 32px;
     width: fit-content;
     padding: 16px 24px;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
+    backdrop-filter: var(--blur);
     font-size: 1em;
     font-weight: bold;
     background: color-mix(in srgb, var(--wi), var(--alpha));
@@ -31,6 +32,7 @@ defineEmits([
     justify-content: center;
     cursor: pointer;
     transition: all 0.25s;
+    z-index: 2;
     box-shadow: var(--shadow);
   }
 
@@ -57,7 +59,7 @@ defineEmits([
     height: 4vw;
     width: 4vw;
     padding: 6vw;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     font-size: 1em;
     font-weight: bold;
     background: color-mix(in srgb, var(--wi), var(--alpha));

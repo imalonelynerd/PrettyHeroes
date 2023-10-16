@@ -13,7 +13,7 @@ import {marked} from "marked";
   .ddesc {
     background: color-mix(in srgb, var(--wi), var(--alpha));
     backdrop-filter: var(--blur);
-    border-radius: 16px;
+    border-radius: var(--radius);
     padding: 16px 32px;
     box-shadow: var(--shadow);
   }
@@ -23,7 +23,7 @@ import {marked} from "marked";
   .ddesc {
     background: color-mix(in srgb, var(--wi), var(--alpha));
     backdrop-filter: var(--blur);
-    border-radius: 4vw;
+    border-radius: var(--radius);
     padding: 4vw 6vw;
     box-shadow: var(--shadow);
   }

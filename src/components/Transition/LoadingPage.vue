@@ -43,7 +43,7 @@ const userTag = routeObj.params.user;
     background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);
     padding: 32px;
-    border-radius: 16px;
+    border-radius: var(--radius);
     /*animation: Blur ease-out 0.5s;*/
     box-shadow: var(--shadow);
     gap: 16px;
@@ -88,7 +88,7 @@ const userTag = routeObj.params.user;
     justify-content: center;
     align-items: center;
     padding: 6vw;
-    border-radius: 6vw;
+    border-radius: var(--radius);
     /*animation: Blur ease-out 0.5s;*/
     box-shadow: var(--shadow);
     gap: 4vw;

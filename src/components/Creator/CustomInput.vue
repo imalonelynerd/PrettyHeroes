@@ -15,7 +15,7 @@ defineEmits(['update:modelValue']);
 @media screen and (hover: hover) {
   .phinput {
     padding: 16px 24px;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     border: none;
     font-size: 1em;
     background: color-mix(in srgb, var(--wi), var(--alpha));
@@ -34,7 +34,7 @@ defineEmits(['update:modelValue']);
 @media screen and (hover: none) {
   .phinput {
     padding: 4vw 6vw;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     border: none;
     font-size: 1em;
     background: color-mix(in srgb, var(--wi), var(--alpha));

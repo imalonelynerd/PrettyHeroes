@@ -46,7 +46,7 @@ function updateItem(value, index, tag) {
   .dlistinput {
     display: flex;
     padding: 16px;
-    border-radius: 25px;
+    border-radius: var(--radius-input);
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
@@ -59,7 +59,7 @@ function updateItem(value, index, tag) {
     flex-direction: row;
     align-items: center;
     justify-content: stretch;
-    border-radius: 25px;
+    border-radius: var(--radius-input);
     gap: 8px;
   }
 
@@ -76,7 +76,7 @@ function updateItem(value, index, tag) {
 
   .dlistinput > div > button {
     padding: 4px;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     font-size: 1em;
     border: none;
     background: none;
@@ -102,7 +102,7 @@ function updateItem(value, index, tag) {
     transition: all 0.25s;
     color: var(--text);
     background: none;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     flex: 1 1;
     min-width: 0;
     margin-bottom: 4px;
@@ -117,7 +117,7 @@ function updateItem(value, index, tag) {
   .dlistinput {
     display: flex;
     padding: 4vw;
-    border-radius: 5vw;
+    border-radius: var(--radius-input);
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
@@ -130,7 +130,7 @@ function updateItem(value, index, tag) {
     flex-direction: row;
     align-items: center;
     justify-content: stretch;
-    border-radius: 5vw;
+    border-radius: var(--radius-input);
     gap: 4vw;
   }
 
@@ -147,7 +147,7 @@ function updateItem(value, index, tag) {
 
   .dlistinput > div > button {
     padding: 2vw;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     font-size: 1em;
     border: none;
     background: none;
@@ -173,7 +173,7 @@ function updateItem(value, index, tag) {
     transition: all 0.25s;
     color: var(--text);
     background: none;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     flex: 1 1;
     min-width: 0;
     margin-bottom: 1vw;

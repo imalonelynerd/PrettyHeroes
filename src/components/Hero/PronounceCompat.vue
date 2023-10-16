@@ -24,6 +24,14 @@ defineEmits([
           <img src="/icons/create.png">
           <p>Hero Creator</p>
         </router-link>
+        <a v-if="$route.params.nocolor !== 'nocolor'" :href="`/${$route.params.user}/nocolor`">
+          <img src="/icons/nocolor.png">
+          <p>Disable colors</p>
+        </a>
+        <a v-else :href="`/${$route.params.user}`">
+          <img src="/icons/nocolor.png">
+          <p>Enable colors</p>
+        </a>
       </div>
     </div>
   </div>
@@ -45,7 +53,6 @@ defineEmits([
     z-index: 10;
     align-items: center;
     justify-content: center;
-
   }
 
   .promess > div {
@@ -56,7 +63,7 @@ defineEmits([
     justify-content: center;
     background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);
-    border-radius: 16px;
+    border-radius: var(--radius);
     height: fit-content;
     padding: 32px;
     float: right;
@@ -83,7 +90,7 @@ defineEmits([
   .promess > div > div > a {
     width: fit-content;
     padding: 16px 24px;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     font-size: 1em;
     font-weight: bold;
     background: color-mix(in srgb, var(--wi), var(--alpha));
@@ -159,7 +166,7 @@ defineEmits([
 
   .promess > div > div > a {
     padding: 4vw 6vw;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     font-size: 1em;
     font-weight: bold;
     background: color-mix(in srgb, var(--wi), var(--alpha));

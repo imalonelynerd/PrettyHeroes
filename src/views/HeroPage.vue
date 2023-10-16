@@ -18,7 +18,7 @@ const proShown = ref(false);
 
 const routeObj = useRoute();
 const userTag = routeObj.params.user;
-const noColor = routeObj.query.nocolor;
+const noColor = routeObj.params.nocolor === "nocolor";
 
 let links = [
   {
@@ -70,7 +70,7 @@ function showElem(val) {
       :account-name="userTag"
       :error-code="isFetched"
   />
-  <Background v-if="isFetched === 0" :bg-img="res.colors.bgimg"/>
+  <Background v-if="(isFetched === 0 && !isYaml) || (isFetched === 0 && isYaml && noColor)" :bg-img="res.colors.bgimg"/>
   <PronounceMode v-if="isYaml && !proShown" @update:hideBtn="showElem(true)"/>
   <PronounceCompat v-if="proShown" @update:hideBtn="showElem(false)"/>
   <div v-if="!proShown && isFetched === 0" class="hero">

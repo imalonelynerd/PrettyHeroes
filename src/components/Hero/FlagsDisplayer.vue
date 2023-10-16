@@ -66,7 +66,7 @@ function getFlag(req) {
     margin: 0;
     padding: 8px 10px 8px 8px;
     gap: 12px;
-    border-radius: 64px;
+    border-radius: var(--radius-button);
     font-size: 1em;
     background: color-mix(in srgb, var(--cwi), var(--alpha));
     backdrop-filter: var(--blur);
@@ -103,8 +103,8 @@ function getFlag(req) {
   .flags > div {
     margin: 0;
     padding: 2vw;
-    gap: 4vw;
-    border-radius: 12vw;
+    gap: 2vw;
+    border-radius: var(--radius-button);
     font-size: 1em;
     background: color-mix(in srgb, var(--cwi), var(--alpha));
     backdrop-filter: var(--blur);

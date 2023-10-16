@@ -15,7 +15,7 @@ defineEmits(['update:modelValue']);
 @media screen and (hover: hover){
   .linput {
     padding: 16px 24px;
-    border-radius: 25px;
+    border-radius: var(--radius-input);
     resize: none;
     border: none;
     font-size: 1em;
@@ -25,7 +25,6 @@ defineEmits(['update:modelValue']);
     transition: all 0.25s;
     color: var(--text);
     flex: 1 1;
-
   }
 
   .linput:hover {
@@ -35,7 +34,7 @@ defineEmits(['update:modelValue']);
 @media screen and (hover: none){
   .linput {
     padding: 4vw 6vw;
-    border-radius: 5vw;
+    border-radius: var(--radius-input);
     resize: none;
     border: none;
     font-size: 1em;

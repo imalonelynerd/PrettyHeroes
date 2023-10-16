@@ -6,7 +6,7 @@ const props = defineProps(
 
 <template>
   <div class="herotitle">
-    <img :src="imgSrc">
+    <img :src="imgSrc === '' ? '/images/unknown.png' : imgSrc">
     <h1>{{ title }}</h1>
     <h4>{{ catchphrase }}</h4>
     <p>{{ pronouns.join(' - ')}}</p>
@@ -18,7 +18,7 @@ const props = defineProps(
   .herotitle {
     color: var(--ctxt);
     padding: 32px 0;
-    border-radius: 16px;
+    border-radius: var(--radius);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,7 +39,7 @@ const props = defineProps(
   }
 
   .herotitle > img {
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     height: 108px;
     box-shadow: var(--shadow);
   }
@@ -49,7 +49,7 @@ const props = defineProps(
   .herotitle {
     color: var(--ctxt);
     padding: 6vw 0;
-    border-radius: 16px;
+    border-radius: var(--radius);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,7 +70,7 @@ const props = defineProps(
   }
 
   .herotitle > img {
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     height: 20vw;
     box-shadow: var(--shadow);
   }

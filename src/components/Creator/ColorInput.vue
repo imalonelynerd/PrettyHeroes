@@ -35,7 +35,7 @@ function checkColor(color) {
 @media screen and (hover: hover) {
   .cinput {
     padding: 16px 24px;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     border: none;
     font-size: 1em;
     background: color-mix(in srgb, var(--wi), var(--alpha));
@@ -54,7 +54,7 @@ function checkColor(color) {
 @media screen and (hover: none) {
   .cinput {
     padding: 4vw 6vw;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     border: none;
     font-size: 1em;
     background: color-mix(in srgb, var(--wi), var(--alpha));

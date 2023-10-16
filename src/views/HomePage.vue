@@ -111,13 +111,13 @@ document.documentElement.style = null;
     background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);
     padding: 24px 32px;
-    border-radius: 16px;
+    border-radius: var(--radius);
     box-shadow: var(--shadow);
   }
 
   .home > code {
     padding: 12px 16px !important;
-    border-radius: 999px !important;
+    border-radius: var(--radius-button) !important;
     background: color-mix(in srgb, var(--wi), var(--alpha));
     backdrop-filter: var(--blur);
     transition: all 0.25s;
@@ -152,7 +152,7 @@ document.documentElement.style = null;
   .buttons > *,
   .query > * {
     padding: 16px 24px;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     font-size: 1em;
     font-weight: bold;
     border: none;
@@ -236,7 +236,7 @@ document.documentElement.style = null;
 
   .home > code {
     padding: 3vw 6vw !important;
-    border-radius: 999px !important;
+    border-radius: var(--radius-button) !important;
     background: color-mix(in srgb, var(--wi), var(--alpha));
     backdrop-filter: var(--blur);
     transition: all 0.25s;
@@ -282,7 +282,7 @@ document.documentElement.style = null;
   .buttons > *,
   .query > * {
     padding: 4vw 6vw;
-    border-radius: 12vw;
+    border-radius: var(--radius-button);
     font-size: 1em;
     font-weight: bold;
     border: none;

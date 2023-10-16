@@ -18,7 +18,7 @@ defineEmits(['update:imgSrc']);
 @media screen and (hover: hover) {
   .iminput {
     padding: 16px 24px;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     border: none;
     font-size: 1em;
     background: color-mix(in srgb, var(--wi), var(--alpha));
@@ -38,7 +38,7 @@ defineEmits(['update:imgSrc']);
 @media screen and (hover: none) {
   .iminput {
     padding: 4vw 6vw;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     border: none;
     font-size: 1em;
     background: color-mix(in srgb, var(--wi), var(--alpha));

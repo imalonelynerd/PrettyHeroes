@@ -29,17 +29,17 @@ function defineTitle(title, index) {
     background: color-mix(in srgb, var(--cwi), var(--alpha));
     backdrop-filter: var(--blur);
     padding: 32px;
-    border-radius: 16px;
+    border-radius: var(--radius);
     gap: 8px;
     box-shadow: var(--shadow);
   }
 
   .links > a {
     padding: 16px 24px;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     font-size: 1em;
     font-weight: bold;
-    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    background: color-mix(in srgb, var(--clk), var(--alpha));
     backdrop-filter: var(--blur);
     display: flex;
     flex-direction: row;
@@ -74,17 +74,17 @@ function defineTitle(title, index) {
     background: color-mix(in srgb, var(--cwi), var(--alpha));
     backdrop-filter: var(--blur);
     padding: 6vw;
-    border-radius: 4vw;
+    border-radius: var(--radius);
     gap: 2vw;
     box-shadow: var(--shadow);
   }
 
   .links > a {
     padding: 4vw 6vw;
-    border-radius: 12vw;
+    border-radius: var(--radius-button);
     font-size: 1em;
     font-weight: bold;
-    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    background: color-mix(in srgb, var(--clk), var(--alpha));
     backdrop-filter: var(--blur);
     display: flex;
     flex-direction: row;

@@ -114,7 +114,7 @@ document.documentElement.style = null;
           <HeroTitle
               :title="values.title.title === '' ? 'Title' : values.title.title"
               :catchphrase="values.title.catchphrase === '' ? 'Catchphrase' : values.title.catchphrase"
-              :img-src="values.title.img === '' ? '/images/unknown.png' : values.title.img"
+              :img-src="values.title.img"
               :pronouns="values.title.pronouns"
           />
         </div>
@@ -161,7 +161,7 @@ document.documentElement.style = null;
         </div>
       </div>
     </div>
-    <div>
+    <div class="half">
       <h1>Description</h1>
       <div>
         <div>
@@ -170,7 +170,8 @@ document.documentElement.style = null;
               place-holder="Description"/>
         </div>
         <div>
-          <DummyDesc :desc="values.personal.desc === '' ? '\\*\\*Hello\\*\\* \\*world\\* ! ---> **Hello** *world* !' : values.personal.desc"/>
+          <DummyDesc
+              :desc="values.personal.desc === '' ? '\\*\\*Hello\\*\\* \\*world\\* ! ---> **Hello** *world* !' : values.personal.desc"/>
         </div>
       </div>
     </div>
@@ -207,14 +208,15 @@ document.documentElement.style = null;
               v-on:update:color="newValue => values.colors.text = newValue"
               place-holder="Text color"/>
         </div>
-        <div :style="values.colors.bgimg === '' ? `background: ${values.colors.bgimg}` : `background: url(${values.colors.bgimg}) center no-repeat`">
+        <div
+            :style="values.colors.bgimg === '' ? `background: ${values.colors.bgimg}` : `background: url(${values.colors.bgimg}) center no-repeat`">
           <DummyPage :cols="values.colors"/>
         </div>
       </div>
     </div>
-    <div>
+    <div class="half">
       <h1>URLs</h1>
-      <div>
+      <div class="nostretch">
         <div>
           <DoubleListInput
               :list-dbl-items="values.urls"
@@ -265,21 +267,21 @@ document.documentElement.style = null;
     gap: 32px;
   }
 
-  .creator > div:not([class]) {
+  .creator > div:not(.creattitle, .tbuttons) {
     width: 85vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 32px;
-    border-radius: 16px;
+    border-radius: var(--radius);
     gap: 32px;
     background: color-mix(in srgb, var(--bg), var(--alpha));
     box-shadow: var(--shadow);
     backdrop-filter: var(--blur);
   }
 
-  .creator > div:not([class]) > div {
+  .creator > div:not(.creattitle, .tbuttons) > div {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -288,7 +290,7 @@ document.documentElement.style = null;
     gap: 32px;
   }
 
-  .creator > div:not([class]) > div > div:first-of-type {
+  .creator > div:not(.creattitle, .tbuttons) > div > div:first-of-type {
     align-self: flex-start;
     display: flex;
     width: 250px;
@@ -299,16 +301,16 @@ document.documentElement.style = null;
     flex-grow: 0;
   }
 
-  .creator > div:not([class]) > div > div:last-of-type {
+  .creator > div:not(.creattitle, .tbuttons) > div > div:last-of-type {
     flex: 1 1;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
     padding: 32px;
-    border-radius: 16px;
+    border-radius: var(--radius);
     background: url("/bg/creatbg.png");
-    background-size: cover;
+    background-size: cover !important;
     box-shadow: var(--shadow);
   }
 
@@ -320,7 +322,7 @@ document.documentElement.style = null;
     bottom: 32px;
     position: fixed;
     padding: 16px;
-    border-radius: 128px;
+    border-radius: var(--radius-button);
     background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);
     display: flex;
@@ -333,7 +335,7 @@ document.documentElement.style = null;
 
   .tbuttons > a {
     padding: 16px 24px;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     font-size: 1em;
     font-weight: bold;
     background: color-mix(in srgb, var(--wi), var(--alpha));
@@ -377,6 +379,22 @@ document.documentElement.style = null;
   .creattitle > img {
     height: 160px;
   }
+
+  .half > div {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+  }
+
+  .half > div > div {
+    flex: 1 1 50% !important;
+    align-self: stretch !important;
+  }
+
+  .nostretch > div:first-of-type {
+    justify-content: start !important;
+  }
 }
 
 @media screen and (hover: none) {
@@ -397,7 +415,7 @@ document.documentElement.style = null;
     justify-content: center;
     align-items: center;
     padding: 6vw;
-    border-radius: 4vw;
+    border-radius: var(--radius);
     gap: 6vw;
     background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);
@@ -436,7 +454,7 @@ document.documentElement.style = null;
     align-items: stretch;
     justify-content: center;
     padding: 6vw;
-    border-radius: 4vw;
+    border-radius: var(--radius);
     background: url("/bg/bg.png");
     background-size: cover;*/
   }
@@ -444,7 +462,7 @@ document.documentElement.style = null;
   .tbuttons {
     width: 75vw;
     padding: 6vw;
-    border-radius: 4vw;
+    border-radius: var(--radius);
     background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);
     display: flex;
@@ -457,7 +475,7 @@ document.documentElement.style = null;
 
   .tbuttons > a {
     padding: 4vw 6vw;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     font-size: 1em;
     font-weight: bold;
     background: color-mix(in srgb, var(--wi), var(--alpha));

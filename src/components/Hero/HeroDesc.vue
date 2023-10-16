@@ -45,7 +45,7 @@ defineProps(["name1", "name2", "age", "desc", 'flags', 'work', 'timezone', 'loca
   .desc {
     color: var(--ctxt);
     padding: 36px;
-    border-radius: 16px;
+    border-radius: var(--radius);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -107,7 +107,7 @@ defineProps(["name1", "name2", "age", "desc", 'flags', 'work', 'timezone', 'loca
   .desc {
     color: var(--ctxt);
     padding: 6vw;
-    border-radius: 4vw;
+    border-radius: var(--radius);
     display: flex;
     flex-direction: column;
     justify-content: center;

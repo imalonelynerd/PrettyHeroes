@@ -1,26 +1,30 @@
-import {createRouter, createWebHashHistory} from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 import HomePage from "@/views/HomePage.vue";
 import HeroCreator from "@/views/HeroCreator.vue";
 import HeroPage from "@/views/HeroPage.vue";
 
 export const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes: [
         {
             path: '/',
             name: 'Home',
-            component: HomePage
+            component: HomePage,
         },
         {
             path: '/creator',
             name: 'Hero Creator',
-            component: HeroCreator
+            component: HeroCreator,
         },
         {
-            path: '/:user/',
+            path: '/:user',
             name: 'Hero Page',
             component: HeroPage
+        },
+        {
+            path: '/:user/:nocolor',
+            name: 'Hero Page with no color',
+            component: HeroPage,
         }
     ]
 })
-

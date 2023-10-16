@@ -22,7 +22,7 @@ defineEmits([
     left: 32px;
     width: fit-content;
     padding: 16px 24px;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     font-size: 1em;
     font-weight: bold;
     background: color-mix(in srgb, var(--wi), var(--alpha));
@@ -60,7 +60,7 @@ defineEmits([
     height: 4vw;
     width: 4vw;
     padding: 6vw;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     font-size: 1em;
     font-weight: bold;
     background: color-mix(in srgb, var(--wi), var(--alpha));

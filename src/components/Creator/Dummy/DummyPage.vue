@@ -43,7 +43,7 @@ const props = defineProps(
 
   .dpage > div {
     width: 60%;
-    border-radius: 16px;
+    border-radius: var(--radius);
     padding: 24px 32px;
     display: flex;
     flex-direction: row;
@@ -71,7 +71,7 @@ const props = defineProps(
 
   .dpage > div > a {
     padding: 16px 24px;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     font-size: 1em;
     font-weight: bold;
     display: flex;
@@ -105,7 +105,7 @@ const props = defineProps(
 
   .dpage > div {
     width: 80%;
-    border-radius: 4vw;
+    border-radius: var(--radius);
     padding: 4vw 6vw;
     display: flex;
     flex-direction: row;
@@ -133,7 +133,7 @@ const props = defineProps(
 
   .dpage > div > a {
     padding: 4vw 6vw;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     font-size: 1em;
     font-weight: bold;
     display: flex;
