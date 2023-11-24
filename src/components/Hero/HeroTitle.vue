@@ -25,7 +25,7 @@ const props = defineProps(
     justify-content: center;
     background-size: cover !important;
     gap: 8px;
-    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    background: color-mix(in srgb, var(--cbg), var(--alpha));
     backdrop-filter: var(--blur);
     box-shadow: var(--shadow);
   }
@@ -56,7 +56,7 @@ const props = defineProps(
     justify-content: center;
     background-size: cover !important;
     gap: 2vw;
-    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    background: color-mix(in srgb, var(--cbg), var(--alpha));
     backdrop-filter: var(--blur);
     box-shadow: var(--shadow);
   }

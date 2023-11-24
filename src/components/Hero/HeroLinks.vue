@@ -11,7 +11,7 @@ function defineTitle(title, index) {
 
 <template>
   <div class="links" v-if="links !== undefined">
-    <a v-for="(elem, index) in links" :href="elem.url">
+    <a v-for="(elem, index) in links" :href="elem.url" target="_blank" rel="noopener noreferrer">
       <img src="/icons/create.png"/>
       <p>{{ defineTitle(elem.title, index) }}</p>
     </a>
@@ -26,7 +26,7 @@ function defineTitle(title, index) {
     flex-wrap: wrap;
     justify-content: start;
     align-items: center;
-    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    background: color-mix(in srgb, var(--cbg), var(--alpha));
     backdrop-filter: var(--blur);
     padding: 32px;
     border-radius: var(--radius);
@@ -56,6 +56,7 @@ function defineTitle(title, index) {
 
   .links > a > img {
     height: 1.25em;
+    filter: var(--fil);
   }
 
   .links > a > p {
@@ -71,7 +72,7 @@ function defineTitle(title, index) {
     flex-direction: column;
     justify-content: stretch;
     align-items: stretch;
-    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    background: color-mix(in srgb, var(--cbg), var(--alpha));
     backdrop-filter: var(--blur);
     padding: 6vw;
     border-radius: var(--radius);
@@ -101,6 +102,7 @@ function defineTitle(title, index) {
 
   .links > a > img {
     height: 1.25em;
+    filter: var(--fil);
   }
 
   .links > a > p {

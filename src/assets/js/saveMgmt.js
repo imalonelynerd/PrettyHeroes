@@ -2,10 +2,11 @@ import {parse, stringify} from "smol-toml";
 import {refactorToml} from "@/assets/js/checkFile";
 
 export function copyHero(res) {
-    navigator.clipboard.writeText(stringify(res));
-    alert('Copied successfully !');
+    navigator.clipboard.writeText(stringify(res)).then(() => alert('Copied successfully !'));
     return true;
 }
+
+// TODO : Make Hero object
 
 export function saveHero(res) {
     let element = document.createElement('a');
@@ -43,4 +44,33 @@ export function loadHero(res) {
         }
     }
     input.click();
+}
+
+export function resetHero(res) {
+    res.title.title = ""
+    res.title.img = ""
+    res.title.catchphrase = ""
+    res.title.pronouns = [""]
+
+    res.personal.name1 = ""
+    res.personal.name2 = ""
+    res.personal.age = ""
+    res.personal.desc = ""
+    res.personal.flags = [""]
+    res.personal.work = ""
+    res.personal.timezone = ""
+    res.personal.location = ""
+
+    res.colors.background = ""
+    res.colors.widget = ""
+    res.colors.link = ""
+    res.colors.hover = ""
+    res.colors.title = ""
+    res.colors.text = ""
+    res.colors.bgimg = ""
+
+    res.urls = [{
+        title: "",
+        url: ""
+    }]
 }

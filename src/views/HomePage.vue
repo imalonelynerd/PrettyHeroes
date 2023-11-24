@@ -85,6 +85,7 @@ document.documentElement.style = null;
     align-items: center;
     justify-content: center;
     gap: 16px;
+    animation: FadeAnimation ease-out 0.5s;
   }
 
   .home > * {
@@ -133,6 +134,10 @@ document.documentElement.style = null;
 
   .home > div > p {
     text-align: center;
+  }
+
+  .buttons, .query {
+    animation: FadeAnimation ease-out 0.25s;
   }
 
   .buttons {
@@ -217,7 +222,7 @@ document.documentElement.style = null;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    animation: FadeAnimation ease-out 0.5s;
     gap: 4vw;
   }
 
@@ -262,6 +267,10 @@ document.documentElement.style = null;
 
   .home > div > h2 {
     font-style: italic;
+  }
+
+  .buttons, .query {
+    animation: FadeAnimation ease-out 0.25s;
   }
 
   .buttons {

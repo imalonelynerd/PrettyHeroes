@@ -50,7 +50,7 @@ defineProps(["name1", "name2", "age", "desc", 'flags', 'work', 'timezone', 'loca
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    background: color-mix(in srgb, var(--cbg), var(--alpha));
     backdrop-filter: var(--blur);
     gap: 24px;
     box-shadow: var(--shadow);
@@ -100,6 +100,7 @@ defineProps(["name1", "name2", "age", "desc", 'flags', 'work', 'timezone', 'loca
 
   #lwt > div > img {
     height: 1.5em;
+    filter: var(--fil);
   }
 }
 
@@ -112,7 +113,7 @@ defineProps(["name1", "name2", "age", "desc", 'flags', 'work', 'timezone', 'loca
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    background: color-mix(in srgb, var(--cwi), var(--alpha));
+    background: color-mix(in srgb, var(--cbg), var(--alpha));
     backdrop-filter: var(--blur);
     gap: 8vw;
     box-shadow: var(--shadow);
@@ -166,6 +167,7 @@ defineProps(["name1", "name2", "age", "desc", 'flags', 'work', 'timezone', 'loca
 
   #lwt > div > img {
     height: 1.5em;
+    filter: var(--fil);
   }
 }
 

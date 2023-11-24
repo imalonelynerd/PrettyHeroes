@@ -21,6 +21,7 @@ const userTag = routeObj.params.user;
 <style scoped>
 @media screen and (hover: hover) {
   .loading {
+    animation: FadeAnimation ease-out 0.5s;
     margin: 0;
     padding: 64px 0;
     overflow: scroll;
@@ -79,7 +80,7 @@ const userTag = routeObj.params.user;
     display: flex;
     align-items: center;
     justify-content: center;
-
+    animation: FadeAnimation ease-out 0.5s;
   }
 
   .loading > div {

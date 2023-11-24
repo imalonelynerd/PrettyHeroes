@@ -5,6 +5,7 @@ import HeroLinks from "@/components/Hero/HeroLinks.vue";
 import Background from "@/components/Hero/Background.vue";
 import CustomFooter from "@/components/Hero/CustomFooter.vue";
 import DummyMode from "@/components/Creator/Dummy/DummyMode.vue";
+import {Color, hexToRgb, Solver} from "@/assets/js/cssColor";
 
 const props = defineProps(['res']);
 
@@ -23,6 +24,15 @@ let params = {
 for (let elem in params) {
   if (params[elem] !== undefined) {
     document.documentElement.style.setProperty(elem, params[elem]);
+  }
+}
+
+if (props.res.colors.title !== undefined) {
+  let rgb = hexToRgb(props.res.colors.title);
+  if(rgb != null){
+    let color = new Color(rgb[0], rgb[1], rgb[2]);
+    let solver = new Solver(color);
+    document.documentElement.style.setProperty('--fil', solver.solve().filter);
   }
 }
 
@@ -69,7 +79,7 @@ for (let elem in params) {
     left: 0;
     right: 0;
     z-index: 2;
-
+    animation: FadeAnimation ease-out 0.5s;
   }
 
   .hero {
@@ -93,7 +103,7 @@ for (let elem in params) {
 @media screen and (hover: none) {
   .dummy {
     z-index: 2;
-
+    animation: FadeAnimation ease-out 0.5s;
   }
 
   .hero {

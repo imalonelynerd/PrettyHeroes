@@ -1,6 +1,6 @@
 {
     "appName" : "PrettyHeroes",
-    "version" : "Fang (1.0.0)",
+    "version" : "Fang (1.0.1)",
     "tagLine" : "\"We can be the Pretty Heroes if we try\"",
     "imgSource": "/images/icon.png",
     "description": "Make a simple, colorful and personal <b>\"About me\"</b> page, straight from your <b>GitHub</b> !"

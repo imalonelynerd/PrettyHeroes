@@ -63,7 +63,7 @@ function getFlag(req) {
     border-radius: var(--radius-button);
     font-size: 1em;
     background: color-mix(in srgb, var(--cwi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -101,7 +101,7 @@ function getFlag(req) {
     border-radius: var(--radius-button);
     font-size: 1em;
     background: color-mix(in srgb, var(--cwi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     display: flex;
     flex-direction: row;
     align-items: center;

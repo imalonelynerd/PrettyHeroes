@@ -11,7 +11,7 @@ import {marked} from "marked";
 <style scoped>
 @media screen and (hover: hover) {
   .ddesc {
-    background: color-mix(in srgb, var(--wi), var(--alpha));
+    background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);
     border-radius: var(--radius);
     padding: 16px 32px;
@@ -21,7 +21,7 @@ import {marked} from "marked";
 
 @media screen and (hover: none) {
   .ddesc {
-    background: color-mix(in srgb, var(--wi), var(--alpha));
+    background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);
     border-radius: var(--radius);
     padding: 4vw 6vw;

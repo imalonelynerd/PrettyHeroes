@@ -34,6 +34,7 @@ function getErrorMessage(errcode) {
 <style scoped>
 @media screen and (hover: hover) {
   .err {
+    animation: FadeAnimation ease-out 0.5s;
     margin: 0;
     padding: 64px 0;
     overflow: scroll;
@@ -81,6 +82,7 @@ function getErrorMessage(errcode) {
 
 @media screen and (hover: none) {
   .err {
+    animation: FadeAnimation ease-out 0.5s;
     margin: 0;
     overflow: scroll;
     position: absolute;

@@ -1,48 +1,48 @@
 :root {
-    --bg: #161321;
-    --wi: #27233f;
-    --ho: #BA2C3A;
+    --bg: #181825;
+    --wi: #313244;
+    --ho: #8d304c;
     --text: white;
 
     --cbg: var(--bg);
     --cwi: var(--wi);
-    --clk: var(--bg);
+    --clk: var(--wi);
     --cho: var(--ho);
     --ctxt: var(--text);
     --ctt: var(--text);
 
     --blur: blur(10px);
-    --alpha: transparent 50%;
+    --alpha: transparent 20%;
+
+    --fil: none;
 }
 
 @media only screen and (hover: hover) {
     :root {
         --shadow: 0px 8px 8px #00000020;
-        --radius: 16px;
-        --radius-button: 16px;
-        --radius-input: 16px;
+        --radius: 32px;
+        --radius-button: 64px;
+        --radius-input: 24px;
     }
 }
 
 @media only screen and (hover: none) {
     :root {
         --shadow: 0px 2vw 2vw #00000020;
-        --radius: 4vw;
+        --radius: 6vw;
         --radius-button: 12vw;
         --radius-input: 5vw;
     }
 }
 
-@keyframes Blur {
+@keyframes FadeAnimation {
     from {
+        /*backdrop-filter: blur(0);*/
         opacity: 0;
-
-        filter: blur(20px);
     }
 
     to {
-        opacity: 1;
-
-        filter: blur(0);
+        /*backdrop-filter: var(--blur);*/
+        opacity: 1
     }
 }

@@ -2,6 +2,7 @@ import {load} from "js-yaml";
 import {parse} from "smol-toml";
 import {refactorToml, refactorYaml} from "@/assets/js/checkFile";
 import homeInfo from "@/assets/json/homeInfo.json"
+import {Color, hexToRgb, Solver} from "@/assets/js/cssColor";
 
 export async function fetchWebsite(url) {
     let res = null;
@@ -44,6 +45,15 @@ export function loadAsToml(fetchedContent, noColor) {
         for (let elem in params) {
             if (params[elem] !== undefined) {
                 document.documentElement.style.setProperty(elem, params[elem]);
+            }
+        }
+
+        if (loadedContent.colors.title !== undefined) {
+            let rgb = hexToRgb(loadedContent.colors.title.substring(0,7));
+            if(rgb != null) {
+                let color = new Color(rgb[0], rgb[1], rgb[2]);
+                let solver = new Solver(color);
+                document.documentElement.style.setProperty('--fil', solver.solve().filter);
             }
         }
     }
@@ -118,5 +128,15 @@ export function loadAsYaml(fetchedContent, noColor) {
             document.documentElement.style.setProperty(elem, params[elem]);
         }
     }
+
+    if (loadedContent.colors.foreground !== undefined) {
+        let rgb = hexToRgb(loadedContent.colors.foreground.substring(0,7));
+        if (rgb != null){
+            let color = new Color(rgb[0], rgb[1], rgb[2]);
+            let solver = new Solver(color);
+            document.documentElement.style.setProperty('--fil', solver.solve().filter);
+        }
+    }
+
     return result;
 }

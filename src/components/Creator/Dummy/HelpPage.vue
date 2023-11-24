@@ -66,7 +66,7 @@ defineEmits([
     z-index: 15;
     align-items: center;
     justify-content: center;
-
+    animation: FadeAnimation ease-out 0.5s;
   }
 
   #helpmess > div {
@@ -148,6 +148,7 @@ defineEmits([
     z-index: 15;
     align-items: center;
     justify-content: center;
+    animation: FadeAnimation ease-out 0.5s;
   }
 
   #helpmess > div {

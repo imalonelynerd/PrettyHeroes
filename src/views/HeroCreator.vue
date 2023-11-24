@@ -7,7 +7,7 @@ import ListInput from "@/components/Creator/ListInput.vue";
 import ColorInput from "@/components/Creator/ColorInput.vue";
 import DoubleListInput from "@/components/Creator/DoubleListInput.vue";
 import DummyHero from "@/components/Creator/Dummy/DummyHero.vue";
-import {copyHero, loadHero, saveHero} from "@/assets/js/saveMgmt";
+import {copyHero, loadHero, resetHero, saveHero} from "@/assets/js/saveMgmt";
 import homeInfo from "@/assets/json/homeInfo.json";
 import HelpPage from "@/components/Creator/Dummy/HelpPage.vue";
 import HeroTitle from "@/components/Hero/HeroTitle.vue";
@@ -231,9 +231,13 @@ document.documentElement.style = null;
       </div>
     </div>
     <div class="tbuttons">
+      <a @click="$router.go(-1)">
+        <img src="/icons/back.png"/>
+        <p>Back</p>
+      </a>
       <a @click="showElem(true,'dummy')">
         <img src="/icons/create.png"/>
-        <p>Test on a dummy Hero</p>
+        <p>Test</p>
       </a>
       <a @click="showElem(true,'help')">
         <img src="/icons/help.png"/>
@@ -251,6 +255,10 @@ document.documentElement.style = null;
         <img src="/icons/save.png"/>
         <p>Save</p>
       </a>
+      <a @click="resetHero(values)">
+        <img src="/icons/reset.png"/>
+        <p>Reset</p>
+      </a>
     </div>
   </div>
 </template>
@@ -263,8 +271,8 @@ document.documentElement.style = null;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    gap: 32px;
+    animation: FadeAnimation ease-out 0.5s;
+    gap: 64px;
   }
 
   .creator > div:not(.creattitle, .tbuttons) {
@@ -293,7 +301,7 @@ document.documentElement.style = null;
   .creator > div:not(.creattitle, .tbuttons) > div > div:first-of-type {
     align-self: flex-start;
     display: flex;
-    width: 250px;
+    width: 300px;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
@@ -304,14 +312,19 @@ document.documentElement.style = null;
   .creator > div:not(.creattitle, .tbuttons) > div > div:last-of-type {
     flex: 1 1;
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
-    padding: 32px;
+    padding: 32px 64px;
     border-radius: var(--radius);
-    background: url("/bg/creatbg.png");
+    background: url("/bg/creatbg.png") center center no-repeat;
     background-size: cover !important;
     box-shadow: var(--shadow);
+  }
+
+  .creator > div:not(.creattitle, .tbuttons) > div > div:last-of-type > div {
+    min-width: 80%;
+    max-width: 100%;
   }
 
   .creator > div > * {
@@ -331,6 +344,8 @@ document.documentElement.style = null;
     justify-content: center;
     gap: 8px;
     box-shadow: var(--shadow);
+    z-index: 5;
+    animation: FadeAnimation ease-out 0.5s;
   }
 
   .tbuttons > a {
@@ -369,7 +384,7 @@ document.documentElement.style = null;
     justify-content: center;
     align-items: center;
     gap: 16px;
-    padding: 0 0 32px;
+    /*padding: 0 0 32px;*/
   }
 
   .creattitle > * {
@@ -388,8 +403,12 @@ document.documentElement.style = null;
   }
 
   .half > div > div {
-    flex: 1 1 50% !important;
+    flex-shrink: 1 !important;
     align-self: stretch !important;
+  }
+
+  .half > div > div:first-child {
+    flex: 0 1 40% !important
   }
 
   .nostretch > div:first-of-type {
@@ -404,7 +423,7 @@ document.documentElement.style = null;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    animation: FadeAnimation ease-out 0.5s;
     gap: 6vw;
   }
 
@@ -462,6 +481,8 @@ document.documentElement.style = null;
     justify-content: center;
     gap: 2vw;
     box-shadow: var(--shadow);
+    z-index: 5;
+    animation: FadeAnimation ease-out 0.5s;
   }
 
   .tbuttons > a {

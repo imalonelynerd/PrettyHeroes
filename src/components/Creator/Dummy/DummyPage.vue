@@ -1,28 +1,42 @@
 <script setup>
 
+import {Color, hexToRgb, Solver} from "@/assets/js/cssColor";
+
 const props = defineProps(
     ["cols"]
 )
+
+function setIconColor() {
+  let colstr = "none";
+  if(props.cols.title !== ''){
+    let rgb = hexToRgb(props.cols.title.substring(0,7));
+    if(rgb != null){
+      let color = new Color(rgb[0], rgb[1], rgb[2]);
+      colstr = new Solver(color).solve().filter;
+    }
+  }
+  return colstr;
+}
 
 </script>
 
 <template>
   <div class="dpage">
-    <div :style="`background: color-mix(in srgb,${cols.widget === '' ? 'var(--wi)' : cols.widget}, var(--alpha))`">
+    <div :style="`background: color-mix(in srgb,${cols.background === '' ? 'var(--bg)' : cols.background}, var(--alpha))`">
       <h1 :style="`color: ${cols.title === '' ? 'var(--text)' : cols.title}`"> Title </h1>
     </div>
-    <div :style="`background: color-mix(in srgb,${cols.widget === '' ? 'var(--wi)' : cols.widget}, var(--alpha))`">
+    <div :style="`background: color-mix(in srgb,${cols.background === '' ? 'var(--bg)' : cols.background}, var(--alpha))`">
       <p :style="`color: ${cols.text === '' ? 'var(--text)' : cols.text}`">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem.
       </p>
     </div>
-    <div :style="`background: color-mix(in srgb,${cols.widget === '' ? 'var(--wi)' : cols.widget}, var(--alpha))`">
+    <div :style="`background: color-mix(in srgb,${cols.background === '' ? 'var(--bg)' : cols.background}, var(--alpha))`">
       <a :style="`background: color-mix(in srgb,${cols.link === '' ? 'var(--wi)' : cols.link}, var(--alpha))`">
-        <img src="/icons/create.png">
+        <img src="/icons/create.png" :style="`filter: ${cols.title === '' ? 'none' : setIconColor()}`">
         <p>Link</p>
       </a>
       <a :style="`background: ${cols.hover === '' ? 'var(--ho)' : cols.hover}`">
-        <img src="/icons/create.png">
+        <img src="/icons/create.png" :style="`filter: ${cols.title === '' ? 'none' : setIconColor()}`">
         <p>Hovered</p>
       </a>
     </div>
@@ -38,7 +52,7 @@ const props = defineProps(
     flex-direction: column;
     align-items: center;
     justify-content: stretch;
-    gap: 16px;
+    gap: 8px;
   }
 
   .dpage > div {

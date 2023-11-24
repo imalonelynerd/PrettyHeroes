@@ -53,6 +53,7 @@ defineEmits([
     z-index: 10;
     align-items: center;
     justify-content: center;
+    animation: FadeAnimation ease-out 0.5s;
   }
 
   .promess > div {
@@ -133,7 +134,7 @@ defineEmits([
     z-index: 15;
     align-items: center;
     justify-content: center;
-
+    animation: FadeAnimation ease-out 0.5s;
   }
 
   .promess > div {

@@ -70,7 +70,7 @@ function showElem(val) {
       :account-name="userTag"
       :error-code="isFetched"
   />
-  <Background v-if="(isFetched === 0 && !isYaml) || (isFetched === 0 && isYaml && noColor)" :bg-img="res.colors.bgimg"/>
+  <Background v-if="(isFetched === 0)" :bg-img="res.colors.bgimg"/>
   <PronounceMode v-if="isYaml && !proShown" @update:hideBtn="showElem(true)"/>
   <PronounceCompat v-if="proShown" @update:hideBtn="showElem(false)"/>
   <div v-if="!proShown && isFetched === 0" class="hero">
@@ -104,7 +104,8 @@ function showElem(val) {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+    animation: FadeAnimation ease-out 0.5s;
+  }
 
   .hero > div {
     width: 650px;
@@ -122,6 +123,7 @@ function showElem(val) {
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: FadeAnimation ease-out 0.5s;
   }
 
   .hero > div {
