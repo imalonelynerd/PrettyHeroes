@@ -21,13 +21,13 @@ a {
     cursor: pointer;
 }
 
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
     html {
         font-size: 0.9em;
     }
 }
 
-@media only screen and (hover: none) {
+@media only screen and (orientation: portrait) {
     html {
         font-size: 3vw;
     }

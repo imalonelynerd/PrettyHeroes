@@ -31,8 +31,7 @@ defineEmits(['update:valueUpdated']);
     background: var(--ho) !important;
   }
 }
-
-@media screen and (hover: none) {
+@media screen and (hover: none){
   .linput {
     padding: 4vw 6vw;
     border-radius: var(--radius-input);

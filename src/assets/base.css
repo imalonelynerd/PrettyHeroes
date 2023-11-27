@@ -17,7 +17,7 @@
     --fil: none;
 }
 
-@media only screen and (hover: hover) {
+@media only screen and (orientation: landscape) {
     :root {
         --shadow: 0px 8px 8px #00000020;
         --radius: 32px;
@@ -26,7 +26,7 @@
     }
 }
 
-@media only screen and (hover: none) {
+@media only screen and (orientation: portrait) {
     :root {
         --shadow: 0px 2vw 2vw #00000020;
         --radius: 8vw;

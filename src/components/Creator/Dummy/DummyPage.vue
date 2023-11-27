@@ -46,7 +46,7 @@ function getFilter(color) {
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .dpage {
     width: 100%;
     height: 100%;
@@ -109,7 +109,6 @@ function getFilter(color) {
     transition: all 0.25s;
   }
 }
-
 @media screen and (hover: none) {
   .dpage {
     width: 100%;

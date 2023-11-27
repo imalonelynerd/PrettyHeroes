@@ -74,7 +74,7 @@ if (props.hero.colors.title !== undefined) {
 
 <style scoped>
 
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .dummy {
     position: absolute;
     top: 0;
@@ -103,7 +103,7 @@ if (props.hero.colors.title !== undefined) {
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .dummy {
     z-index: 2;
     animation: FadeAnimation ease-out 0.5s;

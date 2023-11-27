@@ -76,7 +76,7 @@ document.documentElement.style = null;
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .home {
     height: 100vh;
     width: 100vw;
@@ -215,7 +215,7 @@ document.documentElement.style = null;
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .home {
     width: 100vw;
     height: 100vh;

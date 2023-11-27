@@ -19,7 +19,7 @@ defineEmits(['update:imgUpdated']);
 
 <style scoped>
 
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .iminput {
     display: flex;
     flex-direction: row;
@@ -58,7 +58,7 @@ defineEmits(['update:imgUpdated']);
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .iminput {
     display: flex;
     flex-direction: row;
