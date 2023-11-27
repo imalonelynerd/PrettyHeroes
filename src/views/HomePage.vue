@@ -36,7 +36,7 @@ document.documentElement.style = null;
     <div>
       <h2>{{ refHomeInfo.tagLine }}</h2>
       <p v-html="refHomeInfo.description"></p>
-      <div class="buttons" v-if="!isShown">
+      <div v-if="!isShown" class="buttons">
         <a @click="switchQuery">
           <img src="/icons/search.png"/>
           <p>Search</p>
@@ -50,11 +50,11 @@ document.documentElement.style = null;
           <p>Fork me on GitHub</p>
         </a>
       </div>
-      <div class="query" v-if="isShown">
+      <div v-if="isShown" class="query">
         <input v-model="searchResult"
+               placeholder="Search..."
                type="text"
-               @keyup.enter="goTo(searchResult)"
-               placeholder="Search..."/>
+               @keyup.enter="goTo(searchResult)"/>
         <router-link :to="'/' + searchResult"
                      title="Search">
           <img src="/icons/search.png">
@@ -65,8 +65,8 @@ document.documentElement.style = null;
           <img src="/icons/fork.png">
           <p>Check {{ searchResult === "" ? "user" : searchResult }}'s GitHub</p>
         </a>
-        <a @click="switchQuery"
-           title="Back">
+        <a title="Back"
+           @click="switchQuery">
           <img src="/icons/back.png"/>
           <p>Back</p>
         </a>
@@ -137,6 +137,7 @@ document.documentElement.style = null;
   }
 
   .buttons, .query {
+    width: 600px !important;
     animation: FadeAnimation ease-out 0.25s;
   }
 
@@ -146,7 +147,6 @@ document.documentElement.style = null;
     justify-content: center;
     align-items: center;
     gap: 8px;
-
   }
 
   .buttons > *,
@@ -187,6 +187,7 @@ document.documentElement.style = null;
   }
 
   .query > * > p {
+    display: none;
     margin: 0 0 0 8px;
     padding: 0;
     transition: all 0.25s;

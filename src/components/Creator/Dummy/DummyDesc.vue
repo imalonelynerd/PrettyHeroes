@@ -1,10 +1,11 @@
 <script setup>
 defineProps(["desc"])
 import {marked} from "marked";
+import DOMPurify from 'dompurify';
 </script>
 
 <template>
-  <div class="ddesc" v-html="marked.parse(desc)">
+  <div class="ddesc" v-html="DOMPurify.sanitize(marked.parse(desc))">
   </div>
 </template>
 

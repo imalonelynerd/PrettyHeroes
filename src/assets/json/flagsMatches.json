@@ -131,6 +131,10 @@
     "img": "trans.png",
     "name": "Transgender"
   },
+  "test": {
+    "img": "test.png",
+    "name": "Widget"
+  },
   "foo": {
     "img": "unknown.png",
     "name": "Bar"

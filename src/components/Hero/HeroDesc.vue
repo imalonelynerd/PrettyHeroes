@@ -2,13 +2,14 @@
 
 import FlagsDisplayer from "@/components/Hero/FlagsDisplayer.vue";
 import {marked} from "marked";
+import DOMPurify from 'dompurify';
 
 function markDownize(content) {
   let markedContent = "";
   try {
-    markedContent = marked.parse(content);
+    markedContent = DOMPurify.sanitize(marked.parse(content));
   } catch {
-    return "I'm bad at Markdown !";
+    return "-";
   }
   return markedContent;
 }
@@ -21,22 +22,22 @@ defineProps(["name1", "name2", "age", "desc", 'flags', 'work', 'timezone', 'loca
 <template>
   <div class="desc">
     <h1>{{ name1 }} <span>{{ name2 }}</span>, {{ age }}</h1>
-    <div id="lwt" v-if="!((timezone + work + location) === '')">
-      <div title="Location" v-if="location !== ''">
+    <div v-if="!((timezone + work + location) === '')" id="lwt">
+      <div v-if="location !== ''" title="Location">
         <img src="/icons/location.png">
         <p>{{ location }}</p>
       </div>
-      <div title="Work" v-if="work !== ''">
+      <div v-if="work !== ''" title="Work">
         <img src="/icons/work.png">
         <p>{{ work }}</p>
       </div>
-      <div title="Timezone" v-if="timezone !== ''">
+      <div v-if="timezone !== ''" title="Timezone">
         <img src="/icons/timezone.png">
         <p>{{ timezone }}</p>
       </div>
     </div>
     <FlagsDisplayer :flags-list="flags"/>
-    <div id="desc" v-if="desc !== ''" v-html="markDownize(desc)"></div>
+    <div v-if="desc !== ''" id="desc" v-html="markDownize(desc)"></div>
   </div>
 </template>
 

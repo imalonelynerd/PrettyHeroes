@@ -1,42 +1,44 @@
 <script setup>
 
 import {Color, hexToRgb, Solver} from "@/assets/js/cssColor";
+import FlagsDisplayer from "@/components/Hero/FlagsDisplayer.vue";
 
 const props = defineProps(
     ["cols"]
 )
 
-function setIconColor() {
-  let colstr = "none";
-  if(props.cols.title !== ''){
-    let rgb = hexToRgb(props.cols.title.substring(0,7));
-    if(rgb != null){
-      let color = new Color(rgb[0], rgb[1], rgb[2]);
-      colstr = new Solver(color).solve().filter;
-    }
+function getFilter(color) {
+  let rgb = hexToRgb(color);
+  if (rgb != null) {
+    let color = new Color(rgb[0], rgb[1], rgb[2]);
+    let solver = new Solver(color);
+    return solver.solve().filter;
   }
-  return colstr;
 }
 
 </script>
 
 <template>
   <div class="dpage">
-    <div :style="`background: color-mix(in srgb,${cols.background === '' ? 'var(--bg)' : cols.background}, var(--alpha))`">
+    <div
+        :style="`background: color-mix(in srgb,${cols.background === '' ? 'var(--bg)' : cols.background}, var(--alpha))`">
       <h1 :style="`color: ${cols.title === '' ? 'var(--text)' : cols.title}`"> Title </h1>
     </div>
-    <div :style="`background: color-mix(in srgb,${cols.background === '' ? 'var(--bg)' : cols.background}, var(--alpha))`">
-      <p :style="`color: ${cols.text === '' ? 'var(--text)' : cols.text}`">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem.
+    <div
+        :style="`background: color-mix(in srgb,${cols.background === '' ? 'var(--bg)' : cols.background}, var(--alpha))`">
+      <FlagsDisplayer :bg-special="cols.widget === '' ? 'var(--wi)' : cols.widget" :flags-list="['test']"/>
+      <p :style="`color: ${cols.text === '' ? 'var(--text)' : cols.text}`">Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Sed non risus.
       </p>
     </div>
-    <div :style="`background: color-mix(in srgb,${cols.background === '' ? 'var(--bg)' : cols.background}, var(--alpha))`">
+    <div
+        :style="`background: color-mix(in srgb,${cols.background === '' ? 'var(--bg)' : cols.background}, var(--alpha))`">
       <a :style="`background: color-mix(in srgb,${cols.link === '' ? 'var(--wi)' : cols.link}, var(--alpha))`">
-        <img src="/icons/create.png" :style="`filter: ${cols.title === '' ? 'none' : setIconColor()}`">
+        <img :style="`filter: ${getFilter(cols.title)}`" src="/icons/link.png">
         <p>Link</p>
       </a>
       <a :style="`background: ${cols.hover === '' ? 'var(--ho)' : cols.hover}`">
-        <img src="/icons/create.png" :style="`filter: ${cols.title === '' ? 'none' : setIconColor()}`">
+        <img :style="`filter: ${getFilter(cols.title)}`" src="/icons/link.png">
         <p>Hovered</p>
       </a>
     </div>
@@ -70,7 +72,8 @@ function setIconColor() {
   }
 
   .dpage > div:nth-of-type(2) {
-    height: 100px;
+    height: 125px;
+    gap: 16px;
   }
 
   .dpage > div > * {
@@ -106,6 +109,7 @@ function setIconColor() {
     transition: all 0.25s;
   }
 }
+
 @media screen and (hover: none) {
   .dpage {
     width: 100%;

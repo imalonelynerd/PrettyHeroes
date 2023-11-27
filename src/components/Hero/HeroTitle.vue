@@ -7,9 +7,9 @@ const props = defineProps(
 <template>
   <div class="herotitle">
     <img :src="imgSrc === '' ? '/images/unknown.png' : imgSrc">
-    <h1>{{ title }}</h1>
-    <h4>{{ catchphrase }}</h4>
-    <p>{{ pronouns.join(' - ')}}</p>
+    <h1 v-if="title !== ''">{{ title }}</h1>
+    <h4 v-if="catchphrase !== ''">{{ catchphrase }}</h4>
+    <p>{{ pronouns.join(' - ') }}</p>
   </div>
 </template>
 

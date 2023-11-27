@@ -1,5 +1,6 @@
 <script setup>
 const props = defineProps(['listDblItems', 'placeHolders', 'sections', 'emptyPlaceHolder']);
+defineEmits(["update:listUpdated"]);
 
 function addItem() {
   let item = {};
@@ -20,13 +21,13 @@ function updateItem(value, index, tag) {
 <template>
   <div class="dlistinput">
     <div v-for="(value, index) in listDblItems">
-      <input :value="listDblItems[index][sections[0]]"
-             :placeholder="placeHolders[0]"
-             @input="updateItem($event.target.value,index,sections[0])"
+      <input :placeholder="placeHolders[0]"
+             :value="listDblItems[index][sections[0]]"
+             @input="updateItem($event.target.value,index,sections[0]); $emit('update:listUpdated')"
       />
-      <input :value="listDblItems[index][sections[1]]"
-             :placeholder="placeHolders[1]"
-             @input="updateItem($event.target.value,index,sections[1])"
+      <input :placeholder="placeHolders[1]"
+             :value="listDblItems[index][sections[1]]"
+             @input="updateItem($event.target.value,index,sections[1]); $emit('update:listUpdated')"
       />
     </div>
     <div class="inputbuttons">
@@ -36,7 +37,7 @@ function updateItem(value, index, tag) {
       <button @click="removeItem">
         <img src="/icons/remove.png"/>
       </button>
-      <p v-if="listDblItems.length === 0">{{ emptyPlaceHolder }} - empty</p>
+      <p>{{ emptyPlaceHolder }}</p>
     </div>
   </div>
 </template>

@@ -1,14 +1,14 @@
 <script setup>
-defineProps(['modelValue', 'placeHolder']);
-defineEmits(['update:modelValue']);
+defineProps(['customValue', 'placeHolder']);
+defineEmits(['update:valueUpdated']);
 </script>
 
 <template>
-  <input class="phinput"
+  <input :placeholder="placeHolder"
+         :value="customValue"
+         class="phinput"
          type="text"
-         :value="modelValue"
-         :placeholder="placeHolder"
-         @input="$emit('update:modelValue', $event.target.value)">
+         @input="$emit('update:valueUpdated', $event.target.value)">
 </template>
 
 <style scoped>

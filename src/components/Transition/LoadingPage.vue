@@ -8,7 +8,7 @@ const userTag = routeObj.params.user;
 </script>
 
 <template>
-  <Background bg-img="/bg/bg.png" />
+  <Background bg-img="/bg/bg.png"/>
   <div class="loading">
     <div>
       <img :src="LoadInfo.imgSource"/>

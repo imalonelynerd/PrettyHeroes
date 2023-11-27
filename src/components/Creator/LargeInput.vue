@@ -1,18 +1,18 @@
 <script setup>
-defineProps(['modelValue', 'placeHolder']);
-defineEmits(['update:modelValue']);
+defineProps(['customValue', 'placeHolder']);
+defineEmits(['update:valueUpdated']);
 </script>
 
 <template>
-  <textarea class="linput"
+  <textarea :placeholder="placeHolder"
+            :value="customValue"
+            class="linput"
             rows="10"
-            :value="modelValue"
-            :placeholder="placeHolder"
-            @input="$emit('update:modelValue', $event.target.value)"/>
+            @input="$emit('update:valueUpdated', $event.target.value)"/>
 </template>
 
 <style scoped>
-@media screen and (hover: hover){
+@media screen and (hover: hover) {
   .linput {
     padding: 16px 24px;
     border-radius: var(--radius-input);
@@ -31,7 +31,8 @@ defineEmits(['update:modelValue']);
     background: var(--ho) !important;
   }
 }
-@media screen and (hover: none){
+
+@media screen and (hover: none) {
   .linput {
     padding: 4vw 6vw;
     border-radius: var(--radius-input);

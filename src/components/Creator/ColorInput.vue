@@ -1,14 +1,7 @@
 <script setup>
 defineProps(['color', 'placeHolder']);
-defineEmits(['update:color']);
+defineEmits(['update:colorUpdated']);
 
-function getContrastYIQ(hexcolor) {
-  var r = parseInt(hexcolor.substring(1, 3), 16);
-  var g = parseInt(hexcolor.substring(3, 5), 16);
-  var b = parseInt(hexcolor.substring(5, 7), 16);
-  var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-  return (yiq >= 128) ? '#202020' : '#FFFFFF';
-}
 
 function checkColor(color) {
   if (/^#[0-9A-Fa-f]{6,8}$/.test(color)) {
@@ -20,25 +13,28 @@ function checkColor(color) {
 </script>
 
 <template>
-  <input
-      class="cinput"
-      :style="`background: ${checkColor(color)}; color: ${getContrastYIQ(color)}`"
-      pattern="^#[0-9A-Fa-f]{6,8}$"
-      type="text"
-      :value="color"
-      :placeholder="placeHolder"
-      @input="$emit('update:color', $event.target.value)">
+  <div :style="`background: ${checkColor(color)}`" class="cinput">
+    <div/>
+    <input
+        :placeholder="placeHolder"
+        :value="color"
+        pattern="^#[0-9A-Fa-f]{6,8}$"
+        type="text"
+        @input="$emit('update:colorUpdated', $event.target.value)">
+  </div>
 </template>
 
 <style scoped>
 
 @media screen and (hover: hover) {
   .cinput {
-    padding: 16px 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: stretch;
     border-radius: var(--radius-button);
     border: none;
     font-size: 1em;
-    background: color-mix(in srgb, var(--wi), var(--alpha));
     backdrop-filter: var(--blur);
     transition: all 0.25s;
     min-width: 0;
@@ -46,18 +42,36 @@ function checkColor(color) {
     flex: 1 1;
   }
 
-  .cinput:hover {
+  .cinput > div {
+    width: 16%;
+  }
+
+  .cinput > input {
+    flex: 1 1;
+    padding: 16px 24px;
+    border-radius: var(--radius-button);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    border: none;
+    font-size: 1em;
+    transition: all 0.25s;
+    min-width: 0;
+    color: var(--text);
+  }
+
+  .cinput:hover > input {
     background: var(--ho) !important;
   }
 }
 
 @media screen and (hover: none) {
   .cinput {
-    padding: 4vw 6vw;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: stretch;
     border-radius: var(--radius-button);
     border: none;
     font-size: 1em;
-    background: color-mix(in srgb, var(--wi), var(--alpha));
     backdrop-filter: var(--blur);
     transition: all 0.25s;
     min-width: 0;
@@ -65,7 +79,23 @@ function checkColor(color) {
     flex: 1 1;
   }
 
-  .cinput:active {
+  .cinput > div {
+    width: 16%;
+  }
+
+  .cinput > input {
+    flex: 1 1;
+    padding: 4vw 6vw;
+    border-radius: var(--radius-button);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    border: none;
+    font-size: 1em;
+    transition: all 0.25s;
+    min-width: 0;
+    color: var(--text);
+  }
+
+  .cinput:active > input {
     background: var(--ho) !important;
   }
 }
