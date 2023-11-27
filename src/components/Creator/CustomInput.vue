@@ -1,18 +1,18 @@
 <script setup>
-defineProps(['modelValue', 'placeHolder']);
-defineEmits(['update:modelValue']);
+defineProps(['customValue', 'placeHolder']);
+defineEmits(['update:valueUpdated']);
 </script>
 
 <template>
-  <input class="phinput"
+  <input :placeholder="placeHolder"
+         :value="customValue"
+         class="phinput"
          type="text"
-         :value="modelValue"
-         :placeholder="placeHolder"
-         @input="$emit('update:modelValue', $event.target.value)">
+         @input="$emit('update:valueUpdated', $event.target.value)">
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .phinput {
     padding: 16px 24px;
     border-radius: var(--radius-button);
@@ -31,7 +31,7 @@ defineEmits(['update:modelValue']);
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .phinput {
     padding: 4vw 6vw;
     border-radius: var(--radius-button);

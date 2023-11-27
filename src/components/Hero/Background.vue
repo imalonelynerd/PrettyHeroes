@@ -5,7 +5,8 @@ defineProps([
 </script>
 
 <template>
-  <div v-if="bgImg !== undefined" class="background" :style="`background : url('${bgImg}') no-repeat center center, var(--cbg)`"/>
+  <div v-if="bgImg !== undefined" :style="`background : url('${bgImg}') no-repeat center center, var(--cbg)`"
+       class="background"/>
 </template>
 
 <style scoped>

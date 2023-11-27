@@ -9,7 +9,7 @@ defineEmits([
 </script>
 
 <template>
-  <Background bg-img="/bg/pro.png" />
+  <Background bg-img="/bg/pro.png"/>
   <div class="promess">
     <div>
       <img :src="PronounceCompat.imgsource">

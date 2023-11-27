@@ -1,5 +1,7 @@
 <script setup>
 const props = defineProps(['listItems', 'placeHolder', 'emptyPlaceHolder']);
+defineEmits(["update:listUpdated"]);
+
 
 function addItem() {
   props.listItems.push("");
@@ -16,10 +18,10 @@ function updateItem(value, index) {
 
 <template>
   <div class="listinput">
-    <input v-for="(value, index) in listItems"
+    <input v-for="(_, index) in listItems"
            :placeholder="placeHolder"
            :value="listItems[index]"
-           @input="updateItem($event.target.value,index)">
+           @input="updateItem($event.target.value,index); $emit('update:listUpdated')">
     <div>
       <button @click="addItem">
         <img src="/icons/add.png"/>
@@ -27,13 +29,13 @@ function updateItem(value, index) {
       <button @click="removeItem">
         <img src="/icons/remove.png"/>
       </button>
-      <p v-if="listItems.length === 0">{{ emptyPlaceHolder }} - empty</p>
+      <p>{{ emptyPlaceHolder }}</p>
     </div>
   </div>
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .listinput {
     display: flex;
     padding: 16px;
@@ -99,7 +101,7 @@ function updateItem(value, index) {
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .listinput {
     display: flex;
     padding: 4vw;

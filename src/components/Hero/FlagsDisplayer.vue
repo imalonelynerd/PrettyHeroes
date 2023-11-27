@@ -3,7 +3,7 @@ import {ref} from "vue";
 import flagsMatches from "/src/assets/json/flagsMatches.json"
 
 const props = defineProps([
-  "flagsList", "hasAll"
+  "flagsList", "hasAll", "bgSpecial"
 ])
 
 
@@ -11,7 +11,7 @@ const flags = ref([])
 
 if (props.hasAll) {
   for (let flag in flagsMatches) {
-    if(flag !== "foo"){
+    if (flag !== "foo" && flag !== "test") {
       props.flagsList.push(flag);
     }
   }
@@ -37,8 +37,10 @@ function getFlag(req) {
 </script>
 
 <template>
-  <div class="flags" v-if="flagsList !== undefined && flagsList.length > 0">
-    <div v-for="k in flagsList" :title="getFlag(k)['name']">
+  <div v-if="flagsList !== undefined && flagsList.length > 0" class="flags">
+    <div v-for="k in flagsList"
+         :style="`background: color-mix(in srgb,${bgSpecial === undefined ? 'var(--cwi)' : bgSpecial}, var(--alpha))`"
+         :title="getFlag(k)['name']">
       <img :src="'/flags/' + getFlag(k)['img']"/>
       <p>{{ getFlag(k)['name'] }}</p>
     </div>

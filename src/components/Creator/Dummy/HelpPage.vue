@@ -3,10 +3,13 @@
 import homeInfo from "@/assets/json/homeInfo.json"
 import helpInfo from "@/assets/json/helpInfo.json";
 import FlagsDisplayer from "@/components/Hero/FlagsDisplayer.vue";
+import {goUp} from "@/assets/js/miscTools";
 
 defineEmits([
   "update:hideBtn"
 ])
+
+goUp();
 
 </script>
 
@@ -23,22 +26,34 @@ defineEmits([
       <p>Then, all you have to do is to create your <b>hero</b> using the <b>Hero
         Creator</b> and save it. You'll obtain a <b>hero.toml</b> file. Finally, push the file to the aforementioned
         repo.
-        Et voilà ! To access your hero from any instance, head out to <b>pretty.heroes.instance/#/foobar</b>.</p>
+        Et voilà ! To access your hero from any instance, head out to <b>pretty.heroes.instance/foobar</b>.</p>
       <h3>About the flags</h3>
       <p>Each flag is associated to a <b>specific keyword</b>, that you can enter in the <b>flags</b> entries. Right
         below is a list of all the flags available alongside their associated keyword.</p>
       <FlagsDisplayer :flags-list="[]" has-all="all"/>
       <h3>About the colors</h3>
-      <p>Colors are represented as <b>hexadecimal code</b>. They usually look either like <b>#FF5263</b>
-        or <b>#27233F40</b>. You can check previews to know if the imputed code is valid. Make sure the colors you
+      <p>Colors are represented as <b>hexadecimal code</b>. They usually look either like</p>
+      <ul>
+        <li><b>#774</b></li>
+        <li><b>#A5F9</b></li>
+        <li><b>#FF5263</b></li>
+        <li><b>#3AD2A640</b></li>
+      </ul>
+      <p>You can check previews to know if the imputed code is valid. Make sure the colors you
         picked creates a good contrast between the text and the background. You can use this <a
             href="https://coolors.co/contrast-checker"><b>[tool]</b></a> to check
-        contrasts between colors.</p>
+        contrasts between colors.
+      </p>
       <h3>About the description</h3>
-      <p>The <b>description</b> block supports <b>Markdown</b> ! You can, for example, write <b>** bold **</b>, <i>*italic
-        *</i> or
-        <del>~~ struck ~~</del>
-        text. More info can be found <a href="https://www.markdownguide.org/basic-syntax/"><b>[here]</b></a>.
+      <p>The <b>description</b> block supports <b>Markdown</b> ! You can, for example, write : </p>
+      <ul>
+        <li>**bold** → <b>bold</b></li>
+        <li>*italic* → <i>italic</i></li>
+        <li>~~struck~~ →
+          <del>struck</del>
+        </li>
+      </ul>
+      <p>More info can be found <a href="https://www.markdownguide.org/basic-syntax/"><b>[here]</b></a>.
       </p>
       <div>
         <a @click="$emit('update:hideBtn')">
@@ -52,7 +67,7 @@ defineEmits([
 
 <style scoped>
 
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   #helpmess {
     margin: 0;
     height: fit-content;
@@ -88,6 +103,16 @@ defineEmits([
 
   #helpmess > div > * {
     margin: 0;
+  }
+
+  #helpmess > div > p {
+    width: 100%;
+  }
+
+  #helpmess > div > ul {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
   }
 
   #helpmess > div > div:not(.flags) {
@@ -134,7 +159,7 @@ defineEmits([
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   #helpmess {
     margin: 0;
     height: fit-content;
@@ -166,6 +191,10 @@ defineEmits([
 
   #helpmess > div > * {
     margin: 0;
+  }
+
+  #helpmess > div > p {
+    width: 100%;
   }
 
   #helpmess > div > div:not(.flags) {

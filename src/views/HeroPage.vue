@@ -1,16 +1,22 @@
 <script setup>
+
+// Hero componements
 import HeroTitle from "@/components/Hero/HeroTitle.vue";
+import HeroDesc from "@/components/Hero/HeroDesc.vue";
+import HeroLinks from "@/components/Hero/HeroLinks.vue";
+
+// Functions & objects
 import {ref} from "vue";
 import {useRoute} from "vue-router";
-import HeroDesc from "@/components/Hero/HeroDesc.vue";
+import {goUp} from "@/assets/js/miscTools";
+import {fetchWebsite, loadHeroFromText} from "@/assets/js/heroFetcher";
+
+// Others
 import ErrorPage from "@/components/Transition/ErrorPage.vue";
-import {fetchWebsite, loadAsToml, loadAsYaml} from "@/assets/js/fetchResult";
 import PronounceCompat from "@/components/Hero/PronounceCompat.vue";
-import HeroLinks from "@/components/Hero/HeroLinks.vue";
 import Background from "@/components/Hero/Background.vue";
 import CustomFooter from "@/components/Hero/CustomFooter.vue";
 import PronounceMode from "@/components/Hero/PronounceMode.vue";
-
 
 const isFetched = ref(1);
 const isYaml = ref(false);
@@ -32,33 +38,27 @@ let links = [
 ]
 
 let res = null;
+let hero;
+let link;
 for (let k in links) {
   res = await fetchWebsite(links[k].url);
-  if (res !== false) {
-    switch (links[k].type) {
-      case "toml":
-        res = loadAsToml(res, noColor);
-        if (res === false) {
-          isFetched.value = 2;
-          break;
-        }
-        isFetched.value = 0;
-        break;
-      case "yaml":
-        res = loadAsYaml(res, noColor);
-        if (res === false) {
-          isFetched.value = 2;
-          break;
-        }
-        isYaml.value = true;
-        isFetched.value = 0;
-        break;
+  if (res !== null) {
+    hero = loadHeroFromText(res, links[k].type, noColor);
+    if (hero === null) {
+      isFetched.value = 2;
+    } else {
+      isFetched.value = 0;
+      link = links[k].url;
+    }
+    if (links[k].type === "yaml") {
+      isYaml.value = true;
     }
     break;
   }
 }
 
 function showElem(val) {
+  goUp();
   proShown.value = val;
 }
 
@@ -70,35 +70,35 @@ function showElem(val) {
       :account-name="userTag"
       :error-code="isFetched"
   />
-  <Background v-if="(isFetched === 0)" :bg-img="res.colors.bgimg"/>
+  <Background v-if="(isFetched === 0)" :bg-img="hero.colors.bgimg"/>
   <PronounceMode v-if="isYaml && !proShown" @update:hideBtn="showElem(true)"/>
   <PronounceCompat v-if="proShown" @update:hideBtn="showElem(false)"/>
   <div v-if="!proShown && isFetched === 0" class="hero">
     <div>
       <HeroTitle
-          :title="res.title.title"
-          :catchphrase="res.title.catchphrase"
-          :img-src="res.title.img"
-          :pronouns="res.title.pronouns"
+          :catchphrase="hero.title.catchphrase"
+          :img-src="hero.title.img"
+          :pronouns="hero.title.pronouns"
+          :title="hero.title.title"
       />
       <HeroDesc
-          :name1="res.personal.name1"
-          :name2="res.personal.name2"
-          :age="res.personal.age"
-          :flags="res.personal.flags"
-          :work="res.personal.work"
-          :location="res.personal.location"
-          :timezone="res.personal.timezone"
-          :desc="res.personal.desc"
+          :age="hero.perso.age"
+          :desc="hero.perso.desc"
+          :flags="hero.perso.flags"
+          :location="hero.perso.location"
+          :name1="hero.perso.name1"
+          :name2="hero.perso.name2"
+          :timezone="hero.perso.timezone"
+          :work="hero.perso.work"
       />
-      <HeroLinks :links="res.urls"/>
+      <HeroLinks v-if="hero.urls.linksList.length !== 0" :links="hero.urls.linksList"/>
     </div>
   </div>
-  <CustomFooter v-if="!proShown && isFetched === 0"/>
+  <CustomFooter v-if="!proShown && isFetched === 0" :og-file="link"/>
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .hero {
     margin: 64px 0;
     display: flex;
@@ -117,7 +117,7 @@ function showElem(val) {
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .hero {
     margin: 10vw 0;
     display: flex;

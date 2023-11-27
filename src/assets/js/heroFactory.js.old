@@ -1,0 +1,483 @@
+'use strict';
+
+export class HeroTitleO {
+    #title;
+    #img;
+    #catchphrase;
+    #pronouns;
+
+    constructor() {
+        this.#title = "";
+        this.#img = "";
+        this.#catchphrase = "";
+        this.#pronouns = [""];
+    }
+
+    title() {
+        return this.#title;
+    }
+
+    titleIsEmpty() {
+        return this.#title === '';
+    }
+
+    setTitle(tt) {
+        this.#title = tt;
+    }
+
+    getImg() {
+        return this.#img;
+    }
+
+    setImg(url) {
+        let image = new Image();
+        image.src = url;
+        //if (image.complete && image.height !== 0) {
+        this.#img = url;
+        //}
+    }
+
+    getCatchphrase() {
+        return this.#catchphrase;
+    }
+
+    catchIsEmpty() {
+        return this.#catchphrase === '';
+    }
+
+    setCatchphrase(ctc) {
+        this.#catchphrase = ctc;
+    }
+
+    getPronouns() {
+        //return this.#pronouns.map((x) => x)
+        return this.#pronouns; // returns reference to array instead of a copy
+    }
+
+    getPronoun(ind) {
+        if (ind < 0 || ind >= this.#pronouns.length) {
+            throw new DOMException("Pronouns list index out of range.");
+        }
+        return this.#pronouns[ind];
+    }
+
+    addPronoun(pro) {
+        if (this.#pronouns.length === 1 && this.#pronouns[0] === "") {
+            this.removePronoun();
+        }
+        this.#pronouns.push(pro);
+    }
+
+    removePronoun() {
+        if (this.#pronouns.length === 0) {
+            throw new DOMException("Pronouns list is empty.");
+        }
+        this.#pronouns.pop();
+    }
+
+    editPronoun(pro, ind) {
+        if (ind < 0 || ind >= this.#pronouns.length) {
+            throw new DOMException("Pronouns list index out of range.");
+        }
+        this.#pronouns[ind] = pro;
+    }
+
+    getObject() {
+        return {
+            title: this.title(),
+            img: this.getImg(),
+            catchphrase: this.getCatchphrase(),
+            pronouns: this.getPronouns()
+        }
+    }
+}
+
+export class HeroPersoO {
+    #name1;
+    #name2;
+    #age;
+    #desc;
+    #flags;
+    #work;
+    #timezone;
+    #location;
+
+    constructor() {
+        this.#name1 = "";
+        this.#name2 = "";
+        this.#age = "";
+        this.#desc = "";
+        this.#flags = [""];
+        this.#work = "";
+        this.#timezone = "";
+        this.#location = "";
+    }
+
+    getName1() {
+        return this.#name1;
+    }
+
+    name1IsEmpty() {
+        return this.#name1 === '';
+    }
+
+    getName2() {
+        return this.#name2;
+    }
+
+    name2IsEmpty() {
+        return this.#name2 === '';
+    }
+
+    setName1(name) {
+        this.#name1 = name;
+    }
+
+    setName2(name) {
+        this.#name2 = name;
+    }
+
+    getAge() {
+        return this.#age;
+    }
+
+    ageIsEmpty() {
+        return this.#age === '';
+    }
+
+    setAge(age) {
+        this.#age = age;
+    }
+
+    getDesc() {
+        return this.#desc;
+    }
+
+    descIsEmpty() {
+        return this.#desc === '';
+    }
+
+    setDesc(desc) {
+        this.#desc = desc;
+    }
+
+    getFlags() {
+        return this.#flags.map((x) => x);
+    }
+
+    getFlag(ind) {
+        if (ind < 0 || ind >= this.#flags.length) {
+            throw new DOMException("Flags list index out of range.");
+        }
+        return this.#flags[ind];
+    }
+
+    addFlag(fl) {
+        if (this.#flags.length === 1 && this.#flags[0] === "") {
+            this.removeFlag();
+        }
+        this.#flags.push(fl)
+    }
+
+    removeFlag() {
+        if (this.#flags.length === 0) {
+            throw new DOMException("Flags list is empty.");
+        }
+        this.#flags.pop();
+    }
+
+    editFlag(fl, ind) {
+        if (ind < 0 || ind >= this.#flags.length) {
+            throw new DOMException("Flags list index out of range.");
+        }
+        this.#flags[ind] = fl;
+    }
+
+    getWork() {
+        return this.#work;
+    }
+
+    workIsEmpty() {
+        return this.#work === '';
+    }
+
+    setWork(work) {
+        this.#work = work;
+    }
+
+    getTimezone() {
+        return this.#timezone;
+    }
+
+    timezoneIsEmpty() {
+        return this.#timezone === "";
+    }
+
+    setTimezone(tz) {
+        this.#timezone = tz;
+    }
+
+    getLocation() {
+        return this.#location;
+    }
+
+    locationIsEmpty() {
+        return this.#location === '';
+    }
+
+    setLocation(lc) {
+        this.#location = lc;
+    }
+
+    getObject() {
+        return {
+            name1: this.getName1(),
+            name2: this.getName2(),
+            age: this.getAge(),
+            desc: this.getDesc(),
+            flags: this.getFlags(),
+            work: this.getWork(),
+            timezone: this.getTimezone(),
+            location: this.getLocation()
+        }
+    }
+}
+
+export class HeroColorsO {
+
+    #background;
+    #widget;
+    #link;
+    #hover;
+    #title;
+    #text;
+    #bgimg;
+
+    constructor() {
+        this.#background = "";
+        this.#widget = "";
+        this.#link = "";
+        this.#hover = "";
+        this.#title = "";
+        this.#text = "";
+        this.#bgimg = "";
+    }
+
+    background() {
+        return this.#background;
+    }
+
+    setBackground(col) {
+        if (!this.assertColorValid(col)) {
+            throw new DOMException("Invalid background color");
+        } else {
+            this.#background = col;
+        }
+    }
+
+    widget() {
+        return this.#widget;
+    }
+
+    setWidget(col) {
+        if (!this.assertColorValid(col)) {
+            throw new DOMException("Invalid widget color");
+        } else {
+            this.#widget = col;
+        }
+    }
+
+    link() {
+        return this.#link;
+    }
+
+    setLink(col) {
+        if (!this.assertColorValid(col)) {
+            throw new DOMException("Invalid background color");
+        } else {
+            this.#link = col;
+        }
+    }
+
+    hover() {
+        return this.#hover;
+    }
+
+    setHover(col) {
+        if (!this.assertColorValid(col)) {
+            throw new DOMException("Invalid background color");
+        } else {
+            this.#hover = col;
+        }
+    }
+
+    title() {
+        return this.#title;
+    }
+
+    setTitle(col) {
+        if (!this.assertColorValid(col)) {
+            throw new DOMException("Invalid background color");
+        } else {
+            this.#title = col;
+        }
+    }
+
+    text() {
+        return this.#text;
+    }
+
+    setText(col) {
+        if (!this.assertColorValid(col)) {
+            throw new DOMException("Invalid background color");
+        } else {
+            this.#text = col;
+        }
+    }
+
+    getBgImage() {
+        return this.#bgimg;
+    }
+
+    setBgImage(url) {
+        let image = new Image();
+        image.src = url;
+        //if (image.complete && image.height !== 0) {
+        this.#bgimg = url;
+        //}
+    }
+
+    noBgImage() {
+        return this.#bgimg === '';
+    }
+
+    assertColorValid(cl) {
+        let reg = new RegExp("^\#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{8}|[0-9a-fA-F]{3}|[0-9a-fA-F]{4})$");
+        return reg.test(cl);
+    }
+
+    getObject() {
+        return {
+            background: this.background(),
+            widget: this.widget(),
+            link: this.link(),
+            hover: this.hover(),
+            title: this.title(),
+            text: this.text(),
+            bgimg: this.getBgImage()
+        }
+    }
+}
+
+export class Link {
+    #title;
+    #url;
+
+    constructor() {
+        this.#title = "";
+        this.#url = "";
+    }
+
+    title() {
+        return this.#title;
+    }
+
+    setTitle(tt) {
+        this.#title = tt;
+    }
+
+    getUrl() {
+        return this.#url
+    }
+
+    setUrl(url) {
+        this.#url = url;
+    }
+
+    getObject() {
+        return {
+            title: this.title(),
+            url: this.getUrl()
+        }
+    }
+}
+
+export class HeroLinksO {
+    #linksList
+
+    constructor() {
+        this.linksList = [];
+    }
+
+    getLinksList() {
+        return this.linksList.map((x) => x.getObject())
+    }
+
+    link(ind) {
+        if (ind < 0 || ind >= this.linksList.length) {
+            throw new DOMException("Links list index out of range.");
+        }
+        return this.linksList[ind].getObject();
+    }
+
+    addLink(ttl, url) {
+        let lnk = new Link();
+        lnk.setTitle(ttl);
+        lnk.setUrl(url);
+        this.linksList.push(lnk);
+    }
+
+    removeLink() {
+        if (this.linksList.length === 0) {
+            throw new DOMException("Links list is empty.");
+        }
+        this.linksList.pop();
+    }
+
+    editLink(ttl, url, ind) {
+        if (ind < 0 || ind >= this.linksList.length) {
+            throw new DOMException("Links list index out of range.");
+        }
+        let lnk = new Link();
+        lnk.setTitle(ttl);
+        lnk.setTitle(url);
+        this.linksList[ind] = lnk;
+    }
+}
+
+export class Hero {
+    title;
+    perso;
+    colors;
+    urls;
+
+    constructor() {
+        this.title = new HeroTitleO();
+        this.perso = new HeroPersoO();
+        this.colors = new HeroColorsO();
+        this.urls = new HeroLinksO();
+    }
+
+    from(hero){
+        this.title = hero.title
+        this.perso = hero.perso
+        this.colors = hero.colors
+        this.urls = hero.urls
+    }
+
+    getObject() {
+        return {
+            title: this.title.getObject(),
+            personal: this.perso.getObject(),
+            colors: this.colors.getObject(),
+            urls: this.urls.getLinksList()
+        }
+    }
+
+    reset() {
+        this.title = new HeroTitleO();
+        this.perso = new HeroPersoO();
+        this.colors = new HeroColorsO();
+        this.urls = new HeroLinksO();
+    }
+}

@@ -87,6 +87,7 @@ export class Color {
     brightness(value = 1) {
         this.linear(value);
     }
+
     contrast(value = 1) {
         this.linear(value, -(0.5 * value) + 0.5);
     }
@@ -171,7 +172,7 @@ export class Solver {
         const c = 15;
         const a = [60, 180, 18000, 600, 1.2, 1.2];
 
-        let best = { loss: Infinity };
+        let best = {loss: Infinity};
         for (let i = 0; best.loss > 25 && i < 3; i++) {
             const initial = [50, 20, 3750, 50, 100, 100];
             const result = this.spsa(A, a, c, initial, 1000);
@@ -221,7 +222,7 @@ export class Solver {
                 bestLoss = loss;
             }
         }
-        return { values: best, loss: bestLoss };
+        return {values: best, loss: bestLoss};
 
         function fix(value, idx) {
             let max = 100;
@@ -273,6 +274,7 @@ export class Solver {
         function fmt(idx, multiplier = 1) {
             return Math.round(filters[idx] * multiplier);
         }
+
         return `brightness(0) saturate(100%) invert(${fmt(0)}%) sepia(${fmt(1)}%) saturate(${fmt(2)}%) hue-rotate(${fmt(3, 3.6)}deg) brightness(${fmt(4)}%) contrast(${fmt(5)}%)`;
     }
 }

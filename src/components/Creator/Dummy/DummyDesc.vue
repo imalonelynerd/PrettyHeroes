@@ -1,15 +1,16 @@
 <script setup>
 defineProps(["desc"])
 import {marked} from "marked";
+import DOMPurify from 'dompurify';
 </script>
 
 <template>
-  <div class="ddesc" v-html="marked.parse(desc)">
+  <div class="ddesc" v-html="DOMPurify.sanitize(marked.parse(desc))">
   </div>
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .ddesc {
     background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);
@@ -19,7 +20,7 @@ import {marked} from "marked";
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .ddesc {
     background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);

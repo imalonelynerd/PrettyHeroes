@@ -1,55 +1,35 @@
 <script setup>
+
+// Custom inputs
 import CustomInput from "@/components/Creator/CustomInput.vue";
-import {ref} from "vue";
 import ImageInput from "@/components/Creator/ImageInput.vue";
 import LargeInput from "@/components/Creator/LargeInput.vue";
 import ListInput from "@/components/Creator/ListInput.vue";
 import ColorInput from "@/components/Creator/ColorInput.vue";
 import DoubleListInput from "@/components/Creator/DoubleListInput.vue";
+
+// Dummy componements
 import DummyHero from "@/components/Creator/Dummy/DummyHero.vue";
-import {copyHero, loadHero, resetHero, saveHero} from "@/assets/js/saveMgmt";
-import homeInfo from "@/assets/json/homeInfo.json";
-import HelpPage from "@/components/Creator/Dummy/HelpPage.vue";
 import HeroTitle from "@/components/Hero/HeroTitle.vue";
-import Background from "@/components/Hero/Background.vue";
-import HeroDesc from "@/components/Hero/HeroDesc.vue";
-import HeroLinks from "@/components/Hero/HeroLinks.vue";
 import DummyDesc from "@/components/Creator/Dummy/DummyDesc.vue";
 import DummyPage from "@/components/Creator/Dummy/DummyPage.vue";
-import creatorInfo from "@/assets/json/creatorInfo.json";
 
-const values = ref(
-    {
-      title: {
-        title: "",
-        img: "",
-        catchphrase: "",
-        pronouns: [""]
-      },
-      personal: {
-        name1: "",
-        name2: "",
-        age: "",
-        desc: "",
-        flags: [""],
-        work: "",
-        timezone: "",
-        location: ""
-      },
-      colors: {
-        background: "",
-        widget: "",
-        link: "",
-        hover: "",
-        title: "",
-        text: "",
-        bgimg: "",
-      },
-      urls: [{
-        title: "",
-        url: ""
-      }]
-    })
+// JSONs
+import creatorInfo from "@/assets/json/creatorInfo.json";
+import HeroDesc from "@/components/Hero/HeroDesc.vue";
+import HeroLinks from "@/components/Hero/HeroLinks.vue";
+
+// Functions & objects
+import {ref} from "vue";
+import {copyHero, loadHero, resetHero, saveHero} from "@/assets/js/heroSaver";
+import {defineHeader} from "@/assets/js/miscTools";
+import {Hero} from "@/assets/js/heroFactory";
+
+// Others
+import HelpPage from "@/components/Creator/Dummy/HelpPage.vue";
+import Background from "@/components/Hero/Background.vue";
+
+const hero = ref(new Hero());
 
 const dummyShown = ref(false);
 const helpShown = ref(false);
@@ -66,26 +46,23 @@ function showElem(val, showbool) {
   }
 }
 
-document.querySelector('head title').textContent = `Creator - ${homeInfo.appName}`;
-document.querySelector("link[rel~='icon']").href = `/icons/create.png`;
-document.querySelector("meta[name='description']").content = `${homeInfo.tagLine}`
-document.querySelector("meta[name='og:title']").content = `Creator - ${homeInfo.appName}`
-document.querySelector("meta[name='og:description']").content = `${homeInfo.tagLine}`
+defineHeader("Creator", "/icons/create.png", "Creator")
 document.documentElement.style = null;
+
 </script>
 
 <template>
   <DummyHero
-      :res="values"
       v-if="dummyShown"
-      @update:hide-btn="showElem(false,'dummy')"/>
+      :hero="hero"
+      @update:hide-btn="showElem(false,'dummy');"/>
   <HelpPage
       v-if="helpShown"
-      @update:hide-btn="showElem(false,'help')"/>
+      @update:hide-btn="showElem(false,'help');"/>
   <Background
       v-if="!dummyShown"
       bg-img="/bg/bg.png"/>
-  <div class="creator" v-if="!(dummyShown || helpShown)">
+  <div v-if="!(dummyShown || helpShown)" class="creator">
     <div class="creattitle">
       <img :src="creatorInfo.imgSource"/>
       <h1>{{ creatorInfo.title }}</h1>
@@ -96,26 +73,28 @@ document.documentElement.style = null;
       <div>
         <div>
           <ImageInput
-              :img-src="values.title.img"
-              v-on:update:imgSrc="newValue => values.title.img = newValue"
-              place-holder="Favicon URL"/>
+              :img-src="hero.title.img"
+              place-holder="Favicon URL"
+              @update:imgUpdated="newValue => hero.title.img = newValue"/>
           <CustomInput
-              v-model="values.title.title"
-              place-holder="Hero title"/>
+              :customValue="hero.title.title"
+              place-holder="Hero title"
+              @update:valueUpdated="newValue => hero.title.title = newValue"/>
           <CustomInput
-              v-model="values.title.catchphrase"
-              place-holder="Catchphrase"/>
+              :customValue="hero.title.catchphrase"
+              place-holder="Catchphrase"
+              @update:valueUpdated="newValue => hero.title.catchphrase = newValue"/>
           <ListInput
-              :list-items="values.title.pronouns"
-              place-holder="Pronoun"
-              empty-place-holder="Pronouns"/>
+              :list-items="hero.title.pronouns"
+              empty-place-holder="Pronouns"
+              place-holder="Pronoun"/>
         </div>
         <div>
           <HeroTitle
-              :title="values.title.title === '' ? 'Title' : values.title.title"
-              :catchphrase="values.title.catchphrase === '' ? 'Catchphrase' : values.title.catchphrase"
-              :img-src="values.title.img"
-              :pronouns="values.title.pronouns"
+              :catchphrase="hero.title.catchIsEmpty() ? 'Catchphrase' : hero.title.catchphrase"
+              :img-src="hero.title.img"
+              :pronouns="hero.title.pronouns"
+              :title="hero.title.titleIsEmpty() ? 'Title' : hero.title.title"
           />
         </div>
       </div>
@@ -125,37 +104,42 @@ document.documentElement.style = null;
       <div>
         <div>
           <CustomInput
-              v-model="values.personal.name1"
-              place-holder="Name"/>
+              :custom-value="hero.perso.name1"
+              place-holder="Name"
+              @update:valueUpdated="newValue => hero.perso.name1 = newValue"/>
           <CustomInput
-              v-model="values.personal.name2"
-              place-holder="Name (2nd part)"/>
+              :custom-value="hero.perso.name2"
+              place-holder="Name (2nd part)"
+              @update:valueUpdated="newValue => hero.perso.name2 = newValue"/>
           <CustomInput
-              v-model="values.personal.age"
-              place-holder="Age"/>
+              :custom-value="hero.perso.age"
+              place-holder="Age"
+              @update:valueUpdated="newValue => hero.perso.age = newValue"/>
           <ListInput
-              :list-items="values.personal.flags"
-              place-holder="Flag keyword"
-              empty-place-holder="Flags"/>
+              :list-items="hero.perso.flags"
+              empty-place-holder="Flags"
+              place-holder="Flag keyword"/>
           <CustomInput
-              v-model="values.personal.work"
-              place-holder="Work"/>
+              :custom-value="hero.perso.work"
+              place-holder="Work"
+              @update:valueUpdated="newValue => hero.perso.work = newValue"/>
           <CustomInput
-              v-model="values.personal.location"
-              place-holder="Location"/>
+              :custom-value="hero.perso.location"
+              place-holder="Location"
+              @update:valueUpdated="newValue => hero.perso.location = newValue"/>
           <CustomInput
-              v-model="values.personal.timezone"
-              place-holder="Timezone"/>
+              place-holder="Timezone"
+              @update:valueUpdated="newValue => hero.perso.timezone = newValue"/>
         </div>
         <div>
           <HeroDesc
-              :name1="values.personal.name1 === '' ? 'First name' : values.personal.name1"
-              :name2="values.personal.name2 === '' ? 'Last name' : values.personal.name2"
-              :age="values.personal.age === '' ? '1234' : values.personal.age"
-              :flags="values.personal.flags"
-              :work="values.personal.work === '' ? 'Work' : values.personal.work"
-              :location="values.personal.location === '' ? 'Location' : values.personal.location"
-              :timezone="values.personal.timezone === '' ? 'Timezone' : values.personal.timezone"
+              :age="hero.perso.ageIsEmpty() ? '1234' : hero.perso.age"
+              :flags="hero.perso.flags"
+              :location="hero.perso.locationIsEmpty() ? 'Location' : hero.perso.location"
+              :name1="hero.perso.name1IsEmpty() ? 'First name' : hero.perso.name1"
+              :name2="hero.perso.name2IsEmpty() ? 'Last name' : hero.perso.name2"
+              :timezone="hero.perso.timezoneIsEmpty() ? 'Timezone' : hero.perso.timezone"
+              :work="hero.perso.workIsEmpty() ? 'Work' : hero.perso.work"
               desc=""
           />
         </div>
@@ -166,12 +150,13 @@ document.documentElement.style = null;
       <div>
         <div>
           <LargeInput
-              v-model="values.personal.desc"
-              place-holder="Description"/>
+              :custom-value="hero.perso.desc"
+              place-holder="Description"
+              @update:valueUpdated="newValue => hero.perso.desc = newValue"/>
         </div>
         <div>
           <DummyDesc
-              :desc="values.personal.desc === '' ? '\\*\\*Hello\\*\\* \\*world\\* ! ---> **Hello** *world* !' : values.personal.desc"/>
+              :desc="hero.perso.descIsEmpty() ? '\\*\\*Hello\\*\\* \\*world\\* ! ---> **Hello** *world* !' : hero.perso.desc"/>
         </div>
       </div>
     </div>
@@ -180,37 +165,37 @@ document.documentElement.style = null;
       <div>
         <div>
           <ImageInput
-              :img-src="values.colors.bgimg"
-              v-on:update:imgSrc="newValue => values.colors.bgimg = newValue"
-              place-holder="Background URL"/>
+              :img-src="hero.colors.bgimg"
+              place-holder="Background URL"
+              @update:imgUpdated="newValue => hero.colors.bgimg = newValue"/>
           <ColorInput
-              :color="values.colors.background"
-              v-on:update:color="newValue => values.colors.background = newValue"
-              place-holder="Background color"/>
+              :color="hero.colors.background"
+              place-holder="Background color"
+              @update:colorUpdated="newValue => hero.colors.background = newValue"/>
           <ColorInput
-              :color="values.colors.widget"
-              v-on:update:color="newValue => values.colors.widget = newValue"
-              place-holder="Widget color"/>
+              :color="hero.colors.widget"
+              place-holder="Widget color"
+              @update:colorUpdated="newValue => hero.colors.widget = newValue"/>
           <ColorInput
-              :color="values.colors.link"
-              v-on:update:color="newValue => values.colors.link = newValue"
-              place-holder="Links color"/>
+              :color="hero.colors.link"
+              place-holder="Links color"
+              @update:colorUpdated="newValue => hero.colors.link = newValue"/>
           <ColorInput
-              :color="values.colors.hover"
-              v-on:update:color="newValue => values.colors.hover = newValue"
-              place-holder="Hovered links color"/>
+              :color="hero.colors.hover"
+              place-holder="Hovered links color"
+              @update:colorUpdated="newValue => hero.colors.hover = newValue"/>
           <ColorInput
-              :color="values.colors.title"
-              v-on:update:color="newValue => values.colors.title = newValue"
-              place-holder="Title color"/>
+              :color="hero.colors.title"
+              place-holder="Title color"
+              @update:colorUpdated="newValue => hero.colors.title = newValue"/>
           <ColorInput
-              :color="values.colors.text"
-              v-on:update:color="newValue => values.colors.text = newValue"
-              place-holder="Text color"/>
+              :color="hero.colors.text"
+              place-holder="Text color"
+              @update:colorUpdated="newValue => hero.colors.text = newValue"/>
         </div>
         <div
-            :style="values.colors.bgimg === '' ? `background: ${values.colors.bgimg}` : `background: url(${values.colors.bgimg}) center no-repeat`">
-          <DummyPage :cols="values.colors"/>
+            :style="hero.colors.noBgImage() ? `background: ${hero.colors.bgimg}` : `background: url(${hero.colors.bgimg}) center no-repeat`">
+          <DummyPage :cols="hero.colors"/>
         </div>
       </div>
     </div>
@@ -219,52 +204,52 @@ document.documentElement.style = null;
       <div class="nostretch">
         <div>
           <DoubleListInput
-              :list-dbl-items="values.urls"
+              :list-dbl-items="hero.urls.linksList"
               :place-holders="['Link Title','URL']"
               :sections="['title','url']"
               empty-place-holder="Links"
           />
         </div>
         <div>
-          <HeroLinks :links="values.urls"/>
+          <HeroLinks :links="hero.urls.linksList"/>
         </div>
       </div>
     </div>
     <div class="tbuttons">
-      <a @click="$router.go(-1)">
+      <router-link to="/">
         <img src="/icons/back.png"/>
         <p>Back</p>
-      </a>
+      </router-link>
       <a @click="showElem(true,'dummy')">
         <img src="/icons/create.png"/>
         <p>Test</p>
       </a>
-      <a @click="showElem(true,'help')">
-        <img src="/icons/help.png"/>
-        <p>Help</p>
-      </a>
-      <a @click="copyHero(values)">
+      <a @click="copyHero(hero)">
         <img src="/icons/copy.png"/>
         <p>Copy</p>
       </a>
-      <a @click="loadHero(values)">
+      <a @click="loadHero(hero)">
         <img src="/icons/load.png"/>
         <p>Load</p>
       </a>
-      <a @click="saveHero(values)">
+      <a @click="saveHero(hero)">
         <img src="/icons/save.png"/>
         <p>Save</p>
       </a>
-      <a @click="resetHero(values)">
+      <a @click="resetHero(hero)">
         <img src="/icons/reset.png"/>
         <p>Reset</p>
+      </a>
+      <a @click="showElem(true,'help')">
+        <img src="/icons/help.png"/>
+        <p>Help</p>
       </a>
     </div>
   </div>
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .creator {
     margin: 64px 0 144px;
     display: flex;
@@ -416,7 +401,7 @@ document.documentElement.style = null;
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .creator {
     margin: 12vw 0;
     display: flex;
@@ -475,7 +460,9 @@ document.documentElement.style = null;
     border-radius: var(--radius);
     background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);
-    display: flex;
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;

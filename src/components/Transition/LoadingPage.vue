@@ -8,7 +8,7 @@ const userTag = routeObj.params.user;
 </script>
 
 <template>
-  <Background bg-img="/bg/bg.png" />
+  <Background bg-img="/bg/bg.png"/>
   <div class="loading">
     <div>
       <img :src="LoadInfo.imgSource"/>
@@ -19,7 +19,7 @@ const userTag = routeObj.params.user;
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .loading {
     animation: FadeAnimation ease-out 0.5s;
     margin: 0;
@@ -68,7 +68,7 @@ const userTag = routeObj.params.user;
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .loading {
     margin: 0;
     overflow: scroll;

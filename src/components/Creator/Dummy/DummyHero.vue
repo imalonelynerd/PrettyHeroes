@@ -6,20 +6,23 @@ import Background from "@/components/Hero/Background.vue";
 import CustomFooter from "@/components/Hero/CustomFooter.vue";
 import DummyMode from "@/components/Creator/Dummy/DummyMode.vue";
 import {Color, hexToRgb, Solver} from "@/assets/js/cssColor";
+import {goUp} from "@/assets/js/miscTools";
 
-const props = defineProps(['res']);
+const props = defineProps(['hero']);
 
 defineEmits([
   'update:hideBtn'
 ])
 
+goUp();
+
 let params = {
-  '--cbg': props.res.colors.background,
-  '--cwi': props.res.colors.widget,
-  '--clk': props.res.colors.link,
-  '--cho': props.res.colors.hover,
-  '--ctt': props.res.colors.title,
-  '--ctxt': props.res.colors.text
+  '--cbg': props.hero.colors.background,
+  '--cwi': props.hero.colors.widget,
+  '--clk': props.hero.colors.link,
+  '--cho': props.hero.colors.hover,
+  '--ctt': props.hero.colors.title,
+  '--ctxt': props.hero.colors.text
 }
 for (let elem in params) {
   if (params[elem] !== undefined) {
@@ -27,9 +30,9 @@ for (let elem in params) {
   }
 }
 
-if (props.res.colors.title !== undefined) {
-  let rgb = hexToRgb(props.res.colors.title);
-  if(rgb != null){
+if (props.hero.colors.title !== undefined) {
+  let rgb = hexToRgb(props.hero.colors.title);
+  if (rgb != null) {
     let color = new Color(rgb[0], rgb[1], rgb[2]);
     let solver = new Solver(color);
     document.documentElement.style.setProperty('--fil', solver.solve().filter);
@@ -40,38 +43,38 @@ if (props.res.colors.title !== undefined) {
 
 <template>
   <div class="dummy">
-    <Background :bg-img="res.colors.bgimg"/>
+    <Background :bg-img="hero.colors.bgimg"/>
     <DummyMode
         @update:hideBtn="$emit('update:hideBtn')"
     />
     <div class="hero">
       <div>
         <HeroTitle
-            :title="res.title.title"
-            :catchphrase="res.title.catchphrase"
-            :img-src="res.title.img"
-            :pronouns="res.title.pronouns"
+            :catchphrase="hero.title.catchphrase"
+            :img-src="hero.title.img"
+            :pronouns="hero.title.pronouns"
+            :title="hero.title.title"
         />
         <HeroDesc
-            :name1="res.personal.name1"
-            :name2="res.personal.name2"
-            :age="res.personal.age"
-            :flags="res.personal.flags"
-            :work="res.personal.work"
-            :location="res.personal.location"
-            :timezone="res.personal.timezone"
-            :desc="res.personal.desc"
+            :age="hero.perso.age"
+            :desc="hero.perso.desc"
+            :flags="hero.perso.flags"
+            :location="hero.perso.location"
+            :name1="hero.perso.name1"
+            :name2="hero.perso.name2"
+            :timezone="hero.perso.timezone"
+            :work="hero.perso.work"
         />
-        <HeroLinks :links="res.urls"/>
+        <HeroLinks v-if="hero.urls.linksList.length !== 0" :links="hero.urls.linksList"/>
       </div>
     </div>
-    <CustomFooter/>
+    <CustomFooter og-file=""/>
   </div>
 </template>
 
 <style scoped>
 
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .dummy {
     position: absolute;
     top: 0;
@@ -100,7 +103,7 @@ if (props.res.colors.title !== undefined) {
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .dummy {
     z-index: 2;
     animation: FadeAnimation ease-out 0.5s;
