@@ -15,7 +15,7 @@ defineEmits([
 
 <style scoped>
 
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .dummybtn {
     position: fixed;
     top: 32px;
@@ -52,7 +52,7 @@ defineEmits([
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .dummybtn {
     position: fixed;
     bottom: 10vw;

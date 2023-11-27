@@ -249,7 +249,7 @@ document.documentElement.style = null;
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .creator {
     margin: 64px 0 144px;
     display: flex;
@@ -401,7 +401,7 @@ document.documentElement.style = null;
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .creator {
     margin: 12vw 0;
     display: flex;

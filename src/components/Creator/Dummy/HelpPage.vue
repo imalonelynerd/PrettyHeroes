@@ -67,7 +67,7 @@ goUp();
 
 <style scoped>
 
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   #helpmess {
     margin: 0;
     height: fit-content;
@@ -159,7 +159,7 @@ goUp();
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   #helpmess {
     margin: 0;
     height: fit-content;

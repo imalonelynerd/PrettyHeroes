@@ -43,7 +43,7 @@ function updateItem(value, index, tag) {
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .dlistinput {
     display: flex;
     padding: 16px;
@@ -114,7 +114,7 @@ function updateItem(value, index, tag) {
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .dlistinput {
     display: flex;
     padding: 4vw;

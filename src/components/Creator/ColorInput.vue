@@ -26,7 +26,7 @@ function checkColor(color) {
 
 <style scoped>
 
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .cinput {
     display: flex;
     flex-direction: row;
@@ -63,7 +63,7 @@ function checkColor(color) {
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .cinput {
     display: flex;
     flex-direction: row;

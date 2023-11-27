@@ -19,7 +19,7 @@ const userTag = routeObj.params.user;
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .loading {
     animation: FadeAnimation ease-out 0.5s;
     margin: 0;
@@ -68,7 +68,7 @@ const userTag = routeObj.params.user;
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (hover: none) {
   .loading {
     margin: 0;
     overflow: scroll;
