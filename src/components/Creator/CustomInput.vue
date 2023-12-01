@@ -12,14 +12,14 @@ defineEmits(['update:valueUpdated']);
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .phinput {
     padding: 16px 24px;
     border-radius: var(--radius-button);
     border: none;
     font-size: 1em;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     transition: all 0.25s;
     color: var(--text);
     flex: 1 1;
@@ -31,14 +31,14 @@ defineEmits(['update:valueUpdated']);
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .phinput {
     padding: 4vw 6vw;
     border-radius: var(--radius-button);
     border: none;
     font-size: 1em;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     transition: all 0.25s;
     color: var(--text);
     flex: 1 1;

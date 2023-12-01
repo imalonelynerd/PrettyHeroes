@@ -54,14 +54,14 @@ if (props.hero.colors.title !== undefined) {
             :img-src="hero.title.img"
             :pronouns="hero.title.pronouns"
             :title="hero.title.title"
+            :name1="hero.perso.name1"
+            :name2="hero.perso.name2"
+            :age="hero.perso.age"
         />
         <HeroDesc
-            :age="hero.perso.age"
             :desc="hero.perso.desc"
             :flags="hero.perso.flags"
             :location="hero.perso.location"
-            :name1="hero.perso.name1"
-            :name2="hero.perso.name2"
             :timezone="hero.perso.timezone"
             :work="hero.perso.work"
         />
@@ -74,7 +74,7 @@ if (props.hero.colors.title !== undefined) {
 
 <style scoped>
 
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .dummy {
     position: absolute;
     top: 0;
@@ -86,44 +86,38 @@ if (props.hero.colors.title !== undefined) {
   }
 
   .hero {
-    margin: 64px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-  }
-
-  .hero > div {
-    width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40vw;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    gap: 16px;
+    animation: FadeAnimation ease-out 0.5s;
+    padding: 32px 64px;
+    background: color-mix(in srgb, var(--cbg), var(--alpha));
+    backdrop-filter: var(--blur);
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .dummy {
     z-index: 2;
     animation: FadeAnimation ease-out 0.5s;
   }
 
   .hero {
-    margin: 10vw 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-  }
-
-  .hero > div {
-    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    gap: 4vw;
+    animation: FadeAnimation ease-out 0.5s;
+    padding: 20vw 0 0;
+    background: color-mix(in srgb, var(--cbg), var(--alpha));
+    backdrop-filter: var(--blur);
   }
 }
 

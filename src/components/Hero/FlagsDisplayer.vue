@@ -48,12 +48,12 @@ function getFlag(req) {
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .flags {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     gap: 8px;
   }
@@ -86,12 +86,12 @@ function getFlag(req) {
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .flags {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     gap: 2vw;
   }

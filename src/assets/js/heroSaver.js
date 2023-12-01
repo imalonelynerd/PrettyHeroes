@@ -3,7 +3,7 @@ import {tomlToHero, yamlToHero} from "@/assets/js/heroChecker";
 import {load} from "js-yaml";
 
 export function copyHero(res) {
-    navigator.clipboard.writeText(stringify(res)).then(() => alert('Copied successfully !'));
+    navigator.clipboard.writeText(stringify(res)).then(() => alert('Hero copied successfully !'));
     return true;
 }
 
@@ -35,6 +35,7 @@ export function loadHero(hero) {
                     try {
                         obj = parse(content);
                         hero.from(tomlToHero(obj));
+                        alert('Hero loaded successfully !')
                         break;
                     } catch {
                         alert("Invalid toml file and/or content. Please try again.");
@@ -44,6 +45,7 @@ export function loadHero(hero) {
                     try {
                         obj = load(content);
                         hero.from(yamlToHero(obj));
+                        alert('Pronounce file loaded successfully !')
                         break;
                     } catch {
                         alert("Invalid yaml file and/or content. Please try again.");

@@ -11,10 +11,12 @@ defineProps(["ogFile"])
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .footer {
-    padding: 16px 0;
-    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 16px 64px;
+    width: 40vw;
     height: fit-content;
     opacity: 1;
     gap: 8px;
@@ -22,7 +24,7 @@ defineProps(["ogFile"])
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background: color-mix(in srgb, var(--cbg), var(--alpha));
+    background: var(--darken), color-mix(in srgb, var(--cbg), var(--alpha));
     backdrop-filter: var(--blur);
   }
 
@@ -35,7 +37,7 @@ defineProps(["ogFile"])
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .footer {
     padding: 4vw 0;
     width: 100%;
@@ -44,6 +46,8 @@ defineProps(["ogFile"])
     flex-direction: column;
     opacity: 1;
     text-align: center;
+    background: var(--darken), color-mix(in srgb, var(--cbg), var(--alpha));
+    backdrop-filter: var(--blur);
   }
 
   .footer > *:not(:first-child) {

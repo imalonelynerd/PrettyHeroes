@@ -39,7 +39,7 @@ defineEmits([
 
 <style scoped>
 
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .promess {
     margin: 0;
     padding: 64px 0;
@@ -95,7 +95,7 @@ defineEmits([
     font-size: 1em;
     font-weight: bold;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -120,7 +120,7 @@ defineEmits([
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .promess {
     margin: 0;
     padding: 6vw 0;
@@ -171,7 +171,7 @@ defineEmits([
     font-size: 1em;
     font-weight: bold;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     display: flex;
     flex-direction: row;
     align-items: center;

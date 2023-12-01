@@ -10,7 +10,7 @@ import DOMPurify from 'dompurify';
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .ddesc {
     background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);
@@ -20,7 +20,7 @@ import DOMPurify from 'dompurify';
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .ddesc {
     background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);

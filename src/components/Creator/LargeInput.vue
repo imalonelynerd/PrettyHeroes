@@ -7,12 +7,12 @@ defineEmits(['update:valueUpdated']);
   <textarea :placeholder="placeHolder"
             :value="customValue"
             class="linput"
-            rows="10"
+            rows="6"
             @input="$emit('update:valueUpdated', $event.target.value)"/>
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .linput {
     padding: 16px 24px;
     border-radius: var(--radius-input);
@@ -21,7 +21,7 @@ defineEmits(['update:valueUpdated']);
     font-size: 1em;
     font-family: inherit;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     transition: all 0.25s;
     color: var(--text);
     flex: 1 1;
@@ -31,7 +31,7 @@ defineEmits(['update:valueUpdated']);
     background: var(--ho) !important;
   }
 }
-@media screen and (hover: none){
+@media screen and (orientation: portrait){
   .linput {
     padding: 4vw 6vw;
     border-radius: var(--radius-input);
@@ -40,7 +40,7 @@ defineEmits(['update:valueUpdated']);
     font-size: 1em;
     font-family: inherit;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     transition: all 0.25s;
     color: var(--text);
     flex: 1 1;

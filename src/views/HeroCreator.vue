@@ -26,8 +26,9 @@ import {defineHeader} from "@/assets/js/miscTools";
 import {Hero} from "@/assets/js/heroFactory";
 
 // Others
-import HelpPage from "@/components/Creator/Dummy/HelpPage.vue";
+import HelpPage from "@/components/Creator/HelpPage.vue";
 import Background from "@/components/Hero/Background.vue";
+import TripleInput from "@/components/Creator/TripleInput.vue";
 
 const hero = ref(new Hero());
 
@@ -74,12 +75,22 @@ document.documentElement.style = null;
         <div>
           <ImageInput
               :img-src="hero.title.img"
-              place-holder="Favicon URL"
+              place-holder="Profile picture URL"
               @update:imgUpdated="newValue => hero.title.img = newValue"/>
           <CustomInput
               :customValue="hero.title.title"
-              place-holder="Hero title"
+              place-holder="Hero title (header)"
               @update:valueUpdated="newValue => hero.title.title = newValue"/>
+          <TripleInput
+              :custom-value1="hero.perso.name1"
+              :custom-value2="hero.perso.name2"
+              :custom-value3="hero.perso.age"
+              place-holder1="Name"
+              place-holder2="2nd part"
+              place-holder3="Age"
+              @update:value2Updated="newValue => hero.perso.name2 = newValue"
+              @update:value1Updated="newValue => hero.perso.name1 = newValue"
+              @update:value3Updated="newValue => hero.perso.age = newValue"/>
           <CustomInput
               :customValue="hero.title.catchphrase"
               place-holder="Catchphrase"
@@ -94,69 +105,45 @@ document.documentElement.style = null;
               :catchphrase="hero.title.catchIsEmpty() ? 'Catchphrase' : hero.title.catchphrase"
               :img-src="hero.title.img"
               :pronouns="hero.title.pronouns"
-              :title="hero.title.titleIsEmpty() ? 'Title' : hero.title.title"
+              :name1="hero.perso.name1IsEmpty() ? 'First name' : hero.perso.name1"
+              :name2="hero.perso.name2IsEmpty() ? 'Last name' : hero.perso.name2"
+              :age="hero.perso.ageIsEmpty() ? '1234' : hero.perso.age"
           />
         </div>
       </div>
     </div>
     <div>
       <h1>Personal info</h1>
-      <div>
+      <div class="endstretch">
         <div>
-          <CustomInput
-              :custom-value="hero.perso.name1"
-              place-holder="Name"
-              @update:valueUpdated="newValue => hero.perso.name1 = newValue"/>
-          <CustomInput
-              :custom-value="hero.perso.name2"
-              place-holder="Name (2nd part)"
-              @update:valueUpdated="newValue => hero.perso.name2 = newValue"/>
-          <CustomInput
-              :custom-value="hero.perso.age"
-              place-holder="Age"
-              @update:valueUpdated="newValue => hero.perso.age = newValue"/>
+          <TripleInput
+            :custom-value1="hero.perso.location"
+            :custom-value2="hero.perso.work"
+            :custom-value3="hero.perso.timezone"
+            place-holder1="Location"
+            place-holder2="Work"
+            place-holder3="Timezone"
+            @update:value1-updated="newValue => hero.perso.location = newValue"
+            @update:value2-updated="newValue => hero.perso.work = newValue"
+            @update:value3-updated="newValue => hero.perso.timezone = newValue" />
           <ListInput
               :list-items="hero.perso.flags"
               empty-place-holder="Flags"
               place-holder="Flag keyword"/>
-          <CustomInput
-              :custom-value="hero.perso.work"
-              place-holder="Work"
-              @update:valueUpdated="newValue => hero.perso.work = newValue"/>
-          <CustomInput
-              :custom-value="hero.perso.location"
-              place-holder="Location"
-              @update:valueUpdated="newValue => hero.perso.location = newValue"/>
-          <CustomInput
-              place-holder="Timezone"
-              @update:valueUpdated="newValue => hero.perso.timezone = newValue"/>
-        </div>
-        <div>
-          <HeroDesc
-              :age="hero.perso.ageIsEmpty() ? '1234' : hero.perso.age"
-              :flags="hero.perso.flags"
-              :location="hero.perso.locationIsEmpty() ? 'Location' : hero.perso.location"
-              :name1="hero.perso.name1IsEmpty() ? 'First name' : hero.perso.name1"
-              :name2="hero.perso.name2IsEmpty() ? 'Last name' : hero.perso.name2"
-              :timezone="hero.perso.timezoneIsEmpty() ? 'Timezone' : hero.perso.timezone"
-              :work="hero.perso.workIsEmpty() ? 'Work' : hero.perso.work"
-              desc=""
-          />
-        </div>
-      </div>
-    </div>
-    <div class="half">
-      <h1>Description</h1>
-      <div>
-        <div>
           <LargeInput
               :custom-value="hero.perso.desc"
               place-holder="Description"
               @update:valueUpdated="newValue => hero.perso.desc = newValue"/>
+
         </div>
         <div>
-          <DummyDesc
-              :desc="hero.perso.descIsEmpty() ? '\\*\\*Hello\\*\\* \\*world\\* ! ---> **Hello** *world* !' : hero.perso.desc"/>
+          <HeroDesc
+              :flags="hero.perso.flags"
+              :location="hero.perso.locationIsEmpty() ? 'Location' : hero.perso.location"
+              :timezone="hero.perso.timezoneIsEmpty() ? 'Timezone' : hero.perso.timezone"
+              :work="hero.perso.workIsEmpty() ? 'Work' : hero.perso.work"
+              :desc="hero.perso.descIsEmpty() ? '\\*\\*Hello\\*\\* \\*world\\* ! ---> **Hello** *world* !' : hero.perso.desc"
+          />
         </div>
       </div>
     </div>
@@ -199,7 +186,7 @@ document.documentElement.style = null;
         </div>
       </div>
     </div>
-    <div class="half">
+    <div>
       <h1>URLs</h1>
       <div class="nostretch">
         <div>
@@ -215,53 +202,60 @@ document.documentElement.style = null;
         </div>
       </div>
     </div>
-    <div class="tbuttons">
-      <router-link to="/">
-        <img src="/icons/back.png"/>
-        <p>Back</p>
-      </router-link>
-      <a @click="showElem(true,'dummy')">
-        <img src="/icons/create.png"/>
-        <p>Test</p>
-      </a>
-      <a @click="copyHero(hero)">
-        <img src="/icons/copy.png"/>
-        <p>Copy</p>
-      </a>
-      <a @click="loadHero(hero)">
-        <img src="/icons/load.png"/>
-        <p>Load</p>
-      </a>
-      <a @click="saveHero(hero)">
-        <img src="/icons/save.png"/>
-        <p>Save</p>
-      </a>
-      <a @click="resetHero(hero)">
-        <img src="/icons/reset.png"/>
-        <p>Reset</p>
-      </a>
-      <a @click="showElem(true,'help')">
-        <img src="/icons/help.png"/>
-        <p>Help</p>
-      </a>
-    </div>
   </div>
+  <div class="tbuttons" v-if="!(dummyShown || helpShown)">
+    <router-link to="/">
+      <img src="/icons/back.png"/>
+      <p>Back</p>
+    </router-link>
+    <a @click="showElem(true,'dummy')">
+      <img src="/icons/create.png"/>
+      <p>Test</p>
+    </a>
+    <a @click="copyHero(hero)">
+      <img src="/icons/copy.png"/>
+      <p>Copy</p>
+    </a>
+    <a @click="loadHero(hero)">
+      <img src="/icons/load.png"/>
+      <p>Load</p>
+    </a>
+    <a @click="saveHero(hero)">
+      <img src="/icons/save.png"/>
+      <p>Save</p>
+    </a>
+    <a @click="resetHero(hero)">
+      <img src="/icons/reset.png"/>
+      <p>Reset</p>
+    </a>
+    <a @click="showElem(true,'help')">
+      <img src="/icons/help.png"/>
+      <p>Help</p>
+    </a>
+  </div>
+
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .creator {
-    margin: 64px 0 144px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 80px 0 128px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     animation: FadeAnimation ease-out 0.5s;
-    gap: 64px;
+    gap: 24px;
+    background: color-mix(in srgb, var(--bg), var(--alpha));
+    box-shadow: var(--shadow);
+    backdrop-filter: var(--blur);
+    width: 85vw;
   }
 
   .creator > div:not(.creattitle, .tbuttons) {
-    width: 85vw;
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -269,9 +263,6 @@ document.documentElement.style = null;
     padding: 32px;
     border-radius: var(--radius);
     gap: 32px;
-    background: color-mix(in srgb, var(--bg), var(--alpha));
-    box-shadow: var(--shadow);
-    backdrop-filter: var(--blur);
   }
 
   .creator > div:not(.creattitle, .tbuttons) > div {
@@ -286,7 +277,7 @@ document.documentElement.style = null;
   .creator > div:not(.creattitle, .tbuttons) > div > div:first-of-type {
     align-self: flex-start;
     display: flex;
-    width: 300px;
+    width: 400px;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
@@ -300,7 +291,7 @@ document.documentElement.style = null;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 32px 64px;
+    padding: 0 32px;
     border-radius: var(--radius);
     background: url("/bg/creatbg.png") center center no-repeat;
     background-size: cover !important;
@@ -317,10 +308,12 @@ document.documentElement.style = null;
   }
 
   .tbuttons {
-    bottom: 32px;
-    position: fixed;
-    padding: 16px;
-    border-radius: var(--radius-button);
+    bottom: 0;
+    width: 80vw;
+    left: 50%;
+    transform: translateX(-50%);
+    position: fixed !important;
+    padding: 24px 0;
     background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);
     display: flex;
@@ -328,7 +321,7 @@ document.documentElement.style = null;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    box-shadow: var(--shadow);
+    /*box-shadow: var(--shadow);*/
     z-index: 5;
     animation: FadeAnimation ease-out 0.5s;
   }
@@ -339,7 +332,7 @@ document.documentElement.style = null;
     font-size: 1em;
     font-weight: bold;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -399,31 +392,48 @@ document.documentElement.style = null;
   .nostretch > div:first-of-type {
     justify-content: start !important;
   }
+
+  .endstretch {
+    flex: 1 0 !important;
+  }
+
+  .endstretch > div:first-of-type {
+    align-self: stretch !important;
+  }
+
+  .endstretch > div:first-of-type > *:not(:last-child) {
+    flex: 0 0 !important;
+  }
+
+  .endstretch > div:first-of-type > *:last-child {
+    flex: 1 0 !important;
+  }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .creator {
-    margin: 12vw 0;
+    padding: 12vw 0 6vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     animation: FadeAnimation ease-out 0.5s;
+    background: color-mix(in srgb, var(--bg), var(--alpha));
+    backdrop-filter: var(--blur);
     gap: 6vw;
   }
 
   .creator > div:not(.creattitle, .tbuttons) {
-    width: 75vw;
+    width: 85vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 6vw;
     border-radius: var(--radius);
     gap: 6vw;
-    background: color-mix(in srgb, var(--bg), var(--alpha));
+    /*background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow);*/
   }
 
   .creator > div > * {
@@ -455,10 +465,12 @@ document.documentElement.style = null;
   }
 
   .tbuttons {
-    width: 75vw;
-    padding: 6vw;
-    border-radius: var(--radius);
-    background: color-mix(in srgb, var(--bg), var(--alpha));
+    /*width: 75vw;*/
+    margin-left: auto;
+    margin-right: auto;
+    padding: 6vw 6vw 8vw;
+    /*border-radius: var(--radius) var(--radius) 0 0;*/
+    background: var(--darken), color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);
     display: grid;
     grid-auto-rows: 1fr;
@@ -478,7 +490,7 @@ document.documentElement.style = null;
     font-size: 1em;
     font-weight: bold;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     display: flex;
     flex-direction: row;
     align-items: center;

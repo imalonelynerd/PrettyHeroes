@@ -13,19 +13,17 @@ defineProps(["links"])
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .links {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: start;
     align-items: center;
-    background: color-mix(in srgb, var(--cbg), var(--alpha));
-    backdrop-filter: var(--blur);
-    padding: 32px;
-    border-radius: var(--radius);
+    padding: 0px 0;
+    /*border-radius: var(--radius);*/
     gap: 8px;
-    box-shadow: var(--shadow);
+    /*box-shadow: var(--shadow);*/
   }
 
   .links > a {
@@ -34,7 +32,7 @@ defineProps(["links"])
     font-size: 1em;
     font-weight: bold;
     background: color-mix(in srgb, var(--clk), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -60,18 +58,14 @@ defineProps(["links"])
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .links {
     display: flex;
     flex-direction: column;
     justify-content: stretch;
     align-items: stretch;
-    background: color-mix(in srgb, var(--cbg), var(--alpha));
-    backdrop-filter: var(--blur);
     padding: 6vw;
-    border-radius: var(--radius);
     gap: 2vw;
-    box-shadow: var(--shadow);
   }
 
   .links > a {
@@ -80,7 +74,7 @@ defineProps(["links"])
     font-size: 1em;
     font-weight: bold;
     background: color-mix(in srgb, var(--clk), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -4,32 +4,33 @@ defineEmits(['update:imgUpdated']);
 </script>
 
 <template>
-  <div :style="imgSrc === '' ? `background : color-mix(in srgb, var(--wi), var(--alpha))` : `background : linear-gradient(#00000040, #00000040), url('${imgSrc}') left center`"
+  <div :style="imgSrc === '' ? `background : color-mix(in srgb, var(--wi), var(--alpha))` : `background : url('${imgSrc}') right center`"
        class="iminput"
   >
-    <div/>
     <input
+        :style="imgSrc === '' ? `background : transparent` : `background : color-mix(in srgb, var(--wi), var(--alpha))`"
         :placeholder="placeHolder"
         :value="imgSrc"
         type="text"
         @input="$emit('update:imgUpdated', $event.target.value)">
+    <div/>
   </div>
 
 </template>
 
 <style scoped>
 
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .iminput {
     display: flex;
     flex-direction: row;
     align-items: stretch;
     justify-content: stretch;
-    background-size: 25% !important;
+    background-size: 20% !important;
     border-radius: var(--radius-button);
     border: none;
     font-size: 1em;
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     transition: all 0.25s;
     min-width: 0;
     color: var(--text);
@@ -58,7 +59,7 @@ defineEmits(['update:imgUpdated']);
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .iminput {
     display: flex;
     flex-direction: row;
@@ -66,9 +67,9 @@ defineEmits(['update:imgUpdated']);
     justify-content: stretch;
     border-radius: var(--radius-button);
     border: none;
-    background-size: 25% !important;
+    background-size: 20% !important;
     font-size: 1em;
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     transition: all 0.25s;
     min-width: 0;
     color: var(--text);

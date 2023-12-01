@@ -11,27 +11,28 @@
     --ctxt: var(--text);
     --ctt: var(--text);
 
-    --blur: blur(10px);
-    --alpha: transparent 20%;
+    --blur: blur(20px);
+    --alpha: transparent 40%;
+    --darken: linear-gradient(#00000040, #00000040);
 
     --fil: none;
 }
 
-@media only screen and (hover: hover) {
+@media only screen and (orientation: landscape) {
     :root {
         --shadow: 0px 8px 8px #00000020;
-        --radius: 32px;
-        --radius-button: 64px;
-        --radius-input: 28px;
+        --radius: 16px;
+        --radius-button: 16px;
+        --radius-input: 16px;
     }
 }
 
-@media only screen and (hover: none) {
+@media only screen and (orientation: portrait) {
     :root {
         --shadow: 0px 2vw 2vw #00000020;
-        --radius: 8vw;
-        --radius-button: 12vw;
-        --radius-input: 7vw;
+        --radius: 4vw;
+        --radius-button: 4vw;
+        --radius-input: 4vw;
     }
 }
 

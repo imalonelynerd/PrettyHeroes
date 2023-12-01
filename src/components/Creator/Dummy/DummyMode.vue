@@ -8,14 +8,14 @@ defineEmits([
 
 <template>
   <a class="dummybtn" @click="$emit('update:hideBtn')">
-    <img src="/icons/create.png">
-    <p>Dummy Mode</p>
+    <img src="/icons/back.png">
+    <p>Back</p>
   </a>
 </template>
 
 <style scoped>
 
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .dummybtn {
     position: fixed;
     top: 32px;
@@ -52,7 +52,7 @@ defineEmits([
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .dummybtn {
     position: fixed;
     bottom: 10vw;

@@ -60,8 +60,8 @@ document.documentElement.style = null;
           <img src="/icons/search.png">
           <p>Search</p>
         </router-link>
-        <a :href="`https://github.com/${searchResult}`"
-           :title="`Check ${searchResult === '' ? 'user' : searchResult}'s GitHub`">
+        <a :href="searchResult === '' ? '' : `https://github.com/${searchResult}`"
+           :title="`Check ${searchResult === '' ? '[ERROR]' : searchResult}'s GitHub`">
           <img src="/icons/fork.png">
           <p>Check {{ searchResult === "" ? "user" : searchResult }}'s GitHub</p>
         </a>
@@ -76,16 +76,21 @@ document.documentElement.style = null;
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .home {
     height: 100vh;
-    width: 100vw;
+    width: 40vw;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 16px;
+    background: color-mix(in srgb, var(--bg), var(--alpha));
+    backdrop-filter: var(--blur);
     animation: FadeAnimation ease-out 0.5s;
+    padding: 0 64px;
   }
 
   .home > * {
@@ -97,25 +102,25 @@ document.documentElement.style = null;
   }
 
   .home > div {
-    width: 650px;
-    margin-top: 16px;
+    /*width: 80%;*/
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 32px;
-    background: color-mix(in srgb, var(--bg), var(--alpha));
+    /*background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);
     padding: 24px 32px;
     border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow);*/
   }
 
   .home > code {
     padding: 12px 16px !important;
     border-radius: var(--radius-button) !important;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     transition: all 0.25s;
     box-shadow: var(--shadow);
   }
@@ -129,15 +134,17 @@ document.documentElement.style = null;
   }
 
   .home > div > h2 {
+    color: var(--ho);
     font-style: italic;
   }
 
   .home > div > p {
     text-align: center;
+    width: 80%;
   }
 
   .buttons, .query {
-    width: 600px !important;
+    width: 500px !important;
     animation: FadeAnimation ease-out 0.25s;
   }
 
@@ -157,7 +164,7 @@ document.documentElement.style = null;
     font-weight: bold;
     border: none;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     color: var(--text);
     display: flex;
     flex-direction: row;
@@ -215,7 +222,7 @@ document.documentElement.style = null;
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .home {
     width: 100vw;
     height: 100vh;
@@ -224,6 +231,8 @@ document.documentElement.style = null;
     align-items: center;
     justify-content: center;
     animation: FadeAnimation ease-out 0.5s;
+    background: color-mix(in srgb, var(--bg), var(--alpha));
+    backdrop-filter: var(--blur);
     gap: 4vw;
   }
 
@@ -239,7 +248,7 @@ document.documentElement.style = null;
     padding: 3vw 6vw !important;
     border-radius: var(--radius-button) !important;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     transition: all 0.25s;
     box-shadow: var(--shadow);
   }
@@ -268,6 +277,7 @@ document.documentElement.style = null;
 
   .home > div > h2 {
     font-style: italic;
+    color: var(--ho);
   }
 
   .buttons, .query {
@@ -292,7 +302,7 @@ document.documentElement.style = null;
     font-weight: bold;
     border: none;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     color: var(--text);
     display: flex;
     flex-direction: row;

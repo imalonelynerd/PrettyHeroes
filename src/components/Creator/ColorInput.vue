@@ -4,29 +4,36 @@ defineEmits(['update:colorUpdated']);
 
 
 function checkColor(color) {
-  if (/^#[0-9A-Fa-f]{6,8}$/.test(color)) {
+  if (/^#(?:[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8}|[0-9A-Fa-f]{3}|[0-9A-Fa-f]{4})$/.test(color)) {
     return color;
   }
   return "color-mix(in srgb, var(--wi), var(--alpha))";
+}
+
+function checkColor2(color) {
+  if (/^#(?:[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8}|[0-9A-Fa-f]{3}|[0-9A-Fa-f]{4})$/.test(color)) {
+    return "color-mix(in srgb, var(--wi), var(--alpha))";
+  }
+  return "transparent";
 }
 
 </script>
 
 <template>
   <div :style="`background: ${checkColor(color)}`" class="cinput">
-    <div/>
     <input
+        :style="`background: ${checkColor2(color)}`"
         :placeholder="placeHolder"
         :value="color"
-        pattern="^#[0-9A-Fa-f]{6,8}$"
         type="text"
         @input="$emit('update:colorUpdated', $event.target.value)">
+    <div/>
   </div>
 </template>
 
 <style scoped>
 
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .cinput {
     display: flex;
     flex-direction: row;
@@ -35,7 +42,7 @@ function checkColor(color) {
     border-radius: var(--radius-button);
     border: none;
     font-size: 1em;
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     transition: all 0.25s;
     min-width: 0;
     color: var(--text);
@@ -50,7 +57,7 @@ function checkColor(color) {
     flex: 1 1;
     padding: 16px 24px;
     border-radius: var(--radius-button);
-    background: color-mix(in srgb, var(--wi), var(--alpha));
+    /*background: color-mix(in srgb, var(--wi), var(--alpha));*/
     border: none;
     font-size: 1em;
     transition: all 0.25s;
@@ -63,7 +70,7 @@ function checkColor(color) {
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .cinput {
     display: flex;
     flex-direction: row;
@@ -72,7 +79,7 @@ function checkColor(color) {
     border-radius: var(--radius-button);
     border: none;
     font-size: 1em;
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
     transition: all 0.25s;
     min-width: 0;
     color: var(--text);
@@ -87,7 +94,7 @@ function checkColor(color) {
     flex: 1 1;
     padding: 4vw 6vw;
     border-radius: var(--radius-button);
-    background: color-mix(in srgb, var(--wi), var(--alpha));
+    /*background: color-mix(in srgb, var(--wi), var(--alpha));*/
     border: none;
     font-size: 1em;
     transition: all 0.25s;

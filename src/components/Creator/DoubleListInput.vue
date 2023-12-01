@@ -37,22 +37,21 @@ function updateItem(value, index, tag) {
       <button @click="removeItem">
         <img src="/icons/remove.png"/>
       </button>
-      <p>{{ emptyPlaceHolder }}</p>
+      <p v-if="listDblItems.length === 0">{{ emptyPlaceHolder }} - empty</p>
     </div>
   </div>
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .dlistinput {
     display: flex;
-    padding: 16px;
     border-radius: var(--radius-input);
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
   }
 
   .dlistinput > div {
@@ -61,21 +60,25 @@ function updateItem(value, index, tag) {
     align-items: center;
     justify-content: stretch;
     border-radius: var(--radius-input);
-    gap: 8px;
   }
 
-  .dlistinput > .inputbuttons {
-    flex-direction: row-reverse;
+  .inputbuttons {
+    padding: 8px 24px;
+    justify-content: stretch;
+    border-radius: var(--radius-input);
+    gap: 16px !important;
+    align-items: center;
+    flex-direction: row-reverse !important;
   }
 
-  .dlistinput > div > p {
+  .inputbuttons > p {
     margin: 0;
     flex-grow: 1;
     opacity: 0.25;
     font-size: 0.9em;
   }
 
-  .dlistinput > div > button {
+  .inputbuttons > button {
     padding: 4px;
     border-radius: var(--radius-button);
     font-size: 1em;
@@ -88,16 +91,16 @@ function updateItem(value, index, tag) {
     transition: all 0.25s;
   }
 
-  .dlistinput > div > button:hover {
+  .inputbuttons > button:hover {
     background: var(--bg) !important;
   }
 
-  .dlistinput > div > button > img {
+  .inputbuttons > button > img {
     height: 1em;
   }
 
   .dlistinput > div > input {
-    padding: 8px 4px;
+    padding: 16px 24px;
     border: none;
     font-size: 1em;
     transition: all 0.25s;
@@ -106,7 +109,6 @@ function updateItem(value, index, tag) {
     border-radius: var(--radius-button);
     flex: 1 1;
     min-width: 0;
-    margin-bottom: 4px;
   }
 
   .dlistinput > div > input:hover {
@@ -114,16 +116,15 @@ function updateItem(value, index, tag) {
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .dlistinput {
     display: flex;
-    padding: 4vw;
     border-radius: var(--radius-input);
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
   }
 
   .dlistinput > div {
@@ -132,21 +133,25 @@ function updateItem(value, index, tag) {
     align-items: center;
     justify-content: stretch;
     border-radius: var(--radius-input);
-    gap: 4vw;
   }
 
-  .dlistinput > .inputbuttons {
-    flex-direction: row-reverse;
+  .inputbuttons {
+    padding: 2vw 4vw;
+    justify-content: stretch;
+    border-radius: var(--radius-input);
+    gap: 4vw !important;
+    align-items: center;
+    flex-direction: row-reverse !important;
   }
 
-  .dlistinput > div > p {
+  .inputbuttons > p {
     margin: 0;
     flex-grow: 1;
     opacity: 0.25;
     font-size: 0.9em;
   }
 
-  .dlistinput > div > button {
+  .inputbuttons > button {
     padding: 2vw;
     border-radius: var(--radius-button);
     font-size: 1em;
@@ -159,16 +164,16 @@ function updateItem(value, index, tag) {
     transition: all 0.25s;
   }
 
-  .dlistinput > div > button:active {
+  .inputbuttons > button:active {
     background: var(--bg) !important;
   }
 
-  .dlistinput > div > button > img {
+  .inputbuttons > button > img {
     height: 1em;
   }
 
   .dlistinput > div > input {
-    padding: 2vw 0;
+    padding: 4vw 6vw;
     border: none;
     font-size: 1em;
     transition: all 0.25s;
@@ -177,7 +182,6 @@ function updateItem(value, index, tag) {
     border-radius: var(--radius-button);
     flex: 1 1;
     min-width: 0;
-    margin-bottom: 1vw;
   }
 
   .dlistinput > div > input:active {

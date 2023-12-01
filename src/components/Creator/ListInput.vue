@@ -18,10 +18,12 @@ function updateItem(value, index) {
 
 <template>
   <div class="listinput">
-    <input v-for="(_, index) in listItems"
-           :placeholder="placeHolder"
-           :value="listItems[index]"
-           @input="updateItem($event.target.value,index); $emit('update:listUpdated')">
+    <div>
+      <input v-for="(_, index) in listItems"
+             :placeholder="placeHolder"
+             :value="listItems[index]"
+             @input="updateItem($event.target.value,index); $emit('update:listUpdated')">
+    </div>
     <div>
       <button @click="addItem">
         <img src="/icons/add.png"/>
@@ -29,41 +31,41 @@ function updateItem(value, index) {
       <button @click="removeItem">
         <img src="/icons/remove.png"/>
       </button>
-      <p>{{ emptyPlaceHolder }}</p>
+      <p v-if="listItems.length === 0">{{ emptyPlaceHolder }} - empty</p>
     </div>
   </div>
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .listinput {
     display: flex;
-    padding: 16px;
     border-radius: var(--radius-input);
     flex-direction: column;
-    justify-content: center;
+    justify-content: stretch;
     align-items: stretch;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
   }
 
-  .listinput > div {
+  .listinput > div:last-of-type {
+    padding: 8px 24px;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     justify-content: stretch;
     border-radius: var(--radius-input);
-    gap: 8px;
+    gap: 16px;
   }
 
-  .listinput > div > p {
+  .listinput > div:last-of-type > p {
     margin: 0;
     flex-grow: 1;
     opacity: 0.25;
     font-size: 0.9em;
   }
 
-  .listinput > div > button {
+  .listinput > div:last-of-type > button {
     padding: 4px;
     border-radius: var(--radius-button);
     font-size: 1em;
@@ -76,44 +78,52 @@ function updateItem(value, index) {
     transition: all 0.25s;
   }
 
-  .listinput > div > button:hover {
+  .listinput > div:last-of-type > button:hover {
     background: var(--bg) !important;
   }
 
-  .listinput > div > button > img {
+  .listinput > div:last-of-type > button > img {
     height: 1em;
   }
 
-  .listinput > input {
-    padding: 8px 4px;
+  .listinput > div:first-of-type {
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: stretch;
+    justify-content: stretch;
+  }
+
+  .listinput > div:first-of-type > input {
+    width: 64%;
+    padding: 16px 24px;
     border: none;
     font-size: 1em;
     transition: all 0.25s;
     color: var(--text);
     background: none;
     border-radius: var(--radius);
-    flex: 1 1;
-    margin-bottom: 4px;
+    flex: 1 0;
   }
 
-  .listinput > input:hover {
+  .listinput > div:first-of-type > input:hover {
     background: var(--ho) !important;
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .listinput {
     display: flex;
-    padding: 4vw;
     border-radius: var(--radius-input);
     flex-direction: column;
-    justify-content: center;
+    justify-content: stretch;
     align-items: stretch;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    backdrop-filter: var(--blur);
+    /*backdrop-filter: var(--blur);*/
   }
 
-  .listinput > div {
+  .listinput > div:last-of-type {
+    padding: 2vw 4vw;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -122,14 +132,14 @@ function updateItem(value, index) {
     gap: 4vw;
   }
 
-  .listinput > div > p {
+  .listinput > div:last-of-type > p {
     margin: 0;
     flex-grow: 1;
     opacity: 0.25;
-    font-size: 1em;
+    font-size: 0.9em;
   }
 
-  .listinput > div > button {
+  .listinput > div:last-of-type > button {
     padding: 2vw;
     border-radius: var(--radius-button);
     font-size: 1em;
@@ -142,27 +152,35 @@ function updateItem(value, index) {
     transition: all 0.25s;
   }
 
-  .listinput > div > button:active {
+  .listinput > div:last-of-type > button:active {
     background: var(--bg) !important;
   }
 
-  .listinput > div > button > img {
+  .listinput > div:last-of-type > button > img {
     height: 1em;
   }
 
-  .listinput > input {
-    padding: 2vw 0;
+  .listinput > div:first-of-type {
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    justify-content: stretch;
+  }
+
+  .listinput > div:first-of-type > input {
+    width: 72%;
+    padding: 4vw 6vw;
     border: none;
     font-size: 1em;
     transition: all 0.25s;
     color: var(--text);
     background: none;
-    border-radius: var(--radius-button);
-    flex: 1 1;
-    margin-bottom: 1vw;
+    border-radius: var(--radius);
+    flex: 1 0;
   }
 
-  .listinput > input:active {
+  .listinput > div:first-of-type > input:active {
     background: var(--ho) !important;
   }
 }

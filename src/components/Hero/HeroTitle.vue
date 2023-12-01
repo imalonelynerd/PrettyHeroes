@@ -1,33 +1,31 @@
 <script setup>
 const props = defineProps(
-    ["title", "catchphrase", "imgSrc", "pronouns"]
+//    ["title", "catchphrase", "imgSrc", "pronouns"]
+    ["catchphrase", "imgSrc", "pronouns", "name1", "name2", "age"]
 );
 </script>
 
 <template>
   <div class="herotitle">
     <img :src="imgSrc === '' ? '/images/unknown.png' : imgSrc">
-    <h1 v-if="title !== ''">{{ title }}</h1>
+    <h1>{{ name1 }} <span>{{ name2 }}</span>, {{ age }}</h1>
     <h4 v-if="catchphrase !== ''">{{ catchphrase }}</h4>
     <p>{{ pronouns.join(' - ') }}</p>
   </div>
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .herotitle {
     color: var(--ctxt);
-    padding: 32px 0;
+    padding: 0px 0;
     border-radius: var(--radius);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-size: cover !important;
-    gap: 8px;
-    background: color-mix(in srgb, var(--cbg), var(--alpha));
-    backdrop-filter: var(--blur);
-    box-shadow: var(--shadow);
+    gap: 16px;
   }
 
   .herotitle > * {
@@ -36,6 +34,12 @@ const props = defineProps(
 
   .herotitle > h1 {
     color: var(--ctt);
+    text-align: center;
+  }
+
+  .herotitle > h1 > span {
+    opacity: 0.66;
+    font-size: 0.75em;
   }
 
   .herotitle > img {
@@ -45,7 +49,7 @@ const props = defineProps(
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .herotitle {
     color: var(--ctxt);
     padding: 6vw 0;
@@ -55,10 +59,7 @@ const props = defineProps(
     align-items: center;
     justify-content: center;
     background-size: cover !important;
-    gap: 2vw;
-    background: color-mix(in srgb, var(--cbg), var(--alpha));
-    backdrop-filter: var(--blur);
-    box-shadow: var(--shadow);
+    gap: 3vw;
   }
 
   .herotitle > * {
@@ -67,6 +68,11 @@ const props = defineProps(
 
   .herotitle > h1 {
     color: var(--ctt);
+  }
+
+  .herotitle > h1 > span {
+    opacity: 0.66;
+    font-size: 0.75em;
   }
 
   .herotitle > img {

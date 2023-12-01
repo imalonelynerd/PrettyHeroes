@@ -32,7 +32,7 @@ function getErrorMessage(errcode) {
 </template>
 
 <style scoped>
-@media screen and (hover: hover) {
+@media screen and (orientation: landscape) {
   .err {
     animation: FadeAnimation ease-out 0.5s;
     margin: 0;
@@ -57,7 +57,6 @@ function getErrorMessage(errcode) {
     backdrop-filter: var(--blur);
     padding: 32px;
     border-radius: var(--radius);
-
     box-shadow: var(--shadow);
     gap: 16px;
   }
@@ -80,7 +79,7 @@ function getErrorMessage(errcode) {
   }
 }
 
-@media screen and (hover: none) {
+@media screen and (orientation: portrait) {
   .err {
     animation: FadeAnimation ease-out 0.5s;
     margin: 0;

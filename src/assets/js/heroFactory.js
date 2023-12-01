@@ -10,7 +10,7 @@ export class HeroTitleO {
         this.title = "";
         this.img = "";
         this.catchphrase = "";
-        this.pronouns = [""];
+        this.pronouns = ["They/them"];
     }
 
     titleIsEmpty() {
