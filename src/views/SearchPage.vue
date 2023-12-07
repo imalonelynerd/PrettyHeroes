@@ -4,7 +4,6 @@ import homeInfo from "@/assets/json/homeInfo.json";
 import {ref} from "vue";
 import {useRouter} from "vue-router";
 import Background from "@/components/Hero/Background.vue";
-import {goTo} from "@/assets/js/miscTools";
 
 const refHomeInfo = ref(homeInfo);
 const searchResult = ref("");
@@ -16,6 +15,10 @@ function switchQuery() {
 
 const router = useRouter();
 
+function goTo(place) {
+  router.push(place);
+}
+
 document.querySelector('head title').textContent = homeInfo.appName;
 document.querySelector("link[rel~='icon']").href = `/favicon.png`;
 document.querySelector("meta[name~='description']").setAttribute("content", `${homeInfo.tagLine}`);
@@ -25,6 +28,7 @@ document.documentElement.style = null;
 </script>
 
 <template>
+  <Background bg-img="/bg/bg.png"/>
   <div class="home">
     <img :src="refHomeInfo.imgSource"/>
     <h1>{{ refHomeInfo.appName }}</h1>
@@ -50,7 +54,7 @@ document.documentElement.style = null;
         <input v-model="searchResult"
                placeholder="Search..."
                type="text"
-               @keyup.enter="goTo(searchResult, $router)"/>
+               @keyup.enter="goTo(searchResult)"/>
         <router-link :to="'/' + searchResult"
                      title="Search">
           <img src="/icons/search.png">

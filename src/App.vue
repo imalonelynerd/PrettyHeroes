@@ -1,8 +1,12 @@
 <script setup>
 import LoadingPage from "@/components/Transition/LoadingPage.vue";
+import Navbar from "@/components/Home/navbarComponements/Navbar.vue";
+import MobileNavbar from "@/components/Home/navbarComponements/MobileNavbar.vue";
 </script>
 
 <template>
+  <Navbar v-if="!$route.name.startsWith('HeroPage')"/>
+  <MobileNavbar />
   <Suspense>
     <template #fallback>
       <LoadingPage/>

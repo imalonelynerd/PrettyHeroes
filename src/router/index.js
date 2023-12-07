@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router'
 import HomePage from "@/views/HomePage.vue";
 import HeroCreator from "@/views/HeroCreator.vue";
 import HeroPage from "@/views/HeroPage.vue";
+import SearchPage from "@/views/SearchPage.vue";
 
 export const router = createRouter({
     history: createWebHistory(),
@@ -12,18 +13,23 @@ export const router = createRouter({
             component: HomePage,
         },
         {
+            path: '/search',
+            name: 'SearchPage',
+            component: SearchPage,
+        },
+        {
             path: '/creator',
-            name: 'Hero Creator',
+            name: 'HeroCreator',
             component: HeroCreator,
         },
         {
             path: '/:user',
-            name: 'Hero Page',
+            name: 'HeroPage',
             component: HeroPage
         },
         {
             path: '/:user/:nocolor',
-            name: 'Hero Page with no color',
+            name: 'HeroPageNoColor',
             component: HeroPage,
         }
     ]
