@@ -1,16 +1,17 @@
 <script setup>
-const props = defineProps(
-//    ["title", "catchphrase", "imgSrc", "pronouns"]
+defineProps(
     ["catchphrase", "imgSrc", "pronouns", "name1", "name2", "age"]
 );
 </script>
 
 <template>
   <div class="herotitle">
-    <img :src="imgSrc === '' ? '/images/unknown.png' : imgSrc">
-    <h1>{{ name1 }} <span>{{ name2 }}</span>, {{ age }}</h1>
-    <h4 v-if="catchphrase !== ''">{{ catchphrase }}</h4>
-    <p>{{ pronouns.join(' - ') }}</p>
+    <img :src="imgSrc === '' ? '/images/unknown.png' : imgSrc" alt="Avatar">
+    <div>
+      <h1>{{ name1 }} <span>{{ name2 }}</span>, {{ age }}</h1>
+      <h4 v-if="catchphrase !== ''">{{ catchphrase }}</h4>
+      <p>{{ pronouns.join(' - ') }}</p>
+    </div>
   </div>
 </template>
 
@@ -18,66 +19,41 @@ const props = defineProps(
 @media screen and (orientation: landscape) {
   .herotitle {
     color: var(--ctxt);
-    padding: 0px 0;
+    padding: 0;
     border-radius: var(--radius);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-size: cover !important;
-    gap: 16px;
+    gap: 24px;
   }
 
-  .herotitle > * {
+  .herotitle > *, .herotitle > * > * {
     margin: 0;
   }
 
-  .herotitle > h1 {
+  .herotitle > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .herotitle > div > h1 {
     color: var(--ctt);
     text-align: center;
   }
 
-  .herotitle > h1 > span {
+  .herotitle > div > h1 > span {
     opacity: 0.66;
     font-size: 0.75em;
   }
 
   .herotitle > img {
     border-radius: var(--radius-button);
-    height: 108px;
-    box-shadow: var(--shadow);
-  }
-}
-
-@media screen and (orientation: portrait) {
-  .herotitle {
-    color: var(--ctxt);
-    padding: 6vw 0;
-    border-radius: var(--radius);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-size: cover !important;
-    gap: 3vw;
-  }
-
-  .herotitle > * {
-    margin: 0;
-  }
-
-  .herotitle > h1 {
-    color: var(--ctt);
-  }
-
-  .herotitle > h1 > span {
-    opacity: 0.66;
-    font-size: 0.75em;
-  }
-
-  .herotitle > img {
-    border-radius: var(--radius-button);
-    height: 20vw;
+    height: 160px;
     box-shadow: var(--shadow);
   }
 }

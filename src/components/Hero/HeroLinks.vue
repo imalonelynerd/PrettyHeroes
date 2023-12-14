@@ -1,14 +1,19 @@
 <script setup>
+import WideButton from "@/components/Home/WideButton.vue";
+import {changeLoc} from "@/assets/js/miscTools";
+
 defineProps(["links"])
 
 </script>
 
 <template>
   <div v-if="links !== undefined" class="links">
-    <a v-for="(elem, index) in links" :href="elem.url" rel="noopener noreferrer" target="_blank">
-      <img src="/icons/link.png"/>
-      <p>{{ elem.title }}</p>
-    </a>
+    <WideButton
+        v-for="(elem, _) in links"
+        img-link="/icons/link.png"
+        :shown-title="elem.title"
+        @update:buttonClicked="elem.url === '' ? undefined : changeLoc(elem.url)"
+    />
   </div>
 </template>
 
@@ -18,85 +23,19 @@ defineProps(["links"])
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-    padding: 0px 0;
-    /*border-radius: var(--radius);*/
+    padding: 0;
     gap: 8px;
-    /*box-shadow: var(--shadow);*/
   }
 
   .links > a {
-    padding: 16px 24px;
-    border-radius: var(--radius-button);
-    font-size: 1em;
-    font-weight: bold;
     background: color-mix(in srgb, var(--clk), var(--alpha));
-    /*backdrop-filter: var(--blur);*/
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.25s;
-
+    color: var(--ctxt) !important;
   }
 
   .links > a:hover {
-    background: var(--cho);
-  }
-
-  .links > a > img {
-    height: 1.25em;
-    filter: var(--fil);
-  }
-
-  .links > a > p {
-    margin: 0 0 0 8px;
-    padding: 0;
-    transition: all 0.25s;
-  }
-}
-
-@media screen and (orientation: portrait) {
-  .links {
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-    align-items: stretch;
-    padding: 6vw;
-    gap: 2vw;
-  }
-
-  .links > a {
-    padding: 4vw 6vw;
-    border-radius: var(--radius-button);
-    font-size: 1em;
-    font-weight: bold;
-    background: color-mix(in srgb, var(--clk), var(--alpha));
-    /*backdrop-filter: var(--blur);*/
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.25s;
-
-  }
-
-  .links > a:active {
-    background: var(--cho);
-  }
-
-  .links > a > img {
-    height: 1.25em;
-    filter: var(--fil);
-  }
-
-  .links > a > p {
-    margin: 0 0 0 2vw;
-    padding: 0;
-    transition: all 0.25s;
+    background: color-mix(in srgb, var(--cho), var(--alpha));
   }
 }
 

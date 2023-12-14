@@ -15,8 +15,8 @@ import {fetchWebsite, loadHeroFromText} from "@/assets/js/heroFetcher";
 import ErrorPage from "@/components/Transition/ErrorPage.vue";
 import PronounceCompat from "@/components/Hero/PronounceCompat.vue";
 import Background from "@/components/Hero/Background.vue";
-import CustomFooter from "@/components/Hero/CustomFooter.vue";
-import PronounceMode from "@/components/Hero/PronounceMode.vue";
+import HeroFooter from "@/components/Hero/HeroFooter.vue";
+import WideButton from "@/components/Home/WideButton.vue";
 
 const isFetched = ref(1);
 const isYaml = ref(false);
@@ -71,9 +71,16 @@ function showElem(val) {
       :error-code="isFetched"
   />
   <Background v-if="(isFetched === 0)" :bg-img="hero.colors.bgimg"/>
-  <PronounceMode v-if="isYaml && !proShown" @update:hideBtn="showElem(true)"/>
+  <WideButton
+      :fil-color="true"
+      id="pro"
+      v-if="isYaml"
+      @update:buttonClicked="showElem(true)"
+      shown-title="Pronounce"
+      img-link="/icons/pronounce.png"
+  />
   <PronounceCompat v-if="proShown" @update:hideBtn="showElem(false)"/>
-  <div v-if="!proShown && isFetched === 0" class="hero">
+  <div v-if="isFetched === 0" class="hero">
     <HeroTitle
         :catchphrase="hero.title.catchphrase"
         :img-src="hero.title.img"
@@ -92,40 +99,32 @@ function showElem(val) {
     />
     <HeroLinks v-if="hero.urls.linksList.length !== 0" :links="hero.urls.linksList"/>
   </div>
-  <CustomFooter v-if="!proShown && isFetched === 0" :og-file="link"/>
+  <HeroFooter v-if="!proShown && isFetched === 0" :og-file="link"/>
 </template>
 
 <style scoped>
 @media screen and (orientation: landscape) {
   .hero {
-    margin-left: auto;
-    margin-right: auto;
-    width: 40vw;
+    margin: 32px auto 48px;
+    width: 500px;
+    max-width: 50vw;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
     animation: FadeAnimation ease-out 0.5s;
-    padding: 96px 64px 64px;
+    padding: 64px;
+    gap: 56px;
+    border-radius: var(--radius);
     background: color-mix(in srgb, var(--cbg), var(--alpha));
     backdrop-filter: var(--blur);
-    gap: 64px;
   }
-}
 
-@media screen and (orientation: portrait) {
-  .hero {
-    margin-left: auto;
-    margin-right: auto;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    animation: FadeAnimation ease-out 0.5s;
-    padding: 20vw 0 0;
-    background: color-mix(in srgb, var(--cbg), var(--alpha));
-    backdrop-filter: var(--blur);
+  #pro {
+    position: fixed;
+    bottom: 36px;
+    right: 36px;
+    z-index: 4;
   }
 }
 </style>

@@ -3,7 +3,7 @@
 import {Color, hexToRgb, Solver} from "@/assets/js/cssColor";
 import FlagsDisplayer from "@/components/Hero/FlagsDisplayer.vue";
 
-const props = defineProps(
+defineProps(
     ["cols"]
 )
 
@@ -26,19 +26,20 @@ function getFilter(color) {
     </div>
     <div>
       <FlagsDisplayer :bg-special="cols.widget === '' ? 'var(--wi)' : cols.widget"
-                      :flags-list="['test','test','test']"/>
+                      :flags-list="['test','test','test']"
+                      :style="`color: ${cols.text === '' ? 'var(--text)' : cols.text}`"/>
       <p :style="`color: ${cols.text === '' ? 'var(--text)' : cols.text}`">Lorem ipsum dolor sit amet, consectetur
         adipiscing elit. Sed non risus.
       </p>
     </div>
     <div>
       <a :style="`background: color-mix(in srgb,${cols.link === '' ? 'var(--wi)' : cols.link}, var(--alpha))`">
-        <img :style="`filter: ${getFilter(cols.title)}`" src="/icons/link.png">
-        <p>Link</p>
+        <img :style="`filter: ${getFilter(cols.title)}`" src="/icons/link.png" alt="Link">
+        <p :style="`color: ${cols.text === '' ? 'var(--text)' : cols.text}`">Link</p>
       </a>
       <a :style="`background: ${cols.hover === '' ? 'var(--ho)' : cols.hover}`">
-        <img :style="`filter: ${getFilter(cols.title)}`" src="/icons/link.png">
-        <p>Hovered</p>
+        <img :style="`filter: ${getFilter(cols.title)}`" src="/icons/link.png" alt="Link">
+        <p :style="`color: ${cols.text === '' ? 'var(--text)' : cols.text}`">Hovered</p>
       </a>
     </div>
   </div>
@@ -48,13 +49,11 @@ function getFilter(color) {
 @media screen and (orientation: landscape) {
   .dpage {
     width: 80%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 32px;
-    /*border-radius: var(--radius);*/
     backdrop-filter: var(--blur);
   }
 
@@ -66,7 +65,6 @@ function getFilter(color) {
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
-    /*box-shadow: var(--shadow);*/
   }
 
   .dpage > div:nth-of-type(2) {
@@ -95,17 +93,17 @@ function getFilter(color) {
     align-items: center;
     justify-content: center;
     cursor: default;
-    /*backdrop-filter: var(--blur);*/
+    box-shadow: var(--shadow);
   }
 
   .dpage > div > a > img {
     height: 1.25em;
+    transition: all 0s !important;
   }
 
   .dpage > div > a > p {
     margin: 0 0 0 8px;
     padding: 0;
-    transition: all 0.25s;
   }
 }
 </style>

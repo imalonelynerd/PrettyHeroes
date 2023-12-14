@@ -57,7 +57,8 @@ const linksMenu = ref({
   <div :class="{'hasbg' : hasScrolled}" class="mobile-navbar-container">
     <NavbarButton :imgLink="'/icons/link.png'"
                   shownTitle=""
-                  @update:buttonClicked="isLinkMenuShown = true"/></div>
+                  @update:buttonClicked="isLinkMenuShown = true"/>
+  </div>
 </template>
 
 <style scoped>
@@ -79,7 +80,6 @@ const linksMenu = ref({
   justify-content: space-between;
   align-items: center;
   animation: HewwoBar ease-out 0.75s;
-  transition: all 0.25s;
   z-index: 5;
 }
 

@@ -13,15 +13,15 @@ defineProps([
 <template>
   <div :class="{ 'align-right' : alignRight, 'hasbg' : hasScrolled }" class="navbar-container">
     <router-link to="/">
-      <img src="/images/icon-navbar.png">
-      <p>{{homeInfo.appName}}</p>
+      <img src="/images/icon-navbar.png" alt="Icon">
+      <p>{{ homeInfo.appName }}</p>
     </router-link>
     <div class="navbar">
       <NavbarButton img-link=""
                     shownTitle="Home"
                     @update:buttonClicked="$router.push('/')"/>
       <NavbarButton img-link=""
-                    shownTitle="Search..."
+                    shownTitle="Search"
                     @update:buttonClicked="$router.push('/search')"/>
       <NavbarButton img-link=""
                     shownTitle="Creator"
@@ -45,13 +45,19 @@ defineProps([
   top: 0;
   left: 0;
   right: 0;
-  padding: 32px 64px;
   display: flex;
-  z-index: 5;
+  z-index: 3;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.25s;
+}
+
+.navbar-container > * {
+  background: color-mix(in srgb, var(--bg), var(--alpha));
+  backdrop-filter: var(--blur);
+  border-radius: var(--radius-button);
+  padding: 12px;
+  margin: 24px;
 }
 
 .navbar-container > a {
@@ -59,26 +65,25 @@ defineProps([
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 32px;
+  gap: 16px;
 }
 
 .navbar-container > a > p {
-  padding: 14px 0;
   margin: 0;
   border-radius: var(--radius-button);
+  padding: 12px;
 }
 
 .navbar-container > a * {
-  transition: all 0.25s;
 }
 
 .navbar-container > a:hover > p {
   background: var(--ho);
-  padding: 14px 16px;
+  padding: 12px 20px;
 }
 
 .navbar-container > a > img {
-  height: 48px;
+  height: 36px;
 }
 
 .navbar-container > a > p {

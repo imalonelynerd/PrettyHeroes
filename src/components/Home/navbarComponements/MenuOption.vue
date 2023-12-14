@@ -8,7 +8,7 @@ defineProps([
 
 <template>
   <a @click="onClick">
-    <img :src="imgLink">
+    <img :src="imgLink" :alt="imgLink">
     <p>{{ shownTitle }}</p>
   </a>
 </template>
@@ -24,7 +24,6 @@ defineProps([
     border-radius: 32px;
     padding: 16px 32px;
     background: none;
-    transition: all 0.25s;
     cursor: pointer;
   }
 
@@ -55,7 +54,6 @@ defineProps([
     border-radius: 12vw;
     padding: 4vw 6vw;
     background: none;
-    transition: all 0.25s;
     cursor: pointer;
   }
 

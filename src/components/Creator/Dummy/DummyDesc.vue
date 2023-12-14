@@ -20,14 +20,4 @@ import DOMPurify from 'dompurify';
   }
 }
 
-@media screen and (orientation: portrait) {
-  .ddesc {
-    background: color-mix(in srgb, var(--bg), var(--alpha));
-    backdrop-filter: var(--blur);
-    border-radius: var(--radius);
-    padding: 4vw 6vw;
-    box-shadow: var(--shadow);
-  }
-}
-
 </style>

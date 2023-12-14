@@ -25,15 +25,15 @@ defineProps(["desc", 'flags', 'work', 'timezone', 'location'])
     <!--h1>{{ name1 }} <span>{{ name2 }}</span>, {{ age }}</h1-->
     <div v-if="!((timezone + work + location) === '')" id="lwt">
       <div v-if="location !== ''" title="Location">
-        <img src="/icons/location.png">
+        <img src="/icons/location.png" alt="Location">
         <p>{{ location }}</p>
       </div>
       <div v-if="work !== ''" title="Work">
-        <img src="/icons/work.png">
+        <img src="/icons/work.png" alt="Work">
         <p>{{ work }}</p>
       </div>
       <div v-if="timezone !== ''" title="Timezone">
-        <img src="/icons/timezone.png">
+        <img src="/icons/timezone.png" alt="Timezone">
         <p>{{ timezone }}</p>
       </div>
     </div>
@@ -46,13 +46,13 @@ defineProps(["desc", 'flags', 'work', 'timezone', 'location'])
 @media screen and (orientation: landscape) {
   .desc {
     color: var(--ctxt);
-    padding: 0 0;
+    padding: 0;
     border-radius: var(--radius);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    gap: 64px;
+    gap: 48px;
   }
 
   .desc > * {
@@ -77,7 +77,7 @@ defineProps(["desc", 'flags', 'work', 'timezone', 'location'])
     flex-direction: row;
     justify-content: center;
     align-items: start;
-    gap: 64px;
+    gap: 36px;
   }
 
   #lwt > div {
@@ -98,76 +98,9 @@ defineProps(["desc", 'flags', 'work', 'timezone', 'location'])
     filter: var(--fil);
   }
 
-  /*#desc > *:first-child {
-    margin-top: 0 !important;
-  }
-
-  #desc > *:last-child {
-    margin-bottom: 0 !important;
-  }*/
-
   #desc {
     margin-top: -1em;
     margin-bottom: -1em;
-  }
-}
-
-@media screen and (orientation: portrait) {
-  .desc {
-    color: var(--ctxt);
-    padding: 6vw;
-    border-radius: var(--radius);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
-    gap: 8vw;
-  }
-
-  .desc > * {
-    margin: 0;
-    text-align: center;
-  }
-
-  .desc > h2 {
-    opacity: 0.5;
-    font-size: 1.25em;
-  }
-
-  .desc > p {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: start;
-    gap: 2vw;
-  }
-
-  #desc {
-    text-align: start;
-  }
-
-  #lwt {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-  }
-
-  #lwt > div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 2vw;
-  }
-
-  #lwt > div > * {
-    margin: 0;
-  }
-
-  #lwt > div > img {
-    height: 1.5em;
-    filter: var(--fil);
   }
 }
 

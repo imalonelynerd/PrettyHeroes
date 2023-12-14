@@ -19,33 +19,12 @@ defineEmits(['update:valueUpdated']);
     border: none;
     font-size: 1em;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    /*backdrop-filter: var(--blur);*/
-    transition: all 0.25s;
     color: var(--text);
     flex: 1 1;
-
+    box-shadow: var(--shadow);
   }
 
   .phinput:hover {
-    background: var(--ho) !important;
-  }
-}
-
-@media screen and (orientation: portrait) {
-  .phinput {
-    padding: 4vw 6vw;
-    border-radius: var(--radius-button);
-    border: none;
-    font-size: 1em;
-    background: color-mix(in srgb, var(--wi), var(--alpha));
-    /*backdrop-filter: var(--blur);*/
-    transition: all 0.25s;
-    color: var(--text);
-    flex: 1 1;
-
-  }
-
-  .phinput:active {
     background: var(--ho) !important;
   }
 }

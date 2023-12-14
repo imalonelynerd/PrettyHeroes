@@ -11,7 +11,6 @@ import DoubleListInput from "@/components/Creator/DoubleListInput.vue";
 // Dummy componements
 import DummyHero from "@/components/Creator/Dummy/DummyHero.vue";
 import HeroTitle from "@/components/Hero/HeroTitle.vue";
-import DummyDesc from "@/components/Creator/Dummy/DummyDesc.vue";
 import DummyPage from "@/components/Creator/Dummy/DummyPage.vue";
 
 // JSONs
@@ -22,13 +21,13 @@ import HeroLinks from "@/components/Hero/HeroLinks.vue";
 // Functions & objects
 import {ref} from "vue";
 import {copyHero, loadHero, resetHero, saveHero} from "@/assets/js/heroSaver";
-import {defineHeader} from "@/assets/js/miscTools";
+import {changeLoc, defineHeader, goUp} from "@/assets/js/miscTools";
 import {Hero} from "@/assets/js/heroFactory";
 
 // Others
 import HelpPage from "@/components/Creator/HelpPage.vue";
-import Background from "@/components/Hero/Background.vue";
 import TripleInput from "@/components/Creator/TripleInput.vue";
+import WideButton from "@/components/Home/WideButton.vue";
 
 const hero = ref(new Hero());
 
@@ -60,15 +59,23 @@ document.documentElement.style = null;
   <HelpPage
       v-if="helpShown"
       @update:hide-btn="showElem(false,'help');"/>
-  <Background
-      v-if="!dummyShown"
-      bg-img="/bg/bg.png"/>
-  <div v-if="!(dummyShown || helpShown)" class="creator">
-    <div class="creattitle">
-      <img :src="creatorInfo.imgSource"/>
-      <h1>{{ creatorInfo.title }}</h1>
-      <p v-html="creatorInfo.description"></p>
+  <div class="creattitle">
+    <img :src="creatorInfo.imgSource" alt="Creator"/>
+    <h1>{{ creatorInfo.title }}</h1>
+    <p v-html="creatorInfo.description"></p>
+    <div>
+      <WideButton @update:buttonClicked="changeLoc('#creator',false)"
+                  img-link="/icons/more.png"
+                  shown-title="Start editing"
+      />
+      <WideButton
+          @update:buttonClicked="showElem(true,'help')"
+          img-link="/icons/help.png"
+          shown-title="Help"
+      />
     </div>
+  </div>
+  <div v-if="!dummyShown" class="creator" id="creator">
     <div>
       <h1>Title</h1>
       <div>
@@ -117,15 +124,15 @@ document.documentElement.style = null;
       <div class="endstretch">
         <div>
           <TripleInput
-            :custom-value1="hero.perso.location"
-            :custom-value2="hero.perso.work"
-            :custom-value3="hero.perso.timezone"
-            place-holder1="Location"
-            place-holder2="Work"
-            place-holder3="Timezone"
-            @update:value1-updated="newValue => hero.perso.location = newValue"
-            @update:value2-updated="newValue => hero.perso.work = newValue"
-            @update:value3-updated="newValue => hero.perso.timezone = newValue" />
+              :custom-value1="hero.perso.location"
+              :custom-value2="hero.perso.work"
+              :custom-value3="hero.perso.timezone"
+              place-holder1="Location"
+              place-holder2="Work"
+              place-holder3="Timezone"
+              @update:value1-updated="newValue => hero.perso.location = newValue"
+              @update:value2-updated="newValue => hero.perso.work = newValue"
+              @update:value3-updated="newValue => hero.perso.timezone = newValue"/>
           <ListInput
               :list-items="hero.perso.flags"
               empty-place-holder="Flags"
@@ -202,38 +209,39 @@ document.documentElement.style = null;
         </div>
       </div>
     </div>
+    <div class="tbuttons" v-if="!(dummyShown)">
+      <WideButton
+          @update:buttonClicked="showElem(true,'dummy'); goUp()"
+          img-link="/icons/create.png"
+          shown-title="Test"
+      />
+      <WideButton
+          @update:buttonClicked="copyHero(hero)"
+          img-link="/icons/copy.png"
+          shown-title="Copy"
+      />
+      <WideButton
+          @update:buttonClicked="loadHero(hero)"
+          img-link="/icons/load.png"
+          shown-title="Load"
+      />
+      <WideButton
+          @update:buttonClicked="saveHero(hero)"
+          img-link="/icons/save.png"
+          shown-title="Save"
+      />
+      <WideButton
+          @update:buttonClicked="resetHero(hero)"
+          img-link="/icons/reset.png"
+          shown-title="Reset"
+      />
+      <WideButton
+          @update:buttonClicked="showElem(true,'help')"
+          img-link="/icons/help.png"
+          shown-title="Help"
+      />
+    </div>
   </div>
-  <div class="tbuttons" v-if="!(dummyShown || helpShown)">
-    <router-link to="/">
-      <img src="/icons/back.png"/>
-      <p>Back</p>
-    </router-link>
-    <a @click="showElem(true,'dummy')">
-      <img src="/icons/create.png"/>
-      <p>Test</p>
-    </a>
-    <a @click="copyHero(hero)">
-      <img src="/icons/copy.png"/>
-      <p>Copy</p>
-    </a>
-    <a @click="loadHero(hero)">
-      <img src="/icons/load.png"/>
-      <p>Load</p>
-    </a>
-    <a @click="saveHero(hero)">
-      <img src="/icons/save.png"/>
-      <p>Save</p>
-    </a>
-    <a @click="resetHero(hero)">
-      <img src="/icons/reset.png"/>
-      <p>Reset</p>
-    </a>
-    <a @click="showElem(true,'help')">
-      <img src="/icons/help.png"/>
-      <p>Help</p>
-    </a>
-  </div>
-
 </template>
 
 <style scoped>
@@ -241,21 +249,19 @@ document.documentElement.style = null;
   .creator {
     margin-left: auto;
     margin-right: auto;
-    padding: 80px 0 128px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     animation: FadeAnimation ease-out 0.5s;
-    gap: 24px;
-    background: color-mix(in srgb, var(--bg), var(--alpha));
-    box-shadow: var(--shadow);
-    backdrop-filter: var(--blur);
-    width: 85vw;
+    gap: 32px;
+    padding: 32px 0;
+    width: 1200px;
+    max-width: 90vw;
   }
 
   .creator > div:not(.creattitle, .tbuttons) {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -277,11 +283,11 @@ document.documentElement.style = null;
   .creator > div:not(.creattitle, .tbuttons) > div > div:first-of-type {
     align-self: flex-start;
     display: flex;
-    width: 400px;
+    width: 425px;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     flex-grow: 0;
   }
 
@@ -291,7 +297,7 @@ document.documentElement.style = null;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 0 32px;
+    padding: 24px;
     border-radius: var(--radius);
     background: url("/bg/creatbg.png") center center no-repeat;
     background-size: cover !important;
@@ -299,8 +305,11 @@ document.documentElement.style = null;
   }
 
   .creator > div:not(.creattitle, .tbuttons) > div > div:last-of-type > div {
-    min-width: 80%;
-    max-width: 100%;
+    width: 80%;
+    background: color-mix(in srgb, var(--bg), var(--alpha));
+    padding: 32px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
   }
 
   .creator > div > * {
@@ -308,61 +317,24 @@ document.documentElement.style = null;
   }
 
   .tbuttons {
-    bottom: 0;
-    width: 80vw;
-    left: 50%;
-    transform: translateX(-50%);
-    position: fixed !important;
-    padding: 24px 0;
-    background: color-mix(in srgb, var(--bg), var(--alpha));
-    backdrop-filter: var(--blur);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    /*box-shadow: var(--shadow);*/
-    z-index: 5;
     animation: FadeAnimation ease-out 0.5s;
   }
 
-  .tbuttons > a {
-    padding: 16px 24px;
-    border-radius: var(--radius-button);
-    font-size: 1em;
-    font-weight: bold;
-    background: color-mix(in srgb, var(--wi), var(--alpha));
-    /*backdrop-filter: var(--blur);*/
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.25s;
-  }
-
-  .tbuttons > a:hover, .tbuttons > router-link:hover {
-    background: var(--ho);
-  }
-
-  .tbuttons > a > img, .tbuttons > router-link > img {
-    height: 1.25em;
-  }
-
-  .tbuttons > a > p, .tbuttons > router-link > p {
-    margin: 0 0 0 8px;
-    padding: 0;
-    transition: all 0.25s;
-  }
-
   .creattitle {
+    height: 100vh;
+    width: 100vw;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 16px;
-    /*padding: 0 0 32px;*/
+    gap: 24px;
+    animation: FadeAnimation ease-out 0.5s;
   }
 
   .creattitle > * {
@@ -371,6 +343,14 @@ document.documentElement.style = null;
 
   .creattitle > img {
     height: 160px;
+  }
+
+  .creattitle > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
   }
 
   .half > div {
@@ -407,128 +387,6 @@ document.documentElement.style = null;
 
   .endstretch > div:first-of-type > *:last-child {
     flex: 1 0 !important;
-  }
-}
-
-@media screen and (orientation: portrait) {
-  .creator {
-    padding: 12vw 0 6vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    animation: FadeAnimation ease-out 0.5s;
-    background: color-mix(in srgb, var(--bg), var(--alpha));
-    backdrop-filter: var(--blur);
-    gap: 6vw;
-  }
-
-  .creator > div:not(.creattitle, .tbuttons) {
-    width: 85vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: var(--radius);
-    gap: 6vw;
-    /*background: color-mix(in srgb, var(--bg), var(--alpha));
-    backdrop-filter: var(--blur);
-    box-shadow: var(--shadow);*/
-  }
-
-  .creator > div > * {
-    margin: 0;
-  }
-
-  .creator > div:not(.creattitle, .tbuttons) > div {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
-    gap: 10vw;
-  }
-
-  .creator > div:not(.creattitle, .tbuttons) > div > div:first-of-type {
-    align-self: flex-start;
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    gap: 2vw;
-    flex-grow: 0;
-  }
-
-  .creator > div:not(.creattitle, .tbuttons) > div > div:last-of-type {
-    display: none;
-  }
-
-  .tbuttons {
-    /*width: 75vw;*/
-    margin-left: auto;
-    margin-right: auto;
-    padding: 6vw 6vw 8vw;
-    /*border-radius: var(--radius) var(--radius) 0 0;*/
-    background: var(--darken), color-mix(in srgb, var(--bg), var(--alpha));
-    backdrop-filter: var(--blur);
-    display: grid;
-    grid-auto-rows: 1fr;
-    grid-template-columns: 1fr 1fr;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    gap: 2vw;
-    box-shadow: var(--shadow);
-    z-index: 5;
-    animation: FadeAnimation ease-out 0.5s;
-  }
-
-  .tbuttons > a {
-    padding: 4vw 6vw;
-    border-radius: var(--radius-button);
-    font-size: 1em;
-    font-weight: bold;
-    background: color-mix(in srgb, var(--wi), var(--alpha));
-    /*backdrop-filter: var(--blur);*/
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.25s;
-  }
-
-  .tbuttons > a:active, .tbuttons > router-link:active {
-    background: var(--ho);
-  }
-
-  .tbuttons > a > img, .tbuttons > router-link > img {
-    height: 1.25em;
-  }
-
-  .tbuttons > a > p, .tbuttons > router-link > p {
-    margin: 0 0 0 2vw;
-    padding: 0;
-    transition: all 0.25s;
-  }
-
-  .creattitle {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 4vw;
-    padding: 0 0 6vw;
-  }
-
-  .creattitle > * {
-    margin: 0;
-  }
-
-  .creattitle > img {
-    height: 40vw;
   }
 }
 

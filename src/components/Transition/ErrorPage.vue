@@ -2,6 +2,7 @@
 
 import ErrInfo from "@/assets/json/errInfo.json";
 import Background from "@/components/Hero/Background.vue";
+import WideButton from "@/components/Home/WideButton.vue";
 
 defineProps(["errorCode", "accountName"])
 
@@ -21,106 +22,79 @@ function getErrorMessage(errcode) {
 <template>
   <Background bg-img="/bg/errbg.png"/>
   <div class="err">
-    <div>
-      <img :src="ErrInfo.imgSource"/>
-      <h1>{{ ErrInfo.errName }}</h1>
-      <p>An error occured while getting <b>{{ accountName }}</b>'s Hero...</p>
-      <p v-html="getErrorMessage(errorCode)"></p>
-
-    </div>
+    <img :src="ErrInfo.imgSource" alt="Error"/>
+    <h1>{{ ErrInfo.errName }}</h1>
+    <p>An error occured while getting <b>{{ accountName }}</b>'s Hero...</p>
+    <p v-html="getErrorMessage(errorCode)"></p>
+    <WideButton
+        img-link="/icons/back.png"
+        shown-title="Go back"
+        @update:buttonClicked="$router.push('/')"
+    />
   </div>
 </template>
 
 <style scoped>
 @media screen and (orientation: landscape) {
   .err {
-    animation: FadeAnimation ease-out 0.5s;
-    margin: 0;
-    padding: 64px 0;
-    overflow: scroll;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .err > div {
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    gap: 24px;
     background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);
-    padding: 32px;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    gap: 16px;
-  }
-
-  .err > div > * {
-    margin: 0;
-  }
-
-  .err > div > img {
-    height: 128px;
-  }
-
-  .err > div > h1 {
-    margin-bottom: 8px;
-  }
-
-  .err > div > p {
-    text-align: center;
-    width: 400px;
-  }
-}
-
-@media screen and (orientation: portrait) {
-  .err {
     animation: FadeAnimation ease-out 0.5s;
-    margin: 0;
-    overflow: scroll;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+    padding: 0 64px;
   }
 
-  .err > div {
+  .err > * {
+    margin: 0;
+  }
+
+  .err > img {
+    height: 160px;
+  }
+
+  .err > h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 6vw;
-    border-radius: var(--radius);
-
-    gap: 4vw;
+    gap: 8px;
   }
 
-  .err > div > * {
+  .err > h1 > code {
+    padding: 10px 14px !important;
+    font-size: 0.5em;
+    border-radius: var(--radius-button) !important;
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+  }
+
+  .err > h1 > code:hover {
+    background: var(--ho);
+  }
+
+  .err > * {
     margin: 0;
   }
 
-  .err > div > img {
-    height: 40vw;
+  .err > h2 {
+    color: var(--text);
+    opacity: 0.75;
+    font-style: italic;
   }
 
-  .err > div > h1 {
-    margin-bottom: 2vw;
+  .err > h2:hover {
+    color: var(--ho);
+    opacity: 1;
   }
 
-  .err > div > p {
+  .err > p {
     text-align: center;
-    width: 80vw;
+    width: 80%;
   }
 }
+
 </style>

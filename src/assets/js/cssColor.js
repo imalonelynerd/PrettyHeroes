@@ -33,20 +33,6 @@ export class Color {
         ]);
     }
 
-    grayscale(value = 1) {
-        this.multiply([
-            0.2126 + 0.7874 * (1 - value),
-            0.7152 - 0.7152 * (1 - value),
-            0.0722 - 0.0722 * (1 - value),
-            0.2126 - 0.2126 * (1 - value),
-            0.7152 + 0.2848 * (1 - value),
-            0.0722 - 0.0722 * (1 - value),
-            0.2126 - 0.2126 * (1 - value),
-            0.7152 - 0.7152 * (1 - value),
-            0.0722 + 0.9278 * (1 - value),
-        ]);
-    }
-
     sepia(value = 1) {
         this.multiply([
             0.393 + 0.607 * (1 - value),
@@ -152,7 +138,7 @@ export class Color {
 }
 
 export class Solver {
-    constructor(target, baseColor) {
+    constructor(target) {
         this.target = target;
         this.targetHSL = target.hsl();
         this.reusedColor = new Color(0, 0, 0);
@@ -295,33 +281,3 @@ export function hexToRgb(hex) {
         ]
         : null;
 }
-
-/*$(document).ready(() => {
-    $('button.execute').click(() => {
-        const rgb = hexToRgb($('input.target').val());
-        if (rgb.length !== 3) {
-            alert('Invalid format!');
-            return;
-        }
-
-        const color = new Color(rgb[0], rgb[1], rgb[2]);
-        const solver = new Solver(color);
-        const result = solver.solve();
-
-        let lossMsg;
-        if (result.loss < 1) {
-            lossMsg = 'This is a perfect result.';
-        } else if (result.loss < 5) {
-            lossMsg = 'The is close enough.';
-        } else if (result.loss < 15) {
-            lossMsg = 'The color is somewhat off. Consider running it again.';
-        } else {
-            lossMsg = 'The color is extremely off. Run it again!';
-        }
-
-        $('.realPixel').css('background-color', color.toString());
-        $('.filterPixel').attr('style', result.filter);
-        $('.filterDetail').text(result.filter);
-        $('.lossDetail').html(`Loss: ${result.loss.toFixed(1)}. <b>${lossMsg}</b>`);
-    });
-});*/

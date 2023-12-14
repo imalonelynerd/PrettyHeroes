@@ -11,7 +11,7 @@ const userTag = routeObj.params.user;
   <Background bg-img="/bg/bg.png"/>
   <div class="loading">
     <div>
-      <img :src="LoadInfo.imgSource"/>
+      <img :src="LoadInfo.imgSource" alt="Loading"/>
       <h1>{{ LoadInfo.loadTitle }}</h1>
       <p>Fetching <b>{{ userTag }}</b>'s Hero...</p>
     </div>
@@ -21,95 +21,63 @@ const userTag = routeObj.params.user;
 <style scoped>
 @media screen and (orientation: landscape) {
   .loading {
-    animation: FadeAnimation ease-out 0.5s;
-    margin: 0;
-    padding: 64px 0;
-    overflow: scroll;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-  }
-
-  .loading > div {
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    gap: 24px;
     background: color-mix(in srgb, var(--bg), var(--alpha));
     backdrop-filter: var(--blur);
-    padding: 32px;
-    border-radius: var(--radius);
-
-    box-shadow: var(--shadow);
-    gap: 16px;
-  }
-
-  .loading > div > * {
-    margin: 0;
-  }
-
-  .loading > div > img {
-    height: 128px;
-  }
-
-  .loading > div > h1 {
-    margin-bottom: 8px;
-  }
-
-  .loading > div > p {
-    text-align: center;
-    width: 400px;
-  }
-}
-
-@media screen and (orientation: portrait) {
-  .loading {
-    margin: 0;
-    overflow: scroll;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     animation: FadeAnimation ease-out 0.5s;
+    padding: 0 64px;
   }
 
-  .loading > div {
+  .loading > * {
+    margin: 0;
+  }
+
+  .loading > img {
+    height: 160px;
+  }
+
+  .loading > h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 6vw;
-    border-radius: var(--radius);
-
-    box-shadow: var(--shadow);
-    gap: 4vw;
+    gap: 8px;
   }
 
-  .loading > div > * {
+  .loading > h1 > code {
+    padding: 10px 14px !important;
+    font-size: 0.5em;
+    border-radius: var(--radius-button) !important;
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+  }
+
+  .loading > h1 > code:hover {
+    background: var(--ho);
+  }
+
+  .loading > * {
     margin: 0;
   }
 
-  .loading > div > img {
-    height: 40vw;
+  .loading > h2 {
+    color: var(--text);
+    opacity: 0.75;
+    font-style: italic;
   }
 
-  .loading > div > h1 {
-    margin-bottom: 2vw;
+  .loading > h2:hover {
+    color: var(--ho);
+    opacity: 1;
   }
 
-  .loading > div > p {
+  .loading > p {
     text-align: center;
-    width: 80vw;
+    width: 80%;
   }
 }
 </style>

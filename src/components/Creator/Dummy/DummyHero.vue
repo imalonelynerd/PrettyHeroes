@@ -3,18 +3,15 @@ import HeroTitle from "@/components/Hero/HeroTitle.vue";
 import HeroDesc from "@/components/Hero/HeroDesc.vue";
 import HeroLinks from "@/components/Hero/HeroLinks.vue";
 import Background from "@/components/Hero/Background.vue";
-import CustomFooter from "@/components/Hero/CustomFooter.vue";
-import DummyMode from "@/components/Creator/Dummy/DummyMode.vue";
+import HeroFooter from "@/components/Hero/HeroFooter.vue";
 import {Color, hexToRgb, Solver} from "@/assets/js/cssColor";
-import {goUp} from "@/assets/js/miscTools";
+import WideButton from "@/components/Home/WideButton.vue";
 
 const props = defineProps(['hero']);
 
 defineEmits([
   'update:hideBtn'
 ])
-
-goUp();
 
 let params = {
   '--cbg': props.hero.colors.background,
@@ -44,31 +41,32 @@ if (props.hero.colors.title !== undefined) {
 <template>
   <div class="dummy">
     <Background :bg-img="hero.colors.bgimg"/>
-    <DummyMode
-        @update:hideBtn="$emit('update:hideBtn')"
+    <WideButton id="hide"
+                :fil-color="true"
+                img-link="/icons/back.png"
+                shown-title="Back"
+                @update:buttonClicked="$emit('update:hideBtn')"
     />
     <div class="hero">
-      <div>
-        <HeroTitle
-            :catchphrase="hero.title.catchphrase"
-            :img-src="hero.title.img"
-            :pronouns="hero.title.pronouns"
-            :title="hero.title.title"
-            :name1="hero.perso.name1"
-            :name2="hero.perso.name2"
-            :age="hero.perso.age"
-        />
-        <HeroDesc
-            :desc="hero.perso.desc"
-            :flags="hero.perso.flags"
-            :location="hero.perso.location"
-            :timezone="hero.perso.timezone"
-            :work="hero.perso.work"
-        />
-        <HeroLinks v-if="hero.urls.linksList.length !== 0" :links="hero.urls.linksList"/>
-      </div>
+      <HeroTitle
+          :catchphrase="hero.title.catchphrase"
+          :img-src="hero.title.img"
+          :pronouns="hero.title.pronouns"
+          :title="hero.title.title"
+          :name1="hero.perso.name1"
+          :name2="hero.perso.name2"
+          :age="hero.perso.age"
+      />
+      <HeroDesc
+          :desc="hero.perso.desc"
+          :flags="hero.perso.flags"
+          :location="hero.perso.location"
+          :timezone="hero.perso.timezone"
+          :work="hero.perso.work"
+      />
+      <HeroLinks v-if="hero.urls.linksList.length !== 0" :links="hero.urls.linksList"/>
     </div>
-    <CustomFooter og-file=""/>
+    <HeroFooter og-file=""/>
   </div>
 </template>
 
@@ -81,45 +79,32 @@ if (props.hero.colors.title !== undefined) {
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 2;
+    z-index: 10;
     animation: FadeAnimation ease-out 0.5s;
   }
 
   .hero {
-    margin-left: auto;
-    margin-right: auto;
-    width: 40vw;
+    margin: 32px auto 48px;
+    width: 500px;
+    max-width: 50vw;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
     animation: FadeAnimation ease-out 0.5s;
-    padding: 32px 64px;
+    padding: 64px;
+    gap: 56px;
+    border-radius: var(--radius);
     background: color-mix(in srgb, var(--cbg), var(--alpha));
     backdrop-filter: var(--blur);
   }
-}
 
-@media screen and (orientation: portrait) {
-  .dummy {
-    z-index: 2;
-    animation: FadeAnimation ease-out 0.5s;
-  }
-
-  .hero {
-    margin-left: auto;
-    margin-right: auto;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    animation: FadeAnimation ease-out 0.5s;
-    padding: 20vw 0 0;
-    background: color-mix(in srgb, var(--cbg), var(--alpha));
-    backdrop-filter: var(--blur);
+  #hide {
+    position: fixed;
+    bottom: 36px;
+    right: 36px;
+    z-index: 4;
   }
 }
-
 
 </style>

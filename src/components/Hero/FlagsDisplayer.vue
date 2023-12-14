@@ -41,7 +41,7 @@ function getFlag(req) {
     <div v-for="k in flagsList"
          :style="`background: color-mix(in srgb,${bgSpecial === undefined ? 'var(--cwi)' : bgSpecial}, var(--alpha))`"
          :title="getFlag(k)['name']">
-      <img :src="'/flags/' + getFlag(k)['img']"/>
+      <img :src="'/flags/' + getFlag(k)['img']" :alt="getFlag(k)['name']"/>
       <p>{{ getFlag(k)['name'] }}</p>
     </div>
   </div>
@@ -65,13 +65,12 @@ function getFlag(req) {
     border-radius: var(--radius-button);
     font-size: 1em;
     background: color-mix(in srgb, var(--cwi), var(--alpha));
-    /*backdrop-filter: var(--blur);*/
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     cursor: default;
-    transition: all 0.25s;
+    box-shadow: var(--shadow);
   }
 
   .flags > div > img {
@@ -82,45 +81,7 @@ function getFlag(req) {
     padding: 0;
     margin: 0;
     font-weight: bold;
-    transition: all 0.25s;
   }
 }
 
-@media screen and (orientation: portrait) {
-  .flags {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 2vw;
-  }
-
-  .flags > div {
-    margin: 0;
-    padding: 2vw;
-    gap: 2vw;
-    border-radius: var(--radius-button);
-    font-size: 1em;
-    background: color-mix(in srgb, var(--cwi), var(--alpha));
-    /*backdrop-filter: var(--blur);*/
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    cursor: default;
-    transition: all 0.25s;
-  }
-
-  .flags > div > img {
-    height: 1.5em;
-  }
-
-  .flags > div > p {
-    padding: 0;
-    margin: 0;
-    font-weight: bold;
-    transition: all 0.25s;
-  }
-}
 </style>

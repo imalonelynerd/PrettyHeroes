@@ -4,8 +4,9 @@ defineEmits(['update:imgUpdated']);
 </script>
 
 <template>
-  <div :style="imgSrc === '' ? `background : color-mix(in srgb, var(--wi), var(--alpha))` : `background : url('${imgSrc}') right center`"
-       class="iminput"
+  <div
+      :style="imgSrc === '' ? `background : color-mix(in srgb, var(--wi), var(--alpha))` : `background : url('${imgSrc}') right center`"
+      class="iminput"
   >
     <input
         :style="imgSrc === '' ? `background : transparent` : `background : color-mix(in srgb, var(--wi), var(--alpha))`"
@@ -30,11 +31,10 @@ defineEmits(['update:imgUpdated']);
     border-radius: var(--radius-button);
     border: none;
     font-size: 1em;
-    /*backdrop-filter: var(--blur);*/
-    transition: all 0.25s;
     min-width: 0;
     color: var(--text);
     flex: 1 1;
+    box-shadow: var(--shadow);
   }
 
   .iminput > div {
@@ -49,7 +49,6 @@ defineEmits(['update:imgUpdated']);
     backdrop-filter: var(--blur);
     border: none;
     font-size: 1em;
-    transition: all 0.25s;
     min-width: 0;
     color: var(--text);
   }
@@ -58,45 +57,4 @@ defineEmits(['update:imgUpdated']);
     background: var(--ho) !important;
   }
 }
-
-@media screen and (orientation: portrait) {
-  .iminput {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: stretch;
-    border-radius: var(--radius-button);
-    border: none;
-    background-size: 20% !important;
-    font-size: 1em;
-    /*backdrop-filter: var(--blur);*/
-    transition: all 0.25s;
-    min-width: 0;
-    color: var(--text);
-    flex: 1 1;
-  }
-
-  .iminput > div {
-    width: 16%;
-  }
-
-  .iminput > input {
-    flex: 1 1;
-    padding: 4vw 6vw;
-    border-radius: var(--radius-button);
-    background: color-mix(in srgb, var(--wi), var(--alpha));
-    border: none;
-    backdrop-filter: var(--blur);
-    font-size: 1em;
-    transition: all 0.25s;
-    min-width: 0;
-    color: var(--text);
-  }
-
-  .iminput:active > input {
-    background: var(--ho) !important;
-  }
-}
-
-
 </style>

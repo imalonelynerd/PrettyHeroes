@@ -42,11 +42,10 @@ function checkColor2(color) {
     border-radius: var(--radius-button);
     border: none;
     font-size: 1em;
-    /*backdrop-filter: var(--blur);*/
-    transition: all 0.25s;
     min-width: 0;
     color: var(--text);
     flex: 1 1;
+    box-shadow: var(--shadow);
   }
 
   .cinput > div {
@@ -57,10 +56,8 @@ function checkColor2(color) {
     flex: 1 1;
     padding: 16px 24px;
     border-radius: var(--radius-button);
-    /*background: color-mix(in srgb, var(--wi), var(--alpha));*/
     border: none;
     font-size: 1em;
-    transition: all 0.25s;
     min-width: 0;
     color: var(--text);
   }
@@ -69,42 +66,4 @@ function checkColor2(color) {
     background: var(--ho) !important;
   }
 }
-
-@media screen and (orientation: portrait) {
-  .cinput {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: stretch;
-    border-radius: var(--radius-button);
-    border: none;
-    font-size: 1em;
-    /*backdrop-filter: var(--blur);*/
-    transition: all 0.25s;
-    min-width: 0;
-    color: var(--text);
-    flex: 1 1;
-  }
-
-  .cinput > div {
-    width: 16%;
-  }
-
-  .cinput > input {
-    flex: 1 1;
-    padding: 4vw 6vw;
-    border-radius: var(--radius-button);
-    /*background: color-mix(in srgb, var(--wi), var(--alpha));*/
-    border: none;
-    font-size: 1em;
-    transition: all 0.25s;
-    min-width: 0;
-    color: var(--text);
-  }
-
-  .cinput:active > input {
-    background: var(--ho) !important;
-  }
-}
-
 </style>

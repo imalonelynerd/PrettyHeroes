@@ -21,35 +21,14 @@ defineEmits(['update:valueUpdated']);
     font-size: 1em;
     font-family: inherit;
     background: color-mix(in srgb, var(--wi), var(--alpha));
-    /*backdrop-filter: var(--blur);*/
-    transition: all 0.25s;
     color: var(--text);
     flex: 1 1;
+    box-shadow: var(--shadow);
+
   }
 
   .linput:hover {
     background: var(--ho) !important;
   }
 }
-@media screen and (orientation: portrait){
-  .linput {
-    padding: 4vw 6vw;
-    border-radius: var(--radius-input);
-    resize: none;
-    border: none;
-    font-size: 1em;
-    font-family: inherit;
-    background: color-mix(in srgb, var(--wi), var(--alpha));
-    /*backdrop-filter: var(--blur);*/
-    transition: all 0.25s;
-    color: var(--text);
-    flex: 1 1;
-
-  }
-
-  .linput:active {
-    background: var(--ho) !important;
-  }
-}
-
 </style>

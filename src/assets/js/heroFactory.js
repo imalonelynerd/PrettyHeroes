@@ -1,5 +1,6 @@
 'use strict';
 
+// noinspection JSUnusedGlobalSymbols
 export class HeroTitleO {
     title;
     img;
@@ -94,6 +95,7 @@ export class HeroPersoO {
     }
 }
 
+// noinspection JSUnusedGlobalSymbols
 export class HeroColorsO {
 
     background;
