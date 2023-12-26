@@ -33,7 +33,7 @@ import homeInfo from "@/assets/json/homeInfo.json"
 </template>
 
 <style>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .bulletpoints {
     padding: 16px;
     display: flex;
@@ -90,4 +90,63 @@ import homeInfo from "@/assets/json/homeInfo.json"
     opacity: 0.5;
   }
 }
+
+@media screen and (hover: none) {
+  .bulletpoints {
+    padding: 6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4vw;
+  }
+
+  .bulletpoints > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 4vw;
+  }
+
+  .bulletpoints > div > div {
+    padding: 6vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    border-radius: var(--radius);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    box-shadow: var(--shadow);
+    text-align: center;
+    gap: 4vw;
+  }
+
+  .bulletpoints > div > div:active {
+    background: var(--ho);
+  }
+
+  .bulletpoints > div > div * {
+    margin: 0;
+  }
+
+  .bulletpoints > div > div > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4vw;
+  }
+
+  .bulletpoints > div > div > div > img {
+    height: 8vw;
+  }
+
+  .bulletpoints > h2 > span {
+    font-size: 0.8em;
+    opacity: 0.5;
+  }
+}
+
 </style>

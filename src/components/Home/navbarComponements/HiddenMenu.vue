@@ -26,7 +26,7 @@ const options = props.menuOptions.menuButtons;
 
 <style scoped>
 
-@media only screen and (orientation: landscape) {
+@media only screen and (hover: hover) {
   .menu-container {
     margin: 0;
     position: fixed;
@@ -53,7 +53,7 @@ const options = props.menuOptions.menuButtons;
   }
 }
 
-@media only screen and (orientation: portrait) {
+@media only screen and (hover: none) {
   .menu-container {
     margin: 0;
     position: fixed;
@@ -61,10 +61,10 @@ const options = props.menuOptions.menuButtons;
     left: 0;
     right: 0;
     bottom: 0;
-    background: color-mix(in srgb, var(--bg), transparent 25%);
+    background: color-mix(in srgb, var(--bg), var(--alpha2));
     padding: 2vw;
     z-index: 10;
-    animation: blurbg ease-out 0.25s;
+    animation: BgAnimation ease-out 0.25s;
   }
 
   .menu-container > div {
@@ -76,7 +76,7 @@ const options = props.menuOptions.menuButtons;
     background: var(--wi);
     border-radius: 6vw 6vw 0 0;
     height: fit-content;
-    animation: mslidein ease-out 0.25s;
+    animation: MSlideAnimation ease-out 0.25s;
     box-shadow: var(--shadow);
     gap: 4vw;
   }

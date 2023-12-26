@@ -18,7 +18,7 @@ defineProps(["links"])
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .links {
     display: flex;
     flex-direction: row;
@@ -38,5 +38,28 @@ defineProps(["links"])
     background: color-mix(in srgb, var(--cho), var(--alpha));
   }
 }
+
+@media screen and (hover: none) {
+  .links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    align-items: center;
+    padding: 0;
+    gap: 2vw;
+  }
+
+  .links > a {
+    width: 100%;
+    background: color-mix(in srgb, var(--clk), var(--alpha));
+    color: var(--ctxt) !important;
+  }
+
+  .links > a:active {
+    background: color-mix(in srgb, var(--cho), var(--alpha));
+  }
+}
+
 
 </style>

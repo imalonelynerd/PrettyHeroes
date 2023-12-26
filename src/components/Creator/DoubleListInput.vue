@@ -43,7 +43,7 @@ function updateItem(value, index, tag) {
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .dlistinput {
     display: flex;
     border-radius: var(--radius-input);
@@ -114,4 +114,74 @@ function updateItem(value, index, tag) {
   }
 }
 
+@media screen and (hover: none) {
+  .dlistinput {
+    display: flex;
+    border-radius: var(--radius-input);
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    box-shadow: var(--shadow);
+  }
+
+  .dlistinput > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+    border-radius: var(--radius-input);
+  }
+
+  .inputbuttons {
+    padding: 4vw 6vw;
+    justify-content: stretch;
+    border-radius: var(--radius-input);
+    gap: 4vw !important;
+    align-items: center;
+    flex-direction: row-reverse !important;
+  }
+
+  .inputbuttons > p {
+    margin: 0;
+    flex-grow: 1;
+    opacity: 0.25;
+    font-size: 0.9em;
+  }
+
+  .inputbuttons > button {
+    padding: 2vw;
+    border-radius: var(--radius-button);
+    font-size: 1em;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .inputbuttons > button:active {
+    background: var(--bg) !important;
+  }
+
+  .inputbuttons > button > img {
+    height: 1em;
+  }
+
+  .dlistinput > div > input {
+    padding: 4vw 6vw;
+    border: none;
+    font-size: 1em;
+    color: var(--text);
+    background: none;
+    border-radius: var(--radius-button);
+    flex: 1 1;
+    min-width: 0;
+  }
+
+  .dlistinput > div > input:active {
+    background: var(--ho) !important;
+  }
+}
 </style>

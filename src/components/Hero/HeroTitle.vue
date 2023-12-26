@@ -16,7 +16,7 @@ defineProps(
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .herotitle {
     color: var(--ctxt);
     padding: 0;
@@ -27,6 +27,7 @@ defineProps(
     justify-content: center;
     background-size: cover !important;
     gap: 24px;
+    text-align: center;
   }
 
   .herotitle > *, .herotitle > * > * {
@@ -54,6 +55,49 @@ defineProps(
   .herotitle > img {
     border-radius: var(--radius-button);
     height: 160px;
+    box-shadow: var(--shadow);
+  }
+}
+
+@media screen and (hover: none) {
+  .herotitle {
+    color: var(--ctxt);
+    padding: 0;
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-size: cover !important;
+    gap: 6vw;
+    text-align: center;
+  }
+
+  .herotitle > *, .herotitle > * > * {
+    margin: 0;
+  }
+
+  .herotitle > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw;
+  }
+
+  .herotitle > div > h1 {
+    color: var(--ctt);
+    text-align: center;
+  }
+
+  .herotitle > div > h1 > span {
+    opacity: 0.66;
+    font-size: 0.75em;
+  }
+
+  .herotitle > img {
+    border-radius: var(--radius-button);
+    height: 40vw;
     box-shadow: var(--shadow);
   }
 }

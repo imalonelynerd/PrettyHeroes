@@ -72,7 +72,7 @@ if (props.hero.colors.title !== undefined) {
 
 <style scoped>
 
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .dummy {
     position: absolute;
     top: 0;
@@ -106,5 +106,42 @@ if (props.hero.colors.title !== undefined) {
     z-index: 4;
   }
 }
+
+@media screen and (hover: none) {
+  .dummy {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    animation: FadeAnimation ease-out 0.5s;
+  }
+
+  .hero {
+    margin: 6vw auto;
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    animation: FadeAnimation ease-out 0.5s;
+    padding: 8vw;
+    gap: 6vw;
+    border-radius: var(--radius);
+    background: color-mix(in srgb, var(--cbg), var(--alpha));
+    backdrop-filter: var(--blur);
+  }
+
+  #hide {
+    position: sticky;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 4;
+    border-radius: 0;
+  }
+}
+
 
 </style>

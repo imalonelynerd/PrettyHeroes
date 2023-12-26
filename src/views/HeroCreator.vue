@@ -245,7 +245,7 @@ document.documentElement.style = null;
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .creator {
     margin-left: auto;
     margin-right: auto;
@@ -389,5 +389,102 @@ document.documentElement.style = null;
     flex: 1 0 !important;
   }
 }
+
+@media screen and (hover: none) {
+  .creator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: FadeAnimation ease-out 0.5s;
+    gap: 12vw;
+    padding: 6vw;
+  }
+
+  .creator > div:not(.creattitle, .tbuttons) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius);
+    gap: 6vw;
+  }
+
+  .creator > div:not(.creattitle, .tbuttons) > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 6vw;
+  }
+
+  .creator > div:not(.creattitle, .tbuttons) > div > div:first-of-type {
+    align-self: flex-start;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 2vw;
+  }
+
+  .creator > div:not(.creattitle, .tbuttons) > div > div:last-of-type {
+    display: none;
+  }
+
+  .creator > div > * {
+    margin: 0;
+  }
+
+  .tbuttons {
+    width: 100%;
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    justify-content: center;
+    gap: 2vw;
+    animation: FadeAnimation ease-out 0.5s;
+  }
+
+  .creattitle {
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4vw;
+    animation: FadeAnimation ease-out 0.5s;
+    margin: 0 6vw;
+  }
+
+  .creattitle > * {
+    margin: 0;
+  }
+
+  .creattitle > img {
+    height: 40vw;
+  }
+
+  .creattitle > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2vw;
+  }
+
+  .half > div {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+  }
+}
+
 
 </style>

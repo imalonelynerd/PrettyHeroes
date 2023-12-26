@@ -15,7 +15,7 @@ defineProps([
 
 <style scoped>
 
-@media only screen and (orientation: landscape) {
+@media only screen and (hover: hover) {
   a {
     display: flex;
     flex-direction: row;
@@ -45,7 +45,7 @@ defineProps([
 }
 
 
-@media only screen and (orientation: portrait) {
+@media only screen and (hover: none) {
   a {
     display: flex;
     flex-direction: row;
@@ -58,7 +58,7 @@ defineProps([
   }
 
   a:active {
-    background: var(--bg);
+    background: var(--ho);
   }
 
   a > img {

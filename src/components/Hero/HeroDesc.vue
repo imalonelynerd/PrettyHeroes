@@ -43,7 +43,7 @@ defineProps(["desc", 'flags', 'work', 'timezone', 'location'])
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .desc {
     color: var(--ctxt);
     padding: 0;
@@ -104,4 +104,65 @@ defineProps(["desc", 'flags', 'work', 'timezone', 'location'])
   }
 }
 
+@media screen and (hover: none) {
+  .desc {
+    color: var(--ctxt);
+    padding: 0;
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 8vw;
+  }
+
+  .desc > * {
+    margin: 0;
+  }
+
+  .desc > h2 {
+    opacity: 0.5;
+    font-size: 1.25em;
+  }
+
+  .desc > p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 2vw;
+  }
+
+  #lwt {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4vw 6vw;
+  }
+
+  #lwt > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+  }
+
+  #lwt > div > * {
+    margin: 0;
+    font-weight: bold;
+  }
+
+  #lwt > div > img {
+    height: 1.5em;
+    filter: var(--fil);
+  }
+
+  #desc {
+    margin-top: -1em;
+    margin-bottom: -1em;
+  }
+}
 </style>

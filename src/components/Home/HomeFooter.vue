@@ -13,7 +13,7 @@ import homeInfo from "@/assets/json/homeInfo.json"
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .hfooter {
     padding: 16px 64px;
     margin-top: 32px;
@@ -36,4 +36,27 @@ import homeInfo from "@/assets/json/homeInfo.json"
   }
 }
 
+@media screen and (hover: none) {
+  .hfooter {
+    padding: 4vw 10vw;
+    margin-top: 6vw;
+    height: fit-content;
+    opacity: 1;
+    gap: 2vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: var(--blur);
+  }
+
+  .hfooter > p {
+    margin: 0;
+  }
+
+  .hfooter a {
+    font-weight: bold;
+  }
+}
 </style>

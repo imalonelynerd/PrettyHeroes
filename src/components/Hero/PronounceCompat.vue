@@ -45,7 +45,7 @@ defineEmits([
 
 <style scoped>
 
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .pro-container {
     position: fixed;
     left: 0;
@@ -127,6 +127,56 @@ defineEmits([
 
   #promess > img {
     height: 128px;
+  }
+}
+
+@media screen and (hover: none) {
+  .pro-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 5;
+  }
+
+  #promess {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 6vw;
+    background: color-mix(in srgb, var(--bg), var(--alpha));
+    backdrop-filter: var(--blur);
+    animation: SlideAnimation ease-out 0.5s;
+    padding: 16vw 8vw 8vw;
+  }
+
+  #promess > * {
+    margin: 0;
+  }
+
+  #promess > p {
+    width: 100%;
+  }
+
+  #promess > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2vw;
+    width: 100%;
+  }
+
+  #promess > img {
+    height: 40vw;
   }
 }
 </style>

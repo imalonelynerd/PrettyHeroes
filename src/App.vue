@@ -6,7 +6,7 @@ import MobileNavbar from "@/components/Home/navbarComponements/MobileNavbar.vue"
 
 <template>
   <Navbar v-if="$route.name !== undefined && !$route.name.startsWith('HeroPage')"/>
-  <MobileNavbar/>
+  <MobileNavbar v-if="$route.name !== undefined && !$route.name.startsWith('HeroPage')"/>
   <Suspense>
     <template #fallback>
       <LoadingPage/>

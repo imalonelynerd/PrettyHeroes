@@ -34,7 +34,7 @@ defineProps([
 </template>
 
 <style scoped>
-@media only screen and (orientation: portrait) {
+@media only screen and (hover: none) {
   div {
     display: none !important;
   }
@@ -77,7 +77,7 @@ defineProps([
 .navbar-container > a * {
 }
 
-.navbar-container > a:hover > p {
+.navbar-container > a:active > p {
   background: var(--ho);
   padding: 12px 20px;
 }

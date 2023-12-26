@@ -46,7 +46,7 @@ function getFilter(color) {
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .dpage {
     width: 80%;
     display: flex;

@@ -20,7 +20,7 @@ import {changeLoc} from "@/assets/js/miscTools";
 
 <style scoped>
 
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .title {
     height: 100vh;
     display: flex;
@@ -79,6 +79,66 @@ import {changeLoc} from "@/assets/js/miscTools";
   .title > p {
     text-align: center;
     width: 80%;
+  }
+}
+
+@media screen and (hover: none) {
+  .title {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 6vw;
+    background: color-mix(in srgb, var(--bg), var(--alpha));
+    backdrop-filter: var(--blur);
+    animation: FadeAnimation ease-out 0.5s;
+    padding: 0 6vw;
+  }
+
+  .title > * {
+    margin: 0;
+    text-align: center;
+  }
+
+  .title > img {
+    margin: 0 auto;
+    height: 40vw;
+    width: 40vw;
+  }
+
+  .title > h1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+  }
+
+  .title > h1 > code {
+    padding: 2vw 4vw !important;
+    font-size: 0.5em;
+    border-radius: var(--radius-button) !important;
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+  }
+
+  .title > h1 > code:active {
+    background: var(--ho);
+  }
+
+  .title > * {
+    margin: 0;
+  }
+
+  .title > h2 {
+    color: var(--text);
+    opacity: 0.75;
+    font-style: italic;
+  }
+
+  .title > h2:active {
+    color: var(--ho);
+    opacity: 1;
   }
 }
 

@@ -12,7 +12,7 @@ defineEmits(['update:valueUpdated']);
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .linput {
     padding: 16px 24px;
     border-radius: var(--radius-input);
@@ -28,6 +28,26 @@ defineEmits(['update:valueUpdated']);
   }
 
   .linput:hover {
+    background: var(--ho) !important;
+  }
+}
+
+@media screen and (hover: none) {
+  .linput {
+    padding: 4vw 6vw;
+    border-radius: var(--radius-input);
+    resize: none;
+    border: none;
+    font-size: 1em;
+    font-family: inherit;
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    color: var(--text);
+    flex: 1 1;
+    box-shadow: var(--shadow);
+
+  }
+
+  .linput:active {
     background: var(--ho) !important;
   }
 }

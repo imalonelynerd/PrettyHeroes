@@ -63,7 +63,7 @@ defineEmits([
 
 <style scoped>
 
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .help-container {
     position: fixed;
     left: 0;
@@ -115,38 +115,69 @@ defineEmits([
     gap: 8px;
   }
 
-
-  #helpmess > div:not(.flags) > a {
-    width: fit-content;
-    padding: 16px 24px;
-    border-radius: var(--radius-button);
-    font-size: 1em;
-    font-weight: bold;
-    background: color-mix(in srgb, var(--wi), var(--alpha));
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  #helpmess > div:not(.flags) > a:hover {
-    background: var(--ho);
-  }
-
-  #helpmess > div:not(.flags) > a > img {
-    height: 1.25em;
-  }
-
-  #helpmess > div:not(.flags) > a > p {
-    margin: 0 0 0 8px;
-    padding: 0;
-  }
-
   #helpmess > img {
     height: 128px;
   }
 }
 
+@media screen and (hover: none) {
+  .help-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 5;
+    animation: BgAnimation ease-out 0.5s;
+  }
+
+  #helpmess {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 6vw;
+    background: color-mix(in srgb, var(--bg), var(--alpha));
+    backdrop-filter: var(--blur);
+    animation: SlideAnimation ease-out 0.5s;
+    padding: 16vw 8vw 8vw;
+  }
+
+  #helpmess > * {
+    margin: 0;
+  }
+
+  #helpmess > p {
+    width: 100%;
+  }
+
+  #helpmess > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 4vw;
+  }
+
+  #helpmess > div:not(.flags) {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #helpmess > img {
+    height: 40vw;
+  }
+
+  #helpmess > a {
+    width: 70vw;
+  }
+}
 
 </style>

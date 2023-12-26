@@ -19,7 +19,7 @@ defineEmits(['update:buttonClicked', 'update:buttonDisabled']);
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .wbtn {
     padding: 16px 24px;
     border-radius: var(--radius-button);
@@ -63,5 +63,51 @@ defineEmits(['update:buttonClicked', 'update:buttonDisabled']);
     filter: none !important;
   }
 }
+
+@media screen and (hover: none) {
+  .wbtn {
+    padding: 4vw 6vw;
+    border-radius: var(--radius-button);
+    box-shadow: var(--shadow);
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
+    color: var(--text);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .wbtn:active {
+    background: var(--ho);
+  }
+
+  .wbtn > img {
+    height: 1.25em;
+    transition: all 0s !important;
+    filter: var(--fil) !important;
+  }
+
+  .wbtn > p {
+    margin: 0 0 0 2vw;
+    padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .disabled > * {
+    opacity: 0.5 !important;
+  }
+
+  .color > img {
+    filter: none !important;
+  }
+}
+
 
 </style>

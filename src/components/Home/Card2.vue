@@ -25,5 +25,9 @@ import WideButton from "@/components/Home/WideButton.vue";
 </template>
 
 <style scoped>
-
+@media screen and (hover: none) {
+  .card {
+    flex-direction: column;
+  }
+}
 </style>

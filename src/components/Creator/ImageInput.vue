@@ -21,7 +21,7 @@ defineEmits(['update:imgUpdated']);
 
 <style scoped>
 
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .iminput {
     display: flex;
     flex-direction: row;
@@ -57,4 +57,42 @@ defineEmits(['update:imgUpdated']);
     background: var(--ho) !important;
   }
 }
+
+@media screen and (hover: none) {
+  .iminput {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: stretch;
+    background-size: 20% !important;
+    border-radius: var(--radius-button);
+    border: none;
+    font-size: 1em;
+    min-width: 0;
+    color: var(--text);
+    flex: 1 1;
+    box-shadow: var(--shadow);
+  }
+
+  .iminput > div {
+    width: 16%;
+  }
+
+  .iminput > input {
+    flex: 1 1;
+    padding: 4vw 6vw;
+    border-radius: var(--radius-button);
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
+    border: none;
+    font-size: 1em;
+    min-width: 0;
+    color: var(--text);
+  }
+
+  .iminput:active > input {
+    background: var(--ho) !important;
+  }
+}
+
 </style>

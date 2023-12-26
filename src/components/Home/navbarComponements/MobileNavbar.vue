@@ -2,6 +2,7 @@
 import HiddenMenu from "@/components/Home/navbarComponements/HiddenMenu.vue";
 import {ref} from "vue";
 import NavbarButton from "@/components/Home/navbarComponements/NavbarButton.vue";
+import homeInfo from "@/assets/json/homeInfo.json"
 import {useRouter} from "vue-router";
 import {changeLoc} from "@/assets/js/miscTools";
 
@@ -28,7 +29,7 @@ const linksMenu = ref({
             router.push('/search')
           },
           imgLink: ``,
-          shownTitle: "Search...",
+          shownTitle: "Search",
         },
         {
           onClick: function () {
@@ -55,6 +56,10 @@ const linksMenu = ref({
               @update:menuHidden="isLinkMenuShown = false"/>
 
   <div :class="{'hasbg' : hasScrolled}" class="mobile-navbar-container">
+    <RouterLink to="/">
+      <img src="/images/icon-navbar.png" alt="Icon">
+      <h2>{{ homeInfo.appName }}</h2>
+    </RouterLink>
     <NavbarButton :imgLink="'/icons/link.png'"
                   shownTitle=""
                   @update:buttonClicked="isLinkMenuShown = true"/>
@@ -63,7 +68,7 @@ const linksMenu = ref({
 
 <style scoped>
 
-@media only screen and (orientation: landscape) {
+@media only screen and (hover: hover) {
   .mobile-navbar-container {
     display: none !important;
   }
@@ -74,17 +79,26 @@ const linksMenu = ref({
   top: 0;
   left: 0;
   right: 0;
-  padding: 6vw;
+  padding: 6vw 6vw 4vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   animation: HewwoBar ease-out 0.75s;
   z-index: 5;
+  background: color-mix(in srgb, var(--bg), var(--alpha));
+  backdrop-filter: var(--blur);
 }
 
-.hasbg {
-  background: var(--bg);
-  box-shadow: var(--shadow);
+.mobile-navbar-container > a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4vw;
+}
+
+.mobile-navbar-container > a > img {
+  height: 10vw;
 }
 </style>

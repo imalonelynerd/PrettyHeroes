@@ -23,7 +23,7 @@ import WideButton from "@/components/Home/WideButton.vue";
 </template>
 
 <style>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .card {
     padding: 76px 64px;
     width: 1200px;
@@ -58,4 +58,36 @@ import WideButton from "@/components/Home/WideButton.vue";
     margin: 0;
   }
 }
+
+@media screen and (hover: none) {
+  .card {
+    padding: 16vw 6vw;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 6vw;
+  }
+
+  .card > img {
+    width: 100%;
+  }
+
+  .card > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 8vw;
+  }
+
+  .card > div > h2 {
+    text-align: center;
+  }
+
+  .card > div > * {
+    margin: 0;
+  }
+}
+
 </style>

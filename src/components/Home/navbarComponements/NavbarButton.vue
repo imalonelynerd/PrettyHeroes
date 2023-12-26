@@ -19,7 +19,7 @@ defineEmits([
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .link {
     margin: 0;
     padding: 16px;
@@ -42,6 +42,38 @@ defineEmits([
 
   .link > img {
     height: 1.25em;
+  }
+
+  .link > p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media screen and (hover: none) {
+  .link {
+    margin: 0;
+    padding: 4vw;
+    border-radius: var(--radius-button);
+    font-size: 1em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    max-width: 200px;
+    gap: 8px;
+    background: color-mix(in srgb, var(--wi), var(--alpha));
+    backdrop-filter: var(--blur);
+  }
+
+  .link:active {
+    background: var(--ho);
+    backdrop-filter: var(--blur);
+  }
+
+  .link > img {
+    height: 1.5em;
   }
 
   .link > p {

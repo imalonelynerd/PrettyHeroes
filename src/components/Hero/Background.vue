@@ -19,6 +19,5 @@ defineProps([
   margin: 0;
   z-index: -1;
   background-size: cover !important;
-  filter: brightness(90%);
 }
 </style>

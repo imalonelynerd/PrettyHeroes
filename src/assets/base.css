@@ -25,7 +25,7 @@
     --fil: none;
 }
 
-@media only screen and (orientation: landscape) {
+@media only screen and (hover: hover) {
     :root {
         --shadow: 0px 4px 8px #00000020;
         --radius: 16px;
@@ -34,7 +34,7 @@
     }
 }
 
-@media only screen and (orientation: portrait) {
+@media only screen and (hover: none) {
     :root {
         --shadow: 0px 0vw 0vw #00000000;
         --radius: 4vw;
@@ -62,6 +62,18 @@
     to {
         opacity: 1;
         transform: translateX(0%);
+    }
+}
+
+@keyframes MSlideAnimation {
+    from {
+        opacity: 1;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0%);
     }
 }
 

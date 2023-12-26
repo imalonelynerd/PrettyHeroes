@@ -54,7 +54,7 @@ document.documentElement.style = null;
 </template>
 
 <style scoped>
-@media screen and (orientation: landscape) {
+@media screen and (hover: hover) {
   .query {
     height: 100vh;
     width: 100vw;
@@ -85,6 +85,47 @@ document.documentElement.style = null;
 
   .query > *:nth-child(4) {
     width: 500px;
+  }
+}
+
+@media screen and (hover: none) {
+  .query {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    animation: FadeAnimation ease-out 0.25s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6vw;
+    padding: 6vw;
+    text-align: center;
+  }
+
+  .query > * {
+    margin: 0;
+  }
+
+  .query > img {
+    height: 30vw;
+  }
+
+  .query > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 2vw; /*a revoir*/
+  }
+
+  .query > div:first-of-type {
+    margin-bottom: -4vw;
+    display: flex;
+    flex-direction: row;
   }
 }
 </style>
