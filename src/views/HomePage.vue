@@ -1,5 +1,5 @@
 <script setup>
-import homeInfo from "@/assets/json/homeInfo.json";
+import hostInfo from "@/assets/json/hostInfo.json";
 import Title from "@/components/Home/Title.vue";
 import Card1 from "@/components/Home/Card1.vue";
 import {defineHeader} from "@/assets/js/miscTools";
@@ -9,7 +9,7 @@ import Bulletpoints2 from "@/components/Home/Bulletpoints2.vue";
 import Card3 from "@/components/Home/Card3.vue";
 import HomeFooter from "@/components/Home/HomeFooter.vue";
 
-defineHeader("Home", `/favicon.png`, homeInfo.tagLine);
+defineHeader("Home", `/favicon.png`, hostInfo.tagLine);
 document.documentElement.style = null;
 </script>
 

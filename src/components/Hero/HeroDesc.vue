@@ -95,6 +95,7 @@ defineProps(["desc", 'flags', 'work', 'timezone', 'location'])
 
   #lwt > div > img {
     height: 1.5em;
+    transition: all 0s !important;
     filter: var(--fil);
   }
 
@@ -113,7 +114,7 @@ defineProps(["desc", 'flags', 'work', 'timezone', 'location'])
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    gap: 8vw;
+    gap: 12vw;
   }
 
   .desc > * {
@@ -157,6 +158,7 @@ defineProps(["desc", 'flags', 'work', 'timezone', 'location'])
 
   #lwt > div > img {
     height: 1.5em;
+    transition: all 0s !important;
     filter: var(--fil);
   }
 

@@ -48,7 +48,7 @@ function checkColor2(color) {
   }
 
   .cinput > div {
-    width: 16%;
+    width: 52px;
   }
 
   .cinput > input {
@@ -82,7 +82,7 @@ function checkColor2(color) {
   }
 
   .cinput > div {
-    width: 16%;
+    width: 12vw;
   }
 
   .cinput > input {

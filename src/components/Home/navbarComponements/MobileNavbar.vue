@@ -2,7 +2,7 @@
 import HiddenMenu from "@/components/Home/navbarComponements/HiddenMenu.vue";
 import {ref} from "vue";
 import NavbarButton from "@/components/Home/navbarComponements/NavbarButton.vue";
-import homeInfo from "@/assets/json/homeInfo.json"
+import hostInfo from "@/assets/json/hostInfo.json"
 import {useRouter} from "vue-router";
 import {changeLoc} from "@/assets/js/miscTools";
 
@@ -58,7 +58,7 @@ const linksMenu = ref({
   <div :class="{'hasbg' : hasScrolled}" class="mobile-navbar-container">
     <RouterLink to="/">
       <img src="/images/icon-navbar.png" alt="Icon">
-      <h2>{{ homeInfo.appName }}</h2>
+      <h2>{{ hostInfo.appName }}</h2>
     </RouterLink>
     <NavbarButton :imgLink="'/icons/link.png'"
                   shownTitle=""

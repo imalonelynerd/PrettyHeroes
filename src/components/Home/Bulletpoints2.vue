@@ -1,5 +1,5 @@
 <script setup>
-import homeInfo from "@/assets/json/homeInfo.json"
+import hostInfo from "@/assets/json/hostInfo.json"
 </script>
 
 <template>
@@ -11,7 +11,7 @@ import homeInfo from "@/assets/json/homeInfo.json"
           <img src="/icons/light.png" alt="Light">
           <h3>Lightweight</h3>
         </div>
-        <p>{{ homeInfo.appName }} is, believe it or not, a <b>5 Mo static page</b> ! No NodeJS running in the background
+        <p>{{ hostInfo.appName }} is, believe it or not, a <b>5 Mo static page</b> ! No more NodeJS running in the background
           !</p>
       </div>
       <div>
@@ -27,7 +27,7 @@ import homeInfo from "@/assets/json/homeInfo.json"
           <img src="/icons/pronounce.png" alt="Pronounce">
           <h3>Pronounce-compliant</h3>
         </div>
-        <p>You used to host a Pronounce instance ? {{ homeInfo.appName }} is <b>compatible</b> with Pronounce pages</p>
+        <p>You used to host a Pronounce instance ? {{ hostInfo.appName }} is <b>compatible</b> with Pronounce pages</p>
       </div>
     </div>
   </div>

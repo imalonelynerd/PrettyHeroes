@@ -1,7 +1,7 @@
 <script setup>
 import NavbarButton from "@/components/Home/navbarComponements/NavbarButton.vue";
 import {changeLoc} from "@/assets/js/miscTools";
-import homeInfo from "@/assets/json/homeInfo.json";
+import hostInfo from "@/assets/json/hostInfo.json";
 
 
 defineProps([
@@ -14,7 +14,7 @@ defineProps([
   <div :class="{ 'align-right' : alignRight, 'hasbg' : hasScrolled }" class="navbar-container">
     <router-link to="/">
       <img src="/images/icon-navbar.png" alt="Icon">
-      <p>{{ homeInfo.appName }}</p>
+      <p>{{ hostInfo.appName }}</p>
     </router-link>
     <div class="navbar">
       <NavbarButton img-link=""

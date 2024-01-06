@@ -1,6 +1,6 @@
 <script setup>
 
-import homeInfo from "@/assets/json/homeInfo.json";
+import hostInfo from "@/assets/json/hostInfo.json";
 import {ref} from "vue";
 import {useRouter} from "vue-router";
 import {changeLoc, defineHeader} from "@/assets/js/miscTools";
@@ -12,7 +12,7 @@ const searchResult = ref("");
 const noColor = ref(false);
 const router = useRouter();
 
-defineHeader("Search", "/icons/search.png", homeInfo.tagLine);
+defineHeader("Search", "/icons/search.png", hostInfo.tagLine);
 document.documentElement.style = null;
 </script>
 
@@ -20,7 +20,7 @@ document.documentElement.style = null;
   <div class="query">
     <img src="/images/search.png" alt="Search">
     <h1>Search for someone's Hero</h1>
-    <p>Search someone's Hero by inputing their <b>GitHub</b> username.<br/>If the account <b>doesn't exist</b> or
+    <p>Search someone's Hero by inputing their <b>GitHub</b> username. If the account <b>doesn't exist</b> or
       <b>doesn't contain a Hero</b>, an error will appear.</p>
     <div>
       <CustomInput
@@ -85,6 +85,10 @@ document.documentElement.style = null;
 
   .query > *:nth-child(4) {
     width: 500px;
+  }
+
+  .query > p {
+    width: 40%;
   }
 }
 

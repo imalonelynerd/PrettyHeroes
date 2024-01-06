@@ -44,7 +44,7 @@ defineEmits(['update:buttonClicked', 'update:buttonDisabled']);
   .wbtn > img {
     height: 1.25em;
     transition: all 0s !important;
-    filter: var(--fil) !important;
+    filter: var(--fil);
   }
 
   .wbtn > p {

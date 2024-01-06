@@ -105,7 +105,7 @@ function showElem(val) {
 <style scoped>
 @media screen and (hover: hover) {
   .hero {
-    margin: 32px auto 48px;
+    margin: 8vh auto 48px;
     width: 500px;
     max-width: 50vw;
     display: flex;
@@ -114,10 +114,11 @@ function showElem(val) {
     justify-content: center;
     animation: FadeAnimation ease-out 0.5s;
     padding: 64px;
-    gap: 56px;
+    gap: 48px;
     border-radius: var(--radius);
     background: color-mix(in srgb, var(--cbg), var(--alpha));
     backdrop-filter: var(--blur);
+    box-shadow: var(--shadow);
   }
 
   #pro {
@@ -130,16 +131,16 @@ function showElem(val) {
 
 @media screen and (hover: none) {
   .hero {
-    margin: 6vw auto;
-    width: 70vw;
+    top: 20vw;
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    justify-content: center;
+    justify-content: start;
     animation: FadeAnimation ease-out 0.5s;
-    padding: 8vw;
-    gap: 6vw;
-    border-radius: var(--radius);
+    padding: 12vw 8vw 16vw;
+    gap: 12vw;
+    border-radius: var(--radius) var(--radius) 0 0;
     background: color-mix(in srgb, var(--cbg), var(--alpha));
     backdrop-filter: var(--blur);
   }

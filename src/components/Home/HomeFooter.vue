@@ -1,5 +1,5 @@
 <script setup>
-import homeInfo from "@/assets/json/homeInfo.json"
+import hostInfo from "@/assets/json/hostInfo.json"
 </script>
 
 <template>
@@ -8,7 +8,7 @@ import homeInfo from "@/assets/json/homeInfo.json"
     <p>⋅</p>
     <p>Some rights reserved</p>
     <p>⋅</p>
-    <p>Hosted by <b>{{ homeInfo.hostedBy }}</b> for <b>{{ homeInfo.hostedOn }}</b></p>
+    <p>Hosted by <b>{{ hostInfo.hostedBy }}</b> for <b>{{ hostInfo.hostedOn }}</b></p>
   </div>
 </template>
 

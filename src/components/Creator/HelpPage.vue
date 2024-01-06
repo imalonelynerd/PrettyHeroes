@@ -1,9 +1,9 @@
 <script setup>
 
-import homeInfo from "@/assets/json/homeInfo.json"
-import helpInfo from "@/assets/json/helpInfo.json";
+import hostInfo from "@/assets/json/hostInfo.json"
 import FlagsDisplayer from "@/components/Hero/FlagsDisplayer.vue";
 import WideButton from "@/components/Home/WideButton.vue";
+import {changeLoc} from "@/assets/js/miscTools";
 
 defineEmits([
   "update:hideBtn"
@@ -14,10 +14,10 @@ defineEmits([
 <template>
   <div class="help-container">
     <div id="helpmess">
-      <img :src="helpInfo.imgsource" alt="Help">
-      <h1 v-html="helpInfo.title"></h1>
+      <img src="/images/help.png" alt="Help">
+      <h1>Help</h1>
       <h3>How does all of this work ?</h3>
-      <p>To create and make a <b>hero</b> public is a <b>{{ homeInfo.appName }}</b> instance with a <b>Hero Creator</b>
+      <p>To create and make a <b>hero</b> public is a <b>{{ hostInfo.appName }}</b> instance with a <b>Hero Creator</b>
         and a <b>GitHub</b> account, with a <b>repo</b> named after your account ID. For example, if your account ID is
         <b>foobar</b>, then you'll need to create a <b>repo</b> called <b>foobar</b>. To check if this repo is public,
         just go to <b>github.com/foobar/foobar</b>.</p>
@@ -28,7 +28,7 @@ defineEmits([
       <h3>About the flags</h3>
       <p>Each flag is associated to a <b>specific keyword</b>, that you can enter in the <b>flags</b> entries. Right
         below is a list of all the flags available alongside their associated keyword.</p>
-      <FlagsDisplayer :flags-list="[]" has-all="all"/>
+      <FlagsDisplayer :flags-list="[]" has-all="all" bg-special="var(--wi)"/>
       <h3>About the colors</h3>
       <p>Colors are represented as <b>hexadecimal code</b>. They usually look either like</p>
       <ul>
@@ -38,8 +38,7 @@ defineEmits([
         <li><b>#3AD2A640</b></li>
       </ul>
       <p>You can check previews to know if the imputed code is valid. Make sure the colors you
-        picked creates a good contrast between the text and the background. You can use this <a
-            href="https://coolors.co/contrast-checker"><b>[tool]</b></a> to check
+        picked creates a good contrast between the text and the background. You can use the <b>tool below</b> to check
         contrasts between colors.
       </p>
       <h3>About the description</h3>
@@ -51,12 +50,24 @@ defineEmits([
           <del>struck</del>
         </li>
       </ul>
-      <p>More info can be found <a href="https://www.markdownguide.org/basic-syntax/"><b>[here]</b></a>.
-      </p>
-      <WideButton @update:buttonClicked="$emit('update:hideBtn')"
-                  shown-title="Back"
-                  img-link="/icons/back.png"
-      />
+      <p>More info can be found <b>below</b>.</p>
+      <div>
+        <WideButton @update:buttonClicked="$emit('update:hideBtn')"
+                    shown-title="Back"
+                    img-link="/icons/back.png"
+                    :fil-color="true"
+        />
+        <WideButton @update:buttonClicked="changeLoc('https://coolors.co/contrast-checker')"
+                    shown-title="Contrast tools"
+                    img-link="/icons/link.png"
+                    :fil-color="true"
+        />
+        <WideButton @update:buttonClicked="changeLoc('https://www.markdownguide.org/basic-syntax/')"
+                    shown-title="Markdown syntax"
+                    img-link="/icons/link.png"
+                    :fil-color="true"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -113,6 +124,7 @@ defineEmits([
     justify-content: center;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
   }
 
   #helpmess > img {
@@ -166,9 +178,10 @@ defineEmits([
   #helpmess > div:not(.flags) {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
+    gap: 2vw;
   }
 
   #helpmess > img {

@@ -1,6 +1,6 @@
 <script setup>
 
-import ErrInfo from "@/assets/json/errInfo.json";
+import hostInfo from "@/assets/json/hostInfo.json"
 import Background from "@/components/Hero/Background.vue";
 import WideButton from "@/components/Home/WideButton.vue";
 
@@ -9,11 +9,11 @@ defineProps(["errorCode", "accountName"])
 function getErrorMessage(errcode) {
   switch (errcode) {
     case 1:
-      return ErrInfo.descriptions.fetchError;
+      return hostInfo.errDesc.fetchError;
     case 2:
-      return ErrInfo.descriptions.missingData;
+      return hostInfo.errDesc.missingData;
     default:
-      return ErrInfo.descriptions.unknownError;
+      return hostInfo.errDesc.unknownError;
   }
 }
 
@@ -22,8 +22,8 @@ function getErrorMessage(errcode) {
 <template>
   <Background bg-img="/bg/errbg.png"/>
   <div class="err">
-    <img :src="ErrInfo.imgSource" alt="Error"/>
-    <h1>{{ ErrInfo.errName }}</h1>
+    <img src="/images/error.png" alt="Error"/>
+    <h1>Wooops...</h1>
     <p>An error occured while getting <b>{{ accountName }}</b>'s Hero...</p>
     <p v-html="getErrorMessage(errorCode)"></p>
     <WideButton

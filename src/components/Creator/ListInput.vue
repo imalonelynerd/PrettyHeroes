@@ -86,6 +86,7 @@ function updateItem(value, index) {
   }
 
   .listinput > div:first-of-type {
+    width: 100%;
     display: grid;
     grid-auto-rows: 1fr;
     grid-template-columns: 1fr 1fr 1fr;
@@ -94,8 +95,8 @@ function updateItem(value, index) {
   }
 
   .listinput > div:first-of-type > input {
-    width: 64%;
     padding: 16px 24px;
+    min-width: 1%;
     border: none;
     font-size: 1em;
     color: var(--text);
@@ -160,13 +161,13 @@ function updateItem(value, index) {
   .listinput > div:first-of-type {
     display: grid;
     grid-auto-rows: 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     align-items: stretch;
     justify-content: stretch;
   }
 
   .listinput > div:first-of-type > input {
-    width: 64%;
+    min-width: 1%;
     padding: 4vw 6vw;
     border: none;
     font-size: 1em;

@@ -27,7 +27,7 @@
 
 @media only screen and (hover: hover) {
     :root {
-        --shadow: 0px 4px 8px #00000020;
+        --shadow: 0px 4px 8px #00000010;
         --radius: 16px;
         --radius-button: 16px;
         --radius-input: 16px;
@@ -36,7 +36,7 @@
 
 @media only screen and (hover: none) {
     :root {
-        --shadow: 0px 0vw 0vw #00000000;
+        --shadow: 0px 1vw 2vw #00000010;
         --radius: 4vw;
         --radius-button: 4vw;
         --radius-input: 4vw;

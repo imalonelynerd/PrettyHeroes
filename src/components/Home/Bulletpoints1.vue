@@ -1,5 +1,5 @@
 <script setup>
-import homeInfo from "@/assets/json/homeInfo.json"
+import hostInfo from "@/assets/json/hostInfo.json"
 </script>
 
 <template>
@@ -25,7 +25,7 @@ import homeInfo from "@/assets/json/homeInfo.json"
           <img src="/icons/agnostic.png" alt="Web-agnostic">
           <h3>Website-agnostic</h3>
         </div>
-        <p>Since everything's stored on your <b>GitHub</b>, nothing is saved on any of the {{ homeInfo.appName }}'s
+        <p>Since everything's stored on your <b>GitHub</b>, nothing is saved on any of the {{ hostInfo.appName }}'s
           instances.</p>
       </div>
     </div>

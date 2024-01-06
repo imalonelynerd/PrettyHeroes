@@ -1,5 +1,4 @@
 <script setup>
-import LoadInfo from "@/assets/json/loadInfo.json";
 import {useRoute} from "vue-router";
 import Background from "@/components/Hero/Background.vue";
 
@@ -11,8 +10,8 @@ const userTag = routeObj.params.user;
   <Background bg-img="/bg/bg.png"/>
   <div class="loading">
     <div>
-      <img :src="LoadInfo.imgSource" alt="Loading"/>
-      <h1>{{ LoadInfo.loadTitle }}</h1>
+      <img src="/images/loading.png" alt="Loading"/>
+      <h1>Loading...</h1>
       <p>Fetching <b>{{ userTag }}</b>'s Hero...</p>
     </div>
   </div>

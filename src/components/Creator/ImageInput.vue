@@ -38,7 +38,7 @@ defineEmits(['update:imgUpdated']);
   }
 
   .iminput > div {
-    width: 16%;
+    width: 52px;
   }
 
   .iminput > input {
@@ -75,7 +75,7 @@ defineEmits(['update:imgUpdated']);
   }
 
   .iminput > div {
-    width: 16%;
+    width: 12vw;
   }
 
   .iminput > input {

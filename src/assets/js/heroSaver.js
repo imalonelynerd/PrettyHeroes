@@ -1,6 +1,7 @@
 import {parse, stringify} from "smol-toml";
 import {tomlToHero, yamlToHero} from "@/assets/js/heroChecker";
 import {load} from "js-yaml";
+import {defFil} from "@/assets/js/miscTools";
 
 export function copyHero(res) {
     navigator.clipboard.writeText(stringify(res)).then(() => alert('Hero copied successfully !'));
@@ -35,7 +36,21 @@ export function loadHero(hero) {
                     try {
                         obj = parse(content);
                         hero.from(tomlToHero(obj));
-                        alert('Hero loaded successfully !')
+                        //alert('Hero loaded successfully !')
+                        let params = {
+                            '--cbg': hero.colors.background,
+                            '--cwi': hero.colors.widget,
+                            '--clk': hero.colors.link,
+                            '--cho': hero.colors.hover,
+                            '--ctt': hero.colors.title,
+                            '--ctxt': hero.colors.text
+                        }
+                        for (let elem in params) {
+                            if (params[elem] !== undefined) {
+                                document.documentElement.style.setProperty(elem, params[elem]);
+                            }
+                        }
+                        defFil(hero.colors.title)
                         break;
                     } catch {
                         alert("Invalid toml file and/or content. Please try again.");
@@ -45,7 +60,21 @@ export function loadHero(hero) {
                     try {
                         obj = load(content);
                         hero.from(yamlToHero(obj));
-                        alert('Pronounce file loaded successfully !')
+                        //alert('Pronounce file loaded successfully !');
+                        let params = {
+                            '--cbg': hero.colors.background,
+                            '--cwi': hero.colors.widget,
+                            '--clk': hero.colors.link,
+                            '--cho': hero.colors.hover,
+                            '--ctt': hero.colors.title,
+                            '--ctxt': hero.colors.text
+                        }
+                        for (let elem in params) {
+                            if (params[elem] !== undefined) {
+                                document.documentElement.style.setProperty(elem, params[elem]);
+                            }
+                        }
+                        defFil(hero.colors.title)
                         break;
                     } catch {
                         alert("Invalid yaml file and/or content. Please try again.");

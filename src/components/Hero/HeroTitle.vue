@@ -1,12 +1,18 @@
 <script setup>
+import {ref} from "vue";
+
 defineProps(
     ["catchphrase", "imgSrc", "pronouns", "name1", "name2", "age"]
 );
+
+const isLoaded = ref(true);
 </script>
 
 <template>
   <div class="herotitle">
-    <img :src="imgSrc === '' ? '/images/unknown.png' : imgSrc" alt="Avatar">
+    <img :src="imgSrc === '' || !isLoaded ? '/images/unknown.png' : imgSrc" alt="Avatar"
+         @error="isLoaded = false"
+    />
     <div>
       <h1>{{ name1 }} <span>{{ name2 }}</span>, {{ age }}</h1>
       <h4 v-if="catchphrase !== ''">{{ catchphrase }}</h4>
@@ -97,7 +103,7 @@ defineProps(
 
   .herotitle > img {
     border-radius: var(--radius-button);
-    height: 40vw;
+    height: 30vw;
     box-shadow: var(--shadow);
   }
 }

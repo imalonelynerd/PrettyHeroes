@@ -1,16 +1,16 @@
 <script setup>
-import homeInfo from "@/assets/json/homeInfo.json";
+import hostInfo from "@/assets/json/hostInfo.json";
 import WideButton from "@/components/Home/WideButton.vue";
 import {changeLoc} from "@/assets/js/miscTools";
 </script>
 
 <template>
   <div class="title">
-    <img :src="homeInfo.imgSource" alt="Icon"/>
-    <h1>{{ homeInfo.appName }} <code>{{ homeInfo.version }}</code>
+    <img :src="hostInfo.imgSource" alt="Icon"/>
+    <h1>{{ hostInfo.appName }} <code>{{ hostInfo.version }}</code>
     </h1>
-    <h2>{{ homeInfo.tagLine }}</h2>
-    <p v-html="homeInfo.description"></p>
+    <h2>{{ hostInfo.tagLine }}</h2>
+    <p v-html="hostInfo.description"></p>
     <WideButton @update:buttonClicked="changeLoc('#card1',false)"
                 imgLink="/icons/more.png"
                 shown-title="See more"

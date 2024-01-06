@@ -7,7 +7,7 @@ defineEmits(['update:valueUpdated']);
   <textarea :placeholder="placeHolder"
             :value="customValue"
             class="linput"
-            rows="6"
+            rows="10"
             @input="$emit('update:valueUpdated', $event.target.value)"/>
 </template>
 

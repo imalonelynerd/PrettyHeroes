@@ -1,6 +1,5 @@
 <script setup>
 
-import PronounceCompat from "@/assets/json/pronounceCompat.json";
 import WideButton from "@/components/Home/WideButton.vue";
 import {changeLoc} from "@/assets/js/miscTools";
 
@@ -12,31 +11,37 @@ defineEmits([
 <template>
   <div class="pro-container">
     <div id="promess">
-      <img :src="PronounceCompat.imgsource" alt="Pronounce">
-      <h1 v-html="PronounceCompat.title"></h1>
-      <p v-html="PronounceCompat.message"></p>
+      <img src="/images/pronounce.png" alt="Pronounce">
+      <h1>About Pronounce compatibility</h1>
+      <p>This Hero has been built from a <b>Pronounce</b> page in compatibility mode. Some quirks may appear (like an
+        unreadable page due to the color palette). If you're the author of the <b>yaml file</b>, please edit it
+        accordingly or <b>create a hero</b> using the <b>Hero Creator</b>.</p>
       <div>
         <WideButton
             @update:buttonClicked="$emit('update:hideBtn')"
             img-link="/icons/back.png"
             shown-title="Back"
+            :fil-color="true"
         />
         <WideButton
             @update:buttonClicked="$router.push('/creator')"
             img-link="/icons/create.png"
             shown-title="Hero Creator"
+            :fil-color="true"
         />
         <WideButton
             v-if="$route.params.nocolor !== 'nocolor'"
             @update:buttonClicked="changeLoc(`/${$route.params.user}/nocolor`, false)"
             img-link="/icons/nocolor.png"
             shown-title="Disable colors"
+            :fil-color="true"
         />
         <WideButton
             v-else
             @update:buttonClicked="changeLoc(`/${$route.params.user}`, false)"
             img-link="/icons/nocolor.png"
             shown-title="Enable colors"
+            :fil-color="true"
         />
       </div>
     </div>
@@ -89,16 +94,17 @@ defineEmits([
     gap: 32px;
   }
 
-  #promess > div:not(.flags) {
+  #promess > div {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
   }
 
 
-  #promess > div:not(.flags) > a {
+  #promess > div > a {
     width: fit-content;
     padding: 16px 24px;
     border-radius: var(--radius-button);
@@ -112,15 +118,15 @@ defineEmits([
     cursor: pointer;
   }
 
-  #promess > div:not(.flags) > a:hover {
+  #promess > div > a:hover {
     background: var(--ho);
   }
 
-  #promess > div:not(.flags) > a > img {
+  #promess > div > a > img {
     height: 1.25em;
   }
 
-  #promess > div:not(.flags) > a > p {
+  #promess > div > a > p {
     margin: 0 0 0 8px;
     padding: 0;
   }
