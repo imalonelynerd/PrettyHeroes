@@ -142,7 +142,7 @@ defineHeader("Creator", "/icons/create.png", "Creator")
           <ColorInput
               :color="hero.colors.link"
               place-holder="Links color"
-              @update:colorUpdated="newValue => {hero.colors.link = newValue; definePageStyle('--cli', newValue)}"/>
+              @update:colorUpdated="newValue => {hero.colors.link = newValue; definePageStyle('--clk', newValue)}"/>
           <ColorInput
               :color="hero.colors.hover"
               place-holder="Hovered links color"
