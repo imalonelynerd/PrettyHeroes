@@ -1,134 +1,134 @@
 {
   "abro": {
-    "img": "abro.png",
+    "img": "/flags/abro.png",
     "name": "Abrosexual"
   },
   "ace": {
-    "img": "ace.png",
+    "img": "/flags/ace.png",
     "name": "Asexual"
   },
   "agender": {
-    "img": "agender.png",
+    "img": "/flags/agender.png",
     "name": "Agender"
   },
   "akio": {
-    "img": "akio.png",
+    "img": "/flags/akio.png",
     "name": "Akiosexual"
   },
   "aroace": {
-    "img": "aroace.png",
+    "img": "/flags/aroace.png",
     "name": "Aro - Ace"
   },
   "aro": {
-    "img": "aro.png",
+    "img": "/flags/aro.png",
     "name": "Aromantic"
   },
   "auto": {
-    "img": "auto.png",
+    "img": "/flags/auto.png",
     "name": "Autosexual"
   },
   "bigender": {
-    "img": "bigender.png",
+    "img": "/flags/bigender.png",
     "name": "Bigender"
   },
   "bi": {
-    "img": "bi.png",
+    "img": "/flags/bi.png",
     "name": "Bisexual"
   },
   "biromantic": {
-    "img": "biromantic.png",
+    "img": "/flags/biromantic.png",
     "name": "Biromantic"
   },
   "demiboy": {
-    "img": "demiboy.png",
+    "img": "/flags/demiboy.png",
     "name": "Demiboy"
   },
   "demifae": {
-    "img": "demifae.png",
+    "img": "/flags/demifae.png",
     "name": "Demifae"
   },
   "demifaun": {
-    "img": "demifaun.png",
+    "img": "/flags/demifaun.png",
     "name": "Demifaun"
   },
   "demigirl": {
-    "img": "demigirl.png",
+    "img": "/flags/demigirl.png",
     "name": "Demigirl"
   },
   "demi": {
-    "img": "demi.png",
+    "img": "/flags/demi.png",
     "name": "Demigender"
   },
   "fae": {
-    "img": "fae.png",
+    "img": "/flags/fae.png",
     "name": "Genderfae"
   },
   "faun": {
-    "img": "faun.png",
+    "img": "/flags/faun.png",
     "name": "Genderfaun"
   },
   "fluid": {
-    "img": "fluid.png",
+    "img": "/flags/fluid.png",
     "name": "Genderfluid"
   },
   "gay": {
-    "img": "gay.png",
+    "img": "/flags/gay.png",
     "name": "Gay"
   },
   "grey": {
-    "img": "grey.png",
+    "img": "/flags/grey.png",
     "name": "Greysexual"
   },
   "inter": {
-    "img": "inter.png",
+    "img": "/flags/inter.png",
     "name": "Intergender"
   },
   "lesbian": {
-    "img": "lesbian.png",
+    "img": "/flags/lesbian.png",
     "name": "Lesbian"
   },
   "nb": {
-    "img": "nb.png",
+    "img": "/flags/nb.png",
     "name": "Non Binary"
   },
   "neutrois": {
-    "img": "neutrois.png",
+    "img": "/flags/neutrois.png",
     "name": "Neutrois"
   },
   "omni": {
-    "img": "omni.png",
+    "img": "/flags/omni.png",
     "name": "Omnisexual"
   },
   "omniromantical": {
-    "img": "omniromantical.png",
+    "img": "/flags/omniromantical.png",
     "name": "Omniromantical"
   },
   "pan": {
-    "img": "pan.png",
+    "img": "/flags/pan.png",
     "name": "Pansexual"
   },
   "poly": {
-    "img": "poly.png",
+    "img": "/flags/poly.png",
     "name": "Polyamorous"
   },
   "pride": {
-    "img": "pride.png",
+    "img": "/flags/pride.png",
     "name": "LGBTQIA+"
   },
   "queer": {
-    "img": "queer.png",
+    "img": "/flags/queer.png",
     "name": "Queer"
   },
   "transfem": {
-    "img": "transfem.png",
+    "img": "/flags/transfem.png",
     "name": "Transfeminine"
   },
   "transmasc": {
-    "img": "transmasc.png",
+    "img": "/flags/transmasc.png",
     "name": "Transmasculine"
   },
   "trans": {
-    "img": "trans.png",
+    "img": "/flags/trans.png",
     "name": "Transgender"
   }
 }
