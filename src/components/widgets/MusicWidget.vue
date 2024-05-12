@@ -1,7 +1,8 @@
 <script setup>
-import { onBeforeMount, ref } from 'vue'
+import { ref } from 'vue'
 import ListenButton from '@/components/special/ListenButton.vue'
-import { changeLoc } from '@/assets/js/linkTools.js'
+import { changeLocation } from '@/assets/js/linkTools.js'
+import { isTagsInObject } from '@/assets/js/commonTools.js'
 
 const props = defineProps({
   ytUrl: {
@@ -15,6 +16,7 @@ const props = defineProps({
 })
 
 const isError = ref(false)
+
 const fetchedData = ref({
   thumbnail_url: '',
   title: '',
@@ -25,37 +27,23 @@ const fetchedData = ref({
   url: ''
 })
 
-onBeforeMount(async () => {
-  let res = await fetch('https://noembed.com/embed?url=' + props.ytUrl)
-  if (!res.ok) {
-    isError.value = true
-    return
-  }
+let res = await fetch('https://noembed.com/embed?url=' + props.ytUrl)
+if (!res.ok) {
+  isError.value = true
+} else {
   let json = await res.json()
-  console.log(json)
-  let test = (tags) => {
-    for (let e in tags) {
-      if (!Object.prototype.hasOwnProperty.call(json, tags[e])) {
-        return false
-      }
-    }
-    return true
-  }
-  if (!test(Object.keys(fetchedData.value))) {
+  if (!isTagsInObject(json, Object.keys(fetchedData.value))) {
     isError.value = true
-    return
+  } else {
+    fetchedData.value = json
   }
-  fetchedData.value = json
-})
+}
 </script>
 
 <template>
   <h1 v-if="isError">Error</h1>
   <div v-else class="MusicWidget">
-    <img
-      :src="fetchedData.thumbnail_url"
-      :alt="fetchedData.thumbnail_url"
-    />
+    <img :src="fetchedData.thumbnail_url" :alt="fetchedData.thumbnail_url" />
     <!-- .replace('awa', 'maxresdefault') -->
     <div>
       <h1>{{ fetchedData.title }}</h1>
@@ -64,7 +52,7 @@ onBeforeMount(async () => {
         <a :href="fetchedData.provider_url">{{ fetchedData.provider_name }}</a>
       </p>
     </div>
-    <ListenButton @click="changeLoc(fetchedData.url)" />
+    <ListenButton @click="changeLocation(fetchedData.url)" />
   </div>
 </template>
 

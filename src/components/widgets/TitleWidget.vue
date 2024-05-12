@@ -19,7 +19,7 @@ defineProps({
     required: true
   },
   pronouns: {
-    type: Array,
+    type: String,
     required: true
   },
   catchphrase: {
@@ -47,7 +47,7 @@ const isError = ref(false)
       {{ firstName }} <span>{{ lastName }}</span
       >{{ age === '' ? '' : ', ' + age }}
     </h1>
-    <h2 v-if="pronouns.length > 0">{{ pronouns.join(' - ') }}</h2>
+    <h2 v-if="pronouns !== ''">{{ pronouns }}</h2>
     <p v-if="catchphrase !== ''">&quot;{{ catchphrase }}&quot;</p>
   </div>
 </template>

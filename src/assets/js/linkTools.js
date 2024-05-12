@@ -1,4 +1,4 @@
-export function changeLoc(href, newTab = true) {
+export function changeLocation(href, newTab = true) {
   let a = document.createElement('a')
   a.href = href
   if (newTab) {

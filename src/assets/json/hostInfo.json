@@ -1,14 +1,8 @@
 {
-  "appName": "PrettyHeroes",
-  "version": "Fang (alpha)",
-  "tagLine": "\"We can be the Pretty Heroes if we try\"",
-  "imgSource": "/images/icon.png",
+  "version": "Rosa (Dev)",
+  "tagLine": "A queer-centric \"About Me\" page creator",
   "description": "Make a simple, colorful and personal <b>\"About me\"</b> page, straight from your <b>GitHub</b> !",
-  "hostedBy": "Nerd",
-  "hostedOn": "imalonelynerd.fr",
-  "errDesc": {
-    "fetchError": "Check if either <b>hero.toml</b> or <b>pronounce.yml</b> is accessible from their Git !",
-    "missingData": "Some variables are unreferenced. If you're the author of this here, please fill them in !",
-    "unknownError": "I've... never seen this one coming... Please create an issue on GitHub..."
-  }
+  "hostedBy": "Eryn",
+  "hostedOn": "blahaj.land",
+  "fileVersion": "ROSA"
 }

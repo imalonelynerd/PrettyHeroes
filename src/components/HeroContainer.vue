@@ -1,6 +1,4 @@
 <script setup>
-import HeroFooter from '@/components/containers/FooterContainer.vue'
-
 defineProps({
   background: {
     type: String,

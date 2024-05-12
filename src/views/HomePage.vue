@@ -1,5 +1,7 @@
 <script setup></script>
 
-<template></template>
+<template>
+  <p>A</p>
+</template>
 
 <style></style>

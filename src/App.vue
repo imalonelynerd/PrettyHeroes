@@ -1,7 +1,9 @@
 <script setup></script>
 
 <template>
-  <RouterView> </RouterView>
+  <Suspense>
+    <RouterView></RouterView>
+  </Suspense>
 </template>
 
 <style></style>

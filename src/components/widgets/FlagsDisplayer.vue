@@ -5,7 +5,7 @@ import PronounsButton from '@/components/special/PronounsButton.vue'
 
 import flagsMatches from '@/assets/json/flagsMatches.json'
 
-import { changeLoc } from '@/assets/js/linkTools.js'
+import { changeLocation } from '@/assets/js/linkTools.js'
 
 defineProps({
   flags: {
@@ -20,7 +20,7 @@ defineProps({
     type: String,
     default: 'var(--text)'
   },
-  pronounsLink: {
+  pronounsUser: {
     type: String,
     default: ''
   }
@@ -43,6 +43,9 @@ function getFlag(tag) {
       <img :src="getFlag(e).img" :alt="getFlag(e).img" />
       <p>{{ getFlag(e).name }}</p>
     </ItemElement>
-    <PronounsButton v-if="pronounsLink !== ''" @click="changeLoc(pronounsLink)" />
+    <PronounsButton
+      v-if="pronounsUser !== ''"
+      @click="changeLocation('https://pronouns.page/@' + pronounsUser)"
+    />
   </ItemContainer>
 </template>

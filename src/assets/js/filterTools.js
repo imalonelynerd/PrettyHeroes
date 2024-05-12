@@ -218,13 +218,13 @@ class Solver {
 
     function fix(value, idx) {
       let max = 100
-      if (idx === 2 /* saturate */) {
+      if (idx === 2) {
         max = 7500
-      } else if (idx === 4 /* brightness */ || idx === 5 /* contrast */) {
+      } else if (idx === 4 || idx === 5) {
         max = 200
       }
 
-      if (idx === 3 /* hue-rotate */) {
+      if (idx === 3) {
         if (value > max) {
           value %= max
         } else if (value < 0) {
@@ -240,7 +240,6 @@ class Solver {
   }
 
   loss(filters) {
-    // Argument is array of percentages.
     const color = this.reusedColor
     color.set(0, 0, 0)
 
