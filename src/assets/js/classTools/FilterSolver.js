@@ -1,6 +1,6 @@
 // https://codepen.io/sosuke/pen/Pjoqqp
 
-class Color {
+export class Color {
   constructor(hex) {
     let res = hexToRgb(hex)
     if (res === null) {
@@ -143,7 +143,7 @@ class Color {
   }
 }
 
-class Solver {
+export class Solver {
   constructor(target) {
     this.target = target
     this.targetHSL = target.hsl()
@@ -294,9 +294,4 @@ function hexToRgb(hex) {
 
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
   return result ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)] : null
-}
-
-export function getFilter(hex) {
-  let solver = new Solver(new Color(hex))
-  return solver.solve().filter
 }

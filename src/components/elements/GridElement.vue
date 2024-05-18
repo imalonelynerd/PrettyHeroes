@@ -1,5 +1,5 @@
 <script setup>
-import { getFilter } from '@/assets/js/filterTools.js'
+import { getFilter } from '@/assets/js/commonTools.js'
 
 const props = defineProps({
   background: {

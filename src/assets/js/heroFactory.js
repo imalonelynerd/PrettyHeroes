@@ -1,6 +1,7 @@
 // --- Version : ROSA
 
 import genericHero from '@/assets/json/genericHero.json'
+import { ObjectStructure } from '@/assets/js/classTools/ObjectStructure.js'
 
 export const getEmptyHero = () => ({
   title: {
@@ -40,3 +41,5 @@ export const getEmptyHero = () => ({
 })
 
 export const getGenericHero = () => genericHero
+
+export const getHeroStructure = () => new ObjectStructure(getEmptyHero())
