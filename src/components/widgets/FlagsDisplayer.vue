@@ -1,24 +1,27 @@
-<script setup>
+<script setup lang="ts">
 import ItemElement from '@/components/elements/ItemElement.vue'
 import ItemContainer from '@/components/widgets/ItemContainer.vue'
 import PronounsButton from '@/components/special/PronounsButton.vue'
+import flagMatches from '@/assets/json/flagsMatches.json'
 
-import flagsMatches from '@/assets/json/flagsMatches.json'
-
-import { changeLocation } from '@/assets/js/linkTools.js'
+import { changeLocation, isValidHexColor } from '@/assets/ts/common-tools'
+import { getGenericHero } from '@/assets/ts/hero/hero-factory'
+import { type PrideFlag } from '@/assets/ts/common-types'
 
 defineProps({
   flags: {
-    type: Array,
+    type: Array<string>,
     required: true
   },
   background: {
     type: String,
-    default: 'var(--widget)'
+    validator: (value: string): boolean => isValidHexColor(value),
+    default: getGenericHero().colors.widget
   },
   fontColor: {
     type: String,
-    default: 'var(--text)'
+    validator: (value: string): boolean => isValidHexColor(value),
+    default: getGenericHero().colors.text
   },
   pronounsUser: {
     type: String,
@@ -26,14 +29,16 @@ defineProps({
   }
 })
 
-function getFlag(tag) {
-  if (tag in flagsMatches) {
-    return flagsMatches[tag]
-  }
-  return {
-    img: '/flags/unknown.png',
-    name: tag
-  }
+const flagsMap: Map<string, PrideFlag> = new Map(Object.entries(flagMatches))
+
+const getFlag = (tag: string): PrideFlag => {
+  let matchedFlag = flagsMap.get(tag)
+  return matchedFlag
+    ? matchedFlag
+    : {
+        img: '/flags/unknown.png',
+        name: tag
+      }
 }
 </script>
 

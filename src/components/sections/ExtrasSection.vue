@@ -1,17 +1,15 @@
-<script setup>
+<script setup lang="ts">
 import WidgetContainer from '@/components/containers/WidgetContainer.vue'
 import TitleContainer from '@/components/containers/TitleContainer.vue'
 import ItemContainer from '@/components/widgets/ItemContainer.vue'
 import PronounceButton from '@/components/special/PronounceButton.vue'
 import ItemElement from '@/components/elements/ItemElement.vue'
+import type { PropType } from 'vue'
+import type { ExtrasSection } from '@/assets/ts/hero/hero-factory'
 
 defineProps({
   extrasSection: {
-    type: Object,
-    required: true
-  },
-  colors: {
-    type: Object,
+    type: Object as PropType<ExtrasSection>,
     required: true
   },
   fromPronounce: {
@@ -22,25 +20,25 @@ defineProps({
 </script>
 
 <template>
-  <WidgetContainer :background="colors.background">
-    <TitleContainer title="Extras" :font-color="colors.text">
+  <WidgetContainer :background="$colorPalette.background">
+    <TitleContainer title="Extras" :font-color="$colorPalette.text">
       <ItemContainer>
         <PronounceButton v-if="fromPronounce" />
         <ItemElement
-          :font-color="colors.text"
-          :background="colors.widget"
-          :icon-color="colors.title"
-          :hover-color="colors.hover"
+          :font-color="$colorPalette.text"
+          :background="$colorPalette.widget"
+          :icon-color="$colorPalette.title"
+          :hover-color="$colorPalette.hover"
           :is-clickable="true"
         >
           <img src="/icons/share.png" alt="Share" />
           <p>Share</p>
         </ItemElement>
         <ItemElement
-          :font-color="colors.text"
-          :background="colors.widget"
-          :icon-color="colors.title"
-          :hover-color="colors.hover"
+          :font-color="$colorPalette.text"
+          :background="$colorPalette.widget"
+          :icon-color="$colorPalette.title"
+          :hover-color="$colorPalette.hover"
           :is-clickable="true"
         >
           <img src="/icons/file.png" alt="Source" />
@@ -48,10 +46,10 @@ defineProps({
         </ItemElement>
         <ItemElement
           v-if="extrasSection.enableSnapshot"
-          :font-color="colors.text"
-          :background="colors.widget"
-          :icon-color="colors.title"
-          :hover-color="colors.hover"
+          :font-color="$colorPalette.text"
+          :background="$colorPalette.widget"
+          :icon-color="$colorPalette.title"
+          :hover-color="$colorPalette.hover"
           :is-clickable="true"
         >
           <img src="/icons/file.png" alt="Snapshot" />

@@ -1,22 +1,28 @@
-<script setup>
-import { getFilter } from '@/assets/js/commonTools.js'
+<script setup lang="ts">
+import { getFilter } from '@/assets/ts/filter-solver'
+import { getGenericHero } from '@/assets/ts/hero/hero-factory'
+import { isValidHexColor } from '@/assets/ts/common-tools'
 
 const props = defineProps({
   background: {
     type: String,
-    default: 'var(--widget)'
+    validator: (value: string): boolean => isValidHexColor(value),
+    default: getGenericHero().colors.widget
   },
   fontColor: {
     type: String,
-    default: 'var(--text)'
+    validator: (value: string): boolean => isValidHexColor(value),
+    default: getGenericHero().colors.text
   },
   iconColor: {
     type: String,
-    default: ''
+    validator: (value: string): boolean => isValidHexColor(value),
+    default: '#000000'
   },
   hoverColor: {
     type: String,
-    default: 'var(--hover)'
+    validator: (value: string): boolean => isValidHexColor(value),
+    default: getGenericHero().colors.hover
   },
   isClickable: {
     type: Boolean,
@@ -24,7 +30,7 @@ const props = defineProps({
   }
 })
 
-const customFilter = props.iconColor === '' ? 'none' : getFilter(props.iconColor)
+const customFilter = props.iconColor === '#000000' ? 'none' : getFilter(props.iconColor)
 </script>
 
 <template>

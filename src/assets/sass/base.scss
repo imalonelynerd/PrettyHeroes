@@ -1,8 +1,10 @@
 :root {
+  --bgimg: #101010;
   --background: #181825;
   --widget: #313244;
   --hover: #8d304c;
   --text: white;
+  --title: var(--text);
   --blur: blur(20px);
   --filter: none;
   --trans: all ease-out 0.25s;

@@ -1,44 +1,50 @@
-<script setup>
+<script setup lang="ts">
 import HeroContainer from '@/components/HeroContainer.vue'
-import HeroFooter from '@/components/containers/FooterContainer.vue'
-import { ref } from 'vue'
-import { useRoute } from 'vue-router'
-import { convertDataToObject, fetchData, convertObjectToHero } from '@/assets/js/heroImporter.js'
-import { getEmptyHero } from '@/assets/js/heroFactory.js'
 import TitleSection from '@/components/sections/TitleSection.vue'
 import AboutSection from '@/components/sections/AboutSection.vue'
 import DescSection from '@/components/sections/DescSection.vue'
 import VideosSection from '@/components/sections/VideosSection.vue'
 import LinksSection from '@/components/sections/LinksSection.vue'
 import ExtrasSection from '@/components/sections/ExtrasSection.vue'
+import FooterSection from '@/components/sections/FooterSection.vue'
+import { getGenericHero, type Hero } from '@/assets/ts/hero/hero-factory'
 
-const hero = ref(getEmptyHero())
+import { type Ref, ref } from 'vue'
+import { useRoute } from 'vue-router'
+import { convertDataToObject, fetchData, convertObjectToHero } from '@/assets/ts/hero/hero-importer'
+import { getColorPalette } from '@/assets/ts/color-palette'
+
+let hero: Ref
 
 //TODO : temporary
 const userTag = useRoute().params.user
 const url = `https://raw.githubusercontent.com/${userTag}/${userTag}/main/hero.yml`
-let res = await fetchData(url)
-if (res !== null) {
-  let obj = convertDataToObject(res)
-  if (obj !== null) {
-    hero.value = convertObjectToHero(obj)
-  }
+
+let res: string
+let obj: Object
+let convertedHero: Hero
+
+try {
+  res = await fetchData(url)
+  obj = convertDataToObject(res)
+  convertedHero = convertObjectToHero(obj)
+  hero = ref(convertedHero)
+  getColorPalette().fromHeroColors(convertedHero.colors)
+} catch (err: any) {
+  console.log(err)
+  hero = ref(getGenericHero())
+  getColorPalette().fromHeroColors(getGenericHero().colors)
 }
 </script>
 
 <template>
   <HeroContainer :background="hero.colors.bgimg">
-    <TitleSection :colors="hero.colors" :title-section="hero.title" />
-    <AboutSection :colors="hero.colors" :about-section="hero.about" />
-    <DescSection :colors="hero.colors" :about-section="hero.about" />
-    <VideosSection :colors="hero.colors" :online-section="hero.online" />
-    <LinksSection :colors="hero.colors" :online-section="hero.online" />
-    <ExtrasSection :colors="hero.colors" :extras-section="hero.extras" />
-    <HeroFooter :background="hero.colors.background" :font-color="hero.colors.text">
-      <p>
-        Made with ❤️, ☄️ and 🦕 using
-        <a href="https://github.com/imalonelynerd/PrettyHeroes">PrettyHeroes</a>
-      </p>
-    </HeroFooter>
+    <TitleSection :title-section="hero.title" />
+    <AboutSection :about-section="hero.about" />
+    <DescSection :about-section="hero.about" />
+    <VideosSection :online-section="hero.online" />
+    <LinksSection :online-section="hero.online" />
+    <ExtrasSection :extras-section="hero.extras" />
+    <FooterSection />
   </HeroContainer>
 </template>

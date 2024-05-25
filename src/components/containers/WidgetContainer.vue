@@ -1,12 +1,16 @@
-<script setup>
+<script setup lang="ts">
+import { getGenericHero } from '@/assets/ts/hero/hero-factory'
+import type { PixelSize } from '@/assets/ts/common-types'
+import type { PropType } from 'vue'
+
 defineProps({
   gap: {
-    type: String,
+    type: String as PropType<PixelSize>,
     default: '24px'
   },
   background: {
     type: String,
-    default: 'var(--background)'
+    default: getGenericHero().colors.background
   }
 })
 </script>

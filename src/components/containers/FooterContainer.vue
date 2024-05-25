@@ -1,12 +1,17 @@
-<script setup>
+<script setup lang="ts">
+import { getGenericHero } from '@/assets/ts/hero/hero-factory'
+import { isValidHexColor } from '@/assets/ts/common-tools'
+
 defineProps({
   background: {
     type: String,
-    default: 'var(--background)'
+    validator: (value: string): boolean => isValidHexColor(value),
+    default: getGenericHero().colors.background
   },
   fontColor: {
     type: String,
-    default: 'var(--text)'
+    validator: (value: string): boolean => isValidHexColor(value),
+    default: getGenericHero().colors.text
   }
 })
 </script>

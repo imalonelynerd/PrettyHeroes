@@ -1,4 +1,7 @@
-<script setup>
+<script setup lang="ts">
+import { getGenericHero } from '@/assets/ts/hero/hero-factory'
+import { isValidHexColor } from '@/assets/ts/common-tools'
+
 defineProps({
   title: {
     type: String,
@@ -6,7 +9,8 @@ defineProps({
   },
   fontColor: {
     type: String,
-    default: 'var(--text)'
+    validator: (value: string): boolean => isValidHexColor(value),
+    default: getGenericHero().colors.text
   }
 })
 </script>

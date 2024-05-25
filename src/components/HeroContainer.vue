@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 defineProps({
   background: {
     type: String,
@@ -16,6 +16,7 @@ defineProps({
   </div>
 </template>
 
+<!--suppress CssReplaceWithShorthandSafely -->
 <style lang="sass">
 .HeroContainer
   position: absolute

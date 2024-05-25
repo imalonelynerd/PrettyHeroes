@@ -1,21 +1,19 @@
-<script setup>
+<script setup lang="ts">
 import WidgetContainer from '@/components/containers/WidgetContainer.vue'
 import TitleWidget from '@/components/widgets/TitleWidget.vue'
+import type { PropType } from 'vue'
+import type { TitleSection } from '@/assets/ts/hero/hero-factory'
 
 defineProps({
   titleSection: {
-    type: Object,
-    required: true
-  },
-  colors: {
-    type: Object,
+    type: Object as PropType<TitleSection>,
     required: true
   }
 })
 </script>
 
 <template>
-  <WidgetContainer :background="colors.background">
+  <WidgetContainer :background="$colorPalette.background">
     <TitleWidget
       :image="titleSection.image"
       :firstName="titleSection.firstName"
@@ -23,8 +21,8 @@ defineProps({
       :age="titleSection.age"
       :catchphrase="titleSection.catchphrase"
       :pronouns="titleSection.pronouns"
-      :font-color="colors.text"
-      :title-color="colors.title"
+      :font-color="$colorPalette.text"
+      :title-color="$colorPalette.title"
     />
   </WidgetContainer>
 </template>

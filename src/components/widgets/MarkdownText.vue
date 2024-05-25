@@ -1,6 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import { marked } from 'marked'
 import DOMPurify from 'dompurify'
+import { getGenericHero } from '@/assets/ts/hero/hero-factory'
+import { isValidHexColor } from '@/assets/ts/common-tools'
 
 defineProps({
   text: {
@@ -9,11 +11,12 @@ defineProps({
   },
   fontColor: {
     type: String,
-    default: 'var(--text)'
+    validator: (value: string): boolean => isValidHexColor(value),
+    default: getGenericHero().colors.text
   }
 })
 
-const markDownize = (content) => DOMPurify.sanitize(marked.parse(content))
+const markDownize = (content: string) => DOMPurify.sanitize(marked(content) as string)
 </script>
 
 <template>

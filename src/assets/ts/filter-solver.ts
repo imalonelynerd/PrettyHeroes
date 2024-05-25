@@ -1,19 +1,42 @@
 // https://codepen.io/sosuke/pen/Pjoqqp
 
+interface RgbColor {
+  r: number
+  g: number
+  b: number
+}
+
+type ColorMatrix = [number, number, number, number, number, number, number, number, number]
+
+interface ColorFilter {
+  loss: number
+  values?: number[]
+  filter?: string
+}
+
+interface HslColor {
+  h: number
+  s: number
+  l: number
+}
+
 export class Color {
-  constructor(hex) {
-    let res = hexToRgb(hex)
-    if (res === null) {
-      res = [0, 0, 0]
-    }
-    this.set(res[0], res[1], res[2])
+  r: number
+  g: number
+  b: number
+
+  constructor(hex: string) {
+    const res = hexToRgb(hex)
+    this.r = this.clamp(res.r)
+    this.g = this.clamp(res.g)
+    this.b = this.clamp(res.b)
   }
 
   toString() {
     return `rgb(${Math.round(this.r)}, ${Math.round(this.g)}, ${Math.round(this.b)})`
   }
 
-  set(r, g, b) {
+  set(r: number, g: number, b: number) {
     this.r = this.clamp(r)
     this.g = this.clamp(g)
     this.b = this.clamp(b)
@@ -65,7 +88,7 @@ export class Color {
     ])
   }
 
-  multiply(matrix) {
+  multiply(matrix: ColorMatrix) {
     const newR = this.clamp(this.r * matrix[0] + this.g * matrix[1] + this.b * matrix[2])
     const newG = this.clamp(this.r * matrix[3] + this.g * matrix[4] + this.b * matrix[5])
     const newB = this.clamp(this.r * matrix[6] + this.g * matrix[7] + this.b * matrix[8])
@@ -94,38 +117,33 @@ export class Color {
     this.b = this.clamp((value + (this.b / 255) * (1 - 2 * value)) * 255)
   }
 
-  hsl() {
+  hsl(): HslColor {
     // Code taken from https://stackoverflow.com/a/9493060/2688027, licensed under CC BY-SA.
     const r = this.r / 255
     const g = this.g / 255
     const b = this.b / 255
     const max = Math.max(r, g, b)
     const min = Math.min(r, g, b)
-    let h,
-      s,
-      l = (max + min) / 2
+    let h = 0
+    let s = 0
+    const l = (max + min) / 2
 
-    if (max === min) {
-      h = s = 0
-    } else {
+    if (max !== min) {
       const d = max - min
       s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
       switch (max) {
         case r:
           h = (g - b) / d + (g < b ? 6 : 0)
           break
-
         case g:
           h = (b - r) / d + 2
           break
-
         case b:
           h = (r - g) / d + 4
           break
       }
       h /= 6
     }
-
     return {
       h: h * 100,
       s: s * 100,
@@ -133,7 +151,7 @@ export class Color {
     }
   }
 
-  clamp(value) {
+  clamp(value: number): number {
     if (value > 255) {
       value = 255
     } else if (value < 0) {
@@ -144,22 +162,26 @@ export class Color {
 }
 
 export class Solver {
-  constructor(target) {
+  target: Color
+  targetHSL: HslColor
+  reusedColor: Color
+
+  constructor(target: Color) {
     this.target = target
     this.targetHSL = target.hsl()
-    this.reusedColor = new Color(0, 0, 0)
+    this.reusedColor = new Color('#000000')
   }
 
-  solve() {
+  solve(): ColorFilter {
     const result = this.solveNarrow(this.solveWide())
     return {
-      values: result.values,
+      values: result.values ? result.values : [],
       loss: result.loss,
-      filter: this.css(result.values)
+      filter: result.values ? this.css(result.values) : ''
     }
   }
 
-  solveWide() {
+  solveWide(): ColorFilter {
     const A = 5
     const c = 15
     const a = [60, 180, 18000, 600, 1.2, 1.2]
@@ -175,23 +197,44 @@ export class Solver {
     return best
   }
 
-  solveNarrow(wide) {
+  solveNarrow(wide: ColorFilter) {
     const A = wide.loss
     const c = 2
     const A1 = A + 1
     const a = [0.25 * A1, 0.25 * A1, A1, 0.25 * A1, 0.2 * A1, 0.2 * A1]
-    return this.spsa(A, a, c, wide.values, 500)
+    return this.spsa(A, a, c, wide.values ? wide.values : [], 500)
   }
 
-  spsa(A, a, c, values, iters) {
+  spsa(A: number, a: number[], c: number, values: number[], iters: number) {
     const alpha = 1
     const gamma = 0.16666666666666666
 
+    const fix = (value: number, idx: number) => {
+      let max = 100
+      if (idx === 2) {
+        max = 7500
+      } else if (idx === 4 || idx === 5) {
+        max = 200
+      }
+      if (idx === 3) {
+        if (value > max) {
+          value %= max
+        } else if (value < 0) {
+          value = max + (value % max)
+        }
+      } else if (value < 0) {
+        value = 0
+      } else if (value > max) {
+        value = max
+      }
+      return value
+    }
+
     let best = null
     let bestLoss = Infinity
-    const deltas = new Array(6)
-    const highArgs = new Array(6)
-    const lowArgs = new Array(6)
+    const deltas = new Array<number>(6)
+    const highArgs = new Array<number>(6)
+    const lowArgs = new Array<number>(6)
 
     for (let k = 0; k < iters; k++) {
       const ck = c / Math.pow(k + 1, gamma)
@@ -215,31 +258,9 @@ export class Solver {
       }
     }
     return { values: best, loss: bestLoss }
-
-    function fix(value, idx) {
-      let max = 100
-      if (idx === 2) {
-        max = 7500
-      } else if (idx === 4 || idx === 5) {
-        max = 200
-      }
-
-      if (idx === 3) {
-        if (value > max) {
-          value %= max
-        } else if (value < 0) {
-          value = max + (value % max)
-        }
-      } else if (value < 0) {
-        value = 0
-      } else if (value > max) {
-        value = max
-      }
-      return value
-    }
   }
 
-  loss(filters) {
+  loss(filters: number[]) {
     const color = this.reusedColor
     color.set(0, 0, 0)
 
@@ -261,26 +282,23 @@ export class Solver {
     )
   }
 
-  css(filters) {
-    function fmt(idx, multiplier = 1) {
-      return Math.round(filters[idx] * multiplier)
-    }
-
+  css(filters: number[]) {
+    const fmt = (idx: number, multiplier = 1) => Math.round(filters[idx] * multiplier)
     return `brightness(0) saturate(100%) invert(${fmt(0)}%) sepia(${fmt(1)}%) saturate(${fmt(2)}%) hue-rotate(${fmt(3, 3.6)}deg) brightness(${fmt(4)}%) contrast(${fmt(5)}%)`
   }
 }
 
-function hexToRgb(hex) {
-  let shorthandRegex
+const hexToRgb = (hex: string): RgbColor => {
+  let shorthandRegex: RegExp
   switch (hex.length) {
-    case 5:
-      shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])[a-f\d]$/i
+    case 4:
+      shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i
       hex = hex.replace(shorthandRegex, (m, r, g, b) => {
         return r + r + g + g + b + b
       })
       break
-    case 4:
-      shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i
+    case 5:
+      shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])[a-f\d]$/i
       hex = hex.replace(shorthandRegex, (m, r, g, b) => {
         return r + r + g + g + b + b
       })
@@ -291,7 +309,13 @@ function hexToRgb(hex) {
     default:
       break
   }
-
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
-  return result ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)] : null
+  if (!result) throw new Error('Given argument is not a valid hexadecimal color')
+  return {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  }
 }
+
+export const getFilter = (hex: string) => new Solver(new Color(hex)).solve().filter

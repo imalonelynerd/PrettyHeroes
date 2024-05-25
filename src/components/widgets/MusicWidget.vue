@@ -1,8 +1,10 @@
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
 import ListenButton from '@/components/special/ListenButton.vue'
-import { changeLocation } from '@/assets/js/linkTools.js'
-import { isTagsInObject } from '@/assets/js/commonTools.js'
+
+import { type Ref, ref } from 'vue'
+import { changeLocation } from '@/assets/ts/common-tools'
+import axios from 'axios'
+import type { EmbedFetchedData } from '@/assets/ts/common-types'
 
 const props = defineProps({
   ytUrl: {
@@ -17,34 +19,17 @@ const props = defineProps({
 
 const isError = ref(false)
 
-const fetchedData = ref({
-  thumbnail_url: '',
-  title: '',
-  author_name: '',
-  author_url: '',
-  provider_name: '',
-  provider_url: '',
-  url: ''
-})
+let fetchedData: Ref<EmbedFetchedData> = ref({})
 
-let res = await fetch('https://noembed.com/embed?url=' + props.ytUrl)
-if (!res.ok) {
-  isError.value = true
-} else {
-  let json = await res.json()
-  if (!isTagsInObject(json, Object.keys(fetchedData.value))) {
-    isError.value = true
-  } else {
-    fetchedData.value = json
-  }
-}
+let res = await axios.get('https://noembed.com/embed?url=' + props.ytUrl)
+if (res.status !== 200) isError.value = true
+else Object.assign(fetchedData.value, res.data)
 </script>
 
 <template>
   <h1 v-if="isError">Error</h1>
   <div v-else class="MusicWidget">
     <img :src="fetchedData.thumbnail_url" :alt="fetchedData.thumbnail_url" />
-    <!-- .replace('awa', 'maxresdefault') -->
     <div>
       <h1>{{ fetchedData.title }}</h1>
       <p>
@@ -52,7 +37,7 @@ if (!res.ok) {
         <a :href="fetchedData.provider_url">{{ fetchedData.provider_name }}</a>
       </p>
     </div>
-    <ListenButton @click="changeLocation(fetchedData.url)" />
+    <ListenButton @click="changeLocation(fetchedData.url ? fetchedData.url : '')" />
   </div>
 </template>
 

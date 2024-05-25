@@ -1,5 +1,6 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
+import { getGenericHero } from '@/assets/ts/hero/hero-factory'
 
 defineProps({
   image: {
@@ -28,11 +29,11 @@ defineProps({
   },
   titleColor: {
     type: String,
-    default: 'var(--text)'
+    default: getGenericHero().colors.title
   },
   fontColor: {
     type: String,
-    default: 'var(--text)'
+    default: getGenericHero().colors.text
   }
 })
 
