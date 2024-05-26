@@ -2,6 +2,7 @@ import type { Hero } from '@/assets/ts/hero/hero-factory'
 import { load } from 'js-yaml'
 import axios from 'axios'
 import { isHero } from '@/assets/ts/hero/hero-checker'
+import hostInfo from '@/assets/json/host-info.json'
 
 export const fetchData = async (url: string): Promise<string> => {
   const res = await axios.get(url)
@@ -14,6 +15,8 @@ export const convertDataToObject = (fileContent: string): Object => load(fileCon
 export const convertObjectToHero = (heroObject: Object): Hero => {
   if (!isHero(heroObject)) throw new Error('The given object is not a valid Hero')
   const importedHero = heroObject as Hero
+  if (importedHero.extras.version !== hostInfo.fileVersion)
+    throw new Error('The given Hero is not compatible')
   importedHero.about.desc = importedHero.about.desc.replace(/\\n/gim, '\n')
   return importedHero
 }

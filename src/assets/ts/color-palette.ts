@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { type Ref, ref } from 'vue'
 import { type ColorsSection, getGenericHero } from '@/assets/ts/hero/hero-factory'
 
 export class ColorPalette {
@@ -25,5 +25,5 @@ export class ColorPalette {
   }
 }
 
-const commonColorPalette = ref(new ColorPalette(getGenericHero().colors))
+const commonColorPalette: Ref<ColorPalette> = ref(new ColorPalette(getGenericHero().colors))
 export const getColorPalette = (): ColorPalette => commonColorPalette.value

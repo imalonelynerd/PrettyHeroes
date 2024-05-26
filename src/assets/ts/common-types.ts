@@ -5,6 +5,12 @@ export interface PrideFlag {
   name: string
 }
 
+export interface FetchableUrl {
+  name: string
+  type: string
+  url: string
+}
+
 export interface LinkDescriber {
   title: string
   url: string
@@ -18,4 +24,11 @@ export interface EmbedFetchedData {
   provider_name?: string
   provider_url?: string
   url?: string
+}
+
+export enum LoadingState {
+  IDLE,
+  LOADING,
+  RESOLVED,
+  ERROR
 }

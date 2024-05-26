@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { getGenericHero } from '@/assets/ts/hero/hero-factory'
 import type { PixelSize } from '@/assets/ts/common-types'
 import type { PropType } from 'vue'
+import { isValidColorName } from '@/assets/ts/common-tools'
 
 defineProps({
   gap: {
@@ -10,7 +10,8 @@ defineProps({
   },
   background: {
     type: String,
-    default: getGenericHero().colors.background
+    validator: (value: string) => isValidColorName(value),
+    default: 'var(--background)'
   }
 })
 </script>

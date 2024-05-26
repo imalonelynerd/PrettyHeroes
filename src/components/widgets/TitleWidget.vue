@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { getGenericHero } from '@/assets/ts/hero/hero-factory'
+import { isValidColorName } from '@/assets/ts/common-tools'
 
 defineProps({
   image: {
     type: String,
     required: true
   },
-  firstName: {
+  title: {
     type: String,
     required: true
   },
-  lastName: {
+  subtitle: {
     type: String,
     required: true
   },
@@ -29,11 +29,13 @@ defineProps({
   },
   titleColor: {
     type: String,
-    default: getGenericHero().colors.title
+    validator: (value: string) => isValidColorName(value),
+    default: 'var(--title)'
   },
   fontColor: {
     type: String,
-    default: getGenericHero().colors.text
+    validator: (value: string) => isValidColorName(value),
+    default: 'var(--text)'
   }
 })
 
@@ -45,7 +47,7 @@ const isError = ref(false)
     <img v-if="!isError" :src="image" alt="Avatar" @error="isError = true" />
     <img v-else src="/images/unknown.png" alt="Avatar" />
     <h1>
-      {{ firstName }} <span>{{ lastName }}</span
+      {{ title }} <span>{{ subtitle }}</span
       >{{ age === '' ? '' : ', ' + age }}
     </h1>
     <h2 v-if="pronouns !== ''">{{ pronouns }}</h2>

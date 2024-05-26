@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HeroContainer from '@/components/HeroContainer.vue'
+import HeroFrame from '@/components/frames/HeroFrame.vue'
 import TitleSection from '@/components/sections/TitleSection.vue'
 import AboutSection from '@/components/sections/AboutSection.vue'
 import DescSection from '@/components/sections/DescSection.vue'
@@ -7,38 +7,45 @@ import VideosSection from '@/components/sections/VideosSection.vue'
 import LinksSection from '@/components/sections/LinksSection.vue'
 import ExtrasSection from '@/components/sections/ExtrasSection.vue'
 import FooterSection from '@/components/sections/FooterSection.vue'
-import { getGenericHero, type Hero } from '@/assets/ts/hero/hero-factory'
+import { type Hero } from '@/assets/ts/hero/hero-factory'
+import FetchableUrls from '@/assets/json/fetchable-urls.json'
 
 import { type Ref, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { convertDataToObject, fetchData, convertObjectToHero } from '@/assets/ts/hero/hero-importer'
 import { getColorPalette } from '@/assets/ts/color-palette'
+import { type FetchableUrl, LoadingState } from '@/assets/ts/common-types'
 
-let hero: Ref
+let hero: Ref<Hero>
+let loadingState: Ref<LoadingState> = ref(LoadingState.LOADING)
+
+let fetchableLinks: FetchableUrl[] = FetchableUrls.links
 
 //TODO : temporary
-const userTag = useRoute().params.user
-const url = `https://raw.githubusercontent.com/${userTag}/${userTag}/main/hero.yml`
-
+const userTag: string = useRoute().params.user as string
 let res: string
 let obj: Object
 let convertedHero: Hero
 
-try {
-  res = await fetchData(url)
-  obj = convertDataToObject(res)
-  convertedHero = convertObjectToHero(obj)
-  hero = ref(convertedHero)
-  getColorPalette().fromHeroColors(convertedHero.colors)
-} catch (err: any) {
-  console.log(err)
-  hero = ref(getGenericHero())
-  getColorPalette().fromHeroColors(getGenericHero().colors)
+for (let e of fetchableLinks) {
+  let url = e.url.replace(new RegExp('##USR', 'g'), userTag)
+  try {
+    res = await fetchData(url)
+    obj = convertDataToObject(res)
+    convertedHero = convertObjectToHero(obj)
+    hero = ref(convertedHero)
+    getColorPalette().fromHeroColors(convertedHero.colors)
+    loadingState.value = LoadingState.RESOLVED
+    break
+  } catch (err: any) {
+    console.log(err)
+    loadingState.value = LoadingState.ERROR
+  }
 }
 </script>
 
 <template>
-  <HeroContainer :background="hero.colors.bgimg">
+  <HeroFrame :background="hero.colors.bgimg">
     <TitleSection :title-section="hero.title" />
     <AboutSection :about-section="hero.about" />
     <DescSection :about-section="hero.about" />
@@ -46,5 +53,5 @@ try {
     <LinksSection :online-section="hero.online" />
     <ExtrasSection :extras-section="hero.extras" />
     <FooterSection />
-  </HeroContainer>
+  </HeroFrame>
 </template>

@@ -4,8 +4,8 @@ import type { LinkDescriber } from '@/assets/ts/common-types'
 
 export interface TitleSection {
   image: string
-  firstName: string
-  lastName: string
+  title: string
+  subtitle: string
   age: string
   catchphrase: string
   pronouns: string
@@ -57,8 +57,8 @@ export const genericHero: Hero = {
   title: {
     image:
       'https://images.unsplash.com/photo-1513031300226-c8fb12de9ade?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    firstName: 'Jane',
-    lastName: 'Doe',
+    title: 'Jane',
+    subtitle: 'Doe',
     age: '42',
     catchphrase: 'Greetings, stranger',
     pronouns: 'They/them'

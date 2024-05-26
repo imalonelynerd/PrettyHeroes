@@ -2,10 +2,9 @@
 import ItemElement from '@/components/elements/ItemElement.vue'
 import ItemContainer from '@/components/widgets/ItemContainer.vue'
 import PronounsButton from '@/components/special/PronounsButton.vue'
-import flagMatches from '@/assets/json/flagsMatches.json'
+import flagMatches from '@/assets/json/flag-matches.json'
 
-import { changeLocation, isValidHexColor } from '@/assets/ts/common-tools'
-import { getGenericHero } from '@/assets/ts/hero/hero-factory'
+import { changeLocation, isValidColorName } from '@/assets/ts/common-tools'
 import { type PrideFlag } from '@/assets/ts/common-types'
 
 defineProps({
@@ -15,13 +14,13 @@ defineProps({
   },
   background: {
     type: String,
-    validator: (value: string): boolean => isValidHexColor(value),
-    default: getGenericHero().colors.widget
+    validator: (value: string): boolean => isValidColorName(value),
+    default: 'var(--widget)'
   },
   fontColor: {
     type: String,
-    validator: (value: string): boolean => isValidHexColor(value),
-    default: getGenericHero().colors.text
+    validator: (value: string): boolean => isValidColorName(value),
+    default: 'var(--text)'
   },
   pronounsUser: {
     type: String,

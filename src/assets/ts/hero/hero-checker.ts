@@ -8,11 +8,10 @@ import type {
 } from '@/assets/ts/hero/hero-factory'
 import { isValidArray, isValidBoolean, isValidColor, isValidString } from '@/assets/ts/common-tools'
 
-
 export const isTitleSection = (section: any): section is TitleSection =>
   isValidString(section, 'image') &&
-  isValidString(section, 'firstName') &&
-  isValidString(section, 'lastName') &&
+  isValidString(section, 'title') &&
+  isValidString(section, 'subtitle') &&
   isValidString(section, 'age') &&
   isValidString(section, 'catchphrase') &&
   isValidString(section, 'pronouns')

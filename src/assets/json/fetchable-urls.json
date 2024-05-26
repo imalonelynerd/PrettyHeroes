@@ -1,0 +1,9 @@
+{
+  "links": [
+    {
+      "name": "GitHub",
+      "type": "yaml",
+      "url": "https://raw.githubusercontent.com/##USR/##USR/main/hero.yml"
+    }
+  ]
+}

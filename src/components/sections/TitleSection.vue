@@ -16,8 +16,8 @@ defineProps({
   <WidgetContainer :background="$colorPalette.background">
     <TitleWidget
       :image="titleSection.image"
-      :firstName="titleSection.firstName"
-      :lastName="titleSection.lastName"
+      :title="titleSection.title"
+      :subtitle="titleSection.subtitle"
       :age="titleSection.age"
       :catchphrase="titleSection.catchphrase"
       :pronouns="titleSection.pronouns"

@@ -9,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="HeroContainer">
+  <div class="HeroFrame">
     <div>
       <slot></slot>
     </div>
@@ -18,7 +18,7 @@ defineProps({
 
 <!--suppress CssReplaceWithShorthandSafely -->
 <style lang="sass">
-.HeroContainer
+.HeroFrame
   position: absolute
   overflow: scroll
   top: 0

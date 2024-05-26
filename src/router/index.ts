@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '@/views/HomePage.vue'
 import HeroPage from '@/views/HeroPage.vue'
+import HeroCreator from '@/views/HeroCreator.vue'
+import HeroFinder from '@/views/HeroFinder.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -10,16 +12,16 @@ const router = createRouter({
       name: 'Home',
       component: HomePage
     },
-    /*{
-     *          path: '/search',
-     *          name: 'SearchPage',
-     *          components: SearchPage,
-},
-{
-path: '/creator',
-name: 'HeroCreator',
-components: HeroCreator,
-},*/
+    {
+      path: '/search',
+      name: 'SearchPage',
+      component: HeroFinder
+    },
+    {
+      path: '/creator',
+      name: 'HeroCreator',
+      component: HeroCreator
+    },
     {
       path: '/:user',
       name: 'HeroPage',
@@ -29,7 +31,7 @@ components: HeroCreator,
      *          path: '/:user/:nocolor',
      *          name: 'HeroPageNoColor',
      *          components: HeroPage,
-}*/
+    }*/
   ]
 })
 

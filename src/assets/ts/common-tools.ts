@@ -12,7 +12,13 @@ export const changeLocation = (href: string, newTab = true) => {
 
 const colorChecker = new RegExp('^#(?:[0-9a-f]{6}|[0-9a-f]{8}|[0-9a-f]{3}|[0-9a-f]{4})$', 'i')
 
+const cssChecker = new RegExp('^var\\(--[a-z]+\\)$', 'i')
+
 export const isValidHexColor = (clr: string) => colorChecker.test(clr)
+
+export const isValidCssVariable = (clr: string) => cssChecker.test(clr)
+
+export const isValidColorName = (clr: string) => isValidHexColor(clr) || isValidCssVariable(clr)
 
 export const isValidURL = async (url: string) => {
   let ret
