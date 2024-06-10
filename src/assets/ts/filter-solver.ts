@@ -318,4 +318,15 @@ const hexToRgb = (hex: string): RgbColor => {
   }
 }
 
-export const getFilter = (hex: string) => new Solver(new Color(hex)).solve().filter
+const requestedColors: Map<string, ColorFilter> = new Map<string, ColorFilter>()
+
+export const getFilter = (hex: string) => {
+  if (requestedColors.has(hex)) return requestedColors.get(hex)?.filter
+  const solver = new Solver(new Color(hex))
+  let result: ColorFilter
+  do {
+    result = solver.solve()
+  } while (result.loss > 1)
+  requestedColors.set(hex, result)
+  return result.filter
+}

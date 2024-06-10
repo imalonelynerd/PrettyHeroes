@@ -16,6 +16,15 @@ export interface LinkDescriber {
   url: string
 }
 
+export enum Highlighter {
+  NONE,
+  TITLE,
+  ABOUT,
+  DESC,
+  VIDEOS,
+  LINKS
+}
+
 export interface EmbedFetchedData {
   thumbnail_url?: string
   title?: string

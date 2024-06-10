@@ -11,6 +11,10 @@ defineProps({
   aboutSection: {
     type: Object as PropType<AboutSection>,
     required: true
+  },
+  isHighlighted: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -23,6 +27,7 @@ const hasFlags = (aboutSection: AboutSection) =>
 
 <template>
   <WidgetContainer
+    :class="{ highlighted: isHighlighted }"
     :background="$colorPalette.background"
     v-if="hasInformations(aboutSection) || hasFlags(aboutSection)"
   >
@@ -37,8 +42,7 @@ const hasFlags = (aboutSection: AboutSection) =>
           :font-color="$colorPalette.text"
           :background="$colorPalette.widget"
           :icon-color="$colorPalette.title"
-        >
-          <img src="/icons/work.png" alt="Work" />
+          ><img src="/icons/work.png" alt="Work" />
           <p>{{ aboutSection.work }}</p>
         </ItemElement>
         <ItemElement
@@ -46,8 +50,7 @@ const hasFlags = (aboutSection: AboutSection) =>
           :font-color="$colorPalette.text"
           :background="$colorPalette.widget"
           :icon-color="$colorPalette.title"
-        >
-          <img src="/icons/location.png" alt="Location" />
+          ><img src="/icons/location.png" alt="Location" />
           <p>{{ aboutSection.location }}</p>
         </ItemElement>
         <ItemElement
@@ -55,8 +58,7 @@ const hasFlags = (aboutSection: AboutSection) =>
           :font-color="$colorPalette.text"
           :background="$colorPalette.widget"
           :icon-color="$colorPalette.title"
-        >
-          <img src="/icons/timezone.png" alt="Timezone" />
+          ><img src="/icons/timezone.png" alt="Timezone" />
           <p>{{ aboutSection.timezone }}</p>
         </ItemElement>
         <ItemElement
@@ -64,8 +66,7 @@ const hasFlags = (aboutSection: AboutSection) =>
           :font-color="$colorPalette.text"
           :background="$colorPalette.widget"
           :icon-color="$colorPalette.title"
-        >
-          <img src="/icons/status.png" alt="Status" />
+          ><img src="/icons/status.png" alt="Status" />
           <p>{{ aboutSection.status }}</p>
         </ItemElement>
       </ItemContainer>
@@ -76,7 +77,15 @@ const hasFlags = (aboutSection: AboutSection) =>
         :font-color="$colorPalette.text"
         :background="$colorPalette.widget"
         :pronouns-user="aboutSection.propage"
-      />
+      ></FlagDisplayer>
     </TitleContainer>
   </WidgetContainer>
 </template>
+
+<style scoped lang="sass">
+.WidgetContainer
+  outline: transparent solid 4px
+
+  &.highlighted
+    outline-color: var(--hover)
+</style>

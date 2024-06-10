@@ -43,13 +43,13 @@ const getFlag = (tag: string): PrideFlag => {
 
 <template>
   <ItemContainer>
-    <ItemElement :background="background" :font-color="fontColor" v-for="(e, i) in flags" :key="i">
-      <img :src="getFlag(e).img" :alt="getFlag(e).img" />
+    <ItemElement :background="background" :font-color="fontColor" v-for="(e, i) in flags" :key="i"
+      ><img :src="getFlag(e).img" :alt="getFlag(e).img" />
       <p>{{ getFlag(e).name }}</p>
     </ItemElement>
     <PronounsButton
       v-if="pronounsUser !== ''"
       @click="changeLocation('https://pronouns.page/@' + pronounsUser)"
-    />
+    ></PronounsButton>
   </ItemContainer>
 </template>

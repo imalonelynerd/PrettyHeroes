@@ -6,4 +6,4 @@
   </Suspense>
 </template>
 
-<style></style>
+<style lang="sass"></style>

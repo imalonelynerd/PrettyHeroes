@@ -9,6 +9,7 @@
 <style lang="sass">
 .CreatorFrame
   position: absolute
+  overflow: hidden
   top: 0
   bottom: 0
   left: 0

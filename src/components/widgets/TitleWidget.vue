@@ -44,10 +44,14 @@ const isError = ref(false)
 
 <template>
   <div class="TitleWidget">
-    <img v-if="!isError" :src="image" alt="Avatar" @error="isError = true" />
-    <img v-else src="/images/unknown.png" alt="Avatar" />
+    <img
+      :src="image"
+      ref="AvatarImage"
+      alt="Avatar"
+      @error="$refs.AvatarImage.src = '/images/notfound.png'"
+    />
     <h1>
-      {{ title }} <span>{{ subtitle }}</span
+      {{ title }}<span>{{ subtitle === '' ? '' : ' ' + subtitle }}</span
       >{{ age === '' ? '' : ', ' + age }}
     </h1>
     <h2 v-if="pronouns !== ''">{{ pronouns }}</h2>

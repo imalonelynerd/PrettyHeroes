@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isValidColorName } from '@/assets/ts/common-tools'
+import { getEventValue, isValidColorName } from '@/assets/ts/common-tools'
 import { type Ref, ref } from 'vue'
 
 defineEmits(['inputUpdated'])
@@ -18,6 +18,11 @@ defineProps({
     validator: (value: string): boolean => isValidColorName(value),
     default: 'var(--text)'
   },
+  hoverColor: {
+    type: String,
+    validator: (value: string): boolean => isValidColorName(value),
+    default: 'var(--hover)'
+  },
   background: {
     type: String,
     validator: (value: string): boolean => isValidColorName(value),
@@ -26,7 +31,6 @@ defineProps({
 })
 
 const isFocused: Ref<boolean> = ref(false)
-const getEventValue = (event: any): string => (event.target ? event.target.value : '')
 </script>
 
 <template>
@@ -36,6 +40,7 @@ const getEventValue = (event: any): string => (event.target ? event.target.value
       <input
         type="text"
         :value="input"
+        placeholder="(empty)"
         @input="$emit('inputUpdated', getEventValue($event))"
         @focus="isFocused = true"
         @blur="isFocused = false"
@@ -45,10 +50,7 @@ const getEventValue = (event: any): string => (event.target ? event.target.value
       :src="input"
       :alt="placeholder"
       ref="imageThumbnail"
-      @error="
-        // @ts-ignore
-        $refs.imageThumbnail.src = 'https://bio.blahaj.land/images/unknown.png'
-      "
+      @error="$refs.imageThumbnail.src = '/images/notfound.png'"
     />
   </div>
 </template>
@@ -65,12 +67,14 @@ const getEventValue = (event: any): string => (event.target ? event.target.value
   outline: transparent solid 2px
   padding: 0
   border-radius: var(--radius-input)
+  flex-grow: 1
+  min-width: 0
 
   *
     margin: 0
 
   &.focused
-    outline-color: var(--hover)
+    outline-color: v-bind(hoverColor)
 
   > img
     height: 56px
@@ -80,20 +84,23 @@ const getEventValue = (event: any): string => (event.target ? event.target.value
 
   > div
     flex-grow: 1
+    min-width: 0
     display: flex
     flex-direction: column
     justify-content: stretch
     align-items: stretch
-    padding: 8px 16px 0
+    padding: 8px 16px 1px
 
     > p
       opacity: 0.66
       font-size: 0.75em
 
     > input
+      flex-grow: 1
+      min-width: 0
       color: v-bind(fontColor)
       background: none
       border: none
       outline: none
-      padding: 8px 0
+      padding: 6px 0
 </style>

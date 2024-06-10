@@ -2,7 +2,7 @@
 import { getEventValue, isValidColorName } from '@/assets/ts/common-tools'
 import { ref } from 'vue'
 
-defineEmits(['inputUpdated'])
+defineEmits(['fieldUpdated'])
 
 defineProps({
   input: {
@@ -27,6 +27,10 @@ defineProps({
     type: String,
     validator: (value: string): boolean => isValidColorName(value),
     default: 'var(--widget)'
+  },
+  rows: {
+    type: Number,
+    default: 5
   }
 })
 
@@ -34,23 +38,21 @@ const isFocused = ref(false)
 </script>
 
 <template>
-  <div class="PrettyStringInput" :class="{ focused: isFocused }">
-    <p v-if="placeholder !== ''">{{ placeholder }}</p>
-    <input
-      type="text"
-      :value="input"
-      @input="$emit('inputUpdated', getEventValue($event))"
+  <div class="PrettyField" :class="{ focused: isFocused }">
+    <p>{{ placeholder }}</p>
+    <textarea
+      @input="$emit('fieldUpdated', getEventValue($event))"
       @focus="isFocused = true"
       @blur="isFocused = false"
+      :rows="rows"
+      :value="input"
       placeholder="(empty)"
-    />
+    ></textarea>
   </div>
 </template>
 
 <style lang="sass">
-.PrettyStringInput
-  flex-grow: 1
-  min-width: 0
+.PrettyField
   display: flex
   flex-direction: column
   justify-content: stretch
@@ -58,21 +60,21 @@ const isFocused = ref(false)
   background: v-bind(background)
   color: v-bind(fontColor)
   outline: transparent solid 2px
-  padding: 8px 16px 1px
+  padding: 8px 16px
+  gap: 8px
   border-radius: var(--radius-input)
 
   > p
     opacity: 0.66
     font-size: 0.75em
 
-  > input
+  > textarea
     flex-grow: 1
-    min-width: 0
     color: v-bind(fontColor)
     background: none
     border: none
     outline: none
-    padding: 6px 0
+    resize: none
 
   *
     margin: 0

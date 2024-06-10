@@ -29,16 +29,19 @@ else Object.assign(fetchedData.value, res.data)
 
 <template>
   <h1 v-if="isError">Error</h1>
-  <div v-else class="MusicWidget">
+  <div class="MusicWidget" v-else>
     <img :src="fetchedData.thumbnail_url" :alt="fetchedData.thumbnail_url" />
     <div>
       <h1>{{ fetchedData.title }}</h1>
       <p>
-        <a :href="fetchedData.author_url">{{ fetchedData.author_name }}</a> - from
-        <a :href="fetchedData.provider_url">{{ fetchedData.provider_name }}</a>
+        <a :href="fetchedData.author_url">{{ fetchedData.author_name }}</a
+        >, from<a :href="fetchedData.provider_url">{{ ' ' + fetchedData.provider_name }}</a>
       </p>
     </div>
-    <ListenButton @click="changeLocation(fetchedData.url ? fetchedData.url : '')" />
+    <ListenButton
+      @click="changeLocation(fetchedData.url ? fetchedData.url : '')"
+      :title="fetchedData.url"
+    ></ListenButton>
   </div>
 </template>
 

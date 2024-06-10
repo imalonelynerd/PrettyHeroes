@@ -16,7 +16,6 @@ defineProps({
   </div>
 </template>
 
-<!--suppress CssReplaceWithShorthandSafely -->
 <style lang="sass">
 .HeroFrame
   position: absolute

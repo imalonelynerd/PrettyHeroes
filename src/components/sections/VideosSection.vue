@@ -9,6 +9,10 @@ defineProps({
   onlineSection: {
     type: Object as PropType<OnlineSection>,
     required: true
+  },
+  isHighlighted: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -16,7 +20,11 @@ const hasVideos = (section: OnlineSection) => section.videos.length !== 0
 </script>
 
 <template>
-  <WidgetContainer :background="$colorPalette.background" v-if="hasVideos(onlineSection)">
+  <WidgetContainer
+    :background="$colorPalette.background"
+    v-if="hasVideos(onlineSection)"
+    :class="{ highlighted: isHighlighted }"
+  >
     <TitleContainer
       v-for="(e, i) in onlineSection.videos"
       :key="i"
@@ -24,8 +32,16 @@ const hasVideos = (section: OnlineSection) => section.videos.length !== 0
       :font-color="$colorPalette.text"
     >
       <Suspense>
-        <MusicWidget :font-color="$colorPalette.text" :yt-url="e.url" />
+        <MusicWidget :font-color="$colorPalette.text" :yt-url="e.url"></MusicWidget>
       </Suspense>
     </TitleContainer>
   </WidgetContainer>
 </template>
+
+<style scoped lang="sass">
+.WidgetContainer
+  outline: transparent solid 4px
+
+  &.highlighted
+    outline-color: var(--hover)
+</style>

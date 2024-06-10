@@ -37,5 +37,5 @@ defineProps({
     justify-content: center
     align-items: stretch
     gap: 24px
-    margin: 64px 0
+    margin: 128px 0 64px
 </style>

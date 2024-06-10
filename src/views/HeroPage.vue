@@ -46,12 +46,12 @@ for (let e of fetchableLinks) {
 
 <template>
   <HeroFrame :background="hero.colors.bgimg">
-    <TitleSection :title-section="hero.title" />
-    <AboutSection :about-section="hero.about" />
-    <DescSection :about-section="hero.about" />
-    <VideosSection :online-section="hero.online" />
-    <LinksSection :online-section="hero.online" />
-    <ExtrasSection :extras-section="hero.extras" />
-    <FooterSection />
+    <TitleSection :title-section="hero.title"></TitleSection>
+    <AboutSection :about-section="hero.about"></AboutSection>
+    <DescSection :about-section="hero.about"></DescSection>
+    <VideosSection :online-section="hero.online"></VideosSection>
+    <LinksSection :online-section="hero.online"></LinksSection>
+    <ExtrasSection :extras-section="hero.extras"></ExtrasSection>
+    <FooterSection></FooterSection>
   </HeroFrame>
 </template>

@@ -60,7 +60,7 @@ export const genericHero: Hero = {
     title: 'Jane',
     subtitle: 'Doe',
     age: '42',
-    catchphrase: 'Greetings, stranger',
+    catchphrase: 'Greetings from PrettyHeroes',
     pronouns: 'They/them'
   },
   about: {
@@ -70,7 +70,7 @@ export const genericHero: Hero = {
     status: 'Away',
     flags: ['nb'],
     propage: '',
-    desc: 'Type anything here !'
+    desc: 'Type **anything** here !'
   },
   colors: {
     bgimg: '',
@@ -81,8 +81,22 @@ export const genericHero: Hero = {
     text: '#FFFFFF'
   },
   online: {
-    videos: [],
-    links: []
+    videos: [
+      {
+        title: 'Favourite music',
+        url: 'https://www.youtu.be/DLzxrzFCyOs'
+      },
+      {
+        title: 'Favourite video',
+        url: 'https://www.youtu.be/3r-IjzlOcek'
+      }
+    ],
+    links: [
+      {
+        title: 'Best website in the Universe',
+        url: 'http://localhost'
+      }
+    ]
   },
   extras: {
     pronounceCompat: false,

@@ -8,12 +8,16 @@ defineProps({
   titleSection: {
     type: Object as PropType<TitleSection>,
     required: true
+  },
+  isHighlighted: {
+    type: Boolean,
+    default: false
   }
 })
 </script>
 
 <template>
-  <WidgetContainer :background="$colorPalette.background">
+  <WidgetContainer :background="$colorPalette.background" :class="{ highlighted: isHighlighted }">
     <TitleWidget
       :image="titleSection.image"
       :title="titleSection.title"
@@ -23,6 +27,14 @@ defineProps({
       :pronouns="titleSection.pronouns"
       :font-color="$colorPalette.text"
       :title-color="$colorPalette.title"
-    />
+    ></TitleWidget>
   </WidgetContainer>
 </template>
+
+<style scoped lang="sass">
+.WidgetContainer
+  outline: transparent solid 4px
+
+  &.highlighted
+    outline-color: var(--hover)
+</style>

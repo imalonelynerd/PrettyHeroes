@@ -15,23 +15,26 @@ defineProps({
   fromPronounce: {
     type: Boolean,
     default: false
+  },
+  isHighlighted: {
+    type: Boolean,
+    default: false
   }
 })
 </script>
 
 <template>
-  <WidgetContainer :background="$colorPalette.background">
+  <WidgetContainer :background="$colorPalette.background" :class="{ highlighted: isHighlighted }">
     <TitleContainer title="Extras" :font-color="$colorPalette.text">
       <ItemContainer>
-        <PronounceButton v-if="fromPronounce" />
+        <PronounceButton v-if="fromPronounce"></PronounceButton>
         <ItemElement
           :font-color="$colorPalette.text"
           :background="$colorPalette.widget"
           :icon-color="$colorPalette.title"
           :hover-color="$colorPalette.hover"
           :is-clickable="true"
-        >
-          <img src="/icons/share.png" alt="Share" />
+          ><img src="/icons/share.png" alt="Share" />
           <p>Share</p>
         </ItemElement>
         <ItemElement
@@ -40,8 +43,7 @@ defineProps({
           :icon-color="$colorPalette.title"
           :hover-color="$colorPalette.hover"
           :is-clickable="true"
-        >
-          <img src="/icons/file.png" alt="Source" />
+          ><img src="/icons/file.png" alt="Source" />
           <p>See source file</p>
         </ItemElement>
         <ItemElement
@@ -51,11 +53,18 @@ defineProps({
           :icon-color="$colorPalette.title"
           :hover-color="$colorPalette.hover"
           :is-clickable="true"
-        >
-          <img src="/icons/file.png" alt="Snapshot" />
+          ><img src="/icons/file.png" alt="Snapshot" />
           <p>Get snapshot</p>
         </ItemElement>
       </ItemContainer>
     </TitleContainer>
   </WidgetContainer>
 </template>
+
+<style scoped lang="sass">
+.WidgetContainer
+  outline: transparent solid 4px
+
+  &.highlighted
+    outline-color: var(--hover)
+</style>
