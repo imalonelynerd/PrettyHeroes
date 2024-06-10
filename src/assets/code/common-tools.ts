@@ -1,3 +1,5 @@
+import hostInfo from '@/assets/data/host-info.json'
+
 export const changeLocation = (href: string, newTab = true) => {
   const a = document.createElement('a')
   a.href = href
@@ -31,3 +33,5 @@ export const isValidColor = (object: any, key: string): boolean =>
   key in object && isValidHexColor(object[key])
 
 export const getEventValue = (event: any): string => (event.target ? event.target.value : '')
+
+export const getCommonFilter = (): string => hostInfo.mainColor

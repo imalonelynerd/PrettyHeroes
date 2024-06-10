@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import PrettyButton from '@/components/inputs/PrettyButton.vue'
 import { ref } from 'vue'
+import { getCommonFilter } from '@/assets/code/common-tools'
 
 const isShwon = ref(true)
 </script>
@@ -9,7 +10,7 @@ const isShwon = ref(true)
   <div class="InputsContainer" v-if="isShwon">
     <slot></slot>
   </div>
-  <PrettyButton class="HideButton" @click="isShwon = !isShwon" icon-color="#FFFFFF">
+  <PrettyButton class="HideButton" @click="isShwon = !isShwon" :icon-color="getCommonFilter()">
     <img alt="Hide" :src="`/icons/${isShwon ? 'left' : 'right'}.png`" />
   </PrettyButton>
 </template>

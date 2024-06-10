@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getEventValue, isValidColorName } from '@/assets/code/common-tools'
+import { getCommonFilter, getEventValue, isValidColorName } from '@/assets/code/common-tools'
 import { ref } from 'vue'
 import { getFilter } from '@/assets/code/filter-solver'
 
@@ -13,37 +13,17 @@ const props = defineProps({
   placeholder: {
     type: String,
     default: ''
-  },
-  fontColor: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: 'var(--text)'
-  },
-  background: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: 'var(--widget)'
-  },
-  hoverColor: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: 'var(--hover)'
-  },
-  iconColor: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: '#FFFFFF'
   }
 })
 
 const isFocused = ref(false)
 const isBlocked = ref(false)
-const iconFilter = getFilter(props.iconColor)
+const iconFilter = getFilter(getCommonFilter())
 let lastText = ''
 
 const getEmitBasedOnBlock = () => (isBlocked.value ? 'inputBlocked' : 'inputUpdated')
 
-const emitUpdate = (event) => {
+const emitUpdate = (event: any) => {
   emits(getEmitBasedOnBlock(), event)
 }
 
@@ -84,8 +64,8 @@ const toggleBlocked = () => {
 .PrettyOptionalInput
   flex-grow: 1
   min-width: 0
-  background: v-bind(background)
-  color: v-bind(fontColor)
+  background: var(--widget)
+  color: var(--text)
   outline: transparent solid 2px
   border-radius: var(--radius-input)
   display: flex
@@ -115,7 +95,7 @@ const toggleBlocked = () => {
     > input
       flex-grow: 1
       min-width: 0
-      color: v-bind(fontColor)
+      color: var(--text)
       background: none
       border: none
       outline: none
@@ -128,5 +108,5 @@ const toggleBlocked = () => {
     opacity: 0.5
 
   &.focused
-    outline-color: v-bind(hoverColor)
+    outline-color: var(--hover)
 </style>

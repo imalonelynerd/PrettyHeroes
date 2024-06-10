@@ -12,7 +12,11 @@ import FetchableUrls from '@/assets/data/fetchable-urls.json'
 
 import { type Ref, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { convertDataToObject, fetchData, convertObjectToHero } from '@/assets/code/hero/hero-importer'
+import {
+  convertDataToObject,
+  fetchData,
+  convertObjectToHero
+} from '@/assets/code/hero/hero-importer'
 import { getColorPalette } from '@/assets/code/color-palette'
 import { type FetchableUrl, LoadingState } from '@/assets/code/common-types'
 
@@ -33,7 +37,7 @@ for (let e of fetchableLinks) {
     res = await fetchData(url)
     obj = convertDataToObject(res)
     convertedHero = convertObjectToHero(obj)
-    if(convertedHero.about.isExternal)
+    if (convertedHero.about.isExternal)
       convertedHero.about.desc = await fetchData(convertedHero.about.desc)
     hero = ref(convertedHero)
     getColorPalette().fromHeroColors(convertedHero.colors)

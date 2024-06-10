@@ -184,7 +184,10 @@ const defineAsExternal = () => {
         :online-section="heroRef.online"
         :is-highlighted="highlightRef === HL.LINKS"
       ></LinksSection>
-      <ExtrasSection :extras-section="heroRef.extras" :is-highlighted="highlightRef === HL.EXTRAS" />
+      <ExtrasSection
+        :extras-section="heroRef.extras"
+        :is-highlighted="highlightRef === HL.EXTRAS"
+      />
       <FooterSection />
     </DummyHero>
   </CreatorFrame>

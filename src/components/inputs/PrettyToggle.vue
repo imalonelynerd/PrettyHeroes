@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isValidColorName } from '@/assets/code/common-tools'
+import { getCommonFilter, isValidColorName } from '@/assets/code/common-tools'
 import { ref } from 'vue'
 import { getFilter } from '@/assets/code/filter-solver'
 
@@ -14,26 +14,6 @@ const props = defineProps({
     type: String,
     default: ''
   },
-  fontColor: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: 'var(--text)'
-  },
-  hoverColor: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: 'var(--hover)'
-  },
-  background: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: 'var(--widget)'
-  },
-  iconColor: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: '#FFFFFF'
-  },
   value1: {
     type: String,
     default: ''
@@ -44,7 +24,7 @@ const props = defineProps({
   }
 })
 
-const iconFilter = getFilter(props.iconColor)
+const iconFilter = getFilter(getCommonFilter())
 const isFocused = ref(false)
 </script>
 
@@ -53,7 +33,11 @@ const isFocused = ref(false)
     <p>{{ placeholder }}</p>
     <div>
       <p v-if="value1 !== ''">{{ value1 }}</p>
-      <img @click="$emit('toggleUpdated')" :src="`/icons/toggle${input ? 'on' : 'off'}.png`" alt="Toggle" />
+      <img
+        @click="$emit('toggleUpdated')"
+        :src="`/icons/toggle${input ? 'on' : 'off'}.png`"
+        alt="Toggle"
+      />
       <p v-if="value2 !== ''">{{ value2 }}</p>
     </div>
   </div>
@@ -65,8 +49,8 @@ const isFocused = ref(false)
   flex-direction: row
   justify-content: space-between
   align-items: center
-  background: v-bind(background)
-  color: v-bind(fontColor)
+  background: var(--widget)
+  color: var(--text)
   outline: transparent solid 2px
   padding: 16px
   gap: 8px
@@ -90,5 +74,5 @@ const isFocused = ref(false)
     margin: 0
 
   &.focused
-    outline-color: v-bind(hoverColor)
+    outline-color: var(--hover)
 </style>

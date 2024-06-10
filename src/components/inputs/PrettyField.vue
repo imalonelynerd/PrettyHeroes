@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getEventValue, isValidColorName } from '@/assets/code/common-tools'
+import { getEventValue } from '@/assets/code/common-tools'
 import { ref } from 'vue'
 
 defineEmits(['fieldUpdated'])
@@ -12,21 +12,6 @@ defineProps({
   placeholder: {
     type: String,
     default: ''
-  },
-  fontColor: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: 'var(--text)'
-  },
-  hoverColor: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: 'var(--hover)'
-  },
-  background: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: 'var(--widget)'
   },
   rows: {
     type: Number,
@@ -57,8 +42,8 @@ const isFocused = ref(false)
   flex-direction: column
   justify-content: stretch
   align-items: stretch
-  background: v-bind(background)
-  color: v-bind(fontColor)
+  background: var(--widget)
+  color: var(--text)
   outline: transparent solid 2px
   padding: 8px 16px
   gap: 8px
@@ -70,7 +55,7 @@ const isFocused = ref(false)
 
   > textarea
     flex-grow: 1
-    color: v-bind(fontColor)
+    color: var(--text)
     background: none
     border: none
     outline: none
@@ -80,5 +65,5 @@ const isFocused = ref(false)
     margin: 0
 
   &.focused
-    outline-color: v-bind(hoverColor)
+    outline-color: var(--hover)
 </style>

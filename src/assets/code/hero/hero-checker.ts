@@ -6,7 +6,12 @@ import type {
   OnlineSection,
   TitleSection
 } from '@/assets/code/hero/hero-factory'
-import { isValidArray, isValidBoolean, isValidColor, isValidString } from '@/assets/code/common-tools'
+import {
+  isValidArray,
+  isValidBoolean,
+  isValidColor,
+  isValidString
+} from '@/assets/code/common-tools'
 
 export const isTitleSection = (section: any): section is TitleSection =>
   isValidString(section, 'image') &&

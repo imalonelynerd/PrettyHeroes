@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { getEventValue, isValidColorName } from '@/assets/code/common-tools'
+import { getCommonFilter, getEventValue } from '@/assets/code/common-tools'
 import { getFilter } from '@/assets/code/filter-solver'
 import { ref } from 'vue'
 
 defineEmits(['listUpdated', 'listExtended', 'listReduced'])
 
-const props = defineProps({
+defineProps({
   input: {
     type: Array,
     required: true
@@ -18,33 +18,13 @@ const props = defineProps({
     type: String,
     default: '...'
   },
-  fontColor: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: 'var(--text)'
-  },
-  background: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: 'var(--widget)'
-  },
-  hoverColor: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: 'var(--hover)'
-  },
-  iconColor: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: '#FFFFFF'
-  },
   columns: {
     type: Number,
     default: 3
   }
 })
 
-const iconFilter = props.iconColor === '#000000' ? 'none' : getFilter(props.iconColor)
+const iconFilter = getFilter(getCommonFilter())
 const isFocused = ref(-1)
 </script>
 
@@ -77,8 +57,8 @@ const isFocused = ref(-1)
 
 <style lang="sass">
 .PrettyArrayInput
-  background: v-bind(background)
-  color: v-bind(fontColor)
+  background: var(--widget)
+  color: var(--text)
   border-radius: var(--radius-big-input)
   display: flex
   flex-direction: column
@@ -96,7 +76,7 @@ const isFocused = ref(-1)
 
       > input
         min-width: 0
-        color: v-bind(fontColor)
+        color: var(--text)
         background: none
         outline: transparent solid 2px
         padding: 8px
@@ -104,7 +84,7 @@ const isFocused = ref(-1)
         border-radius: var(--radius-input)
 
         &.focused
-          outline-color: v-bind(hoverColor)
+          outline-color: var(--hover)
 
     &:first-of-type
       flex: 1

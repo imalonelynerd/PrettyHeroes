@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import PrettyButton from '@/components/inputs/PrettyButton.vue'
 import { ref } from 'vue'
+import { getCommonFilter } from '@/assets/code/common-tools'
 
 defineProps({
   title: {
@@ -23,10 +24,13 @@ const isShown = ref(true)
     <div>
       <h2>{{ title }}</h2>
       <div>
-        <PrettyButton @click="isShown = !isShown" icon-color="#FFFFFF"
+        <PrettyButton @click="isShown = !isShown" :icon-color="getCommonFilter()"
           ><img :src="`/icons/${isShown ? 'up' : 'down'}.png`" alt="Target"
         /></PrettyButton>
-        <PrettyButton v-if="hasHighlight" @click="$emit('highlightRequested')" icon-color="#FFFFFF"
+        <PrettyButton
+          v-if="hasHighlight"
+          @click="$emit('highlightRequested')"
+          :icon-color="getCommonFilter()"
           ><img src="/icons/target.png" alt="Target"
         /></PrettyButton>
       </div>

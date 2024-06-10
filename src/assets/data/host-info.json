@@ -4,5 +4,6 @@
   "description": "Make a simple, colorful and personal <b>\"About me\"</b> page, straight from your <b>GitHub</b> !",
   "hostedBy": "Eryn",
   "hostedOn": "blahaj.land",
+  "mainColor": "#FF5263",
   "fileVersion": "ROSA"
 }

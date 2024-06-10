@@ -12,21 +12,6 @@ defineProps({
   placeholder: {
     type: String,
     default: ''
-  },
-  fontColor: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: 'var(--text)'
-  },
-  hoverColor: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: 'var(--hover)'
-  },
-  background: {
-    type: String,
-    validator: (value: string): boolean => isValidColorName(value),
-    default: 'var(--widget)'
   }
 })
 
@@ -55,8 +40,8 @@ const isFocused = ref(false)
   flex-direction: column
   justify-content: stretch
   align-items: stretch
-  background: v-bind(background)
-  color: v-bind(fontColor)
+  background: var(--widget)
+  color: var(--text)
   outline: transparent solid 2px
   padding: 8px 16px 1px
   border-radius: var(--radius-input)
@@ -68,7 +53,7 @@ const isFocused = ref(false)
   > input
     flex-grow: 1
     min-width: 0
-    color: v-bind(fontColor)
+    color: var(--text)
     background: none
     border: none
     outline: none
@@ -78,5 +63,5 @@ const isFocused = ref(false)
     margin: 0
 
   &.focused
-    outline-color: v-bind(hoverColor)
+    outline-color: var(--hover)
 </style>
