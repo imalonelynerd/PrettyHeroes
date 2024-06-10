@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { getFilter } from '@/assets/ts/filter-solver'
-import { isValidColorName } from '@/assets/ts/common-tools'
+import { getFilter } from '@/assets/code/filter-solver'
+import { isValidColorName } from '@/assets/code/common-tools'
 
 const props = defineProps({
   background: {

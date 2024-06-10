@@ -2,7 +2,7 @@
 import WidgetContainer from '@/components/containers/WidgetContainer.vue'
 import TitleWidget from '@/components/widgets/TitleWidget.vue'
 import type { PropType } from 'vue'
-import type { TitleSection } from '@/assets/ts/hero/hero-factory'
+import type { TitleSection } from '@/assets/code/hero/hero-factory'
 
 defineProps({
   titleSection: {

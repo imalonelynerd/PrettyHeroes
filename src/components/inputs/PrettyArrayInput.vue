@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { getEventValue, isValidColorName } from '@/assets/ts/common-tools'
-import { getFilter } from '@/assets/ts/filter-solver'
+import { getEventValue, isValidColorName } from '@/assets/code/common-tools'
+import { getFilter } from '@/assets/code/filter-solver'
 import { ref } from 'vue'
 
 defineEmits(['listUpdated', 'listExtended', 'listReduced'])
@@ -36,7 +36,7 @@ const props = defineProps({
   iconColor: {
     type: String,
     validator: (value: string): boolean => isValidColorName(value),
-    default: '#FF5262'
+    default: '#FFFFFF'
   },
   columns: {
     type: Number,
@@ -79,7 +79,7 @@ const isFocused = ref(-1)
 .PrettyArrayInput
   background: v-bind(background)
   color: v-bind(fontColor)
-  border-radius: var(--radius-input)
+  border-radius: var(--radius-big-input)
   display: flex
   flex-direction: column
   justify-content: start

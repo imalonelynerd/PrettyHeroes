@@ -1,8 +1,8 @@
-import type { Hero } from '@/assets/ts/hero/hero-factory'
+import type { Hero } from '@/assets/code/hero/hero-factory'
 import { load } from 'js-yaml'
 import axios from 'axios'
-import { isHero } from '@/assets/ts/hero/hero-checker'
-import hostInfo from '@/assets/json/host-info.json'
+import { isHero } from '@/assets/code/hero/hero-checker'
+import hostInfo from '@/assets/data/host-info.json'
 
 export const fetchData = async (url: string): Promise<string> => {
   const res = await axios.get(url)

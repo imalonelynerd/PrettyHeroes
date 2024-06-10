@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { marked } from 'marked'
 import DOMPurify from 'dompurify'
-import { isValidColorName } from '@/assets/ts/common-tools'
+import { isValidColorName } from '@/assets/code/common-tools'
 
 defineProps({
   text: {
@@ -33,4 +33,7 @@ const markDownize = (content: string) => DOMPurify.sanitize(marked(content) as s
   *
     margin: 0
     color: v-bind(fontColor)
+
+  a
+    text-decoration: underline !important
 </style>

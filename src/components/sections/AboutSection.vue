@@ -4,7 +4,7 @@ import TitleContainer from '@/components/containers/TitleContainer.vue'
 import ItemContainer from '@/components/widgets/ItemContainer.vue'
 import FlagDisplayer from '@/components/widgets/FlagsDisplayer.vue'
 import ItemElement from '@/components/elements/ItemElement.vue'
-import type { AboutSection } from '@/assets/ts/hero/hero-factory'
+import type { AboutSection } from '@/assets/code/hero/hero-factory'
 import type { PropType } from 'vue'
 
 defineProps({
@@ -22,7 +22,7 @@ const hasInformations = (section: AboutSection) =>
   section.work !== '' || section.location !== '' || section.timezone !== '' || section.status !== ''
 
 const hasFlags = (aboutSection: AboutSection) =>
-  aboutSection.flags.length > 0 || aboutSection.propage !== ''
+  aboutSection.flags.length > 0 || aboutSection.proPage !== ''
 </script>
 
 <template>
@@ -76,7 +76,7 @@ const hasFlags = (aboutSection: AboutSection) =>
         :flags="aboutSection.flags"
         :font-color="$colorPalette.text"
         :background="$colorPalette.widget"
-        :pronouns-user="aboutSection.propage"
+        :pronouns-user="aboutSection.proPage"
       ></FlagDisplayer>
     </TitleContainer>
   </WidgetContainer>

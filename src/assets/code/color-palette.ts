@@ -1,5 +1,5 @@
 import { type Ref, ref } from 'vue'
-import { type ColorsSection, getGenericHero } from '@/assets/ts/hero/hero-factory'
+import { type ColorsSection, getGenericHero } from '@/assets/code/hero/hero-factory'
 
 export class ColorPalette {
   background: string

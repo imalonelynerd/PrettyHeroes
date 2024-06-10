@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 
-import { ColorPalette } from '@/assets/ts/color-palette'
+import { ColorPalette } from '@/assets/code/color-palette'
 
 export {}
 

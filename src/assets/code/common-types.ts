@@ -22,7 +22,8 @@ export enum Highlighter {
   ABOUT,
   DESC,
   VIDEOS,
-  LINKS
+  LINKS,
+  EXTRAS
 }
 
 export interface EmbedFetchedData {

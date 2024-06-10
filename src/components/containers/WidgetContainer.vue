@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { PixelSize } from '@/assets/ts/common-types'
+import type { PixelSize } from '@/assets/code/common-types'
 import type { PropType } from 'vue'
-import { isValidColorName } from '@/assets/ts/common-tools'
+import { isValidColorName } from '@/assets/code/common-tools'
 
 defineProps({
   gap: {

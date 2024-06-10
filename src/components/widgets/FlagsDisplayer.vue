@@ -2,10 +2,10 @@
 import ItemElement from '@/components/elements/ItemElement.vue'
 import ItemContainer from '@/components/widgets/ItemContainer.vue'
 import PronounsButton from '@/components/special/PronounsButton.vue'
-import flagMatches from '@/assets/json/flag-matches.json'
+import flagMatches from '@/assets/data/flag-matches.json'
 
-import { changeLocation, isValidColorName } from '@/assets/ts/common-tools'
-import { type PrideFlag } from '@/assets/ts/common-types'
+import { changeLocation, isValidColorName } from '@/assets/code/common-tools'
+import { type PrideFlag } from '@/assets/code/common-types'
 
 defineProps({
   flags: {

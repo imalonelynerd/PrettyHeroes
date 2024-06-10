@@ -9,7 +9,7 @@ const isShwon = ref(true)
   <div class="InputsContainer" v-if="isShwon">
     <slot></slot>
   </div>
-  <PrettyButton class="HideButton" @click="isShwon = !isShwon" icon-color="#FF5262">
+  <PrettyButton class="HideButton" @click="isShwon = !isShwon" icon-color="#FFFFFF">
     <img alt="Hide" :src="`/icons/${isShwon ? 'left' : 'right'}.png`" />
   </PrettyButton>
 </template>

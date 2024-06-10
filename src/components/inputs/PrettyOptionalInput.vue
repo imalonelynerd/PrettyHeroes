@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { getEventValue, isValidColorName } from '@/assets/ts/common-tools'
+import { getEventValue, isValidColorName } from '@/assets/code/common-tools'
 import { ref } from 'vue'
-import { getFilter } from '@/assets/ts/filter-solver'
+import { getFilter } from '@/assets/code/filter-solver'
 
 const emits = defineEmits(['inputUpdated', 'inputBlocked'])
 
@@ -32,7 +32,7 @@ const props = defineProps({
   iconColor: {
     type: String,
     validator: (value: string): boolean => isValidColorName(value),
-    default: '#FF5262'
+    default: '#FFFFFF'
   }
 })
 
@@ -92,11 +92,10 @@ const toggleBlocked = () => {
   flex-direction: row
   justify-content: start
   align-items: center
-  padding: 0 16px
+  padding: 0 12px 0 16px
 
   > img
     height: 16px
-    width: 16px
     filter: v-bind(iconFilter)
     cursor: pointer
 

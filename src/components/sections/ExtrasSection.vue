@@ -5,7 +5,7 @@ import ItemContainer from '@/components/widgets/ItemContainer.vue'
 import PronounceButton from '@/components/special/PronounceButton.vue'
 import ItemElement from '@/components/elements/ItemElement.vue'
 import type { PropType } from 'vue'
-import type { ExtrasSection } from '@/assets/ts/hero/hero-factory'
+import type { ExtrasSection } from '@/assets/code/hero/hero-factory'
 
 defineProps({
   extrasSection: {
@@ -29,6 +29,7 @@ defineProps({
       <ItemContainer>
         <PronounceButton v-if="fromPronounce"></PronounceButton>
         <ItemElement
+          v-if="extrasSection.enableSharing"
           :font-color="$colorPalette.text"
           :background="$colorPalette.widget"
           :icon-color="$colorPalette.title"

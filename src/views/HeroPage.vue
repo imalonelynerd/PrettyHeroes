@@ -7,14 +7,14 @@ import VideosSection from '@/components/sections/VideosSection.vue'
 import LinksSection from '@/components/sections/LinksSection.vue'
 import ExtrasSection from '@/components/sections/ExtrasSection.vue'
 import FooterSection from '@/components/sections/FooterSection.vue'
-import { type Hero } from '@/assets/ts/hero/hero-factory'
-import FetchableUrls from '@/assets/json/fetchable-urls.json'
+import { type Hero } from '@/assets/code/hero/hero-factory'
+import FetchableUrls from '@/assets/data/fetchable-urls.json'
 
 import { type Ref, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { convertDataToObject, fetchData, convertObjectToHero } from '@/assets/ts/hero/hero-importer'
-import { getColorPalette } from '@/assets/ts/color-palette'
-import { type FetchableUrl, LoadingState } from '@/assets/ts/common-types'
+import { convertDataToObject, fetchData, convertObjectToHero } from '@/assets/code/hero/hero-importer'
+import { getColorPalette } from '@/assets/code/color-palette'
+import { type FetchableUrl, LoadingState } from '@/assets/code/common-types'
 
 let hero: Ref<Hero>
 let loadingState: Ref<LoadingState> = ref(LoadingState.LOADING)
@@ -33,6 +33,8 @@ for (let e of fetchableLinks) {
     res = await fetchData(url)
     obj = convertDataToObject(res)
     convertedHero = convertObjectToHero(obj)
+    if(convertedHero.about.isExternal)
+      convertedHero.about.desc = await fetchData(convertedHero.about.desc)
     hero = ref(convertedHero)
     getColorPalette().fromHeroColors(convertedHero.colors)
     loadingState.value = LoadingState.RESOLVED

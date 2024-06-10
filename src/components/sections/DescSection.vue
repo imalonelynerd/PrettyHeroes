@@ -2,7 +2,7 @@
 import MarkdownText from '@/components/widgets/MarkdownText.vue'
 import WidgetContainer from '@/components/containers/WidgetContainer.vue'
 import TitleContainer from '@/components/containers/TitleContainer.vue'
-import type { AboutSection } from '@/assets/ts/hero/hero-factory'
+import type { AboutSection } from '@/assets/code/hero/hero-factory'
 import type { PropType } from 'vue'
 
 defineProps({

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getEventValue, isValidColorName } from '@/assets/ts/common-tools'
+import { getEventValue, isValidColorName } from '@/assets/code/common-tools'
 import { ref } from 'vue'
 
 defineEmits(['inputUpdated'])

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { isValidColorName } from '@/assets/ts/common-tools'
+import { isValidColorName } from '@/assets/code/common-tools'
 
 defineProps({
   image: {

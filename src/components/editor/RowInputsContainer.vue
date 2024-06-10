@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import type { PixelSize } from '@/assets/ts/common-types'
+import type { PixelSize } from '@/assets/code/common-types'
 
 defineProps({
   columns: {

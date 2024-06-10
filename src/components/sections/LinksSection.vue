@@ -3,9 +3,9 @@ import WidgetContainer from '@/components/containers/WidgetContainer.vue'
 import TitleContainer from '@/components/containers/TitleContainer.vue'
 import GridContainer from '@/components/widgets/GridContainer.vue'
 import GridElement from '@/components/elements/GridElement.vue'
-import { changeLocation } from '@/assets/ts/common-tools'
+import { changeLocation } from '@/assets/code/common-tools'
 import type { PropType } from 'vue'
-import type { OnlineSection } from '@/assets/ts/hero/hero-factory'
+import type { OnlineSection } from '@/assets/code/hero/hero-factory'
 
 defineProps({
   onlineSection: {

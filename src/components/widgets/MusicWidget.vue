@@ -2,9 +2,9 @@
 import ListenButton from '@/components/special/ListenButton.vue'
 
 import { type Ref, ref } from 'vue'
-import { changeLocation, isValidColorName } from '@/assets/ts/common-tools'
+import { changeLocation, isValidColorName } from '@/assets/code/common-tools'
 import axios from 'axios'
-import type { EmbedFetchedData } from '@/assets/ts/common-types'
+import type { EmbedFetchedData } from '@/assets/code/common-types'
 
 const props = defineProps({
   ytUrl: {

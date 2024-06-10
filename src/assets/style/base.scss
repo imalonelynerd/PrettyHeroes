@@ -1,14 +1,17 @@
 :root {
   --bgimg: #101010;
-  --background: #181825;
-  --widget: #313244;
-  --hover: #8d304c;
+  --background: #0c0c12;
+  --widget: #131319;
+  --hover: white;
   --text: white;
   --title: var(--text);
+
   --blur: blur(20px);
   --filter: none;
   --trans: all ease-out 0.25s;
+
   --radius-widget: 16px;
   --radius-button: 9999px;
-  --radius-input: 12px;
+  --radius-input: 16px;
+  --radius-big-input: 16px;
 }

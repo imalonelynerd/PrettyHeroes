@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getEventValue, isValidColorName } from '@/assets/ts/common-tools'
+import { getEventValue, isValidColorName } from '@/assets/code/common-tools'
 import { ref } from 'vue'
 
 defineEmits(['fieldUpdated'])
@@ -62,7 +62,7 @@ const isFocused = ref(false)
   outline: transparent solid 2px
   padding: 8px 16px
   gap: 8px
-  border-radius: var(--radius-input)
+  border-radius: var(--radius-big-input)
 
   > p
     opacity: 0.66

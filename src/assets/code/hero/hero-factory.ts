@@ -1,6 +1,6 @@
 // --- Version : ROSA
 
-import type { LinkDescriber } from '@/assets/ts/common-types'
+import type { LinkDescriber } from '@/assets/code/common-types'
 
 export interface TitleSection {
   image: string
@@ -17,8 +17,9 @@ export interface AboutSection {
   timezone: string
   status: string
   flags: Array<string>
-  propage: string
+  proPage: string
   desc: string
+  isExternal: boolean
 }
 
 export interface ColorsSection {
@@ -38,6 +39,7 @@ export interface OnlineSection {
 export interface ExtrasSection {
   pronounceCompat: boolean
   enableSnapshot: boolean
+  enableSharing: boolean
   version: string
 }
 
@@ -69,8 +71,9 @@ export const genericHero: Hero = {
     timezone: 'UTC+0',
     status: 'Away',
     flags: ['nb'],
-    propage: '',
-    desc: 'Type **anything** here !'
+    proPage: '',
+    desc: 'Type **anything** here !',
+    isExternal: false
   },
   colors: {
     bgimg: '',
@@ -101,6 +104,7 @@ export const genericHero: Hero = {
   extras: {
     pronounceCompat: false,
     enableSnapshot: true,
+    enableSharing: true,
     version: ''
   }
 }

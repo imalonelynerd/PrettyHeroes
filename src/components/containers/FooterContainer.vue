@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isValidColorName } from '@/assets/ts/common-tools'
+import { isValidColorName } from '@/assets/code/common-tools'
 
 defineProps({
   background: {

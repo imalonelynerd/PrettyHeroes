@@ -23,10 +23,10 @@ const isShown = ref(true)
     <div>
       <h2>{{ title }}</h2>
       <div>
-        <PrettyButton @click="isShown = !isShown" icon-color="#FF5262"
+        <PrettyButton @click="isShown = !isShown" icon-color="#FFFFFF"
           ><img :src="`/icons/${isShown ? 'up' : 'down'}.png`" alt="Target"
         /></PrettyButton>
-        <PrettyButton v-if="hasHighlight" @click="$emit('highlightRequested')" icon-color="#FF5262"
+        <PrettyButton v-if="hasHighlight" @click="$emit('highlightRequested')" icon-color="#FFFFFF"
           ><img src="/icons/target.png" alt="Target"
         /></PrettyButton>
       </div>
